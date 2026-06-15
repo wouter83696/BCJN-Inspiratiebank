@@ -1,0 +1,30 @@
+name: Dagelijkse BCJN-broncheck
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  broncheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Website ophalen
+        uses: actions/checkout@v4
+
+      - name: Node.js instellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Agenda's controleren en Supabase bijwerken
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_TABLE: bcjn_state
+          SUPABASE_STATE_ID: bcjn-zomer-2026
+        run: node website-bestanden/scripts/run-source-check.js

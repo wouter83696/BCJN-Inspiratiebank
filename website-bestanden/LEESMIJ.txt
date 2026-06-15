@@ -1,0 +1,43 @@
+BCJN - Zomer 2026
+
+Dit is de online versie van de website. Gebruik dus deze map als definitieve versie:
+
+  online-versie/
+
+Online zetten
+- Zet de inhoud van online-versie op je hosting.
+- De hoofdpagina is index.html.
+- Laat de map website-bestanden ernaast staan; die hoort bij de website.
+- De beheerpagina staat op website-bestanden/beheer.html.
+
+Online opslag
+- Gebruik Supabase als gedeelde online opslag.
+- Maak in Supabase de tabel aan met het bestand: ../supabase/schema.sql.
+- Vul daarna in website-bestanden/config.js je Supabase URL en anon public key in.
+- Daarna zien collega's dezelfde aanvullingen, links en automatische agenda-updates.
+
+Voor collega's
+- Collega's gebruiken index.html.
+- Inspiratie toevoegen komt direct in de inspiratiebank.
+- Links insturen gaat eerst naar beheer, zodat de linklijst schoon blijft.
+- Automatisch gevonden UIT-agenda-items mogen zichtbaar zijn met "Nog even checken".
+
+Voor beheer
+- Open website-bestanden/beheer.html.
+- Wachtwoord: 6545.
+- Je kunt inspiratie-items verbergen of verwijderen.
+- Je kunt links van collega's goedkeuren of afwijzen.
+- Je kunt automatisch gevonden UIT-agenda-items markeren als gecheckt of verbergen.
+
+Automatische broncheck
+- Het script website-bestanden/scripts/run-source-check.js controleert de ingestelde bronnen.
+- Daarna publiceert het nieuwe vondsten naar Supabase als automatische UIT-agenda-items.
+- De meegeleverde GitHub Actions-workflow staat in .github/workflows/dagelijkse-broncheck.yml.
+- Voeg in GitHub de secrets SUPABASE_URL en SUPABASE_SERVICE_ROLE_KEY toe.
+- Je kunt dezelfde controle ook handmatig starten vanuit GitHub Actions.
+- Nieuwe vondsten worden zichtbaar met "Nog even checken"; ze hoeven dus niet eerst handmatig goedgekeurd te worden.
+- Voor dit script gebruik je de variabelen uit .env.example. De service role key hoort alleen op de server of in GitHub Actions, nooit in config.js.
+
+Belangrijk
+- Check altijd datum, kosten, reservering, vervoer en prikkelbelasting voordat jullie iets plannen.
+- Het beheerwachtwoord is een eenvoudige drempel aan de voorkant. Voor echte beveiliging moet beheer later via een serverfunctie of Supabase-auth lopen.
