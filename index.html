@@ -115,10 +115,8 @@
     .sectionHead h2{margin:0;font-weight:400;letter-spacing:-.03em;color:var(--accent-dark);font-size:clamp(1.6rem,3vw,2.55rem)}
     .sectionHead p{margin:6px 0 0;color:var(--muted);line-height:1.45}
     .notice{background:rgba(248,236,194,.58);border:1px solid rgba(186,151,56,.14);border-radius:18px;padding:13px 15px;color:#6b5927;line-height:1.48}
-    .weekNav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
-    .sectionToolbar .weekNav{justify-content:flex-end;margin:0}
-    .weekJump{border:1px solid rgba(79,142,158,.18);background:rgba(255,255,255,.58);border-radius:999px;color:var(--accent-dark);padding:8px 11px;text-decoration:none;font-size:.92rem}
-    .weekJump:hover{background:#fff}
+    .weekNav{display:flex;justify-content:flex-end;margin:0}
+    .weekSelect{width:min(230px,100%);min-height:40px;border:1px solid rgba(79,142,158,.16);background:rgba(255,255,255,.68);border-radius:999px;color:var(--accent-dark);padding:8px 36px 8px 15px;font-size:.9rem;cursor:pointer}
     .sourceOverview{
       display:grid;gap:10px;margin:14px 0 16px;padding:14px 16px;border-radius:20px;
       background:rgba(255,255,255,.46);border:1px solid rgba(255,255,255,.74)
@@ -224,22 +222,23 @@
     .card .fine{color:var(--muted);font-size:.86rem}
     .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
     .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:12px 0 14px}
-    .filters.more{grid-template-columns:1.35fr repeat(6,minmax(112px,1fr))}
-    .filters input,.filters select{width:100%;min-height:46px;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.72);border-radius:999px;padding:11px 17px;color:var(--ink)}
-    .filters select{padding-right:38px}
+    .filters.more{grid-template-columns:minmax(190px,1.35fr) repeat(5,minmax(0,1fr)) minmax(156px,1.18fr)}
+    .filters input,.filters select{width:100%;min-width:0;min-height:40px;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.72);border-radius:999px;padding:8px 13px;color:var(--ink);font-size:.9rem}
+    .filters select{padding-right:30px}
     .teamHead{margin-top:28px}
     .ideaToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;flex-wrap:wrap}
     .ideaToolbar.viewOnly{justify-content:flex-end;margin-top:0}
     .sectionToolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:16px 0 12px;flex-wrap:wrap}
     .viewBar{display:flex;justify-content:flex-end;align-items:center;margin:10px 0 14px}
     .ideaToolbar .viewBar,.sectionToolbar .viewBar{margin:0}
-    .viewSwitch{display:flex;gap:8px;flex-wrap:wrap;margin:0}
+    .viewSwitch{display:flex;gap:10px;flex-wrap:wrap;margin:0}
     .viewBtn{
-      border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.58);color:rgba(11,18,32,.68);
-      border-radius:999px;width:42px;height:42px;padding:0;cursor:pointer;transition:.18s var(--ease);
+      border:0;background:transparent;color:rgba(11,18,32,.52);
+      width:30px;height:34px;padding:0;cursor:pointer;transition:.18s var(--ease);
       display:inline-flex;align-items:center;justify-content:center;
     }
-    .viewBtn.active{background:#fff;color:var(--accent);box-shadow:0 8px 24px rgba(11,18,32,.07)}
+    .viewBtn:hover{color:var(--ink)}
+    .viewBtn.active{color:var(--accent)}
     .viewIcon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px}
     .viewIcon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .ideaView[hidden],.teamView[hidden],.sourceView[hidden]{display:none !important}
@@ -1560,7 +1559,10 @@
   }
 
   function renderWeekPanels(){
-    $('#weekNav').innerHTML = ACTIVE_WEEKS.map(w=>`<a class="weekJump" href="#${w.id}">Week ${escapeHtml(w.week)}</a>`).join('');
+    $('#weekNav').innerHTML = `<select id="weekSelect" class="weekSelect" aria-label="Ga naar week">
+      <option value="">Ga naar week…</option>
+      ${ACTIVE_WEEKS.map(w=>`<option value="${escapeHtml(w.id)}">Week ${escapeHtml(w.week)} · ${escapeHtml(w.dates)}</option>`).join('')}
+    </select>`;
     $('#weekPanels').innerHTML = ACTIVE_WEEKS.map((w,i)=>{
       const all = byWeek(w.id);
       const concrete = sortWeekItems(all.filter(isConcrete));
@@ -1801,6 +1803,13 @@
 	    $('#generatedDate').textContent = DATA.generated;
 	    renderWeekPanels(); renderFlexibleOffers(); renderLinks(); refreshCollections(); setIdeaView('tiles'); setSourceView('tiles');
     $$('.tab').forEach(btn=>btn.addEventListener('click',()=>setTab(btn.dataset.tab)));
+    document.addEventListener('change', event => {
+      if(event.target.id !== 'weekSelect') return;
+      const week = event.target.value;
+      if(!week) return;
+      const panel = document.getElementById(week);
+      if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+    });
     ['ideaSearch','ideaDomain','ideaType','ideaLocation','ideaDistance','ideaCost','ideaStimulus'].forEach(id=>$('#'+id).addEventListener('input',renderIdeas));
     $$('[data-view-group="ideas"]').forEach(btn=>btn.addEventListener('click',()=>setIdeaView(btn.dataset.view)));
     $$('[data-view-group="sources"]').forEach(btn=>btn.addEventListener('click',()=>setSourceView(btn.dataset.view)));
