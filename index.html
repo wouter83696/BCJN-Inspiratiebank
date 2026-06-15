@@ -55,12 +55,12 @@
     button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:none;box-shadow:var(--focus)}
     .shell{max-width:var(--max);margin:0 auto;padding:18px clamp(14px,3vw,28px) 70px}
     .topbar{
-      position:sticky;top:24px;z-index:20;
+      position:relative;z-index:20;
       display:flex;justify-content:space-between;align-items:center;gap:12px;
       max-width:var(--max);margin:0 auto;padding:0 clamp(14px,3vw,28px);
       pointer-events:none;
     }
-    .topbar .tabs,.actions{
+    .topbar .tabs{
       pointer-events:auto;
       background:color-mix(in srgb, var(--paper) 86%, transparent);
       border:1px solid rgba(255,255,255,.72);
@@ -69,7 +69,7 @@
       border-radius:999px;
       padding:5px;
     }
-    .actions{display:flex;gap:5px;border-radius:999px;padding:5px}
+    .actions{display:flex;align-items:center;gap:4px;padding:0;pointer-events:auto}
     .mini{border:0;background:transparent;border-radius:999px;color:var(--muted);padding:8px 11px;cursor:pointer}
     .mini:hover{background:rgba(11,18,32,.055);color:var(--ink)}
     .adminLogin{text-decoration:none;opacity:.68}
@@ -335,7 +335,7 @@
     .sourceCardActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
     footer{margin-top:34px;color:rgba(11,18,32,.48);font-size:.86rem;line-height:1.42}
     @media (max-width:980px){.hero{grid-template-columns:1fr}.quick{grid-template-columns:repeat(3,1fr)}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr 1fr}.filterSearch{grid-column:1/-1}.agendaBoard{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:640px){body{padding-top:26px}.topbar{top:14px;padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{gap:2px;padding:4px}.topbar .tab{padding:7px 8px;font-size:.76rem}.actions{padding:4px;gap:2px}.adminLogin{display:none}.mini{padding:7px 8px;font-size:.82rem}.hero{padding-top:10px}.quick{grid-template-columns:1fr}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:1fr}.filterBar{padding:10px}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr}.filterSearch{grid-column:auto}.filterReset{justify-content:center}.weekTop{grid-template-columns:1fr}.weekMeta{justify-content:flex-start}.weekBody{padding:14px}.weekTop{padding:16px}.agendaBoard{grid-template-columns:1fr}.agendaDay{min-height:auto}.heroTitle{white-space:normal}.sectionHead{align-items:flex-start;flex-direction:column}.sectionToolbar{align-items:flex-start}.sectionToolbar .weekNav{justify-content:flex-start;width:100%}.ideaToolbar,.ideaToolbar.viewOnly{justify-content:flex-start}.ideaToolbar .viewBar{width:100%;justify-content:flex-start}}
+    @media (max-width:640px){body{padding-top:26px}.topbar{padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{gap:2px;padding:4px}.topbar .tab{padding:7px 8px;font-size:.76rem}.actions{gap:0}.mini{padding:7px 8px;font-size:.76rem}.hero{padding-top:10px}.quick{grid-template-columns:1fr}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:1fr}.filterBar{padding:10px}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr}.filterSearch{grid-column:auto}.filterReset{justify-content:center}.weekTop{grid-template-columns:1fr}.weekMeta{justify-content:flex-start}.weekBody{padding:14px}.weekTop{padding:16px}.agendaBoard{grid-template-columns:1fr}.agendaDay{min-height:auto}.heroTitle{white-space:normal}.sectionHead{align-items:flex-start;flex-direction:column}.sectionToolbar{align-items:flex-start}.sectionToolbar .weekNav{justify-content:flex-start;width:100%}.ideaToolbar,.ideaToolbar.viewOnly{justify-content:flex-start}.ideaToolbar .viewBar{width:100%;justify-content:flex-start}}
     @media print{.topbar,.tabs,.actions,.filters,.viewBar,.viewSwitch,.weekNav,.siteButton,.teamFormBox,.formButton{display:none !important}body{padding-top:0;background:#fff}.shell{max-width:none;padding:0}.hero{display:none}.tabPanel{display:block !important}.weekPanel,.panel,.card{box-shadow:none;break-inside:avoid}}
   </style>
 </head>
@@ -372,7 +372,7 @@
           <div class="quickText"><b id="offerCount">0</b><span>uitjes om te bekijken<br>uit regio en omstreken</span></div>
         </div>
         <div class="quickCard">
-          <span class="quickIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"></path><path d="M8.5 15.5A7 7 0 1 1 15.5 15.5c-.9.7-1.5 1.4-1.5 2.5h-4c0-1.1-.6-1.8-1.5-2.5Z"></path></svg></span>
+          <span class="quickIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M8.2 14.7A6.5 6.5 0 1 1 15.8 14.7c-1.2.9-1.8 1.8-1.8 3.3h-4c0-1.5-.6-2.4-1.8-3.3Z"></path><path d="M12 3v2"></path><path d="m4.9 5.9 1.4 1.4"></path><path d="m19.1 5.9-1.4 1.4"></path></svg></span>
           <div class="quickText"><b id="ideaCount">0</b><span>ideeën in de inspiratiebank<br>eigen en extern</span></div>
         </div>
       </aside>
