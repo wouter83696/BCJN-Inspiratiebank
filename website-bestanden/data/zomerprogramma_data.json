@@ -229,6 +229,7 @@
     },
     {
       "title": "Wandeluitdaging Dukenburg",
+      "seasonLimited": true,
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 19 augustus 2026",
       "time": "check startmoment",
@@ -408,6 +409,7 @@
     },
     {
       "title": "Nederlands Watermuseum Arnhem – zomerexpo Waterkracht",
+      "seasonLimited": true,
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 23 augustus 2026",
       "time": "dagelijks 10.00–17.00",
@@ -430,6 +432,7 @@
     },
     {
       "title": "Route 1900 – wandel mee met 125 jaar N.E.C.",
+      "seasonLimited": true,
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 23 augustus 2026",
       "time": "zelf te starten",
@@ -639,6 +642,7 @@
     },
     {
       "title": "Museumpark Orientalis – expositie en parkroute",
+      "seasonLimited": true,
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "15 juli t/m 23 augustus 2026",
       "time": "di t/m zo 11.00–17.00",
