@@ -116,17 +116,7 @@
     .sectionHead p{margin:6px 0 0;color:var(--muted);line-height:1.45}
     .notice{background:rgba(248,236,194,.58);border:1px solid rgba(186,151,56,.14);border-radius:18px;padding:13px 15px;color:#6b5927;line-height:1.48}
     .weekNav{display:flex;justify-content:flex-end;margin:0}
-    .weekSelect{
-      appearance:none;-webkit-appearance:none;width:min(220px,100%);min-height:44px;
-      border:1px solid rgba(255,255,255,.78);border-radius:999px;color:var(--accent-dark);
-      background-color:rgba(255,255,255,.72);
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
-      background-repeat:no-repeat;background-position:right 15px center;background-size:14px;
-      padding:10px 42px 10px 17px;font:inherit;font-size:.9rem;line-height:1.2;cursor:pointer;
-      box-shadow:0 8px 24px rgba(11,18,32,.045)
-    }
-    .weekSelect:hover{background-color:rgba(255,255,255,.9)}
-    .weekSelect:focus-visible{outline:2px solid rgba(79,142,158,.28);outline-offset:2px}
+    .weekSelect{width:220px}
     .sourceOverview{
       display:grid;gap:10px;margin:14px 0 16px;padding:14px 16px;border-radius:20px;
       background:rgba(255,255,255,.46);border:1px solid rgba(255,255,255,.74)
@@ -239,8 +229,22 @@
     .filters input,.filters select{width:100%;min-width:0;min-height:40px;border:1px solid rgba(11,18,32,.07);background:rgba(255,255,255,.66);border-radius:999px;padding:8px 13px;color:var(--ink);font-size:.86rem}
     .filterSearch input{padding-left:42px}
     .filters select{padding-right:30px}
+    .customNativeSelect{position:absolute !important;width:1px !important;height:1px !important;min-height:0 !important;opacity:0;pointer-events:none;overflow:hidden;padding:0 !important;border:0 !important}
+    .customSelect{position:relative;min-width:0}
+    .customSelectButton{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:40px;border:1px solid rgba(11,18,32,.07);border-radius:999px;background:rgba(255,255,255,.66);color:var(--ink);padding:8px 13px;font-size:.86rem;text-align:left;cursor:pointer}
+    .customSelectLabel{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .customSelectButton::after{content:"";flex:0 0 13px;width:13px;height:13px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s var(--ease)}
+    .customSelect.open .customSelectButton::after{transform:rotate(180deg)}
+    .customSelectMenu{position:absolute;left:0;top:calc(100% + 7px);z-index:40;display:none;width:max-content;min-width:100%;max-width:min(310px,calc(100vw - 30px));max-height:280px;overflow:auto;padding:6px;border:1px solid rgba(11,18,32,.08);border-radius:16px;background:rgba(255,255,255,.98);box-shadow:0 18px 44px rgba(20,38,42,.17)}
+    .customSelect.open .customSelectMenu{display:grid;gap:2px}
+    .customSelect.openUp .customSelectMenu{top:auto;bottom:calc(100% + 7px)}
+    .customSelectOption{border:0;border-radius:11px;background:transparent;color:var(--ink);padding:9px 11px;font:inherit;font-size:.86rem;text-align:left;white-space:nowrap;cursor:pointer}
+    .customSelectOption:hover,.customSelectOption.active{background:rgba(79,142,158,.10);color:var(--accent-dark)}
+    .weekNav .customSelect{width:min(220px,100%)}
+    .weekNav .customSelectButton{min-height:44px;border-color:rgba(255,255,255,.78);background:rgba(255,255,255,.72);color:var(--accent-dark);padding:10px 17px;box-shadow:0 8px 24px rgba(11,18,32,.045)}
+    .weekNav .customSelectMenu{right:0;left:auto;min-width:min(290px,calc(100vw - 30px))}
     .filterReset{display:inline-flex;align-items:center;gap:7px;min-height:40px;border:0;background:transparent;color:var(--accent);padding:8px 4px 8px 8px;font:inherit;font-size:.84rem;font-weight:500;white-space:nowrap;cursor:pointer}
-    .filterReset::before{content:"↶";font-size:1.15rem;font-weight:400}
+    .filterReset svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .filterReset:hover{color:var(--accent-dark)}
     .teamHead{margin-top:28px}
     .ideaToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;flex-wrap:wrap}
@@ -416,7 +420,10 @@
           <select id="ideaDistance"><option value="all">Afstand</option></select>
           <select id="ideaCost"><option value="all">Kosten</option></select>
           <select id="ideaStimulus"><option value="all">Prikkelbelasting</option></select>
-          <button class="filterReset" id="resetBtn" type="button">Filters wissen</button>
+          <button class="filterReset" id="resetBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v6h6"></path></svg>
+            <span>Filters wissen</span>
+          </button>
         </div>
       </div>
       <div id="ideaList" class="tableWrap ideaView" hidden></div>
@@ -1582,6 +1589,7 @@
       <option value="">Ga naar week…</option>
       ${ACTIVE_WEEKS.map(w=>`<option value="${escapeHtml(w.id)}">Week ${escapeHtml(w.week)} · ${escapeHtml(w.dates)}</option>`).join('')}
     </select>`;
+    enhanceCustomSelect($('#weekSelect'));
     $('#weekPanels').innerHTML = ACTIVE_WEEKS.map((w,i)=>{
       const all = byWeek(w.id);
       const concrete = sortWeekItems(all.filter(isConcrete));
@@ -1738,6 +1746,79 @@
     }
     return true;
   }
+  function closeCustomSelects(except=null){
+    $$('.customSelect.open').forEach(control => {
+      if(control === except) return;
+      control.classList.remove('open','openUp');
+      const button = control.querySelector('.customSelectButton');
+      if(button) button.setAttribute('aria-expanded','false');
+    });
+  }
+  function syncCustomSelect(select){
+    if(select && typeof select._syncCustomSelect === 'function') select._syncCustomSelect();
+  }
+  function enhanceCustomSelect(select){
+    if(!select) return;
+    const previous = select.closest('.customSelect');
+    if(previous){
+      previous.parentNode.insertBefore(select, previous);
+      previous.remove();
+    }
+    select.classList.add('customNativeSelect');
+    const control = document.createElement('div');
+    control.className = 'customSelect';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'customSelectButton';
+    button.setAttribute('aria-haspopup','listbox');
+    button.setAttribute('aria-expanded','false');
+    const label = document.createElement('span');
+    label.className = 'customSelectLabel';
+    button.appendChild(label);
+    const menu = document.createElement('div');
+    menu.className = 'customSelectMenu';
+    menu.setAttribute('role','listbox');
+    [...select.options].forEach(option => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'customSelectOption';
+      item.dataset.value = option.value;
+      item.textContent = option.textContent;
+      item.setAttribute('role','option');
+      item.addEventListener('click', () => {
+        select.value = option.value;
+        select._syncCustomSelect();
+        select.dispatchEvent(new Event('input',{bubbles:true}));
+        select.dispatchEvent(new Event('change',{bubbles:true}));
+        closeCustomSelects();
+      });
+      menu.appendChild(item);
+    });
+    select.parentNode.insertBefore(control, select);
+    control.append(select, button, menu);
+    select._syncCustomSelect = () => {
+      const selected = select.options[select.selectedIndex] || select.options[0];
+      label.textContent = selected ? selected.textContent : '';
+      menu.querySelectorAll('.customSelectOption').forEach(item => {
+        const active = item.dataset.value === select.value;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    };
+    select._syncCustomSelect();
+    button.addEventListener('click', () => {
+      const willOpen = !control.classList.contains('open');
+      closeCustomSelects(control);
+      control.classList.toggle('open', willOpen);
+      button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      control.classList.remove('openUp');
+      if(willOpen){
+        const rect = control.getBoundingClientRect();
+        const menuHeight = Math.min(menu.scrollHeight, 280) + 10;
+        if(window.innerHeight - rect.bottom < menuHeight && rect.top > menuHeight) control.classList.add('openUp');
+      }
+    });
+  }
   function fillSelect(id, values, label){
     const el = $(id); if(!el) return;
     const current = el.value || 'all';
@@ -1752,6 +1833,7 @@
     fillSelect('#ideaDistance', IDEA_DISTANCE_OPTIONS, 'Afstand');
     fillSelect('#ideaCost', IDEA_COST_OPTIONS, 'Kosten');
     fillSelect('#ideaStimulus', IDEA_STIMULUS_OPTIONS, 'Prikkelbelasting');
+    ['ideaDomain','ideaType','ideaLocation','ideaDistance','ideaCost','ideaStimulus'].forEach(id => enhanceCustomSelect($('#'+id)));
   }
   function renderIdeas(){
     const q = $('#ideaSearch').value;
@@ -1806,6 +1888,7 @@
 	      const el = $('#'+id);
 	      if(!el) return;
 	      el.value = el.tagName === 'SELECT' ? 'all' : '';
+	      syncCustomSelect(el);
 	    });
 	    renderIdeas();
 	  }
@@ -1822,6 +1905,12 @@
 	    $('#generatedDate').textContent = DATA.generated;
 	    renderWeekPanels(); renderFlexibleOffers(); renderLinks(); refreshCollections(); setIdeaView('tiles'); setSourceView('tiles');
     $$('.tab').forEach(btn=>btn.addEventListener('click',()=>setTab(btn.dataset.tab)));
+    document.addEventListener('click', event => {
+      if(!event.target.closest('.customSelect')) closeCustomSelects();
+    });
+    document.addEventListener('keydown', event => {
+      if(event.key === 'Escape') closeCustomSelects();
+    });
     document.addEventListener('change', event => {
       if(event.target.id !== 'weekSelect') return;
       const week = event.target.value;
