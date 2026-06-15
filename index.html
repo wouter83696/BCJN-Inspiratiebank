@@ -111,6 +111,7 @@
     .tabPanel.active{display:block;scroll-margin-top:92px}
     @keyframes in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
     .sectionHead{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin:24px 0 12px}
+    .sectionHead > .formButton{flex:0 0 auto;align-self:flex-start;margin-top:3px}
     .sectionHead h2{margin:0;font-weight:400;letter-spacing:-.03em;color:var(--accent-dark);font-size:clamp(1.6rem,3vw,2.55rem)}
     .sectionHead p{margin:6px 0 0;color:var(--muted);line-height:1.45}
     .notice{background:rgba(248,236,194,.58);border:1px solid rgba(186,151,56,.14);border-radius:18px;padding:13px 15px;color:#6b5927;line-height:1.48}
@@ -225,6 +226,7 @@
     .filters input,.filters select{width:100%;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.72);border-radius:15px;padding:11px 12px;color:var(--ink)}
     .teamHead{margin-top:28px}
     .ideaToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;flex-wrap:wrap}
+    .ideaToolbar.viewOnly{justify-content:flex-end;margin-top:0}
     .viewBar{display:flex;justify-content:flex-end;align-items:center;margin:10px 0 14px}
     .ideaToolbar .viewBar{margin:0}
     .viewSwitch{display:flex;gap:8px;flex-wrap:wrap;margin:0}
@@ -304,7 +306,7 @@
     .sourceCardActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
     footer{margin-top:34px;color:rgba(11,18,32,.48);font-size:.86rem;line-height:1.42}
     @media (max-width:980px){.hero{grid-template-columns:1fr}.quick{grid-template-columns:repeat(3,1fr)}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr 1fr}.agendaBoard{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:640px){.topbar{top:14px;margin-top:34px;padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{gap:2px;padding:4px}.topbar .tab{padding:7px 8px;font-size:.76rem}.actions{padding:4px;gap:2px}.adminLogin{display:none}.mini{padding:7px 8px;font-size:.82rem}.hero{padding-top:10px}.quick{grid-template-columns:1fr}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:1fr}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr}.weekTop{grid-template-columns:1fr}.weekMeta{justify-content:flex-start}.weekBody{padding:14px}.weekTop{padding:16px}.agendaBoard{grid-template-columns:1fr}.agendaDay{min-height:auto}.heroTitle{white-space:normal}.ideaToolbar{justify-content:flex-start}.ideaToolbar .viewBar{width:100%;justify-content:flex-start}}
+    @media (max-width:640px){.topbar{top:14px;margin-top:34px;padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{gap:2px;padding:4px}.topbar .tab{padding:7px 8px;font-size:.76rem}.actions{padding:4px;gap:2px}.adminLogin{display:none}.mini{padding:7px 8px;font-size:.82rem}.hero{padding-top:10px}.quick{grid-template-columns:1fr}.cards,.linkGrid,.linkModel,.usedSourceGrid{grid-template-columns:1fr}.filters,.filters.more,.teamFormGrid{grid-template-columns:1fr}.weekTop{grid-template-columns:1fr}.weekMeta{justify-content:flex-start}.weekBody{padding:14px}.weekTop{padding:16px}.agendaBoard{grid-template-columns:1fr}.agendaDay{min-height:auto}.heroTitle{white-space:normal}.sectionHead{align-items:flex-start;flex-direction:column}.sectionHead > .formButton{margin-top:0}.ideaToolbar,.ideaToolbar.viewOnly{justify-content:flex-start}.ideaToolbar .viewBar{width:100%;justify-content:flex-start}}
     @media print{.topbar,.tabs,.actions,.filters,.viewBar,.viewSwitch,.weekNav,.siteButton,.teamFormBox,.formButton{display:none !important}body{background:#fff}.shell{max-width:none;padding:0}.hero{display:none}.tabPanel{display:block !important}.weekPanel,.panel,.card{box-shadow:none;break-inside:avoid}}
   </style>
 </head>
@@ -340,8 +342,8 @@
     </section>
 
     <section id="tab-weken" class="tabPanel active" role="tabpanel">
-      <div class="sectionHead"><div><h2>UIT-agenda</h2><p>Kies hier concrete uitjes buiten de deur die direct te bekijken of te plannen zijn: dichtbij, in de regio of als bijzondere daguitstap. De afstand wordt steeds gerekend vanaf postcode 6545 AL.</p></div></div>
-      <div class="ideaToolbar">
+      <div class="sectionHead">
+        <div><h2>UIT-agenda</h2><p>Kies hier concrete uitjes buiten de deur die direct te bekijken of te plannen zijn: dichtbij, in de regio of als bijzondere daguitstap. De afstand wordt steeds gerekend vanaf postcode 6545 AL.</p></div>
         <a class="formButton primary largeAction" href="#sourceAdditions">Bron toevoegen</a>
       </div>
       <div class="notice"><strong>Let op:</strong> check vóór je iets plant altijd datum, kosten, reservering, vervoer, groepsgrootte, waterkwaliteit bij natuurwater en prikkelbelasting.</div>
@@ -367,9 +369,11 @@
     </section>
 
     <section id="tab-inspiratie" class="tabPanel" role="tabpanel">
-      <div class="sectionHead"><div><h2>Inspiratiebank</h2><p>Gebruik de inspiratiebank om snel te zoeken in ideeën, uitjes, websites en tips van collega's. Handig als jullie iets zoeken dat past bij jullie jongeren, ook als er nog geen vaste datum aan hangt.</p></div></div>
-      <div class="ideaToolbar">
+      <div class="sectionHead">
+        <div><h2>Inspiratiebank</h2><p>Gebruik de inspiratiebank om snel te zoeken in ideeën, uitjes, websites en tips van collega's. Handig als jullie iets zoeken dat past bij jullie jongeren, ook als er nog geen vaste datum aan hangt.</p></div>
         <a class="formButton primary largeAction" href="#teamAdditions">Inspiratie toevoegen</a>
+      </div>
+      <div class="ideaToolbar viewOnly">
         <div class="viewBar">
           <div class="viewSwitch" aria-label="Weergave inspiratiebank">
             <button class="viewBtn active" type="button" data-view-group="ideas" data-view="tiles" aria-label="Tegelweergave" title="Tegelweergave">
