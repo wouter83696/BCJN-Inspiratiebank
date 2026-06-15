@@ -153,6 +153,7 @@
     .weekTop h3{margin:0;color:var(--accent-dark);font-weight:500;font-size:1.35rem}
     .weekTop .dates{color:var(--muted);margin-top:2px}
     .weekTop .status{margin-top:8px;line-height:1.42}
+    .weekTop .status span{display:block;margin-top:3px;color:rgba(11,18,32,.68)}
     .weekMeta{display:flex;align-items:flex-start;justify-content:flex-end;gap:7px;flex-wrap:wrap}
     .pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:6px 9px;font-size:.76rem;font-weight:500;line-height:1;background:rgba(79,142,158,.10);color:#356f7b;white-space:nowrap}
     .pill.ok{background:rgba(221,239,232,.92);color:#426e5d}
@@ -870,6 +871,14 @@
     const absent = Array.isArray(week.absentGroups) ? week.absentGroups : [];
     const needsAbsentDetails = /aangepast|beperkt|geen/i.test(String(week.status || '')) && !absent.length;
     return needsAbsentDetails ? `<div class="groupHint"><strong>Let op:</strong> vul hierbij ook aan welke groepen niet aanwezig zijn.</div>` : '';
+  }
+  function weekStatusText(week){
+    const status = String(week.status || '').trim();
+    const note = String(week.note || '').trim();
+    const vierdaagseMatch = note.match(/Vierdaagsefeesten[^.]*\./i);
+    const mainNote = vierdaagseMatch ? note.replace(vierdaagseMatch[0], '').trim() : note;
+    const mainText = [status, mainNote].filter(Boolean).join(': ');
+    return `<div class="status">${mainText ? `<strong>${escapeHtml(mainText)}</strong>` : ''}${vierdaagseMatch ? ` <span>${escapeHtml(vierdaagseMatch[0])}</span>` : ''}</div>`;
   }
   function normalizeIdeaType(value=''){
     const v = normalize(value);
@@ -1682,7 +1691,7 @@
             <div>
               <h3>Week ${escapeHtml(w.week)} — ${escapeHtml(w.dates)}</h3>
               <div class="dates">${escapeHtml(w.planning)}</div>
-              <div class="status"><strong>${escapeHtml(w.status)}</strong><br>${escapeHtml(w.note)}</div>
+              ${weekStatusText(w)}
               ${weekGroupHint(w)}
             </div>
           </div>
