@@ -187,10 +187,27 @@
       border:1px solid rgba(79,142,158,.14);text-decoration:none;color:inherit;
     }
     .agendaItem:hover{background:#fff}
+    .agendaItem.themeCreative,.agendaItem.themeCulture,.agendaItem.themeNature,.agendaItem.themeSocial,.agendaItem.themeSport,.agendaItem.themeAction,.agendaItem.themeDefault{
+      background:linear-gradient(180deg,var(--theme-tint-strong),rgba(255,255,255,.88));
+      border-color:var(--theme-line);
+      box-shadow:inset 3px 0 0 var(--theme-ink);
+    }
+    .agendaItem.themeCreative:hover,.agendaItem.themeCulture:hover,.agendaItem.themeNature:hover,.agendaItem.themeSocial:hover,.agendaItem.themeSport:hover,.agendaItem.themeAction:hover,.agendaItem.themeDefault:hover{
+      background:linear-gradient(180deg,var(--theme-tint-strong),#fff);
+    }
+    .agendaItem .domainIcon{width:23px;height:23px}
+    .agendaItem .domainIcon svg{width:13px;height:13px}
+    .agendaThemeLegend{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}
+    .agendaLegendItem{
+      display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 8px;
+      background:rgba(255,255,255,.58);border:1px solid var(--theme-line);
+      color:var(--theme-ink);font-size:.76rem;font-weight:500;line-height:1
+    }
+    .agendaLegendSwatch{width:9px;height:9px;border-radius:999px;background:var(--theme-ink);box-shadow:0 0 0 3px var(--theme-tint-strong)}
     .agendaItem.multiDayItem:hover,
     .agendaItem.multiDayItem:focus-visible{background:linear-gradient(180deg,rgba(168,225,221,.48),rgba(244,251,248,.88))}
     .agendaMore{padding:5px 8px;color:var(--muted);font-size:.74rem;line-height:1.3}
-    .agendaItemTitle{display:block;color:var(--accent-dark);font-size:.88rem;font-weight:500;line-height:1.25}
+    .agendaItemTitle{display:flex;align-items:flex-start;gap:8px;color:var(--accent-dark);font-size:.88rem;font-weight:500;line-height:1.25}
     .agendaItemMeta{display:block;margin-top:4px;color:var(--muted);font-size:.78rem;line-height:1.35}
     .agendaEmpty{margin-top:auto;padding:10px 11px;border-radius:14px;background:rgba(11,18,32,.04);color:var(--muted);font-size:.82rem;line-height:1.35}
     .agendaHint{display:block;margin-top:8px;color:var(--ink);font-size:.82rem}
@@ -401,6 +418,7 @@
         <a class="formButton primary largeAction" href="#sourceAdditions">Bron toevoegen</a>
         <div id="weekNav" class="weekNav"></div>
       </div>
+      <div id="agendaThemeLegend"></div>
       <div class="notice"><strong>Let op:</strong> check vóór je iets plant altijd datum, kosten, reservering, vervoer, groepsgrootte en prikkelbelasting.</div>
       <div id="weekPanels" class="weekStack"></div>
       <div class="sectionHead"><div><h2>Tijdelijk aanbod in deze periode</h2><p>Hier staan alleen activiteiten, routes en exposities die speciaal in deze zomerperiode beschikbaar zijn. Regulier geopende locaties vind je in de inspiratiebank.</p></div></div>
@@ -825,6 +843,17 @@
   }
   function titleWithIcon(title, domain, className='ideaTitle'){
     return `<span class="${className}"><span class="domainIcon" aria-hidden="true">${domainIcon(domain)}</span><span class="ideaTitleText">${escapeHtml(title)}</span></span>`;
+  }
+  const AGENDA_THEME_LEGEND = [
+    'Creatief',
+    'Cultuur',
+    'Natuur',
+    'Ontmoeten, Spel & Vaardigheden',
+    'Sport & Bewegen',
+    'Actie & Amusement'
+  ];
+  function agendaThemeLegend(){
+    return `<div class="agendaThemeLegend" aria-label="Legenda themakleuren">${AGENDA_THEME_LEGEND.map(domain => `<span class="agendaLegendItem ${domainThemeClass(domain)}"><span class="agendaLegendSwatch" aria-hidden="true"></span>${escapeHtml(domain)}</span>`).join('')}</div>`;
   }
   function weekGroupMetaPill(week){
     const absent = Array.isArray(week.absentGroups) ? week.absentGroups : [];
@@ -1509,8 +1538,9 @@
 	    const meta = eventDateMeta(item) || {};
 	    const isMultiDay = meta.end && meta.end !== meta.start;
 	    const timeLabel = compact ? item.time : (isMultiDay && !item.pinToAgenda ? `${item.date} • ${item.time}` : item.time);
-	    return `<a class="agendaItem${compact ? ' multiDayItem' : ''}" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
-	      <span class="agendaItemTitle">${escapeHtml(item.title)}</span>${agendaReviewPill(item)}
+	    const themeClass = domainThemeClass(item.domain);
+	    return `<a class="agendaItem ${themeClass}${compact ? ' multiDayItem' : ''}" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
+	      ${titleWithIcon(item.title, item.domain, 'agendaItemTitle')}${agendaReviewPill(item)}
 	      <span class="agendaItemMeta">${escapeHtml(timeLabel)} • ${escapeHtml(item.where)}</span>
 	    </a>`;
 	  }
@@ -1625,6 +1655,7 @@
   }
 
   function renderWeekPanels(){
+    $('#agendaThemeLegend').innerHTML = agendaThemeLegend();
     $('#weekNav').innerHTML = `<select id="weekSelect" class="weekSelect" aria-label="Ga naar week">
       <option value="">Ga naar week…</option>
       ${ACTIVE_WEEKS.map(w=>`<option value="${escapeHtml(w.id)}">Week ${escapeHtml(w.week)} · ${escapeHtml(w.dates)}</option>`).join('')}

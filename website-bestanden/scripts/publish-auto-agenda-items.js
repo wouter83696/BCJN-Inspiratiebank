@@ -225,11 +225,13 @@ function weekForDate(date) {
 }
 
 function guessDomain(item) {
-  const text = normalize(`${item.title} ${item.note} ${item.source}`);
-  if (/sport|zwem|fiets|wandel|run|beweeg|skate|bmx|bootcamp/.test(text)) return "Sport & Bewegen";
-  if (/natuur|water|park|bos|dieren|picknick|wijngaard/.test(text)) return "Natuur & Buiten";
-  if (/markt|braderie|kofferbak|foodtruck|proef|snuffel/.test(text)) return "Ontmoeten, Spel & Vaardigheden";
-  if (/muziek|festival|film|theater|museum|kunst|expo|verhaal|cultuur/.test(text)) return "Cultuur & Ontdekken";
+  const text = normalize(`${item.title} ${item.note} ${item.source} ${item.place || ""} ${item.region || ""}`);
+  if (/sport|zwem|waterfestival|fiets|wandel|route|run|beweeg|skate|bmx|bootcamp|dans|yoga|klim|outdoor/.test(text)) return "Sport & Bewegen";
+  if (/natuur|water|park|bos|dier|zoo|safari|picknick|wijngaard|buiten|strand|rivier|waal/.test(text)) return "Natuur & Buiten";
+  if (/workshop|maak|creatief|teken|schilder|atelier|knutsel|graffiti|fotografie|muziekles/.test(text)) return "Creatief";
+  if (/game|gaming|arcade|escape|bowling|jump|trampoline|kart|lasergame|klimpark|pretpark|attractie|kermis|challenge/.test(text)) return "Actie & Amusement";
+  if (/markt|braderie|kofferbak|foodtruck|proef|snuffel|jongeren|ontmoet|spel|quiz|samen/.test(text)) return "Ontmoeten, Spel & Vaardigheden";
+  if (/muziek|festival|film|bioscoop|theater|museum|kunst|expo|expositie|verhaal|cultuur|concert|voorstelling|historie|erfgoed/.test(text)) return "Cultuur & Ontdekken";
   return "Cultuur & Ontdekken";
 }
 
