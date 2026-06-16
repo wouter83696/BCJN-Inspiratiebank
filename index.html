@@ -384,6 +384,8 @@
     .customSelectOption{border:0;border-radius:11px;background:transparent;color:var(--ink);padding:9px 11px;font:inherit;font-size:.86rem;text-align:left;white-space:nowrap;cursor:pointer}
     .customSelectOption:hover,.customSelectOption.active{background:rgba(79,142,158,.10);color:var(--accent-dark)}
     .themeSelect .customSelectButton{background:rgba(255,255,255,.78);border-color:var(--theme-line);color:var(--theme-ink)}
+    .themeSelect.placeholder .customSelectButton{background:rgba(255,255,255,.78);border-color:rgba(11,18,32,.07);color:var(--muted)}
+    .themeSelect.placeholder .customSelectButton .domainIcon{display:none}
     .themeSelect .customSelectMenu{width:100%;max-width:none;border-color:rgba(11,18,32,.08);background:#fff}
     .themeSelect .customSelectOption{display:flex;align-items:center;gap:8px;color:var(--ink)}
     .themeSelect .customSelectOption:hover,.themeSelect .customSelectOption.active{background:rgba(11,18,32,.035);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
@@ -638,6 +640,7 @@
             <label class="teamField">
               <span>Categorie</span>
               <select id="linkCategoryInput" data-theme-select="true">
+                <option value="">Categorie</option>
                 <option value="Creatief & Expressie">Creatief & Expressie</option>
                 <option value="Cultuur & Ontdekken">Cultuur & Ontdekken</option>
                 <option value="Natuur & Buiten">Natuur & Buiten</option>
@@ -1749,16 +1752,17 @@
     status.textContent = message;
     status.className = kind ? `teamFormStatus ${kind}` : 'teamFormStatus';
   }
-  function fillSelectOptions(id, values, labeler=value => value){
+  function fillSelectOptions(id, values, labeler=value => value, placeholder=''){
     const el = $(id);
     if(!el) return;
     const current = el.value;
-    el.innerHTML = values.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(labeler(v))}</option>`).join('');
+    el.innerHTML = `${placeholder ? `<option value="">${escapeHtml(placeholder)}</option>` : ''}${values.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(labeler(v))}</option>`).join('')}`;
     if(values.includes(current)) el.value = current;
+    else if(placeholder) el.value = '';
     else if(values.length) el.value = values[0];
   }
   function setupTeamForm(){
-    fillSelectOptions('#teamIdeaDomainInput', unique(allInspirationItems().map(x=>x.domain)), domainDisplayLabel);
+    fillSelectOptions('#teamIdeaDomainInput', unique(allInspirationItems().map(x=>x.domain)), domainDisplayLabel, 'Categorie');
     fillSelectOptions('#teamIdeaLocationInput', IDEA_LOCATION_OPTIONS);
     fillSelectOptions('#teamIdeaDistanceInput', IDEA_DISTANCE_OPTIONS);
     fillSelectOptions('#teamIdeaCostInput', IDEA_COST_OPTIONS);
@@ -1858,11 +1862,12 @@
     event.preventDefault();
     const form = event.currentTarget;
     const by = $('#teamIdeaByInput').value.trim();
+    const domain = $('#teamIdeaDomainInput').value;
     const item = normalizeTeamIdea({
       id:`user-${Date.now()}`,
       title:$('#teamIdeaTitleInput').value.trim(),
       by,
-      domain:$('#teamIdeaDomainInput').value,
+      domain,
       type:'Inzending',
       locationType:$('#teamIdeaLocationInput').value,
       distanceBand:$('#teamIdeaDistanceInput').value,
@@ -1878,6 +1883,10 @@
     });
     if(!item.title || !item.by){
       setTeamIdeaStatus('Vul minimaal het idee en je naam, afdeling, groep of team in.', 'warn');
+      return;
+    }
+    if(!domain){
+      setTeamIdeaStatus('Kies ook een categorie.', 'warn');
       return;
     }
     const stored = loadStoredTeamIdeas();
@@ -1896,17 +1905,22 @@
 	  async function handleLinkAddSubmit(event){
 	    event.preventDefault();
 	    const form = event.currentTarget;
+	    const category = $('#linkCategoryInput')?.value || '';
 	    const item = normalizeCustomLink({
 	      id:`pending-link-${Date.now()}`,
 	      name:linkNameFromUrl($('#linkUrlInput').value),
 	      url:$('#linkUrlInput').value,
-	      category:$('#linkCategoryInput')?.value || 'Ingestuurde agendabron',
+	      category:category || 'Ingestuurde agendabron',
 	      note:'Ingestuurd voor automatische controle op een tijdelijk agenda-item.',
 	      status:'pending',
 	      createdAt:new Date().toISOString()
 	    });
     if(!item.url){
 	      setLinkAddStatus('Plak eerst een volledig webadres.', 'warn');
+      return;
+	    }
+	    if(!category){
+	      setLinkAddStatus('Kies ook een categorie.', 'warn');
       return;
 	    }
 	    const key = `${normalize(item.name)}|${item.url}`;
@@ -1924,7 +1938,7 @@
 	    }
 	    form.reset();
 	    if($('#linkCategoryInput')){
-	      $('#linkCategoryInput').value = 'Creatief & Expressie';
+	      $('#linkCategoryInput').value = '';
 	      syncCustomSelect($('#linkCategoryInput'));
 	    }
 	    renderLinks();
@@ -2503,11 +2517,17 @@
     control.append(select, button, menu);
     select._syncCustomSelect = () => {
       const selected = select.options[select.selectedIndex] || select.options[0];
+      const isPlaceholder = !selected || selected.value === '' || selected.value === 'all';
       label.textContent = selected ? selected.textContent : '';
-      if(themed && selected){
+      if(themed){
         control.classList.remove('themeCreative','themeCulture','themeNature','themeSocial','themeSport','themeAction','themeDefault');
+        control.classList.toggle('placeholder', isPlaceholder);
+      }
+      if(themed && selected && !isPlaceholder){
         control.classList.add(domainThemeClass(selected.value));
         icon.innerHTML = domainIcon(selected.value);
+      }else if(themed){
+        icon.innerHTML = '';
       }
       menu.querySelectorAll('.customSelectOption').forEach(item => {
         const active = item.dataset.value === select.value;

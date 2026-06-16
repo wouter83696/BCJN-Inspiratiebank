@@ -262,6 +262,8 @@
     .customSelectOption{border:0;border-radius:11px;background:transparent;color:var(--ink);padding:9px 11px;font:inherit;font-size:.86rem;text-align:left;white-space:nowrap;cursor:pointer}
     .customSelectOption:hover,.customSelectOption.active{background:rgba(79,142,158,.10);color:var(--accent-dark)}
     .themeSelect .customSelectButton{background:rgba(255,255,255,.78);border-color:var(--theme-line);color:var(--theme-ink)}
+    .themeSelect.placeholder .customSelectButton{background:rgba(255,255,255,.78);border-color:rgba(11,18,32,.07);color:var(--muted)}
+    .themeSelect.placeholder .customSelectButton .domainIcon{display:none}
     .themeSelect .customSelectMenu{width:100%;max-width:none;border-color:rgba(11,18,32,.08);background:#fff}
     .themeSelect .customSelectOption{display:flex;align-items:center;gap:8px;color:var(--ink)}
     .themeSelect .customSelectOption:hover,.themeSelect .customSelectOption.active{background:rgba(11,18,32,.035);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
@@ -543,6 +545,7 @@
             <label>
               Categorie
               <select id="linkCategory" data-theme-select="true">
+                <option value="">Categorie</option>
                 <option value="Creatief & Expressie">Creatief & Expressie</option>
                 <option value="Cultuur & Ontdekken">Cultuur & Ontdekken</option>
                 <option value="Natuur & Buiten">Natuur & Buiten</option>
@@ -1428,7 +1431,7 @@
     menu.className = 'customSelectMenu';
     menu.setAttribute('role','listbox');
     [...select.options].forEach(option => {
-      if(option.value === 'all') return;
+      if(option.value === 'all' || option.value === '') return;
       const item = document.createElement('button');
       item.type = 'button';
       item.className = 'customSelectOption';
@@ -1458,11 +1461,17 @@
     control.append(select, button, menu);
     select._syncCustomSelect = () => {
       const selected = select.options[select.selectedIndex] || select.options[0];
+      const isPlaceholder = !selected || selected.value === '' || selected.value === 'all';
       label.textContent = selected ? selected.textContent : '';
-      if(themed && selected){
+      if(themed){
         control.classList.remove('themeCreative','themeCulture','themeNature','themeSocial','themeSport','themeAction','themeDefault');
+        control.classList.toggle('placeholder', isPlaceholder);
+      }
+      if(themed && selected && !isPlaceholder){
         control.classList.add(domainThemeClass(selected.value));
         icon.innerHTML = domainIcon(selected.value);
+      }else if(themed){
+        icon.innerHTML = '';
       }
       menu.querySelectorAll('.customSelectOption').forEach(item => {
         const active = item.dataset.value === select.value;
@@ -1805,6 +1814,10 @@
       setStatus('#linkStatus', 'Vul minimaal een naam en website in.', 'warn');
       return;
     }
+    if(!link.category){
+      setStatus('#linkStatus', 'Kies ook een categorie.', 'warn');
+      return;
+    }
     try{ new URL(link.url); }catch(error){
       setStatus('#linkStatus', 'Gebruik een volledige link, bijvoorbeeld https://...', 'warn');
       return;
@@ -1857,11 +1870,11 @@
 	    if(current.includes('ontmoet') || current.includes('spel') || current.includes('vaardig')) return 'Ontmoeten, Spel & Vaardigheden';
 	    if(current.includes('sport') || current.includes('beweeg')) return 'Sport & Bewegen';
 	    if(current.includes('actie') || current.includes('amusement')) return 'Actie & Amusement';
-	    return SOURCE_THEME_OPTIONS[1];
+	    return '';
 	  }
 	  function resetLinkForm(){
 	    $('#linkForm').reset();
-	    $('#linkCategory').value = SOURCE_THEME_OPTIONS[1];
+	    $('#linkCategory').value = '';
 	    syncCustomSelect($('#linkCategory'));
 	    editingSourceLink = null;
 	    $('#linkSubmitBtn').textContent = 'Link toevoegen';
