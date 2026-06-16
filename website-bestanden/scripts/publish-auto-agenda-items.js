@@ -253,7 +253,7 @@ function guessStimulus(item) {
 function buildFitText(item) {
   const note = String(item.note || "").trim();
   const base = note || "Automatisch gevonden via de broncheck.";
-  return `${base} Check datum, reservering, kosten en prikkelbelasting voordat jullie dit plannen.`;
+  return `${base} Check datum, reservering, kosten en prikkelbelasting voordat je dit plant.`;
 }
 
 function toAgendaOffer(item) {

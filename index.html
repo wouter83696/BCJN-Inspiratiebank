@@ -582,8 +582,8 @@
         <span class="heroKicker">BCJN</span>
         <h1 class="heroTitle">Inspiratiebank</h1>
         <div class="heroCopy">
-          <p class="lead">Gebruik de Inspiratiebank om snel te zien wat er te doen is in de omgeving, inspiratie met elkaar te delen en iets nieuws te ontdekken. De inspiratiebank groeit met ideeën van iedereen die hieraan wil bijdragen. Voel je dus vrij om iets toe te voegen. Activiteiten mogen allerlei vormen hebben en kunnen op hun eigen manier betekenisvol zijn.</p>
-          <p class="lead">Na de zomerperiode blijft deze inspiratiebank, samen met de UIT-agenda, beschikbaar zodat we elkaar kunnen blijven inspireren.</p>
+          <p class="lead">De Inspiratiebank is er voor iedereen op en rond de kliniek: jongeren, jongvolwassenen, begeleiders en andere betrokkenen. Je vindt hier ideeën, plekken en uitjes die kunnen helpen om iets passends te kiezen, samen of zelfstandig.</p>
+          <p class="lead">Iedereen mag iets toevoegen. Na de zomerperiode blijft deze inspiratiebank, samen met de UIT-agenda, beschikbaar als plek om ideeën te vinden, te delen en verder te brengen.</p>
         </div>
       </div>
       <aside class="quick" aria-label="Samenvatting">
@@ -622,7 +622,7 @@
           <div id="weekNav" class="weekNav"></div>
         </div>
       </div>
-      <div class="notice"><strong>Let op:</strong> check vóór je iets plant altijd datum, kosten, reservering, vervoer, groepsgrootte en prikkelbelasting.</div>
+      <div class="notice"><strong>Let op:</strong> check vóór vertrek altijd datum, kosten, reservering, vervoer, groepsgrootte en prikkelbelasting.</div>
       <div id="agendaThemeLegend"></div>
       <div id="weekPanels" class="weekStack"></div>
       <div id="longerOffers" class="sectionHead"><div><h2>Tijdelijk aanbod in deze periode</h2><p>Hier staan alleen activiteiten, routes en exposities die speciaal in deze zomerperiode beschikbaar zijn. Regulier geopende locaties vind je in de inspiratiebank.</p></div></div>
@@ -662,7 +662,7 @@
             <h2>Inspiratiebank</h2>
             <div class="sectionUpdated">Laatste update: <span id="inspirationUpdatedDate"></span></div>
           </div>
-          <p>Gebruik de inspiratiebank om snel te zoeken in ideeën, uitjes, websites en tips. Handig als je iets zoekt dat past, ook als er nog geen vaste datum aan hangt.</p>
+          <p>Zoek in ideeën, uitjes, websites en tips. Handig als je inspiratie zoekt voor jezelf, voor samen of voor een groep, ook als er nog geen vaste datum aan hangt.</p>
         </div>
       </div>
       <div class="sectionToolbar">
@@ -702,7 +702,7 @@
       </div>
       <div id="ideaList" class="tableWrap ideaView" hidden></div>
       <div id="ideaCards" class="cards ideaView active"></div>
-      <div class="sectionHead teamHead"><div><h2>Samen aanvullen</h2><p>Heb je een idee, uitje of link dat ook anderen kan inspireren? Voeg het hier toe, dan komt het na beoordeling in de inspiratiebank te staan.</p></div></div>
+      <div class="sectionHead teamHead"><div><h2>Samen aanvullen</h2><p>Heb je een idee, uitje of link dat ook anderen kan inspireren? Voeg het hier toe. Na beoordeling kan het tussen de andere inspiratie-items komen te staan.</p></div></div>
       <div id="teamAdditions" class="teamFormBox">
         <form id="teamIdeaForm" class="teamForm">
           <div class="teamFormGrid">
@@ -712,7 +712,7 @@
             </label>
             <label class="teamField">
               <span>Ingebracht door</span>
-              <input id="teamIdeaByInput" name="by" type="text" placeholder="Jouw naam, groep of team" required>
+              <input id="teamIdeaByInput" name="by" type="text" placeholder="Jouw naam, afdeling, groep of team" required>
             </label>
             <label class="teamField">
               <span>Categorie</span>
@@ -828,6 +828,11 @@
   const splitWeeks = (w='') => String(w).split(',').map(x=>x.trim()).filter(Boolean);
   const unique = (arr) => [...new Set(arr.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'nl'));
   const escapeHtml = (str='') => String(str).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  const audienceText = (str='') => String(str || '')
+    .replace(/\bjongeren\b/gi, match => match[0] === match[0].toUpperCase() ? 'Mensen' : 'mensen')
+    .replace(/\bde jongere\b/gi, match => match[0] === match[0].toUpperCase() ? 'De persoon' : 'de persoon')
+    .replace(/\bhet kind\b/gi, match => match[0] === match[0].toUpperCase() ? 'De persoon' : 'de persoon')
+    .replace(/\bjullie\b/gi, match => match[0] === match[0].toUpperCase() ? 'Je' : 'je');
   const weekName = id => { const w = ACTIVE_WEEKS.find(x=>x.id===id); return w ? 'Week '+w.week : id; };
   const isConcrete = item => !/doorlopend|wekelijks|bij mooi weer|check programma|actuele/i.test(String(item.date + ' ' + item.time));
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
@@ -979,7 +984,7 @@
 
   const MODEL_CARDS = [
     {title:'Externe mogelijkheden', text:'Gebruik de bredere bronpool om activiteiten uit Nijmegen, Arnhem en omgeving te verkennen. Alleen de concrete opties komen terug in de UIT-agenda.', pill:'bronpool'},
-    {title:'UIT-agenda', text:'Kies uitjes met een datum, plek en link als jullie snel willen bekijken wat planbaar is.', pill:'uit-agenda'},
+    {title:'UIT-agenda', text:'Kies uitjes met een datum, plek en link als je snel wilt bekijken wat planbaar is.', pill:'uit-agenda'},
     {title:'Inspiratiebank', text:'Zoek breder in eigen activiteiten, websites, plekken en ideeën zonder vaste datum.', pill:'inspiratiebank'},
 	    {title:'Samen aanvullen', text:'Nieuwe inzendingen kunnen na beoordeling tussen de andere inspiratie-items komen te staan, zodat iedereen vanuit één lijst werkt.', pill:'inzendingen'},
 	    {title:'Dagelijkse broncheck', text:'Nieuwe vondsten uit de broncheck kunnen automatisch worden klaargezet en daarna in beheer worden opgeschoond.', pill:'broncheck'}
@@ -1482,7 +1487,7 @@
 	      cost:String(item.cost || 'Nog checken').trim(),
 	      stimulus:String(item.stimulus || 'Middel').trim(),
 	      bus:String(item.bus || 'Soms').trim(),
-	      fit:String(item.fit || item.note || 'Automatisch gevonden. Check details voordat jullie dit plannen.').trim(),
+	      fit:String(item.fit || item.note || 'Automatisch gevonden. Check details voordat je dit plant.').trim(),
 	      source:String(item.source || 'Broncheck').trim(),
 	      url:normalizeUrl(item.url || item.sourceUrl || ''),
 	      tags:Array.isArray(item.tags) ? item.tags : ['automatisch gevonden'],
@@ -1872,7 +1877,7 @@
       createdAt:new Date().toISOString()
     });
     if(!item.title || !item.by){
-      setTeamIdeaStatus('Vul minimaal het idee en je naam, groep of team in.', 'warn');
+      setTeamIdeaStatus('Vul minimaal het idee en je naam, afdeling, groep of team in.', 'warn');
       return;
     }
     const stored = loadStoredTeamIdeas();
@@ -2224,7 +2229,7 @@
       <td>${escapeHtml(item.where)}<div class="small">${escapeHtml(distanceLabel)}${item.distanceKm ? ` • ${escapeHtml(item.distanceKm)}` : ''} • Bus: ${escapeHtml(item.bus)}</div></td>
       <td>${costPill(item.cost)}</td>
       <td>${pill(item.stimulus, cssKind(item.stimulus))}</td>
-      <td><div class="small">${escapeHtml(item.fit)}</div></td>
+      <td><div class="small">${escapeHtml(audienceText(item.fit))}</div></td>
       <td><a class="siteButton" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open website</a></td>
     </tr>`;
   }
@@ -2237,7 +2242,7 @@
       <td>${escapeHtml(item.where)}<div class="small">${escapeHtml(distanceLabel)}${item.distanceKm ? ` • ${escapeHtml(item.distanceKm)}` : ''} • Bus: ${escapeHtml(item.bus)}</div></td>
       <td>${costPill(item.cost)}</td>
       <td>${pill(item.stimulus, cssKind(item.stimulus))}</td>
-      <td><div class="small">${escapeHtml(item.fit)}</div></td>
+      <td><div class="small">${escapeHtml(audienceText(item.fit))}</div></td>
       <td><a class="siteButton" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open website</a></td>
     </tr>`;
   }
@@ -2260,7 +2265,7 @@
       <td>${escapeHtml(locationLabel)}<div class="small">${escapeHtml(distanceLabel)} • Bus: ${escapeHtml(item.bus || 'Nee')}</div></td>
       <td>${costPill(costLabel)}</td>
       <td>${pill(stimulusLabel || 'Nog bepalen', cssKind(stimulusLabel))}</td>
-      <td><div class="small">${escapeHtml(item.materials || item.fit || '')}</div></td>
+      <td><div class="small">${escapeHtml(audienceText(item.materials || item.fit || ''))}</div></td>
       <td><div class="ideaActions">${sourceLink}${reportMenu('inspiratiebank', ideaDomKey(item), item.title)}${activityStatusIcon(item)}</div></td>
     </tr>`;
   }
@@ -2310,8 +2315,8 @@
     return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
       <div class="cardPills"><div class="cardPillGroup"><span class="pill domainThemePill">${escapeHtml(domainDisplayLabel(item.domain))}</span> ${pill(locationLabel,'soft')} ${pill(distanceLabel,'soft')}</div><div class="cardPillGroup">${costPill(costLabel)} ${pill(stimulusLabel,cssKind(stimulusLabel))}</div></div>
       <h3>${titleWithIcon(item.title, item.domain)}</h3>
-      <p>${escapeHtml(item.fit)}</p>
-      <p class="fine">Duur: ${escapeHtml(item.duration || 'Op maat')} • Groep: ${escapeHtml(item.group || 'Op maat')} • Bus: ${escapeHtml(item.bus || 'Nee')}<br><strong>Regelen:</strong><br>${escapeHtml(item.materials || 'Nog bepalen')}</p>
+      <p>${escapeHtml(audienceText(item.fit))}</p>
+      <p class="fine">Duur: ${escapeHtml(item.duration || 'Op maat')} • Groep: ${escapeHtml(item.group || 'Op maat')} • Bus: ${escapeHtml(item.bus || 'Nee')}<br><strong>Regelen:</strong><br>${escapeHtml(audienceText(item.materials || 'Nog bepalen'))}</p>
       <div class="cardFooter">${item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Bekijk website')}</a>` : ''}${reportMenu('inspiratiebank', ideaDomKey(item), item.title)}${activityStatusIcon(item)}</div>
     </article>`;
   }
@@ -2324,7 +2329,7 @@
   }
   function cardLink(item){
     return `<a class="linkCard" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
-      <strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.note)}</span><em class="pill soft">${escapeHtml(item.category)}</em>
+      <strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(audienceText(item.note))}</span><em class="pill soft">${escapeHtml(item.category)}</em>
     </a>`;
   }
   function sourceAnchorId(name=''){
