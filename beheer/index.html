@@ -567,6 +567,15 @@
           <button class="button hot" id="clearLinksBtn" type="button">Eigen links wissen</button>
           <input id="importFile" type="file" accept="application/json,.json" hidden>
         </div>
+        <div class="sectionDivider"></div>
+        <div class="panelHead">
+          <div>
+            <h2>Prullenbak</h2>
+            <p>Verwijderde items blijven hier 30 dagen staan. Daarna worden ze automatisch opgeruimd.</p>
+          </div>
+          <span id="trashCount" class="pill">0 items</span>
+        </div>
+        <div id="trashList" class="list"></div>
         <div id="adminStatus" class="status" role="status" aria-live="polite"></div>
       </section>
     </section>
@@ -590,7 +599,9 @@
 	  const DELETED_AGENDA_KEY = 'zomerprogramma_deleted_agenda_items_v1';
 	  const VERIFIED_AGENDA_KEY = 'zomerprogramma_verified_agenda_items_v1';
 	  const BLOCKED_AGENDA_RULES_KEY = 'zomerprogramma_blocked_agenda_rules_v1';
+	  const TRASH_KEY = 'zomerprogramma_trash_items_v1';
 	  const REPORTS_KEY = 'zomerprogramma_item_reports_v1';
+	  const TRASH_RETENTION_DAYS = 30;
 	  const BASE = window.BCJN_BEHEER_BASE || {inspiration:[], teamIdeas:[], links:[]};
 	  const CONFIG = window.BCJN_CONFIG || {};
 	  const CENTRAL_STORAGE_ENDPOINT = CONFIG.storageEndpoint || '';
@@ -626,7 +637,7 @@
   ];
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
   const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online / voorbereiding'];
-  const IDEA_DISTANCE_OPTIONS = ['Op terrein','Dichtbij (0-10 km)','In de regio (10-30 km)','Daguitstap (30-50 km)'];
+  const IDEA_DISTANCE_OPTIONS = ['Op terrein','Dichtbij (0-10 km)','In de regio (10-30 km)','Verder weg (30-50 km)'];
   const IDEA_COST_OPTIONS = ['€','€€','€€€'];
   const IDEA_STIMULUS_OPTIONS = ['Laag','Middel','Hoog'];
 
@@ -647,6 +658,7 @@
 	      deletedAgendaItemIds:Array.isArray(value.deletedAgendaItemIds) ? value.deletedAgendaItemIds : [],
 	      verifiedAgendaItemIds:Array.isArray(value.verifiedAgendaItemIds) ? value.verifiedAgendaItemIds : [],
 	      blockedAgendaRules:Array.isArray(value.blockedAgendaRules) ? value.blockedAgendaRules : [],
+	      trashItems:Array.isArray(value.trashItems) ? value.trashItems : [],
 	      reports:Array.isArray(value.reports) ? value.reports : []
 	    };
 	  }
@@ -712,6 +724,7 @@
 	      [DELETED_AGENDA_KEY]:'deletedAgendaItemIds',
 	      [VERIFIED_AGENDA_KEY]:'verifiedAgendaItemIds',
 	      [BLOCKED_AGENDA_RULES_KEY]:'blockedAgendaRules',
+	      [TRASH_KEY]:'trashItems',
 	      [REPORTS_KEY]:'reports'
 	    }[key] || null;
 	  }
@@ -844,13 +857,13 @@
   }
   function normalizeIdeaDistance(value='', item={}){
     const v = normalize(value);
-    if(v.includes('daguitstap') || v.includes('30-50')) return 'Daguitstap (30-50 km)';
+    if(v.includes('daguitstap') || v.includes('verder weg') || v.includes('30-50')) return 'Verder weg (30-50 km)';
     if(v.includes('in de regio') || v.includes('10-30')) return 'In de regio (10-30 km)';
     if(v.includes('dichtbij') || v.includes('0-10')) return 'Dichtbij (0-10 km)';
     if(v.includes('op terrein') || v === '0 km') return 'Op terrein';
     const location = normalize(`${item.locationType || ''} ${item.where || ''} ${item.title || ''} ${item.source || ''}`);
     if(location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op terrein';
-    if(/otterlo|rhenen|overloon|volkel|hemelrijk|hoge veluwe|kroller/.test(location)) return 'Daguitstap (30-50 km)';
+    if(/otterlo|rhenen|overloon|volkel|hemelrijk|hoge veluwe|kroller/.test(location)) return 'Verder weg (30-50 km)';
     if(/arnhem|cuijk|grave|gennep|beers|beugen|millingen|groesbeek|berg en dal|ewijk|mook|malden|overasselt|bemmel|elst|huissen|gendt/.test(location)) return 'In de regio (10-30 km)';
     if(/nijmegen|dukenburg|lent|wijchen|beuningen|weurt|ooij|ubbergen/.test(location)) return 'Dichtbij (0-10 km)';
     const locationType = normalizeIdeaLocation(item.locationType);
@@ -913,7 +926,10 @@
     return new Set(loadArray(COLLEAGUE_HIDDEN_KEY));
   }
 	  function customLinks(){
-	    return loadArray(ADMIN_LINKS_KEY).map(normalizeLink).filter(link => link.name && link.url);
+	    return loadArray(ADMIN_LINKS_KEY)
+	      .map(normalizeLink)
+	      .filter(link => link.name && link.url)
+	      .sort((a,b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 	  }
 	  function baseLinks(){
 	    return (Array.isArray(BASE.links) ? BASE.links : []).map(normalizeLink).filter(link => link.name && link.url);
@@ -957,8 +973,52 @@
 	    return rows;
 	  }
 	  function pendingLinks(){
-	    return loadArray(PENDING_LINKS_KEY).map(link => ({...normalizeLink(link), status:'pending'})).filter(link => link.name && link.url);
+	    return loadArray(PENDING_LINKS_KEY)
+	      .map(link => ({...normalizeLink(link), status:'pending'}))
+	      .filter(link => link.name && link.url)
+	      .sort((a,b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 	  }
+  function trashExpiry(deletedAt=new Date().toISOString()){
+    const date = new Date(deletedAt);
+    if(Number.isNaN(date.getTime())) return '';
+    date.setDate(date.getDate() + TRASH_RETENTION_DAYS);
+    return date.toISOString();
+  }
+  function normalizeTrashItem(item={}, index=0){
+    const deletedAt = item.deletedAt || new Date().toISOString();
+    return {
+      id:String(item.id || `trash-${Date.now()}-${index}`),
+      type:String(item.type || 'item'),
+      label:String(item.label || 'Verwijderd item').trim(),
+      meta:String(item.meta || '').trim(),
+      deletedAt,
+      expiresAt:item.expiresAt || trashExpiry(deletedAt),
+      payload:item.payload || {}
+    };
+  }
+  function trashItems(){
+    const now = Date.now();
+    const normalized = loadArray(TRASH_KEY)
+      .map(normalizeTrashItem)
+      .filter(item => Date.parse(item.expiresAt || '') > now);
+    if(normalized.length !== loadArray(TRASH_KEY).length) saveArray(TRASH_KEY, normalized);
+    return normalized.sort((a,b) => String(b.deletedAt || '').localeCompare(String(a.deletedAt || '')));
+  }
+  function saveTrash(items){
+    saveArray(TRASH_KEY, items.map(normalizeTrashItem).slice(0, 250));
+  }
+  function addTrashItem(type, label, meta, payload={}){
+    const item = normalizeTrashItem({
+      id:`trash-${type}-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+      type,
+      label,
+      meta,
+      deletedAt:new Date().toISOString(),
+      payload
+    });
+    saveTrash([item, ...trashItems()]);
+    return item;
+  }
   function reports(){
     return loadArray(REPORTS_KEY)
       .filter(report => report && report.status !== 'resolved')
@@ -1556,6 +1616,28 @@
       </article>`;
     }).join('') : '<div class="empty">Er zijn geen open meldingen.</div>';
   }
+  function trashTypeLabel(type=''){
+    return {
+      idea:'Inspiratie',
+      customLink:'Eigen bronlink',
+      baseSourceLink:'Vaste bronlink',
+      pendingLink:'Ingestuurde link',
+      agenda:'UIT-agenda'
+    }[type] || 'Item';
+  }
+  function renderTrash(){
+    const items = trashItems();
+    $('#trashCount').textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+    $('#trashList').innerHTML = items.length ? items.map(item => {
+      const deleted = reportDate(item.deletedAt);
+      const expires = reportDate(item.expiresAt);
+      const meta = [trashTypeLabel(item.type), item.meta, deleted ? `verwijderd ${deleted}` : '', expires ? `blijft tot ${expires}` : ''].filter(Boolean).join(' · ');
+      return `<article class="row">
+        <div><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(meta)}</span></div>
+        <div class="rowActions"><button class="button small primary" data-restore-trash="${escapeHtml(item.id)}" type="button">Herstellen</button><button class="button small hot" data-remove-trash="${escapeHtml(item.id)}" type="button">Definitief weg</button></div>
+      </article>`;
+    }).join('') : '<div class="empty">De prullenbak is leeg.</div>';
+  }
 	  function renderAgendaReview(){
 	    const hidden = hiddenAgendaIds();
 	    const deleted = deletedAgendaIds();
@@ -1659,6 +1741,8 @@
   }
   async function deleteIdea(key, kind, title){
     if(!window.confirm('Deze activiteit echt verwijderen? Dit is niet hetzelfde als tijdelijk verbergen.')) return;
+    const storedItem = storedTeamIdeas().find(item => item.id === key) || null;
+    addTrashItem('idea', title || key, kind === 'basis' ? 'Vaste inspiratie' : 'Toegevoegde inspiratie', {key, kind, title, item:storedItem});
     const deleted = deletedIdeaKeys();
     deleted.add(String(key));
     if(title) deleted.add(normalize(title));
@@ -1680,6 +1764,7 @@
     }
     setupIdeaFilters();
     renderIdeas();
+    renderTrash();
     setStatus('#adminStatus', 'Activiteit verwijderd. De gewone pagina neemt dit over na verversen.', 'ok');
   }
   async function addCustomLink(event){
@@ -1712,7 +1797,7 @@
       }
     }else{
       const links = customLinks();
-      links.push({...link, createdAt:link.createdAt || new Date().toISOString()});
+      links.unshift({...link, createdAt:link.createdAt || new Date().toISOString()});
       saveArray(ADMIN_LINKS_KEY, links);
     }
     if(!(await saveCentralStorage())){
@@ -1778,19 +1863,22 @@
 	  async function removeCustomLink(index){
 	    if(!window.confirm('Deze eigen bronlink verwijderen?')) return;
 	    const links = customLinks();
-    links.splice(Number(index), 1);
+    const removed = links.splice(Number(index), 1)[0];
+    if(removed) addTrashItem('customLink', removed.name, removed.category || 'Eigen bronlink', {link:removed});
     saveArray(ADMIN_LINKS_KEY, links);
     if(!(await saveCentralStorage())){
       setStatus('#linkStatus', 'Opslaan in de centrale opslag lukte niet.', 'warn');
       return;
     }
 	    renderLinks();
+	    renderTrash();
 	    setStatus('#linkStatus', 'Link verwijderd.', 'ok');
 	  }
 	  async function hideBaseSourceLink(key){
 	    const entry = managedSourceLinks().find(link => link.kind === 'base' && link.key === key);
 	    if(!entry) return;
 	    if(!window.confirm(`Bronlink "${entry.link.name}" verwijderen uit de lijst?`)) return;
+	    addTrashItem('baseSourceLink', entry.link.name, entry.link.category || 'Vaste bronlink', {key, link:entry.link});
 	    const hidden = hiddenSourceLinkKeys();
 	    hidden.add(key);
 	    saveArray(HIDDEN_SOURCE_LINKS_KEY, [...hidden]);
@@ -1800,6 +1888,7 @@
 	      return;
 	    }
 	    renderLinks();
+	    renderTrash();
 	    setStatus('#linkStatus', 'Bronlink verwijderd uit de lijst. Je kunt vaste bronlinks herstellen via Overnemen of herstellen.', 'ok');
 	  }
 	  async function resetBaseSourceLink(key){
@@ -1831,12 +1920,14 @@
 	    const waiting = pendingLinks();
 	    const link = waiting.splice(Number(index), 1)[0];
 	    if(!link) return;
+	    addTrashItem('pendingLink', link.name, [link.category, linkDateMeta(link)].filter(Boolean).join(' · '), {link});
 	    saveArray(PENDING_LINKS_KEY, waiting);
 	    if(!(await saveCentralStorage())){
 	      setStatus('#linkStatus', 'Afwijzen lukte niet in de online opslag.', 'warn');
 	      return;
 	    }
 	    renderLinks();
+	    renderTrash();
 	    setStatus('#linkStatus', 'Link afgewezen.', 'ok');
 	  }
   async function resolveReport(id){
@@ -1907,6 +1998,7 @@
 	    const deleted = deletedAgendaIds();
 	    const items = autoAgendaItems();
 	    const item = agendaReviewItems().find(offer => offer.id === id || agendaItemKey(offer) === id);
+	    if(item) addTrashItem('agenda', item.title, [item.date, item.time, item.source].filter(Boolean).join(' · '), {id, item});
 	    deleted.add(id);
 	    if(item){
 	      deleted.add(agendaItemKey(item));
@@ -1931,6 +2023,7 @@
 	      return;
 	    }
 	    renderAgendaReview();
+	    renderTrash();
 	    setStatus('#adminStatus', 'Agenda-item verwijderd.', 'ok');
 	  }
 	  function findAgendaItem(id){
@@ -2002,6 +2095,7 @@
 	      hiddenSourceLinkKeys:[...hiddenSourceLinkKeys()],
 	      autoAgendaItems:autoAgendaItems(),
 	      colleagueIdeas:storedTeamIdeas(),
+	      trashItems:trashItems(),
 	      reports:loadArray(REPORTS_KEY)
 	    };
     const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
@@ -2065,6 +2159,7 @@
 	      saveArray(HIDDEN_SOURCE_LINKS_KEY, [...new Set([...loadArray(HIDDEN_SOURCE_LINKS_KEY), ...(parsed.hiddenSourceLinkKeys || [])].map(String))]);
 	      saveArray(AUTO_AGENDA_KEY, dedupeAgendaItems([...autoAgendaItems(), ...(parsed.autoAgendaItems || [])].map(normalizeAgendaOffer)));
 	      saveArray(COLLEAGUE_STORAGE_KEY, mergeTeamIdeas(storedTeamIdeas(), parsed.colleagueIdeas || []));
+	      saveTrash([...trashItems(), ...(parsed.trashItems || [])]);
 	      saveArray(REPORTS_KEY, [...loadArray(REPORTS_KEY), ...(parsed.reports || [])]);
       if(!(await saveCentralStorage())){
 	        setStatus('#adminStatus', 'Importeren lukte niet in de online opslag.', 'warn');
@@ -2074,6 +2169,7 @@
 	      renderIdeas();
 	      renderLinks();
 	      renderAgendaReview();
+	      renderTrash();
       setStatus('#adminStatus', 'Beheerdata geimporteerd. Ververs de gewone pagina om alles te zien.', 'ok');
     }catch(error){
       setStatus('#adminStatus', 'Importeren lukte niet. Controleer of dit een beheerdata JSON-bestand is.', 'warn');
@@ -2114,13 +2210,76 @@
       return;
     }
     if(!window.confirm('Alle eigen bronlinks wissen?')) return;
+    customLinks().forEach(link => addTrashItem('customLink', link.name, link.category || 'Eigen bronlink', {link}));
     removeArray(ADMIN_LINKS_KEY);
     if(!(await saveCentralStorage())){
       setStatus('#adminStatus', 'Opslaan in de online opslag lukte niet.', 'warn');
       return;
     }
     renderLinks();
+    renderTrash();
     setStatus('#adminStatus', 'Eigen bronlinks zijn gewist.', 'ok');
+  }
+  async function restoreTrashItem(id){
+    const items = trashItems();
+    const item = items.find(entry => entry.id === id);
+    if(!item) return;
+    const payload = item.payload || {};
+    if(item.type === 'idea'){
+      const deleted = deletedIdeaKeys();
+      if(payload.key) deleted.delete(String(payload.key));
+      if(payload.title) deleted.delete(normalize(payload.title));
+      saveArray(ADMIN_DELETED_INSPIRATION_KEY, [...deleted]);
+      if(payload.item && !storedTeamIdeas().some(idea => idea.id === payload.item.id)){
+        saveArray(COLLEAGUE_STORAGE_KEY, [payload.item, ...storedTeamIdeas()]);
+      }
+    }
+    if(item.type === 'customLink' && payload.link){
+      const links = customLinks();
+      if(!links.some(link => sourceLinkKey(link) === sourceLinkKey(payload.link))){
+        saveArray(ADMIN_LINKS_KEY, [{...payload.link, createdAt:payload.link.createdAt || new Date().toISOString()}, ...links]);
+      }
+    }
+    if(item.type === 'baseSourceLink' && payload.key){
+      const hidden = hiddenSourceLinkKeys();
+      hidden.delete(payload.key);
+      saveArray(HIDDEN_SOURCE_LINKS_KEY, [...hidden]);
+    }
+    if(item.type === 'pendingLink' && payload.link){
+      const waiting = pendingLinks();
+      if(!waiting.some(link => sourceLinkKey(link) === sourceLinkKey(payload.link))){
+        saveArray(PENDING_LINKS_KEY, [{...payload.link, status:'pending'}, ...waiting]);
+      }
+    }
+    if(item.type === 'agenda' && payload.item){
+      const agenda = normalizeAgendaOffer(payload.item);
+      const deleted = deletedAgendaIds();
+      [payload.id, agenda.id, agendaItemKey(agenda), agendaContentKey(agenda)].filter(Boolean).forEach(key => deleted.delete(key));
+      saveArray(DELETED_AGENDA_KEY, [...deleted]);
+      if(payload.item.agendaKind === 'auto' && !autoAgendaItems().some(offer => agendaContentKey(offer) === agendaContentKey(agenda))){
+        saveArray(AUTO_AGENDA_KEY, [agenda, ...autoAgendaItems()]);
+      }
+    }
+    saveTrash(items.filter(entry => entry.id !== id));
+    if(!(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Herstellen lukte niet in de online opslag.', 'warn');
+      return;
+    }
+    setupIdeaFilters();
+    renderIdeas();
+    renderLinks();
+    renderAgendaReview();
+    renderTrash();
+    setStatus('#adminStatus', 'Item hersteld uit de prullenbak.', 'ok');
+  }
+  async function removeTrashItem(id){
+    saveTrash(trashItems().filter(item => item.id !== id));
+    if(!(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Definitief verwijderen lukte niet in de online opslag.', 'warn');
+      return;
+    }
+    renderTrash();
+    setStatus('#adminStatus', 'Item definitief uit de prullenbak verwijderd.', 'ok');
   }
 	  function showAdmin(){
 	    $('#adminHero').hidden = false;
@@ -2136,6 +2295,7 @@
 	    renderLinks();
 	    renderReports();
 	    renderAgendaReview();
+	    renderTrash();
 	  }
 	  function logoutAdmin(){
 	    sessionStorage.removeItem(ADMIN_SESSION_KEY);
@@ -2226,6 +2386,10 @@
 	      if(removeAgendaRuleButton) removeAgendaBlockRule(removeAgendaRuleButton.dataset.removeAgendaRule);
 	      const reportButton = event.target.closest('[data-resolve-report]');
 	      if(reportButton) resolveReport(reportButton.dataset.resolveReport);
+	      const restoreTrashButton = event.target.closest('[data-restore-trash]');
+	      if(restoreTrashButton) restoreTrashItem(restoreTrashButton.dataset.restoreTrash);
+	      const removeTrashButton = event.target.closest('[data-remove-trash]');
+	      if(removeTrashButton) removeTrashItem(removeTrashButton.dataset.removeTrash);
 	    });
     document.addEventListener('keydown', event => {
       if(event.key !== 'Escape') return;

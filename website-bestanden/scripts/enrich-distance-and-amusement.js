@@ -11,7 +11,7 @@ const DISTANCE_LABELS = {
   terrain: 'Op terrein',
   nearby: 'Dichtbij (0-10 km)',
   region: 'In de regio (10-30 km)',
-  daytrip: 'Daguitstap (30-50 km)',
+  daytrip: 'Verder weg (30-50 km)',
 };
 
 function normalized(value = '') {
@@ -372,7 +372,7 @@ const flexibleOffers = [
     tags: ['sup', 'watersport', 'buiten', 'nijmegen'],
   },
   {
-    title: 'Ouwehands Dierenpark Rhenen - bijzondere daguitstap',
+    title: 'Ouwehands Dierenpark Rhenen - verder weg',
     week: ALL_WEEKS,
     date: '13 juli t/m 23 augustus 2026',
     time: 'dagelijks, plan als dagactiviteit',
@@ -384,13 +384,13 @@ const flexibleOffers = [
     cost: '€€€',
     stimulus: 'Middel/hoog',
     bus: 'Ja',
-    fit: 'Alleen als bewuste daguitstap. Kies vooraf enkele dierengebieden, plan vervoer en rustmomenten en houd ruimte om eerder te vertrekken.',
+    fit: 'Alleen als bewust uitje wat verder weg. Kies vooraf enkele dierengebieden, plan vervoer en rustmomenten en houd ruimte om eerder te vertrekken.',
     source: 'Ouwehands Dierenpark',
     url: 'https://www.ouwehand.nl/',
     tags: ['dieren', 'rhenen', 'daguitstap'],
   },
   {
-    title: 'BillyBird Hemelrijk - strand, attracties en outdoor daguitstap',
+    title: 'BillyBird Hemelrijk - strand, attracties en outdoor uitje verder weg',
     week: ALL_WEEKS,
     date: '13 juli t/m 23 augustus 2026',
     time: 'check zomerse openingstijden',
@@ -402,13 +402,13 @@ const flexibleOffers = [
     cost: '€€',
     stimulus: 'Hoog',
     bus: 'Ja',
-    fit: 'Combinatie van strand, binnen- en buitenactiviteiten. Plan dit als daguitstap, kies vooraf een beperkt programma en neem rust- en omkleedmomenten mee.',
+    fit: 'Combinatie van strand, binnen- en buitenactiviteiten. Plan dit als uitje wat verder weg, kies vooraf een beperkt programma en neem rust- en omkleedmomenten mee.',
     source: 'BillyBird Hemelrijk',
     url: 'https://www.billybird.nl/hemelrijk/',
     tags: ['attracties', 'strand', 'outdoor', 'volkel', 'daguitstap'],
   },
   {
-    title: 'ZooParc Overloon - expeditieroute als daguitstap',
+    title: 'ZooParc Overloon - expeditieroute wat verder weg',
     week: ALL_WEEKS,
     date: '13 juli t/m 23 augustus 2026',
     time: 'dagelijks, check openingstijden',
@@ -512,9 +512,9 @@ const sourceLinks = [
   ['ROX Escape Nijmegen', 'https://roxescape.nl/', 'Actie & amusement', 'Escaperooms op het NYMA-terrein in Nijmegen.'],
   ['Nijmegen Outdoor', 'https://nijmegenoutdoor.nl/', 'Actie & amusement', 'Stadsspellen en actieve groepsuitjes in Nijmegen.'],
   ['SUP & SURF Nijmegen', 'https://supensurf-nijmegen.nl/', 'Actie & amusement', 'Suppen en andere watersportactiviteiten in Nijmegen.'],
-  ['Ouwehands Dierenpark', 'https://www.ouwehand.nl/', 'Bijzondere daguitstap', 'Dierenpark in Rhenen, bedoeld als bewuste daguitstap.'],
-  ['BillyBird Hemelrijk', 'https://www.billybird.nl/hemelrijk/', 'Bijzondere daguitstap', 'Strand, attracties en binnen- en buitenactiviteiten in Volkel.'],
-  ['ZooParc Overloon', 'https://www.zooparc.nl/', 'Bijzondere daguitstap', 'Dierenpark met expeditieroute in Overloon.'],
+  ['Ouwehands Dierenpark', 'https://www.ouwehand.nl/', 'Verder weg', 'Dierenpark in Rhenen, bedoeld als bewust uitje wat verder weg.'],
+  ['BillyBird Hemelrijk', 'https://www.billybird.nl/hemelrijk/', 'Verder weg', 'Strand, attracties en binnen- en buitenactiviteiten in Volkel.'],
+  ['ZooParc Overloon', 'https://www.zooparc.nl/', 'Verder weg', 'Dierenpark met expeditieroute in Overloon.'],
 ].map(([name, url, category, note]) => ({ name, url, category, note }));
 
 async function main() {

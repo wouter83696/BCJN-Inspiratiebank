@@ -157,7 +157,7 @@ window.BCJN_BEHEER_BASE = {
         "veluwe",
         "creatief"
       ],
-      "distanceBand": "Daguitstap (30-50 km)"
+      "distanceBand": "Verder weg (30-50 km)"
     },
     {
       "title": "Kunstmarkt of makerfair met favorietenkaart",
@@ -1693,7 +1693,7 @@ window.BCJN_BEHEER_BASE = {
         "arnhem",
         "vrijheid"
       ],
-      "distanceBand": "Daguitstap (30-50 km)"
+      "distanceBand": "Verder weg (30-50 km)"
     },
     {
       "title": "Natuurbingo",
@@ -3532,19 +3532,19 @@ window.BCJN_BEHEER_BASE = {
     {
       "name": "Ouwehands Dierenpark",
       "url": "https://www.ouwehand.nl/",
-      "category": "Bijzondere daguitstap",
-      "note": "Dierenpark in Rhenen, bedoeld als bewuste daguitstap."
+      "category": "Verder weg",
+      "note": "Dierenpark in Rhenen, bedoeld als bewust uitje wat verder weg."
     },
     {
       "name": "BillyBird Hemelrijk",
       "url": "https://www.billybird.nl/hemelrijk/",
-      "category": "Bijzondere daguitstap",
+      "category": "Verder weg",
       "note": "Strand, attracties en binnen- en buitenactiviteiten in Volkel."
     },
     {
       "name": "ZooParc Overloon",
       "url": "https://www.zooparc.nl/",
-      "category": "Bijzondere daguitstap",
+      "category": "Verder weg",
       "note": "Dierenpark met expeditieroute in Overloon."
     },
     {
@@ -3833,7 +3833,7 @@ window.BCJN_BEHEER_BASE = {
         "otterlo",
         "zomer"
       ],
-      "distanceBand": "Daguitstap (30-50 km)"
+      "distanceBand": "Verder weg (30-50 km)"
     },
     {
       "title": "muZIEum Nijmegen – expedities en Unseen",
@@ -4924,41 +4924,41 @@ window.BCJN_BEHEER_BASE = {
       ]
     },
     {
-      "title": "Ouwehands Dierenpark Rhenen - bijzondere daguitstap",
+      "title": "Ouwehands Dierenpark Rhenen - verder weg",
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 23 augustus 2026",
       "time": "dagelijks, plan als dagactiviteit",
       "domain": "Natuur & Buiten",
       "where": "Ouwehands Dierenpark, Rhenen",
       "locationType": "Buiten de deur",
-      "distanceBand": "Daguitstap (30-50 km)",
+      "distanceBand": "Verder weg (30-50 km)",
       "distanceKm": "ca. 42 km",
       "cost": "€€€",
       "stimulus": "Middel/hoog",
       "bus": "Ja",
-      "fit": "Alleen als bewuste daguitstap. Kies vooraf enkele dierengebieden, plan vervoer en rustmomenten en houd ruimte om eerder te vertrekken.",
+      "fit": "Alleen als bewust uitje wat verder weg. Kies vooraf enkele dierengebieden, plan vervoer en rustmomenten en houd ruimte om eerder te vertrekken.",
       "source": "Ouwehands Dierenpark",
       "url": "https://www.ouwehand.nl/",
       "tags": [
         "dieren",
         "rhenen",
-        "daguitstap"
+        "verder weg"
       ]
     },
     {
-      "title": "BillyBird Hemelrijk - strand, attracties en outdoor daguitstap",
+      "title": "BillyBird Hemelrijk - strand, attracties en outdoor uitje verder weg",
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 23 augustus 2026",
       "time": "check zomerse openingstijden",
       "domain": "Actie & amusement",
       "where": "BillyBird Hemelrijk, Volkel",
       "locationType": "Buiten de deur",
-      "distanceBand": "Daguitstap (30-50 km)",
+      "distanceBand": "Verder weg (30-50 km)",
       "distanceKm": "ca. 38 km",
       "cost": "€€",
       "stimulus": "Hoog",
       "bus": "Ja",
-      "fit": "Combinatie van strand, binnen- en buitenactiviteiten. Plan dit als daguitstap, kies vooraf een beperkt programma en neem rust- en omkleedmomenten mee.",
+      "fit": "Combinatie van strand, binnen- en buitenactiviteiten. Plan dit als uitje wat verder weg, kies vooraf een beperkt programma en neem rust- en omkleedmomenten mee.",
       "source": "BillyBird Hemelrijk",
       "url": "https://www.billybird.nl/hemelrijk/",
       "tags": [
@@ -4966,18 +4966,18 @@ window.BCJN_BEHEER_BASE = {
         "strand",
         "outdoor",
         "volkel",
-        "daguitstap"
+        "verder weg"
       ]
     },
     {
-      "title": "ZooParc Overloon - expeditieroute als daguitstap",
+      "title": "ZooParc Overloon - expeditieroute wat verder weg",
       "week": "w29,w30,w31,w32,w33,w34",
       "date": "13 juli t/m 23 augustus 2026",
       "time": "dagelijks, check openingstijden",
       "domain": "Natuur & Buiten",
       "where": "ZooParc Overloon, Overloon",
       "locationType": "Buiten de deur",
-      "distanceBand": "Daguitstap (30-50 km)",
+      "distanceBand": "Verder weg (30-50 km)",
       "distanceKm": "ca. 43 km",
       "cost": "€€€",
       "stimulus": "Middel",
@@ -4988,7 +4988,7 @@ window.BCJN_BEHEER_BASE = {
       "tags": [
         "dieren",
         "overloon",
-        "daguitstap"
+        "verder weg"
       ]
     },
     {
