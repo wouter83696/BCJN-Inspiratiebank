@@ -5212,42 +5212,53 @@
       "note": "Suppen en andere watersportactiviteiten in Nijmegen."
     }
   ],
-  "generated": "15 juni 2026",
+  "generated": "16 juni 2026",
   "sourceCheck": {
-    "lastCheckedAt": "2026-06-15T09:08:09.762Z",
+    "lastCheckedAt": "2026-06-16T14:49:36.620Z",
     "reviewFile": "website-bestanden/data/offers_pending_review.json",
     "sourcesChecked": 40,
-    "sourcesWithChanges": 38,
-    "newCandidateCount": 6
+    "sourcesWithChanges": 33,
+    "newCandidateCount": 124
   },
   "teamIdeas": [],
   "sourceReview": {
-    "generatedAt": "2026-06-15T09:08:09.762Z",
-    "pendingCount": 144,
-    "newCount": 6,
-    "changedSourceCount": 38,
+    "generatedAt": "2026-06-16T14:49:36.620Z",
+    "pendingCount": 146,
+    "newCount": 124,
+    "changedSourceCount": 33,
     "changedSources": [
       {
-        "id": "beuningen-samen-jongeren",
-        "name": "Beuningen Samen agenda jongeren",
-        "url": "https://beuningensamen.nl/agenda?date_from=20-07-2026&leeftijd_beuningensamen%5B%5D=1886",
-        "region": "Beuningen",
-        "mode": "agenda-beuningen",
-        "newItemCount": 4,
-        "itemCount": 32,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "land-van-cuijk-juli",
-        "name": "Land van Cuijk Uitagenda juli",
+        "id": "land-van-cuijk-2026-07",
+        "name": "Land van Cuijk Uitagenda 07-2026",
         "url": "https://www.landvancuijk.nl/agenda/2026/07/",
         "region": "Land van Cuijk",
         "mode": "agenda-events",
-        "newItemCount": 2,
-        "itemCount": 68,
+        "newItemCount": 70,
+        "itemCount": 70,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "id": "land-van-cuijk-2026-08",
+        "name": "Land van Cuijk Uitagenda 08-2026",
+        "url": "https://www.landvancuijk.nl/agenda/2026/08/",
+        "region": "Land van Cuijk",
+        "mode": "agenda-events",
+        "newItemCount": 38,
+        "itemCount": 38,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "id": "beuningen-samen-jongeren",
+        "name": "Beuningen Samen agenda jongeren",
+        "url": "https://beuningensamen.nl/agenda?date_from=13-07-2026&leeftijd_beuningensamen%5B%5D=1886",
+        "region": "Beuningen",
+        "mode": "agenda-beuningen",
+        "newItemCount": 16,
+        "itemCount": 32,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "debastei-agenda",
@@ -5258,7 +5269,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "de-wijchense-berg",
@@ -5269,7 +5280,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "escape-boot-nijmegen",
@@ -5280,7 +5291,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "focus-arnhem-agenda",
@@ -5291,7 +5302,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "fundustry-nijmegen",
@@ -5302,7 +5313,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "gamestate-arnhem",
@@ -5313,7 +5324,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "beuningen-events",
@@ -5324,7 +5335,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "gemeente-nijmegen-events",
@@ -5335,7 +5346,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "grip-boulderhal",
@@ -5346,18 +5357,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "intonijmegen-festivalwijzer",
-        "name": "Into Nijmegen festivalwijzer",
-        "url": "https://www.intonijmegen.com/zien-en-doen/cultuur-nijmegen/festival/festivalwijzer-nijmegen",
-        "region": "Nijmegen",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "into-nijmegen-agenda",
@@ -5368,29 +5368,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "intonijmegen-weektips",
-        "name": "Into Nijmegen weektips",
-        "url": "https://www.intonijmegen.com/blijf-op-de-hoogte/nieuws/weektips",
-        "region": "Nijmegen",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "land-van-cuijk-augustus",
-        "name": "Land van Cuijk Uitagenda augustus",
-        "url": "https://www.landvancuijk.nl/agenda/2026/08/",
-        "region": "Land van Cuijk",
-        "mode": "agenda-events",
-        "newItemCount": 0,
-        "itemCount": 38,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "lux-programma",
@@ -5401,7 +5379,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "museumpark-orientalis-agenda",
@@ -5412,7 +5390,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "musis-stadstheater-agenda",
@@ -5423,7 +5401,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "natuurmonumenten-agenda",
@@ -5434,7 +5412,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "nijmegen-outdoor",
@@ -5445,7 +5423,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "nimma-sportzomer",
@@ -5456,18 +5434,7 @@
         "newItemCount": 0,
         "itemCount": 6,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "olround-nijmegen",
-        "name": "Olround Nijmegen",
-        "url": "https://www.olroundnijmegen.nl/",
-        "region": "Dichtbij (0-10 km)",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "openluchtmuseum-activiteiten",
@@ -5478,18 +5445,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "ouwehands-dierenpark",
-        "name": "Ouwehands Dierenpark",
-        "url": "https://www.ouwehand.nl/",
-        "region": "Daguitstap (30-50 km)",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "planet-awesome",
@@ -5500,7 +5456,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "pretpark-tivoli",
@@ -5511,18 +5467,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "id": "rox-escape-nijmegen",
-        "name": "ROX Escape Nijmegen",
-        "url": "https://roxescape.nl/",
-        "region": "Dichtbij (0-10 km)",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "rozet-agenda",
@@ -5533,7 +5478,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "staatsbosbeheer-activiteiten",
@@ -5544,7 +5489,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "sup-surf-nijmegen",
@@ -5555,7 +5500,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "visit-arnhem-events",
@@ -5566,7 +5511,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "visit-arnhem-zomertips",
@@ -5577,7 +5522,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "visit-nijmegen-events",
@@ -5588,7 +5533,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "visit-nijmegen-zomertips",
@@ -5599,7 +5544,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "vue-nijmegen",
@@ -5610,7 +5555,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "watermuseum-activiteiten",
@@ -5621,7 +5566,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "you-jump-nijmegen",
@@ -5632,7 +5577,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       },
       {
         "id": "zooparc-overloon",
@@ -5643,93 +5588,261 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-15T09:08:09.762Z"
+        "lastCheckedAt": "2026-06-16T14:49:36.620Z"
       }
     ],
     "previewItems": [
       {
-        "title": "Expositie Casper ter Heerdt - De Nieuwe Gang",
-        "source": "Beuningen Samen agenda jongeren",
-        "sourceUrl": "https://beuningensamen.nl/agenda/146600/2026-08-01/expositie-casper-ter-heerdt-de-nieuwe-gang",
-        "region": "Beuningen",
-        "place": "De Nieuwe Gang",
-        "dateLabel": "zaterdag 1 augustus 2026",
-        "timeLabel": "van 13:00 tot 17:00 uur",
-        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
-        "status": "new",
-        "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "title": "Expositie Casper ter Heerdt - De Nieuwe Gang",
-        "source": "Beuningen Samen agenda jongeren",
-        "sourceUrl": "https://beuningensamen.nl/agenda/146600/2026-07-25/expositie-casper-ter-heerdt-de-nieuwe-gang",
-        "region": "Beuningen",
-        "place": "De Nieuwe Gang",
-        "dateLabel": "zaterdag 25 juli 2026",
-        "timeLabel": "van 13:00 tot 17:00 uur",
-        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
-        "status": "new",
-        "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "title": "Expositie Casper ter Heerdt - De Nieuwe Gang",
-        "source": "Beuningen Samen agenda jongeren",
-        "sourceUrl": "https://beuningensamen.nl/agenda/146600/2026-08-02/expositie-casper-ter-heerdt-de-nieuwe-gang",
-        "region": "Beuningen",
-        "place": "De Nieuwe Gang",
-        "dateLabel": "zondag 2 augustus 2026",
-        "timeLabel": "van 13:00 tot 17:00 uur",
-        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
-        "status": "new",
-        "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "title": "Expositie Casper ter Heerdt - De Nieuwe Gang",
-        "source": "Beuningen Samen agenda jongeren",
-        "sourceUrl": "https://beuningensamen.nl/agenda/146600/2026-07-26/expositie-casper-ter-heerdt-de-nieuwe-gang",
-        "region": "Beuningen",
-        "place": "De Nieuwe Gang",
-        "dateLabel": "zondag 26 juli 2026",
-        "timeLabel": "van 13:00 tot 17:00 uur",
-        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
-        "status": "new",
-        "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
-      },
-      {
-        "title": "Snarenplukkers Festival",
-        "source": "Land van Cuijk Uitagenda juli",
-        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-11/snarenplukkers-festival/",
+        "title": "50e Daags na de Tour",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-27/50e-daags-na-de-tour/",
         "region": "Land van Cuijk",
-        "place": "Oeffelt",
-        "dateLabel": "zaterdag 11 juli 2026",
+        "place": "Boxmeer",
+        "dateLabel": "maandag 27 juli 2026",
+        "timeLabel": "12.00 uur",
+        "note": "De dag na de finish van de Tour de France in Parijs is Boxmeer al sinds 1978 het paradijs voor de vele liefhebbers van wielrennen",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Avond 4 Daagse Ottersum",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Gennep/2026-06-30/avond-4-daagse-ottersum/",
+        "region": "Land van Cuijk",
+        "place": "Ottersum",
+        "dateLabel": "donderdag 2 juli 2026",
         "timeLabel": "16.00 uur",
-        "note": "Geniet op het terras van gratis livemuziek, drankjes en lekker eten",
+        "note": "Vier dagen lang kan er door jong en oud weer gewandeld worden in en rond de prachtige omgeving van Ottersum",
         "status": "new",
         "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
       },
       {
-        "title": "Snarenplukkers in Wild Verband met Theo Sieben",
-        "source": "Land van Cuijk Uitagenda juli",
-        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-11/snarenplukkers-in-wild-verband-met-theo-sieben/",
+        "title": "Avond 4 Daagse Ottersum",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Gennep/2026-06-30/avond-4-daagse-ottersum/",
         "region": "Land van Cuijk",
-        "place": "Oeffelt",
-        "dateLabel": "zaterdag 11 juli 2026",
-        "timeLabel": "14.00 uur",
-        "note": "Gitarist Theo Sieben is bekend van de tributeband Her Majesty",
+        "place": "Ottersum",
+        "dateLabel": "vrijdag 3 juli 2026",
+        "timeLabel": "16.00 uur",
+        "note": "Vier dagen lang kan er door jong en oud weer gewandeld worden in en rond de prachtige omgeving van Ottersum",
         "status": "new",
         "reviewStatus": "pending",
-        "firstSeenAt": "2026-06-15T09:08:09.762Z",
-        "lastSeenAt": "2026-06-15T09:08:09.762Z"
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Avond 4 Daagse Ottersum",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Gennep/2026-06-30/avond-4-daagse-ottersum/",
+        "region": "Land van Cuijk",
+        "place": "Ottersum",
+        "dateLabel": "woensdag 1 juli 2026",
+        "timeLabel": "16.00 uur",
+        "note": "Vier dagen lang kan er door jong en oud weer gewandeld worden in en rond de prachtige omgeving van Ottersum",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Bakkie in de buurt.",
+        "source": "Beuningen Samen agenda jongeren",
+        "sourceUrl": "https://beuningensamen.nl/agenda/144684/2026-07-13/bakkie-in-de-buurt",
+        "region": "Beuningen",
+        "place": "Jeugd Activiteiten Centrum Hotspot",
+        "dateLabel": "maandag 13 juli 2026",
+        "timeLabel": "van 14:00 tot 16:00 uur (2-wekelijks)",
+        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Ballonfestival Grave",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Grave/2026-08-14/ballonfestival-grave/",
+        "region": "Land van Cuijk",
+        "place": "Grave",
+        "dateLabel": "vrijdag 14 augustus 2026",
+        "timeLabel": "17.00 uur",
+        "note": "Ballonfestival Grave: 14 en 15 augustus een avond vol kleur, plezier en sfeer",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Ballonfestival Grave",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Grave/2026-08-14/ballonfestival-grave/",
+        "region": "Land van Cuijk",
+        "place": "Grave",
+        "dateLabel": "zaterdag 15 augustus 2026",
+        "timeLabel": "14.00 uur",
+        "note": "Ballonfestival Grave: 14 en 15 augustus een avond vol kleur, plezier en sfeer",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Basiscursus Intuitief communiceren met dieren",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-06-06/basiscursus-intuitief-communiceren-met-dieren/",
+        "region": "Land van Cuijk",
+        "place": "Oeffelt",
+        "dateLabel": "zaterdag 22 augustus 2026",
+        "timeLabel": "10.00 uur",
+        "note": "2-daagse cursus Intuïtief communiceren met dieren",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Beer & Bites Festival 2026",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-04/beer-and-bites-festival-2026/",
+        "region": "Land van Cuijk",
+        "place": "Boxmeer",
+        "dateLabel": "zaterdag 4 juli 2026",
+        "timeLabel": "14.00 uur",
+        "note": "De Bierburgemeester en De Weijer",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Bèks Bierfestivalleke",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-11/beks-bierfestivalleke/",
+        "region": "Land van Cuijk",
+        "place": "Vierlingsbeek",
+        "dateLabel": "zaterdag 11 juli 2026",
+        "timeLabel": "15.00 uur",
+        "note": "Zomers bierproeven in de tuin van Gryphus in Vierlingsbeek",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Bijeenkomst Beuningse 4Daagse-wandelaars",
+        "source": "Beuningen Samen agenda jongeren",
+        "sourceUrl": "https://beuningensamen.nl/agenda/143988/2026-07-17/bijeenkomst-beuningse-4daagse-wandelaars",
+        "region": "Beuningen",
+        "place": "Gemeentehuis Beuningen",
+        "dateLabel": "vrijdag 17 juli 2026",
+        "timeLabel": "van 19:00 tot 20:00 uur",
+        "note": "Nog te beoordelen voor opname in het weekoverzicht.",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Braderie Gennep",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Gennep/2026-08-30/braderie-gennep/",
+        "region": "Land van Cuijk",
+        "place": "Gennep",
+        "dateLabel": "zondag 30 augustus 2026",
+        "timeLabel": "11.00 uur",
+        "note": "Op zondag 30 augustus vindt in hartje Gennep weer de gezellige Braderie plaats",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Clean Pete in het buitentheater",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-10/clean-pete-in-het-buitentheater/",
+        "region": "Land van Cuijk",
+        "place": "Boxmeer",
+        "dateLabel": "vrijdag 10 juli 2026",
+        "timeLabel": "20.00 uur",
+        "note": "Clean Pete treedt op in het buitentheater van de Weijer",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Cuijks Kadeconcert",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Cuijk/2026-07-23/cuijks-kadeconcert/",
+        "region": "Land van Cuijk",
+        "place": "Cuijk",
+        "dateLabel": "donderdag 23 juli 2026",
+        "timeLabel": "19.30 uur",
+        "note": "Ook dit jaar weer feest met het Vierdaagse Orkest op de Kade",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Cultureel festival Schijt aan de Grens",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-08-29/cultureel-festival-schijt-aan-de-grens/",
+        "region": "Land van Cuijk",
+        "place": "Overloon",
+        "dateLabel": "zaterdag 29 augustus 2026",
+        "timeLabel": "13.00 uur",
+        "note": "Cultureel festival Schijt aan de Grens",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "Cultureel festival Schijt aan de Grens",
+        "source": "Land van Cuijk Uitagenda 08-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-08-29/cultureel-festival-schijt-aan-de-grens/",
+        "region": "Land van Cuijk",
+        "place": "Overloon",
+        "dateLabel": "zondag 30 augustus 2026",
+        "timeLabel": "13.00 uur",
+        "note": "Cultureel festival Schijt aan de Grens",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "De Gelaarsde Kat",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Sint%20Anthonis/2026-07-12/de-gelaarsde-kat/",
+        "region": "Land van Cuijk",
+        "place": "Oploo",
+        "dateLabel": "zondag 12 juli 2026",
+        "timeLabel": "14.00 uur",
+        "note": "Kindervoorstelling door theatergroep Mariahout",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
+      },
+      {
+        "title": "De Stilte Schreeuwt",
+        "source": "Land van Cuijk Uitagenda 07-2026",
+        "sourceUrl": "https://www.landvancuijk.nl/uitagenda/Boxmeer/2026-07-05/de-stilte-schreeuwt/",
+        "region": "Land van Cuijk",
+        "place": "Boxmeer",
+        "dateLabel": "zondag 5 juli 2026",
+        "timeLabel": "14.30 uur",
+        "note": "Documentaire van Stichting Artsen Collectief",
+        "status": "new",
+        "reviewStatus": "pending",
+        "firstSeenAt": "2026-06-16T14:49:36.620Z",
+        "lastSeenAt": "2026-06-16T14:49:36.620Z"
       }
     ]
   }

@@ -14,11 +14,11 @@ Online opslag
 - Gebruik Supabase als gedeelde online opslag.
 - Maak in Supabase de tabel aan met het bestand: ../supabase/schema.sql.
 - Vul daarna in website-bestanden/config.js je Supabase URL en anon public key in.
-- Daarna zien collega's dezelfde aanvullingen, links en automatische agenda-updates.
+- Daarna ziet iedereen dezelfde aanvullingen, links en automatische agenda-updates.
 
-Voor collega's
-- Collega's gebruiken index.html.
-- Inspiratie toevoegen komt direct in de inspiratiebank.
+Voor gebruikers
+- Gebruikers openen index.html.
+- Inspiratie toevoegen komt na beoordeling in de inspiratiebank.
 - Agendabronnen insturen gebeurt bij de UIT-agenda; de bronnenlijst blijft zo overzichtelijk.
 - Automatisch gevonden UIT-agenda-items mogen zichtbaar zijn met "Nog even checken".
 
@@ -26,7 +26,7 @@ Voor beheer
 - Open website-bestanden/beheer.html.
 - Wachtwoord: 6545.
 - Je kunt inspiratie-items verbergen of verwijderen.
-- Je kunt links van collega's goedkeuren of afwijzen.
+- Je kunt ingestuurde links goedkeuren of afwijzen.
 - Je kunt automatisch gevonden UIT-agenda-items markeren als gecheckt of verbergen.
 
 Automatische broncheck

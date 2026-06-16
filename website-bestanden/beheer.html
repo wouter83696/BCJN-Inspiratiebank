@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F4F7F5">
-  <title>Beheer - BCJN - Zomer 2026</title>
+  <title>Beheer - BCJN-Inspiratiebank</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,44 +22,141 @@
       --rose:#F6DFE7;
       --shadow:0 18px 50px rgba(20,38,42,.08);
       --radius:24px;
+      --max:1200px;
+      --ease:cubic-bezier(.22,1,.36,1);
       --focus:0 0 0 4px rgba(127,207,201,.38);
     }
     *{box-sizing:border-box}
     html{background:var(--bg)}
     body{
       margin:0;
+      padding-top:36px;
+      overflow-x:hidden;
       color:var(--ink);
       font-family:"IBM Plex Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:
-        radial-gradient(circle at 8% -4%, rgba(251,232,178,.30), transparent 24%),
-        radial-gradient(circle at 42% 4%, rgba(214,236,242,.22), transparent 28%),
-        radial-gradient(circle at 96% 102%, rgba(168,225,221,.18), transparent 30%),
+        radial-gradient(circle at 34% 10%, rgba(214,236,242,.28), transparent 29%),
+        radial-gradient(circle at 46% 102%, rgba(168,225,221,.18), transparent 28%),
+        radial-gradient(circle at 96% 2%, rgba(234,230,247,.42), transparent 26%),
         var(--bg);
       min-height:100dvh;
     }
     a{color:inherit}
     button,input,select,textarea{font:inherit}
     button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;box-shadow:var(--focus)}
-    .shell{max-width:1120px;margin:0 auto;padding:24px clamp(14px,3vw,28px) 72px}
-    .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:34px}
-    .brand,.topActions,.panel,.hero{
-      background:rgba(250,250,248,.86);
+    .shell{max-width:var(--max);margin:0 auto;padding:18px clamp(14px,3vw,28px) 72px}
+    #agendaReviewPanel,#submittedLinksPanel,#submittedIdeasPanel,#reportsPanel,#inspirationAdminPanel,#sourceOwnPanel,#backupPanel{scroll-margin-top:92px}
+    .topbar{
+      position:relative;z-index:60;
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      max-width:var(--max);margin:0 auto;padding:0 clamp(14px,3vw,28px);
+      pointer-events:none;
+    }
+    .topbar .tabs{
+      pointer-events:auto;
+      background:color-mix(in srgb, var(--paper) 86%, transparent);
       border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 8px 28px rgba(11,18,32,.06);
+      backdrop-filter:blur(18px);
+      border-radius:999px;
+      padding:5px;
+    }
+    .tab,.mini{
+      display:inline-flex;align-items:center;justify-content:center;
+      border:0;background:transparent;color:var(--muted);text-decoration:none;
+      min-height:32px;border-radius:999px;padding:6px 9px;font:inherit;font-size:.86rem;line-height:1;cursor:pointer;
+      transition:color .18s var(--ease), background .18s var(--ease)
+    }
+    .tab:hover,.mini:hover,.tab.active,.mini.active{color:var(--accent-dark);background:rgba(168,225,221,.30)}
+    .actions{
+      display:flex;align-items:center;gap:14px;margin-left:auto;padding:3px 0;pointer-events:auto
+    }
+    .actions .mini{min-height:32px;border-radius:0;background:transparent !important;padding:6px 0;font-size:.86rem;line-height:1;opacity:.78}
+    .actions .mini:hover,.actions .mini.active{opacity:1;color:var(--accent-dark)}
+    .adminMenu{position:relative;pointer-events:auto}
+    .adminMenu summary{list-style:none}
+    .adminMenu summary::-webkit-details-marker{display:none}
+    .adminMenuButton{
+      display:inline-flex;align-items:center;gap:5px;min-height:32px;border:0;border-radius:999px;
+      background:color-mix(in srgb, var(--paper) 88%, transparent);
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 8px 24px rgba(20,38,42,.05);
+      backdrop-filter:blur(18px);
+      color:var(--accent-dark);padding:6px 9px;font:inherit;font-size:.86rem;line-height:1;cursor:pointer
+    }
+    .adminMenuButton::after{
+      content:"";width:9px;height:9px;flex:0 0 9px;opacity:.62;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+      transition:transform .18s var(--ease)
+    }
+    .adminMenu[open] .adminMenuButton{background:rgba(255,255,255,.94)}
+    .adminMenu[open] .adminMenuButton::after{transform:rotate(180deg)}
+    .adminMenuPanel{
+      position:absolute;left:0;top:calc(100% + 8px);display:grid;gap:3px;min-width:230px;
+      padding:7px;border:1px solid rgba(11,18,32,.08);border-radius:18px;
+      background:rgba(255,255,255,.96);box-shadow:0 18px 44px rgba(20,38,42,.15);
+      backdrop-filter:blur(18px)
+    }
+    .adminMenuItem{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;border:0;border-radius:12px;
+      background:transparent;color:var(--ink);text-align:left;text-decoration:none;
+      padding:9px 11px;font:inherit;font-size:.88rem;cursor:pointer
+    }
+    .adminMenuItem:hover{background:rgba(79,142,158,.10);color:var(--accent-dark)}
+    .adminMenuItem.logoutButton{color:#9a3c45}
+    .adminMenuItem.logoutButton:hover{background:rgba(246,223,231,.62);color:#7f2830}
+    .topLink{white-space:nowrap}
+    .logoutButton.topLink{color:#9a3c45;opacity:.78}
+    .logoutButton.topLink:hover{color:#7f2830;opacity:1}
+    .panel,.heroMain{
+      background:rgba(250,250,248,.88);
+      border:1px solid rgba(255,255,255,.74);
       box-shadow:var(--shadow);
       backdrop-filter:blur(18px);
     }
-    .brand{border-radius:999px;padding:10px 16px}
-    .brand strong{display:block;color:var(--accent-dark);font-weight:500}
-    .brand span{display:block;color:var(--muted);font-size:.82rem;line-height:1.15}
-    .topActions{border-radius:999px;padding:6px;display:flex;gap:6px;flex-wrap:wrap}
-    .hero{border-radius:32px;padding:clamp(24px,4vw,44px);margin-bottom:18px}
-    .eyebrow{display:inline-flex;border-radius:999px;background:rgba(127,207,201,.22);color:#356f7b;padding:7px 11px;font-weight:500;font-size:.86rem;margin-bottom:18px}
+    .hero{padding:12px 0 18px}
+    .heroMain{position:relative;overflow:hidden;border-radius:var(--radius);padding:clamp(24px,4vw,42px);min-height:250px;display:flex;flex-direction:column;justify-content:flex-end}
+    .heroMain>*{position:relative}
+    .heroMain p{margin:8px 0 0}
+    .heroMain p + p{margin-top:18px}
     h1{margin:0 0 10px;color:var(--accent-dark);font-weight:400;letter-spacing:-.04em;font-size:clamp(2rem,5vw,4rem);line-height:1}
     h2{margin:0;color:var(--accent-dark);font-weight:500;font-size:1.35rem}
     p{color:var(--muted);line-height:1.48}
     .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;align-items:start}
+    .adminTopGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+    #agendaReviewPanel{grid-column:1/-1}
+    .sourceGrid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
     .panel{border-radius:var(--radius);padding:20px;margin-top:14px}
+    .adminTopGrid>.panel:not(#agendaReviewPanel){
+      min-height:286px;
+      display:flex;
+      flex-direction:column;
+    }
+    .adminTopGrid>.panel:not(#agendaReviewPanel) .panelHead{
+      min-height:118px;
+    }
+    .adminTopGrid>.panel:not(#agendaReviewPanel) .list{
+      margin-top:auto;
+    }
+    .panel.tintedPanel{
+      background:
+        linear-gradient(145deg,var(--panel-tint,rgba(255,255,255,0)) 0%,rgba(250,250,248,.20) 48%),
+        rgba(250,250,248,.88);
+      border-color:var(--panel-line,rgba(255,255,255,.74));
+    }
+    .toneReports{--panel-tint:rgba(248,236,194,.22);--panel-line:rgba(186,151,56,.12)}
+    .toneSource{--panel-tint:rgba(214,236,242,.22);--panel-line:rgba(79,142,158,.10)}
+    .toneInspiration{--panel-tint:rgba(246,223,231,.20);--panel-line:rgba(198,98,133,.10)}
+    .toneClean{--panel-tint:rgba(214,236,242,.20);--panel-line:rgba(79,142,158,.10)}
+    .toneAgenda{--panel-tint:rgba(221,239,232,.26);--panel-line:rgba(72,132,100,.10)}
+.loginPanel{max-width:640px;width:min(640px,100%);margin:clamp(70px,12vh,130px) auto 0;padding:18px 20px;border-radius:22px}
+    .loginPanel .panelHead{margin-bottom:10px}
+    .loginPanel p{margin:6px 0 0;max-width:52ch}
+    .loginPanel .formGrid{max-width:420px}
     .panelHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+    .panelHead h2{color:#24596A}
+    .adminTopGrid .panelHead{align-items:flex-start}
+    .adminTopGrid .panelHead h2{font-size:1.2rem;line-height:1.15}
     .notice{border-radius:18px;background:rgba(248,236,194,.58);border:1px solid rgba(186,151,56,.14);padding:12px 14px;color:#6b5927;margin:14px 0}
     .formGrid{display:grid;gap:10px}
     .two{grid-template-columns:1fr 1fr}
@@ -72,51 +169,182 @@
     .button{
       border:0;border-radius:999px;padding:10px 14px;cursor:pointer;
       background:rgba(11,18,32,.07);color:rgba(11,18,32,.72);font-weight:500;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;
+      transition:transform .18s cubic-bezier(.22,1,.36,1), filter .18s ease, background .18s ease
     }
+    .button:hover{transform:translateY(-1px);filter:brightness(.98)}
+    .button:disabled{cursor:default;opacity:.62;box-shadow:none;transform:none;filter:none}
     .button.primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(79,142,158,.18)}
     .button.warn{background:rgba(248,236,194,.78);color:#7a6424}
     .button.hot{background:rgba(246,223,231,.82);color:#84435a}
     .button.small{padding:8px 10px;font-size:.84rem}
+    .button.iconAction{width:38px;height:38px;padding:0;gap:0}
+    .button.iconAction svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .button.largeAction{padding:12px 18px;font-size:.98rem}
     .status{font-size:.92rem;color:var(--muted);line-height:1.4}
     .status.ok{color:#426e5d}
     .status.warn{color:#7a6424}
-    .pill{display:inline-flex;align-items:center;border-radius:999px;padding:6px 9px;font-size:.76rem;font-weight:500;line-height:1;background:rgba(11,18,32,.055);color:rgba(11,18,32,.58)}
+    .pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:6px 9px;font-size:.76rem;font-weight:500;line-height:1;background:rgba(79,142,158,.10);color:#356f7b;white-space:nowrap}
+    .panelHead>.pill{
+      background:rgba(232,242,242,.95);
+      border:1px solid rgba(79,142,158,.08);
+      color:var(--accent-dark);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)
+    }
     .pill.ok{background:rgba(221,239,232,.92);color:#426e5d}
     .pill.warn{background:rgba(248,236,194,.78);color:#7a6424}
+    .pill.new{background:rgba(214,236,242,.92);color:var(--accent-dark);border:1px solid rgba(79,142,158,.12)}
     .pill.hot{background:rgba(246,223,231,.82);color:#84435a}
+    .pill.soft{
+      background:rgba(232,242,242,.95);
+      border:1px solid rgba(79,142,158,.08);
+      color:var(--accent-dark)
+    }
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+    .sectionDivider{height:1px;background:rgba(11,18,32,.07);margin:18px 0}
+    .themeCreative{--theme-tint:rgba(229,0,90,.055);--theme-tint-strong:rgba(229,0,90,.13);--theme-line:rgba(229,0,90,.18);--theme-ink:#a00042}
+    .themeCulture{--theme-tint:rgba(72,70,184,.055);--theme-tint-strong:rgba(72,70,184,.13);--theme-line:rgba(72,70,184,.18);--theme-ink:#4644a0}
+    .themeNature{--theme-tint:rgba(0,155,72,.06);--theme-tint-strong:rgba(0,155,72,.14);--theme-line:rgba(0,155,72,.18);--theme-ink:#087b43}
+    .themeSocial{--theme-tint:rgba(247,203,51,.055);--theme-tint-strong:rgba(247,203,51,.18);--theme-line:rgba(213,163,16,.22);--theme-ink:#80610b}
+    .themeSport{--theme-tint:rgba(0,132,168,.055);--theme-tint-strong:rgba(0,132,168,.14);--theme-line:rgba(0,132,168,.18);--theme-ink:#08677f}
+    .themeAction{--theme-tint:rgba(238,126,27,.065);--theme-tint-strong:rgba(238,126,27,.16);--theme-line:rgba(199,92,11,.18);--theme-ink:#9a4f0f}
+    .themeDefault{--theme-tint:rgba(0,185,86,.045);--theme-tint-strong:rgba(0,185,86,.11);--theme-line:rgba(0,155,72,.11);--theme-ink:#087b43}
+    .domainIcon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;background:var(--theme-tint-strong);border:1px solid var(--theme-line);color:var(--theme-ink);flex:0 0 auto}
+    .domainIcon svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .agendaThemeLegend{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 12px}
+    .agendaLegendItem{
+      display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 8px;
+      background:rgba(255,255,255,.58);border:1px solid var(--theme-line);
+      color:var(--theme-ink);font-size:.76rem;font-weight:500;line-height:1
+    }
+    .adminIdeaToolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:16px 0 12px;flex-wrap:wrap}
+    .viewBar{display:flex;justify-content:flex-end;align-items:center;margin:0}
+    .viewSwitch{display:inline-flex;align-items:center;gap:1px;margin:0;padding:2px;border:1px solid rgba(255,255,255,.76);border-radius:999px;background:rgba(255,255,255,.52);box-shadow:0 5px 14px rgba(20,38,42,.04)}
+    .viewBtn{border:0;background:transparent;color:rgba(11,18,32,.52);width:32px;height:29px;border-radius:999px;padding:0;cursor:pointer;transition:.18s cubic-bezier(.22,1,.36,1);display:inline-flex;align-items:center;justify-content:center}
+    .viewBtn:hover{background:rgba(168,225,221,.18);color:var(--accent-dark)}
+    .viewBtn.active{background:rgba(168,225,221,.42);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.08)}
+    .viewIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px}
+    .viewIcon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .adminIdeaView[hidden]{display:none !important}
+    .tableWrap.adminIdeaView.active{display:block}
+    .cards.adminIdeaView.active{display:grid}
+    .filterBar{margin:12px 0 18px;padding:12px 14px;border:1px solid rgba(255,255,255,.82);border-radius:24px;background:rgba(255,255,255,.68);box-shadow:0 12px 30px rgba(20,38,42,.07)}
+    .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:0;align-items:center}
+    .filters.more{grid-template-columns:minmax(220px,1.65fr) repeat(4,minmax(88px,.72fr)) minmax(142px,1fr) auto}
+    .filterSearch{position:relative;min-width:0}
+    .filterSearch::before{content:"";position:absolute;left:15px;top:50%;width:16px;height:16px;transform:translateY(-50%);pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235f6973' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center/contain no-repeat}
+    .filterToggle{display:none;align-items:center;justify-content:center;gap:7px;min-height:40px;border:1px solid rgba(11,18,32,.07);border-radius:999px;background:rgba(255,255,255,.66);color:var(--accent-dark);padding:8px 13px;font:inherit;font-size:.84rem;font-weight:500;white-space:nowrap;cursor:pointer}
+    .filterToggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .filters input,.filters select{width:100%;min-width:0;min-height:40px;border:1px solid rgba(11,18,32,.07);background-color:rgba(255,255,255,.66);border-radius:999px;padding:8px 13px;color:var(--ink);font-size:.86rem}
+    .filters select{
+      appearance:none;
+      padding-right:32px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 13px center;
+      background-size:14px 14px;
+    }
+    .customNativeSelect{position:absolute !important;width:1px !important;height:1px !important;min-height:0 !important;opacity:0;pointer-events:none;overflow:hidden;padding:0 !important;border:0 !important}
+    .customSelect{position:relative;min-width:0}
+    .customSelectButton{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;width:auto;min-width:100%;min-height:40px;border:1px solid rgba(11,18,32,.07);border-radius:999px;background:rgba(255,255,255,.66);color:var(--ink);padding:8px 13px;font-size:.86rem;text-align:left;cursor:pointer}
+    .customSelectLabel{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .customSelectButton::after{content:"";flex:0 0 13px;width:13px;height:13px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s var(--ease)}
+    .customSelect.open .customSelectButton::after{transform:rotate(180deg)}
+    .customSelectMenu{position:absolute;left:0;top:calc(100% + 7px);z-index:40;display:none;width:max-content;min-width:100%;max-width:min(310px,calc(100vw - 30px));max-height:280px;overflow:auto;padding:6px;border:1px solid rgba(11,18,32,.08);border-radius:16px;background:rgba(255,255,255,.98);box-shadow:0 18px 44px rgba(20,38,42,.17)}
+    .customSelect.open .customSelectMenu{display:grid;gap:2px}
+    .customSelectOption{border:0;border-radius:11px;background:transparent;color:var(--ink);padding:9px 11px;font:inherit;font-size:.86rem;text-align:left;white-space:nowrap;cursor:pointer}
+    .customSelectOption:hover,.customSelectOption.active{background:rgba(79,142,158,.10);color:var(--accent-dark)}
+    .themeSelect .customSelectButton{background:rgba(255,255,255,.78);border-color:var(--theme-line);color:var(--theme-ink)}
+    .themeSelect .customSelectMenu{width:100%;max-width:none;border-color:rgba(11,18,32,.08);background:#fff}
+    .themeSelect .customSelectOption{display:flex;align-items:center;gap:8px;color:var(--ink)}
+    .themeSelect .customSelectOption:hover,.themeSelect .customSelectOption.active{background:rgba(11,18,32,.035);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
+    .themeSelect .customSelectButton .domainIcon,.themeSelect .customSelectOption .domainIcon{width:22px;height:22px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
+    .themeSelect .customSelectButton .domainIcon svg,.themeSelect .customSelectOption .domainIcon svg{width:12px;height:12px}
+    .filterReset{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;border:0;background:transparent;color:var(--accent);padding:8px 4px 8px 8px;font:inherit;font-size:.84rem;font-weight:500;white-space:nowrap;cursor:pointer}
+    .filterReset svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .filterReset:hover{color:var(--accent-dark)}
+    .filterSearch input{padding-left:42px}
     .list{display:grid;gap:8px;max-height:560px;overflow:auto;padding-right:4px}
     .row{
       display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;
-      padding:12px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.58)
+      padding:12px;border:1px solid rgba(11,18,32,.07);border-radius:16px;background:rgba(255,255,255,.58)
     }
+    .row.newItem{border-color:rgba(79,142,158,.20);box-shadow:inset 4px 0 0 rgba(79,142,158,.24);background:linear-gradient(90deg,rgba(214,236,242,.22),rgba(255,255,255,.58) 32%)}
     .row.hiddenItem{opacity:.62;background:rgba(11,18,32,.035)}
     .row strong{display:block;color:var(--accent-dark);font-weight:500;margin-bottom:3px}
     .row span{display:block;color:var(--muted);font-size:.86rem;line-height:1.35}
+    .adminIdeaRow{background:linear-gradient(145deg,var(--theme-tint),rgba(255,255,255,.72) 68%);border-color:var(--theme-line)}
+    .adminIdeaRow:hover{background:linear-gradient(145deg,var(--theme-tint),#fff 68%)}
+    .adminIdeaRow.hiddenItem{background:linear-gradient(145deg,rgba(11,18,32,.035),rgba(255,255,255,.52) 68%)}
+    .adminIdeaTitle{display:flex;align-items:flex-start;gap:10px;color:var(--accent-dark);font-weight:500;margin-bottom:4px}
+    .adminIdeaTitleText{display:block;min-width:0}
+    .row .domainIcon{display:inline-flex;width:24px;height:24px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
+    .row .domainIcon svg{width:13px;height:13px}
+    .adminIdeaMeta{display:block;color:var(--muted);font-size:.86rem;line-height:1.35}
     .rowActions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{padding:16px;min-height:215px;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(250,250,248,.90);box-shadow:0 12px 34px rgba(20,38,42,.07);transition:.2s cubic-bezier(.22,1,.36,1)}
+    .card:hover{transform:translateY(-3px);background:#fff}
+    .ideaThemeCard{background:rgba(250,250,248,.90);border-color:rgba(255,255,255,.72)}
+    .ideaThemeCard:hover{background:linear-gradient(145deg,var(--theme-tint),#fff 68%)}
+    .ideaThemeRow td{background:rgba(255,255,255,.20)}
+    .ideaThemeRow:hover td{background:var(--theme-tint)}
+    .ideaThemeCard .domainIcon,.ideaThemeRow .domainIcon{background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
+    .domainThemePill{background:var(--theme-tint-strong);color:var(--theme-ink)}
+    .card h3{margin:0;color:var(--accent-dark);font-size:1.08rem;line-height:1.18;font-weight:500}
+    .card p{margin:0;color:rgba(11,18,32,.70);line-height:1.43}
+    .card .fine{color:var(--muted);font-size:.86rem}
+    .cardPills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+    .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+    .ideaActions{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
+    .small{font-size:.84rem;color:var(--muted);line-height:1.36}
     .empty{padding:18px;border:1px dashed rgba(11,18,32,.14);border-radius:18px;background:rgba(255,255,255,.40);color:var(--muted);text-align:center}
+    .tableWrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.48)}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+    .adminIdeaTable{min-width:980px}
+    .adminIdeaTable th:last-child,.adminIdeaTable td:last-child{width:112px}
+    th,td{text-align:left;vertical-align:top;border-bottom:1px solid rgba(11,18,32,.07);padding:11px 12px;font-size:.92rem;line-height:1.35}
+    th{color:rgba(11,18,32,.56);font-weight:500;background:rgba(255,255,255,.55)}
+    tr:last-child td{border-bottom:0}
+    td span{display:block;color:var(--muted);font-size:.86rem;line-height:1.35;margin-top:3px}
+    .agendaReviewTable .rowActions{justify-content:flex-start}
     #adminApp[hidden],#loginPanel[hidden]{display:none !important}
-    @media (max-width:820px){.grid,.two{grid-template-columns:1fr}.row{grid-template-columns:1fr}.rowActions{justify-content:flex-start}.topbar{align-items:flex-start;flex-direction:column}}
+    .adminTopGrid .list{max-height:520px}
+    @media (max-width:1040px){.adminTopGrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.filters,.filters.more{grid-template-columns:1fr 1fr}.filterSearch{grid-column:1/-1}.filterReset{grid-column:1/-1;justify-content:center}}
+@media (max-width:820px){body{padding-top:26px}.topbar{padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{gap:2px;padding:4px}.tab,.mini{min-height:30px;padding:6px 8px;font-size:.76rem}.actions{gap:10px;padding:3px 0}.actions .mini{min-height:30px;padding:6px 0;font-size:.76rem}.hero{padding-top:10px}.loginPanel{margin-top:42px}.grid,.two,.adminTopGrid,.sourceGrid,.cards,.filters{grid-template-columns:1fr}.row{grid-template-columns:1fr}.rowActions{justify-content:flex-start}.filterSearch{grid-column:auto}.filterReset{grid-column:auto}.adminIdeaToolbar{align-items:flex-start}.viewBar{justify-content:flex-start}}
+    @media (max-width:640px){.filterBar{padding:10px}.filters.more{grid-template-columns:minmax(0,1fr) auto;gap:8px}.filterSearch{grid-column:auto}.filterToggle{display:inline-flex}.filters.more.expanded .filterToggle{background:rgba(168,225,221,.30);border-color:rgba(79,142,158,.14)}.filters.more:not(.expanded)>select,.filters.more:not(.expanded)>.customSelect,.filters.more:not(.expanded)>.filterReset{display:none}.filters.more>select,.filters.more>.customSelect,.filters.more>.filterReset{grid-column:1/-1}.filterReset{justify-content:center}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="topbar">
-      <div class="brand"><strong>BCJN - Zomer 2026</strong><span>Beheer</span></div>
-      <div class="topActions">
-        <a class="button" href="../index.html">Terug naar hoofdpagina</a>
+  <header class="topbar">
+    <details class="adminMenu" id="adminMenu" hidden>
+      <summary class="adminMenuButton" aria-current="page">Beheer</summary>
+      <div class="adminMenuPanel" aria-label="Beheeropties">
+        <a class="adminMenuItem" href="#reportsPanel">Meldingen</a>
+        <a class="adminMenuItem" href="#submittedLinksPanel">Ingestuurde bronlinks</a>
+        <a class="adminMenuItem" href="#submittedIdeasPanel">Toegevoegde inspiratie</a>
+        <a class="adminMenuItem" href="#agendaReviewPanel">UIT-agenda beheren</a>
+        <a class="adminMenuItem" href="#inspirationAdminPanel">Inspiratiebank opschonen</a>
+        <a class="adminMenuItem" href="#sourceOwnPanel">Bronlinks</a>
+        <a class="adminMenuItem" href="#backupPanel">Overnemen of herstellen</a>
       </div>
-    </header>
+    </details>
+    <div class="actions" aria-label="Ondersteunende navigatie">
+      <a class="mini topLink" href="../index.html">Terug naar hoofdpagina</a>
+      <button class="mini logoutButton topLink" id="logoutBtn" type="button" hidden>Afmelden</button>
+    </div>
+  </header>
 
-    <section class="hero">
-      <span class="eyebrow">Overzicht houden • opschonen • bronnen aanvullen</span>
-      <h1>Houd het zomerprogramma netjes</h1>
-      <p>Gebruik beheer om de inspiratiebank rustig en bruikbaar te houden. Verberg aanvullingen die tijdelijk niet passen, verwijder losse inzendingen die echt onduidelijk zijn en voeg bronlinks toe waar collega's iets aan hebben.</p>
-      <p>Laat goede aanvullingen gewoon staan. Zo groeit het zomerprogramma mee met wat jullie samen tegenkomen, zonder dat het overzicht rommelig wordt.</p>
+  <main class="shell">
+    <section class="hero" id="adminHero" hidden>
+      <div class="heroMain">
+        <h1>Houd de inspiratiebank overzichtelijk</h1>
+        <p>Gebruik beheer om de inspiratiebank rustig en bruikbaar te houden. Verberg aanvullingen die tijdelijk niet passen, verwijder activiteiten die echt niet bruikbaar zijn en voeg bronlinks toe waar jullie iets aan hebben.</p>
+        <p>Laat goede aanvullingen gewoon staan. Zo groeit de BCJN-Inspiratiebank mee met wat jullie samen tegenkomen, zonder dat het overzicht rommelig wordt.</p>
+      </div>
     </section>
 
-    <section id="loginPanel" class="panel">
+    <section id="loginPanel" class="panel loginPanel">
       <div class="panelHead">
         <div>
           <h2>Beheer openen</h2>
@@ -126,7 +354,7 @@
       <form id="loginForm" class="formGrid">
         <label>
           Wachtwoord
-          <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Wachtwoord">
+          <input id="passwordInput" type="password" autocomplete="current-password">
         </label>
         <div class="toolbar">
           <button class="button primary" type="submit">Open beheer</button>
@@ -136,101 +364,157 @@
     </section>
 
     <section id="adminApp" hidden>
-      <div class="notice"><strong>Let op:</strong> deze beheerpagina werkt met de online opslag. Als opslaan niet lukt, controleer dan de Supabase-instellingen in <code>website-bestanden/config.js</code>.</div>
+      <div class="notice"><strong>Let op:</strong> wijzigingen worden online opgeslagen. Zie je een wijziging niet terug op de gewone pagina, ververs die pagina dan eerst even.</div>
 
-      <div class="grid">
-        <section class="panel">
+      <div class="adminTopGrid">
+        <section class="panel tintedPanel toneReports" id="reportsPanel">
           <div class="panelHead">
             <div>
-              <h2>Inspiratiebank opschonen</h2>
-              <p>Bekijk vaste inspiratie-items en aanvullingen van collega's naast elkaar. Verberg wat tijdelijk niet passend is en verwijder alleen losse collega-aanvullingen die echt niet bruikbaar of onduidelijk zijn.</p>
+              <h2>Meldingen</h2>
+              <p>Bekijk opmerkingen bij agenda-items en inspiratie uit de gewone pagina. Handel af wat je hebt gecontroleerd.</p>
             </div>
-            <span id="ideaCount" class="pill">0 items</span>
+            <span id="reportCount" class="pill">0 open</span>
           </div>
-          <input id="ideaSearch" type="search" placeholder="Zoek op titel, thema of bron...">
-          <div class="toolbar">
-            <button class="button small" id="showAllBtn" type="button">Alles</button>
-            <button class="button small" id="showVisibleBtn" type="button">Zichtbaar</button>
-            <button class="button small" id="showHiddenBtn" type="button">Verborgen</button>
-          </div>
-          <div id="ideaList" class="list"></div>
+          <div id="reportList" class="list"></div>
         </section>
 
-        <aside>
-          <section class="panel">
-            <div class="panelHead">
-              <div>
-                <h2>UIT-agenda vondsten</h2>
-                <p>Nieuwe vondsten uit de broncheck mogen zichtbaar zijn met “Nog even checken”. Markeer ze als gecontroleerd of verberg ze als ze niet passen.</p>
-              </div>
+        <section class="panel tintedPanel toneSource" id="submittedLinksPanel">
+          <div class="panelHead">
+            <div>
+              <h2>Ingestuurde bronlinks</h2>
+              <p>Bekijk links en agendabronnen die zijn aangedragen. Keur alleen bronnen goed die helpen bij passend aanbod.</p>
+            </div>
+            <span id="pendingLinkCount" class="pill">0 wachten</span>
+          </div>
+          <div id="pendingLinkList" class="list"></div>
+        </section>
+
+        <section class="panel tintedPanel toneInspiration" id="submittedIdeasPanel">
+          <div class="panelHead">
+            <div>
+              <h2>Toegevoegde inspiratie</h2>
+              <p>Bekijk inspiratie die via de gewone pagina is toegevoegd. Laat staan, verberg tijdelijk of verwijder wat niet past.</p>
+            </div>
+            <span id="submittedIdeaCount" class="pill">0 items</span>
+          </div>
+          <div id="submittedIdeaList" class="list"></div>
+        </section>
+
+        <section class="panel tintedPanel toneAgenda agendaReviewPanel" id="agendaReviewPanel">
+          <div class="panelHead">
+            <div>
+              <h2>UIT-agenda beheren</h2>
+              <p>Controleer vaste en automatisch gevonden agenda-items. Verberg tijdelijk of verwijder wat niet passend is.</p>
+            </div>
+            <div class="rowActions">
+              <button class="button small primary" id="approveAllAgendaBtn" type="button">Alles goedkeuren</button>
               <span id="agendaReviewCount" class="pill">0 items</span>
             </div>
-            <div id="agendaReviewList" class="list"></div>
-          </section>
+          </div>
+          <div id="agendaReviewList" class="list"></div>
+        </section>
 
-          <section class="panel">
-            <div class="panelHead">
-              <div>
-                <h2>Bronlink toevoegen</h2>
-                <p>Voeg een website of agenda toe die collega's helpt om passend aanbod te vinden. De link verschijnt op de gewone pagina bij Bronnen.</p>
-              </div>
-            </div>
-            <form id="linkForm" class="formGrid">
-              <label>
-                Naam
-                <input id="linkName" type="text" placeholder="Bijv. lokale agenda">
-              </label>
-              <label>
-                Website
-                <input id="linkUrl" type="text" inputmode="url" placeholder="https://">
-              </label>
-              <label>
-                Categorie
-                <input id="linkCategory" type="text" placeholder="Bijv. Actueel aanbod">
-              </label>
-              <label>
-                Notitie
-                <textarea id="linkNote" placeholder="Waarvoor is deze bron handig?"></textarea>
-              </label>
-              <button class="button primary" type="submit">Link toevoegen</button>
-              <span id="linkStatus" class="status" role="status" aria-live="polite"></span>
-            </form>
-          </section>
-
-          <section class="panel">
-            <div class="panelHead">
-              <div>
-                <h2>Ingestuurde links</h2>
-                <p>Bekijk links die collega's hebben aangedragen. Keur alleen bronnen goed die echt helpen bij het zoeken naar passend aanbod.</p>
-              </div>
-              <span id="pendingLinkCount" class="pill">0 wachten</span>
-            </div>
-            <div id="pendingLinkList" class="list"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panelHead">
-              <div>
-                <h2>Eigen bronlinks</h2>
-                <p>Houd deze extra links actueel. Verwijder alleen links die dubbel, verlopen of niet passend zijn.</p>
-              </div>
-            </div>
-            <div id="customLinkList" class="list"></div>
-          </section>
-        </aside>
       </div>
 
-      <section class="panel">
+      <section class="panel tintedPanel toneClean" id="inspirationAdminPanel">
+        <div class="panelHead">
+          <div>
+            <h2>Inspiratiebank opschonen</h2>
+            <p>Bekijk vaste inspiratie-items en aanvullingen naast elkaar. Verberg wat tijdelijk niet passend is en verwijder alleen activiteiten die echt niet bruikbaar of onduidelijk zijn.</p>
+          </div>
+          <span id="ideaCount" class="pill">0 items</span>
+        </div>
+        <div class="adminIdeaToolbar">
+          <div></div>
+          <div class="viewBar">
+            <div class="viewSwitch" aria-label="Weergave inspiratiebank beheer">
+              <button class="viewBtn" type="button" data-admin-view="tiles" aria-label="Tegelweergave" title="Tegelweergave">
+                <span class="viewIcon" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5" rx="1"></rect><rect x="12" y="3" width="5" height="5" rx="1"></rect><rect x="3" y="12" width="5" height="5" rx="1"></rect><rect x="12" y="12" width="5" height="5" rx="1"></rect></svg></span>
+              </button>
+              <button class="viewBtn active" type="button" data-admin-view="list" aria-label="Lijstweergave" title="Lijstweergave">
+                <span class="viewIcon" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="4" cy="5" r="1"></circle><circle cx="4" cy="10" r="1"></circle><circle cx="4" cy="15" r="1"></circle><path d="M8 5h9"></path><path d="M8 10h9"></path><path d="M8 15h9"></path></svg></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="adminThemeLegend"></div>
+        <div class="filterBar">
+          <div class="filters more" id="adminIdeaFilters" aria-label="Inspiratiebank filters">
+            <div class="filterSearch"><input id="ideaSearch" type="search" placeholder="Zoek activiteit, materiaal of thema..."></div>
+            <button class="filterToggle" id="adminFilterToggle" type="button" aria-expanded="false" aria-controls="adminIdeaFilters">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v5l-4 2v-7Z"></path></svg>
+              <span>Filters</span>
+            </button>
+            <select id="ideaDomainFilter"><option value="all">Categorie</option></select>
+            <select id="ideaLocationFilter"><option value="all">Locatie</option></select>
+            <select id="ideaDistanceFilter"><option value="all">Afstand</option></select>
+            <select id="ideaCostFilter"><option value="all">Kosten</option></select>
+            <select id="ideaStimulusFilter"><option value="all">Prikkelbelasting</option></select>
+            <button class="filterReset" id="adminResetBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+              <span>Filters wissen</span>
+            </button>
+          </div>
+        </div>
+        <div id="adminIdeaList" class="tableWrap adminIdeaView active"></div>
+        <div id="adminIdeaCards" class="cards adminIdeaView" hidden></div>
+      </section>
+
+      <div class="sourceGrid">
+        <section class="panel tintedPanel toneSource" id="sourceOwnPanel">
+          <div class="panelHead">
+            <div>
+              <h2>Bronlinks</h2>
+              <p>Voeg bronnen toe en beheer de links die op de gewone pagina bij Bronnen staan. Je kunt bronlinks openen, wijzigen of verwijderen.</p>
+            </div>
+          </div>
+          <form id="linkForm" class="formGrid">
+            <label>
+              Naam
+              <input id="linkName" type="text" placeholder="Bijv. lokale agenda">
+            </label>
+            <label>
+              Website
+              <input id="linkUrl" type="text" inputmode="url" placeholder="https://">
+            </label>
+            <label>
+              Categorie
+              <select id="linkCategory" data-theme-select="true">
+                <option value="Creatief & Expressie">Creatief & Expressie</option>
+                <option value="Cultuur & Ontdekken">Cultuur & Ontdekken</option>
+                <option value="Natuur & Buiten">Natuur & Buiten</option>
+                <option value="Ontmoeten, Spel & Vaardigheden">Ontmoeten, Spel & Vaardigheden</option>
+                <option value="Sport & Bewegen">Sport & Bewegen</option>
+                <option value="Actie & Amusement">Actie & Amusement</option>
+              </select>
+            </label>
+            <label>
+              Notitie
+              <textarea id="linkNote" placeholder="Waarvoor is deze bron handig?"></textarea>
+            </label>
+            <div class="toolbar linkFormActions">
+              <button class="button primary" id="linkSubmitBtn" type="submit">Link toevoegen</button>
+              <button class="button" id="cancelLinkEditBtn" type="button" hidden>Annuleer wijzigen</button>
+            </div>
+            <span id="linkStatus" class="status" role="status" aria-live="polite"></span>
+          </form>
+          <div class="sectionDivider"></div>
+          <div id="customLinkList" class="list"></div>
+        </section>
+      </div>
+
+      <section class="panel" id="backupPanel">
         <div class="panelHead">
           <div>
             <h2>Overnemen of herstellen</h2>
-            <p>Bewaar, importeer of herstel beheerinstellingen als je ze wilt meenemen naar een andere computer of terug wilt zetten.</p>
+            <p>Bewaar, importeer of herstel beheerinstellingen als je ze wilt meenemen naar een andere computer of iets terug wilt zetten.</p>
           </div>
         </div>
         <div class="toolbar">
           <button class="button primary" id="exportBtn" type="button">Export beheerdata</button>
           <button class="button" id="importBtn" type="button">Import beheerdata</button>
           <button class="button warn" id="restoreHiddenBtn" type="button">Verborgen items herstellen</button>
+          <button class="button warn" id="restoreSourceLinksBtn" type="button">Bronlinks herstellen</button>
           <button class="button hot" id="clearLinksBtn" type="button">Eigen links wissen</button>
           <input id="importFile" type="file" accept="application/json,.json" hidden>
         </div>
@@ -247,19 +531,54 @@
 	  const COLLEAGUE_STORAGE_KEY = 'zomerprogramma_colleague_ideas_v1';
 	  const COLLEAGUE_HIDDEN_KEY = 'zomerprogramma_hidden_colleague_ideas_v1';
 	  const ADMIN_HIDDEN_INSPIRATION_KEY = 'zomerprogramma_hidden_inspiration_titles_v1';
+	  const ADMIN_DELETED_INSPIRATION_KEY = 'zomerprogramma_deleted_inspiration_keys_v1';
 	  const ADMIN_LINKS_KEY = 'zomerprogramma_custom_links_v1';
 	  const PENDING_LINKS_KEY = 'zomerprogramma_pending_links_v1';
+	  const SOURCE_LINK_OVERRIDES_KEY = 'zomerprogramma_source_link_overrides_v1';
+	  const HIDDEN_SOURCE_LINKS_KEY = 'zomerprogramma_hidden_source_link_keys_v1';
 	  const AUTO_AGENDA_KEY = 'zomerprogramma_auto_agenda_items_v1';
 	  const HIDDEN_AGENDA_KEY = 'zomerprogramma_hidden_agenda_items_v1';
+	  const DELETED_AGENDA_KEY = 'zomerprogramma_deleted_agenda_items_v1';
 	  const VERIFIED_AGENDA_KEY = 'zomerprogramma_verified_agenda_items_v1';
+	  const REPORTS_KEY = 'zomerprogramma_item_reports_v1';
 	  const BASE = window.BCJN_BEHEER_BASE || {inspiration:[], teamIdeas:[], links:[]};
 	  const CONFIG = window.BCJN_CONFIG || {};
 	  const CENTRAL_STORAGE_ENDPOINT = CONFIG.storageEndpoint || '';
 	  const SUPABASE_TABLE = CONFIG.supabaseTable || 'bcjn_state';
 	  const SUPABASE_STATE_ID = CONFIG.supabaseStateId || 'bcjn-zomer-2026';
   const $ = selector => document.querySelector(selector);
-  let activeFilter = 'all';
   let centralStorage = null;
+  let editingSourceLink = null;
+  const ICONS = {
+    creative:`<svg viewBox="0 0 20 20"><path d="M10 3l1.8 4.2L16 9l-4.2 1.8L10 15l-1.8-4.2L4 9l4.2-1.8L10 3z"></path></svg>`,
+    culture:`<svg viewBox="0 0 20 20"><path d="M4 7l6-3 6 3"></path><path d="M5 8h10"></path><path d="M6 8v6"></path><path d="M10 8v6"></path><path d="M14 8v6"></path><path d="M4 15h12"></path></svg>`,
+    nature:`<svg viewBox="0 0 20 20"><path d="M15 4c-5 1-8 4.5-8 9"></path><path d="M6 11c1.5.8 3 .9 4.5.2C13.2 10.2 15 8 15 4c-4 .2-6.8 2.4-8.5 5.6-.6 1.2-.7 2.2-.5 3.4z"></path></svg>`,
+    social:`<svg viewBox="0 0 20 20"><circle cx="7.4" cy="7" r="2.4"></circle><circle cx="13.2" cy="8" r="2"></circle><path d="M3.7 15c.7-2.1 2-3.2 3.7-3.2s3 1.1 3.7 3.2"></path><path d="M10.8 14.6c.6-1.4 1.6-2.2 2.9-2.2 1.4 0 2.4.9 3 2.6"></path></svg>`,
+    sport:`<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="6"></circle><path d="M10 4v12"></path><path d="M4 10h12"></path><path d="M6.2 6.2c1 .9 2.4 1.4 3.8 1.4s2.8-.5 3.8-1.4"></path><path d="M6.2 13.8c1-.9 2.4-1.4 3.8-1.4s2.8.5 3.8 1.4"></path></svg>`,
+    action:`<svg viewBox="0 0 20 20"><path d="M11.8 2.6 5.2 10.5h4.5l-1.1 6.9 6.3-8.3h-4.3l1.2-6.5z"></path></svg>`,
+    default:`<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="5"></circle></svg>`
+  };
+  const ADMIN_THEME_LEGEND = [
+    'Creatief',
+    'Cultuur',
+    'Natuur',
+    'Ontmoeten, Spel & Vaardigheden',
+    'Sport & Bewegen',
+    'Actie & Amusement'
+  ];
+  const SOURCE_THEME_OPTIONS = [
+    'Creatief & Expressie',
+    'Cultuur & Ontdekken',
+    'Natuur & Buiten',
+    'Ontmoeten, Spel & Vaardigheden',
+    'Sport & Bewegen',
+    'Actie & Amusement'
+  ];
+  const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
+  const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online / voorbereiding'];
+  const IDEA_DISTANCE_OPTIONS = ['Op terrein','Dichtbij (0-10 km)','In de regio (10-30 km)','Daguitstap (30-50 km)'];
+  const IDEA_COST_OPTIONS = ['€','€€','€€€'];
+  const IDEA_STIMULUS_OPTIONS = ['Laag','Middel','Hoog'];
 
 	  function normalizeCentralStorage(value={}){
 	    return {
@@ -268,11 +587,16 @@
 	      colleagueIdeas:Array.isArray(value.colleagueIdeas) ? value.colleagueIdeas : [],
 	      hiddenColleagueIdeaIds:Array.isArray(value.hiddenColleagueIdeaIds) ? value.hiddenColleagueIdeaIds : [],
 	      hiddenInspirationTitles:Array.isArray(value.hiddenInspirationTitles) ? value.hiddenInspirationTitles : [],
+	      deletedInspirationKeys:Array.isArray(value.deletedInspirationKeys) ? value.deletedInspirationKeys : [],
 	      customLinks:Array.isArray(value.customLinks) ? value.customLinks : [],
 	      pendingLinks:Array.isArray(value.pendingLinks) ? value.pendingLinks : [],
+	      sourceLinkOverrides:Array.isArray(value.sourceLinkOverrides) ? value.sourceLinkOverrides : [],
+	      hiddenSourceLinkKeys:Array.isArray(value.hiddenSourceLinkKeys) ? value.hiddenSourceLinkKeys : [],
 	      autoAgendaItems:Array.isArray(value.autoAgendaItems) ? value.autoAgendaItems : [],
 	      hiddenAgendaItemIds:Array.isArray(value.hiddenAgendaItemIds) ? value.hiddenAgendaItemIds : [],
-	      verifiedAgendaItemIds:Array.isArray(value.verifiedAgendaItemIds) ? value.verifiedAgendaItemIds : []
+	      deletedAgendaItemIds:Array.isArray(value.deletedAgendaItemIds) ? value.deletedAgendaItemIds : [],
+	      verifiedAgendaItemIds:Array.isArray(value.verifiedAgendaItemIds) ? value.verifiedAgendaItemIds : [],
+	      reports:Array.isArray(value.reports) ? value.reports : []
 	    };
 	  }
 	  function supabaseConfigured(){
@@ -327,11 +651,16 @@
 	      [COLLEAGUE_STORAGE_KEY]:'colleagueIdeas',
 	      [COLLEAGUE_HIDDEN_KEY]:'hiddenColleagueIdeaIds',
 	      [ADMIN_HIDDEN_INSPIRATION_KEY]:'hiddenInspirationTitles',
+	      [ADMIN_DELETED_INSPIRATION_KEY]:'deletedInspirationKeys',
 	      [ADMIN_LINKS_KEY]:'customLinks',
 	      [PENDING_LINKS_KEY]:'pendingLinks',
+	      [SOURCE_LINK_OVERRIDES_KEY]:'sourceLinkOverrides',
+	      [HIDDEN_SOURCE_LINKS_KEY]:'hiddenSourceLinkKeys',
 	      [AUTO_AGENDA_KEY]:'autoAgendaItems',
 	      [HIDDEN_AGENDA_KEY]:'hiddenAgendaItemIds',
-	      [VERIFIED_AGENDA_KEY]:'verifiedAgendaItemIds'
+	      [DELETED_AGENDA_KEY]:'deletedAgendaItemIds',
+	      [VERIFIED_AGENDA_KEY]:'verifiedAgendaItemIds',
+	      [REPORTS_KEY]:'reports'
 	    }[key] || null;
 	  }
 	  async function loadCentralStorage(){
@@ -417,15 +746,82 @@
     });
     return result;
   }
+  function normalizeIdeaType(value=''){
+    const v = normalize(value);
+    if(!v) return 'Eigen aanbod';
+    if(v.includes('collega')) return 'Inzending';
+    if(v.includes('zoekbron') || v.includes('agenda')) return 'Zoekbron / agenda';
+    if(v.includes('bestaand') || v.includes('extern')) return 'Bestaand extern aanbod';
+    if(v.includes('eigen')) return 'Eigen aanbod';
+    return 'Eigen aanbod';
+  }
+  function normalizeIdeaLocation(value=''){
+    const v = normalize(value);
+    if(!v) return 'Op groep / terrein';
+    const hasOnline = v.includes('online');
+    const hasOutside = v.includes('buiten de deur');
+    const hasIndoor = v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('buurt') || v.includes('park');
+    if(hasOnline) return 'Online / voorbereiding';
+    if(v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen + buiten';
+    if(hasOutside && hasIndoor) return 'Binnen + buiten';
+    if(hasOutside) return 'Buiten de deur';
+    if(hasIndoor) return 'Op groep / terrein';
+    return 'Op groep / terrein';
+  }
+  function normalizeIdeaCost(value=''){
+    const v = normalize(value);
+    const raw = String(value || '');
+    if(raw.includes('€€€')) return '€€€';
+    if(raw.includes('€€')) return '€€';
+    if(raw.includes('€')) return '€';
+    if(!v) return '€';
+    const isFreeOrLow = v.includes('gratis') || v.includes('laag');
+    const isMedium = v.includes('middel') || v.includes('museumkaart') || v.includes('parkeren');
+    const isPaid = v.includes('betaald') || v.includes('workshop');
+    if(isPaid && !isFreeOrLow && !isMedium) return '€€€';
+    if(isPaid || isMedium) return '€€';
+    return '€';
+  }
+  function normalizeIdeaStimulus(value=''){
+    const v = normalize(value);
+    if(!v) return 'Laag';
+    if(v.includes('hoog')) return 'Hoog';
+    if(v.includes('middel')) return 'Middel';
+    if(v.includes('laag')) return 'Laag';
+    return 'Laag';
+  }
+  function normalizeIdeaDistance(value='', item={}){
+    const v = normalize(value);
+    if(v.includes('daguitstap') || v.includes('30-50')) return 'Daguitstap (30-50 km)';
+    if(v.includes('in de regio') || v.includes('10-30')) return 'In de regio (10-30 km)';
+    if(v.includes('dichtbij') || v.includes('0-10')) return 'Dichtbij (0-10 km)';
+    if(v.includes('op terrein') || v === '0 km') return 'Op terrein';
+    const location = normalize(`${item.locationType || ''} ${item.where || ''} ${item.title || ''} ${item.source || ''}`);
+    if(location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op terrein';
+    if(/otterlo|rhenen|overloon|volkel|hemelrijk|hoge veluwe|kroller/.test(location)) return 'Daguitstap (30-50 km)';
+    if(/arnhem|cuijk|grave|gennep|beers|beugen|millingen|groesbeek|berg en dal|ewijk|mook|malden|overasselt|bemmel|elst|huissen|gendt/.test(location)) return 'In de regio (10-30 km)';
+    if(/nijmegen|dukenburg|lent|wijchen|beuningen|weurt|ooij|ubbergen/.test(location)) return 'Dichtbij (0-10 km)';
+    const locationType = normalizeIdeaLocation(item.locationType);
+    return locationType === 'Buiten de deur' || locationType === 'Binnen + buiten' ? 'Dichtbij (0-10 km)' : 'Op terrein';
+  }
+  function normalizedIdeaField(item, key){
+    if(key === 'domain') return domainDisplayLabel(item.domain);
+    if(key === 'type') return normalizeIdeaType(item.type);
+    if(key === 'locationType') return normalizeIdeaLocation(item.locationType);
+    if(key === 'cost') return normalizeIdeaCost(item.cost);
+    if(key === 'stimulus') return normalizeIdeaStimulus(item.stimulus);
+    if(key === 'distanceBand') return normalizeIdeaDistance(item.distanceBand, item);
+    return String(item[key] || '');
+  }
   function normalizeTeamIdea(item={}, index=0){
-    const by = String(item.by || 'Collega').trim() || 'Collega';
+    const by = String(item.by || 'Iemand').trim() || 'Iemand';
     return {
       ...item,
       id:item.id || `${normalize(by)}-${normalize(item.title || 'idee')}-${index}`,
       title:String(item.title || '').trim(),
       by,
       domain:item.domain || 'Ontmoeten, Spel & Vaardigheden',
-      type:item.type || 'Collega-aanvulling',
+      type:item.type || 'Inzending',
       distanceBand:item.distanceBand || 'Op terrein',
       note:String(item.note || item.materials || item.fit || '').trim(),
       source:item.source || `Ingebracht door ${by}`
@@ -458,15 +854,74 @@
   function hiddenTitles(){
     return new Set(loadArray(ADMIN_HIDDEN_INSPIRATION_KEY).map(normalize));
   }
+  function deletedIdeaKeys(){
+    return new Set(loadArray(ADMIN_DELETED_INSPIRATION_KEY).map(String));
+  }
   function hiddenTeamIds(){
     return new Set(loadArray(COLLEAGUE_HIDDEN_KEY));
   }
 	  function customLinks(){
 	    return loadArray(ADMIN_LINKS_KEY).map(normalizeLink).filter(link => link.name && link.url);
 	  }
+	  function baseLinks(){
+	    return (Array.isArray(BASE.links) ? BASE.links : []).map(normalizeLink).filter(link => link.name && link.url);
+	  }
+	  function sourceLinkKey(link={}){
+	    return `${normalize(link.name)}|${normalizeUrl(link.url)}`;
+	  }
+	  function normalizeSourceOverride(entry={}){
+	    const link = normalizeLink(entry);
+	    return {...link, key:String(entry.key || sourceLinkKey(link))};
+	  }
+	  function sourceLinkOverrides(){
+	    return loadArray(SOURCE_LINK_OVERRIDES_KEY).map(normalizeSourceOverride).filter(link => link.key && link.name && link.url);
+	  }
+	  function hiddenSourceLinkKeys(){
+	    return new Set(loadArray(HIDDEN_SOURCE_LINKS_KEY).map(String));
+	  }
+	  function sourceOverridesByKey(){
+	    return new Map(sourceLinkOverrides().map(link => [link.key, link]));
+	  }
+	  function managedSourceLinks(){
+	    const rows = [];
+	    const seen = new Set();
+	    customLinks().forEach((link, index) => {
+	      const key = sourceLinkKey(link);
+	      if(seen.has(key)) return;
+	      seen.add(key);
+	      rows.push({link, index, key, kind:'custom'});
+	    });
+	    const overrides = sourceOverridesByKey();
+	    const hidden = hiddenSourceLinkKeys();
+	    baseLinks().forEach(link => {
+	      const baseKey = sourceLinkKey(link);
+	      if(hidden.has(baseKey)) return;
+	      const managedLink = overrides.get(baseKey) || link;
+	      const visibleKey = sourceLinkKey(managedLink);
+	      if(seen.has(visibleKey)) return;
+	      seen.add(visibleKey);
+	      rows.push({link:managedLink, index:null, key:baseKey, kind:'base', modified:overrides.has(baseKey)});
+	    });
+	    return rows;
+	  }
 	  function pendingLinks(){
 	    return loadArray(PENDING_LINKS_KEY).map(link => ({...normalizeLink(link), status:'pending'})).filter(link => link.name && link.url);
 	  }
+  function reports(){
+    return loadArray(REPORTS_KEY)
+      .filter(report => report && report.status !== 'resolved')
+      .sort((a,b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+  }
+  function reportDate(value=''){
+    if(!value) return '';
+    const date = new Date(value);
+    if(Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('nl-NL', {day:'numeric', month:'long', year:'numeric'});
+  }
+  function linkDateMeta(link={}){
+    const date = reportDate(link.createdAt);
+    return date ? `Toegevoegd op ${date}` : '';
+  }
 	  function normalizeAgendaOffer(item={}, index=0){
 	    const title = String(item.title || '').trim();
 	    return {
@@ -475,6 +930,7 @@
 	      week:String(item.week || item.weekId || '').trim(),
 	      date:String(item.date || item.dateLabel || '').trim(),
 	      time:String(item.time || item.timeLabel || '').trim(),
+	      domain:String(item.domain || item.category || '').trim(),
 	      where:String(item.where || item.place || item.location || '').trim(),
 	      source:String(item.source || 'Broncheck').trim(),
 	      url:normalizeUrl(item.url || item.sourceUrl || ''),
@@ -485,11 +941,35 @@
 	  function agendaItemKey(item={}){
 	    return String(item.id || `${normalize(item.title)}|${normalize(item.date)}|${normalize(item.where)}|${normalize(item.url)}`);
 	  }
+	  function agendaContentKey(item={}){
+	    return `${normalize(item.title)}|${normalize(item.date)}|${normalize(item.where)}|${normalize(item.url)}`;
+	  }
 	  function autoAgendaItems(){
 	    return loadArray(AUTO_AGENDA_KEY).map(normalizeAgendaOffer).filter(item => item.title);
 	  }
+	  function baseAgendaItems(){
+	    return (Array.isArray(BASE.external) ? BASE.external : [])
+	      .map((item, index) => normalizeAgendaOffer({...item, id:item.id || `base-${index}`, reviewStatus:item.reviewStatus || 'verified'}, index))
+	      .filter(item => item.title);
+	  }
+	  function agendaReviewItems(){
+	    const items = [
+	      ...baseAgendaItems().map(item => ({...item, agendaKind:'base'})),
+	      ...autoAgendaItems().map(item => ({...item, agendaKind:'auto'}))
+	    ];
+	    const seen = new Set();
+	    return items.filter(item => {
+	      const key = agendaItemKey(item);
+	      if(seen.has(key)) return false;
+	      seen.add(key);
+	      return true;
+	    });
+	  }
 	  function hiddenAgendaIds(){
 	    return new Set(loadArray(HIDDEN_AGENDA_KEY));
+	  }
+	  function deletedAgendaIds(){
+	    return new Set(loadArray(DELETED_AGENDA_KEY));
 	  }
 	  function verifiedAgendaIds(){
 	    return new Set(loadArray(VERIFIED_AGENDA_KEY));
@@ -497,46 +977,239 @@
   function allAdminIdeas(){
     const titleHidden = hiddenTitles();
     const teamHidden = hiddenTeamIds();
+    const deleted = deletedIdeaKeys();
     const baseIdeas = BASE.inspiration.map(item => ({
       key:normalize(item.title),
       kind:'basis',
       title:item.title,
       domain:item.domain,
-      type:item.type || 'Eigen aanbod',
-      distanceBand:item.distanceBand || '',
+      type:normalizeIdeaType(item.type || 'Eigen aanbod'),
+      locationType:normalizeIdeaLocation(item.locationType || ''),
+      distanceBand:normalizeIdeaDistance(item.distanceBand || '', item),
+      cost:normalizeIdeaCost(item.cost || ''),
+      stimulus:normalizeIdeaStimulus(item.stimulus || ''),
       source:item.source || item.type || '',
+      rules:item.rules || item.materials || item.note || '',
+      url:item.url || '',
       hidden:titleHidden.has(normalize(item.title))
-    }));
+    })).filter(item => !deleted.has(item.key));
     const seedIdeas = baseTeamIdeas().map(item => ({
       key:item.id,
       kind:'collega-voorbeeld',
       title:item.title,
       domain:item.domain,
-      type:'Collega-aanvulling',
-      distanceBand:item.distanceBand || '',
+      type:normalizeIdeaType('Inzending'),
+      locationType:normalizeIdeaLocation(item.locationType || ''),
+      distanceBand:normalizeIdeaDistance(item.distanceBand || '', item),
+      cost:normalizeIdeaCost(item.cost || ''),
+      stimulus:normalizeIdeaStimulus(item.stimulus || ''),
       source:item.source,
+      rules:item.materials || item.note || '',
+      url:item.url || '',
       hidden:teamHidden.has(item.id)
-    }));
+    })).filter(item => !deleted.has(item.key) && !deleted.has(normalize(item.title)));
     const userIdeas = storedTeamIdeas().map(item => ({
       key:item.id,
       kind:'collega-toegevoegd',
       title:item.title,
       domain:item.domain,
-      type:'Collega-aanvulling',
-      distanceBand:item.distanceBand || '',
+      type:normalizeIdeaType('Inzending'),
+      locationType:normalizeIdeaLocation(item.locationType || ''),
+      distanceBand:normalizeIdeaDistance(item.distanceBand || '', item),
+      cost:normalizeIdeaCost(item.cost || ''),
+      stimulus:normalizeIdeaStimulus(item.stimulus || ''),
       source:item.source || `Ingebracht door ${item.by}`,
+      rules:item.materials || item.note || '',
+      url:item.url || '',
       hidden:teamHidden.has(item.id)
-    }));
+    })).filter(item => !deleted.has(item.key) && !deleted.has(normalize(item.title)));
     return [...userIdeas, ...seedIdeas, ...baseIdeas].sort((a,b) => a.title.localeCompare(b.title, 'nl'));
   }
   function ideaMatches(item, query){
     if(!query) return true;
-    return normalize(`${item.title} ${item.domain} ${item.type} ${item.source}`).includes(normalize(query));
+    return normalize(`${item.title} ${item.domain} ${item.type} ${item.locationType} ${item.distanceBand} ${item.cost} ${item.stimulus} ${item.source}`).includes(normalize(query));
   }
-  function visibleByFilter(item){
-    if(activeFilter === 'hidden') return item.hidden;
-    if(activeFilter === 'visible') return !item.hidden;
-    return true;
+  function fieldMatches(item, key, value){
+    if(!value || value === 'all') return true;
+    return normalizedIdeaField(item, key) === value;
+  }
+  function domainIcon(domain){
+    const key = normalize(domain || '');
+    if(key.includes('creatief')) return ICONS.creative;
+    if(key.includes('cultuur')) return ICONS.culture;
+    if(key.includes('natuur')) return ICONS.nature;
+    if(key.includes('actie') || key.includes('amusement')) return ICONS.action;
+    if(key.includes('ontmoeten') || key.includes('vaardigheden') || key.includes('spel')) return ICONS.social;
+    if(key.includes('sport')) return ICONS.sport;
+    return ICONS.default;
+  }
+  function domainThemeClass(domain){
+    const key = normalize(domain || '');
+    if(key.includes('creatief')) return 'themeCreative';
+    if(key.includes('cultuur')) return 'themeCulture';
+    if(key.includes('natuur')) return 'themeNature';
+    if(key.includes('actie') || key.includes('amusement')) return 'themeAction';
+    if(key.includes('ontmoeten') || key.includes('vaardigheden') || key.includes('spel')) return 'themeSocial';
+    if(key.includes('sport')) return 'themeSport';
+    return 'themeDefault';
+  }
+  function domainDisplayLabel(domain){
+    const key = normalize(domain || '');
+    if(key.includes('ontmoeten') || key.includes('vaardigheden') || key.includes('spel')) return 'Ontmoeten & Spel';
+    if(key.includes('actie') || key.includes('amusement')) return 'Actie & Amusement';
+    if(key.includes('creatief')) return 'Creatief';
+    if(key.includes('cultuur')) return 'Cultuur';
+    if(key.includes('natuur')) return 'Natuur';
+    if(key.includes('sport')) return 'Sport & Bewegen';
+    return domain || 'Overig';
+  }
+  function titleWithIcon(title, domain, className='adminIdeaTitle'){
+    return `<span class="${className}"><span class="domainIcon" aria-hidden="true">${domainIcon(domain)}</span><span class="adminIdeaTitleText">${escapeHtml(title)}</span></span>`;
+  }
+  function renderAdminThemeLegend(){
+    $('#adminThemeLegend').innerHTML = `<div class="agendaThemeLegend" aria-label="Legenda themakleuren">${ADMIN_THEME_LEGEND.map(domain => `<span class="agendaLegendItem ${domainThemeClass(domain)}"><span class="domainIcon" aria-hidden="true">${domainIcon(domain)}</span>${escapeHtml(domainDisplayLabel(domain))}</span>`).join('')}</div>`;
+  }
+  function adminThemeOrder(domain){
+    const label = domainDisplayLabel(domain);
+    const index = ADMIN_THEME_LEGEND.findIndex(theme => domainDisplayLabel(theme) === label);
+    return index === -1 ? ADMIN_THEME_LEGEND.length : index;
+  }
+  function sortAdminIdeas(items){
+    return [...items].sort((a,b) =>
+      adminThemeOrder(a.domain) - adminThemeOrder(b.domain)
+      || String(a.title || '').localeCompare(String(b.title || ''), 'nl')
+    );
+  }
+  function ideaFilterValues(){
+    return {
+      domain:$('#ideaDomainFilter').value,
+      locationType:$('#ideaLocationFilter').value,
+      distanceBand:$('#ideaDistanceFilter').value,
+      cost:$('#ideaCostFilter').value,
+      stimulus:$('#ideaStimulusFilter').value
+    };
+  }
+  function passesIdeaFilters(item, filters){
+    return fieldMatches(item, 'domain', filters.domain)
+      && fieldMatches(item, 'locationType', filters.locationType)
+      && fieldMatches(item, 'distanceBand', filters.distanceBand)
+      && fieldMatches(item, 'cost', filters.cost)
+      && fieldMatches(item, 'stimulus', filters.stimulus);
+  }
+  function fillIdeaFilter(selector, values, label, formatter=value => value){
+    const select = $(selector);
+    const current = select.value || 'all';
+    select.innerHTML = `<option value="all">${escapeHtml(label)}</option>` + [...new Set(values.filter(Boolean))]
+      .map(value => `<option value="${escapeHtml(value)}">${escapeHtml(formatter(value))}</option>`)
+      .join('');
+    select.value = [...select.options].some(option => option.value === current) ? current : 'all';
+  }
+  function closeCustomSelects(except=null){
+    document.querySelectorAll('.customSelect.open').forEach(control => {
+      if(control === except) return;
+      control.classList.remove('open','openUp');
+      const button = control.querySelector('.customSelectButton');
+      if(button) button.setAttribute('aria-expanded','false');
+    });
+  }
+  function syncCustomSelect(select){
+    if(select && typeof select._syncCustomSelect === 'function') select._syncCustomSelect();
+  }
+  function enhanceCustomSelect(select){
+    if(!select) return;
+    const previous = select.closest('.customSelect');
+    if(previous){
+      previous.parentNode.insertBefore(select, previous);
+      previous.remove();
+    }
+    select.classList.add('customNativeSelect');
+    const themed = select.dataset.themeSelect === 'true';
+    const control = document.createElement('div');
+    control.className = themed ? 'customSelect themeSelect' : 'customSelect';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'customSelectButton';
+    button.setAttribute('aria-haspopup','listbox');
+    button.setAttribute('aria-expanded','false');
+    const icon = document.createElement('span');
+    icon.className = 'domainIcon';
+    icon.setAttribute('aria-hidden','true');
+    const label = document.createElement('span');
+    label.className = 'customSelectLabel';
+    if(themed) button.appendChild(icon);
+    button.appendChild(label);
+    const menu = document.createElement('div');
+    menu.className = 'customSelectMenu';
+    menu.setAttribute('role','listbox');
+    [...select.options].forEach(option => {
+      if(option.value === 'all') return;
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'customSelectOption';
+      item.dataset.value = option.value;
+      item.setAttribute('role','option');
+      if(themed){
+        item.classList.add(domainThemeClass(option.value));
+        const itemIcon = document.createElement('span');
+        itemIcon.className = 'domainIcon';
+        itemIcon.setAttribute('aria-hidden','true');
+        itemIcon.innerHTML = domainIcon(option.value);
+        const itemLabel = document.createElement('span');
+        itemLabel.textContent = option.textContent;
+        item.append(itemIcon, itemLabel);
+      }else{
+        item.textContent = option.textContent;
+      }
+      item.addEventListener('click', () => {
+        select.value = option.value;
+        select._syncCustomSelect();
+        select.dispatchEvent(new Event('change',{bubbles:true}));
+        closeCustomSelects();
+      });
+      menu.appendChild(item);
+    });
+    select.parentNode.insertBefore(control, select);
+    control.append(select, button, menu);
+    select._syncCustomSelect = () => {
+      const selected = select.options[select.selectedIndex] || select.options[0];
+      label.textContent = selected ? selected.textContent : '';
+      if(themed && selected){
+        control.classList.remove('themeCreative','themeCulture','themeNature','themeSocial','themeSport','themeAction','themeDefault');
+        control.classList.add(domainThemeClass(selected.value));
+        icon.innerHTML = domainIcon(selected.value);
+      }
+      menu.querySelectorAll('.customSelectOption').forEach(item => {
+        const active = item.dataset.value === select.value;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    };
+    select._syncCustomSelect();
+    button.addEventListener('click', () => {
+      const willOpen = !control.classList.contains('open');
+      closeCustomSelects(control);
+      control.classList.toggle('open', willOpen);
+      button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      control.classList.remove('openUp');
+    });
+  }
+  function setupIdeaFilters(){
+    fillIdeaFilter('#ideaDomainFilter', ADMIN_THEME_LEGEND, 'Categorie', domainDisplayLabel);
+    fillIdeaFilter('#ideaLocationFilter', IDEA_LOCATION_OPTIONS, 'Locatie');
+    fillIdeaFilter('#ideaDistanceFilter', IDEA_DISTANCE_OPTIONS, 'Afstand');
+    fillIdeaFilter('#ideaCostFilter', IDEA_COST_OPTIONS, 'Kosten');
+    fillIdeaFilter('#ideaStimulusFilter', IDEA_STIMULUS_OPTIONS, 'Prikkelbelasting');
+    ['#ideaDomainFilter','#ideaLocationFilter','#ideaDistanceFilter','#ideaCostFilter','#ideaStimulusFilter'].forEach(selector => enhanceCustomSelect($(selector)));
+  }
+  function resetIdeaFilters(){
+    $('#ideaSearch').value = '';
+    ['#ideaDomainFilter','#ideaLocationFilter','#ideaDistanceFilter','#ideaCostFilter','#ideaStimulusFilter'].forEach(selector => {
+      const select = $(selector);
+      select.value = 'all';
+      syncCustomSelect(select);
+    });
+    closeCustomSelects();
+    renderIdeas();
   }
   function setStatus(selector, message, kind=''){
     const el = $(selector);
@@ -544,58 +1217,166 @@
     el.textContent = message;
     el.className = kind ? `status ${kind}` : 'status';
   }
-  function rowForIdea(item){
-    const hiddenLabel = item.hidden ? '<span class="pill warn">Verborgen</span>' : '<span class="pill ok">Zichtbaar</span>';
+  function actionIcon(name){
+    if(name === 'eye') return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+    if(name === 'eyeOff') return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18"></path><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path><path d="M9.9 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-2.7 3.4"></path><path d="M6.6 6.7C3.6 8.6 2 12 2 12s3.5 7 10 7a10.8 10.8 0 0 0 4.4-.9"></path></svg>';
+    if(name === 'trash') return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>';
+    return '';
+  }
+  function adminIdeaActions(item){
+    const statusLabel = item.hidden ? 'Maak zichtbaar' : 'Verberg tijdelijk';
+    const statusIcon = item.hidden ? actionIcon('eyeOff') : actionIcon('eye');
     const hideAction = item.kind === 'basis'
-      ? `<button class="button small ${item.hidden ? '' : 'warn'}" data-title-action="${item.hidden ? 'show' : 'hide'}" data-key="${escapeHtml(item.key)}" type="button">${item.hidden ? 'Herstel' : 'Verberg'}</button>`
-      : `<button class="button small ${item.hidden ? '' : 'warn'}" data-team-action="${item.hidden ? 'show' : 'hide'}" data-key="${escapeHtml(item.key)}" type="button">${item.hidden ? 'Herstel' : 'Verberg'}</button>`;
-    const deleteAction = item.kind === 'collega-toegevoegd'
-      ? `<button class="button small hot" data-team-action="delete" data-key="${escapeHtml(item.key)}" type="button">Verwijder</button>`
-      : '';
-    return `<article class="row ${item.hidden ? 'hiddenItem' : ''}">
-      <div>
-        <strong>${escapeHtml(item.title)}</strong>
-        <span>${escapeHtml(item.domain || 'Geen thema')} · ${escapeHtml(item.distanceBand || 'Afstand nog bepalen')} · ${escapeHtml(item.type)} · ${escapeHtml(item.source || item.kind)}</span>
-      </div>
-      <div class="rowActions">${hiddenLabel}${hideAction}${deleteAction}</div>
+      ? `<button class="button iconAction ${item.hidden ? '' : 'warn'}" data-title-action="${item.hidden ? 'show' : 'hide'}" data-key="${escapeHtml(item.key)}" type="button" aria-label="${escapeHtml(statusLabel)}" title="${escapeHtml(statusLabel)}">${statusIcon}</button>`
+      : `<button class="button iconAction ${item.hidden ? '' : 'warn'}" data-team-action="${item.hidden ? 'show' : 'hide'}" data-key="${escapeHtml(item.key)}" type="button" aria-label="${escapeHtml(statusLabel)}" title="${escapeHtml(statusLabel)}">${statusIcon}</button>`;
+    const deleteAction = `<button class="button iconAction hot" data-delete-idea="${escapeHtml(item.key)}" data-kind="${escapeHtml(item.kind)}" data-title="${escapeHtml(item.title)}" type="button" aria-label="Verwijder" title="Verwijder">${actionIcon('trash')}</button>`;
+    return `<div class="ideaActions">${hideAction}${deleteAction}</div>`;
+  }
+  function adminIdeaCard(item){
+    const meta = [item.type, item.locationType, item.distanceBand, item.cost, item.stimulus].filter(Boolean).join(' · ');
+    return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}">
+      <div class="cardPills"><span class="pill domainThemePill">${escapeHtml(domainDisplayLabel(item.domain))}</span> ${item.hidden ? '<span class="pill warn">Verborgen</span>' : '<span class="pill ok">Zichtbaar</span>'}</div>
+      <h3>${titleWithIcon(item.title, item.domain)}</h3>
+      <p>${escapeHtml(meta || item.source || item.kind)}</p>
+      <p class="fine">${escapeHtml(item.source || item.kind)}</p>
+      <div class="cardFooter">${adminIdeaActions(item)}</div>
     </article>`;
   }
-  function renderIdeas(){
-    const query = $('#ideaSearch').value;
-    const items = allAdminIdeas().filter(item => ideaMatches(item, query)).filter(visibleByFilter);
-    $('#ideaCount').textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
-    $('#ideaList').innerHTML = items.length ? items.map(rowForIdea).join('') : '<div class="empty">Geen items gevonden met deze selectie.</div>';
+  function adminIdeaRow(item){
+    const source = item.source || item.kind;
+    const website = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open</a>` : '<span class="small">-</span>';
+    return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}">
+      <td>${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}<div class="small">${escapeHtml(source)}</div></td>
+      <td>${escapeHtml(domainDisplayLabel(item.domain))}</td>
+      <td>${escapeHtml([item.locationType, item.distanceBand].filter(Boolean).join(' · ') || '-')}</td>
+      <td>${item.cost ? `<span class="pill soft">${escapeHtml(item.cost)}</span>` : '<span class="small">-</span>'}</td>
+      <td>${item.stimulus ? `<span class="pill soft">${escapeHtml(item.stimulus)}</span>` : '<span class="small">-</span>'}</td>
+      <td><div class="small">${escapeHtml(item.rules || item.material || source || '-')}</div></td>
+      <td>${website}</td>
+      <td>${adminIdeaActions(item)}</td>
+    </tr>`;
   }
+  function renderIdeas(){
+    renderSubmittedIdeas();
+    const query = $('#ideaSearch').value;
+    const filters = ideaFilterValues();
+    const items = sortAdminIdeas(allAdminIdeas().filter(item => ideaMatches(item, query)).filter(item => passesIdeaFilters(item, filters)));
+    $('#ideaCount').textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+    const empty = '<div class="empty">Geen items gevonden met deze selectie.</div>';
+    $('#adminIdeaCards').innerHTML = items.length ? items.map(adminIdeaCard).join('') : empty;
+    $('#adminIdeaList').innerHTML = items.length
+      ? `<table class="adminIdeaTable"><thead><tr><th>Activiteit</th><th>Categorie</th><th>Locatie</th><th>Kosten</th><th>Prikkel</th><th>Regelen / materiaal</th><th>Website</th><th>Beheer</th></tr></thead><tbody>${items.map(adminIdeaRow).join('')}</tbody></table>`
+      : empty;
+  }
+  function setAdminIdeaView(view){
+    const listOn = view === 'list';
+    document.querySelectorAll('[data-admin-view]').forEach(btn => {
+      const active = btn.dataset.adminView === view;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    $('#adminIdeaList').classList.toggle('active', listOn);
+    $('#adminIdeaCards').classList.toggle('active', !listOn);
+    $('#adminIdeaCards').hidden = listOn;
+    $('#adminIdeaList').hidden = !listOn;
+  }
+	  function sourceLinkRow(entry){
+	    const {link, index, key, kind, modified} = entry;
+	    const custom = kind === 'custom';
+	    const label = custom ? 'Eigen aanvulling' : modified ? 'Vaste bron aangepast' : 'Vaste bron';
+	    const dateMeta = custom ? linkDateMeta(link) : '';
+	    const meta = [link.category, link.note, dateMeta].filter(Boolean).join(' · ');
+	    const editAttrs = custom
+	      ? `data-edit-link-kind="custom" data-edit-link-index="${index}"`
+	      : `data-edit-link-kind="base" data-edit-link-key="${escapeHtml(key)}"`;
+	    return `<article class="row">
+	      <div><strong>${escapeHtml(link.name)}</strong><span>${escapeHtml(meta)}</span></div>
+	      <div class="rowActions">
+	        <span class="pill soft">${escapeHtml(label)}</span>
+	        <a class="button small" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">Open</a>
+	        <button class="button small" ${editAttrs} type="button">Wijzig</button>
+	        ${modified ? `<button class="button small warn" data-reset-base-link="${escapeHtml(key)}" type="button">Herstel</button>` : ''}
+	        ${custom ? `<button class="button small hot" data-remove-link="${index}" type="button">Verwijder</button>` : `<button class="button small hot" data-hide-source-link="${escapeHtml(key)}" type="button">Verwijder</button>`}
+	      </div>
+	    </article>`;
+	  }
 	  function renderLinks(){
-	    const links = customLinks();
-	    $('#customLinkList').innerHTML = links.length ? links.map((link, index) => `<article class="row">
-	      <div><strong>${escapeHtml(link.name)}</strong><span>${escapeHtml(link.category)} · ${escapeHtml(link.note)}</span></div>
-	      <div class="rowActions"><a class="button small" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">Open</a><button class="button small hot" data-remove-link="${index}" type="button">Verwijder</button></div>
-	    </article>`).join('') : '<div class="empty">Nog geen eigen bronlinks toegevoegd.</div>';
+	    const links = managedSourceLinks();
+	    $('#customLinkList').innerHTML = links.length ? links.map(sourceLinkRow).join('') : '<div class="empty">Er staan nog geen bronlinks in de bronnenlijst.</div>';
 	    renderPendingLinks();
 	  }
 	  function renderPendingLinks(){
 	    const links = pendingLinks();
 	    $('#pendingLinkCount').textContent = `${links.length} wacht${links.length === 1 ? '' : 'en'}`;
 	    $('#pendingLinkList').innerHTML = links.length ? links.map((link, index) => `<article class="row">
-	      <div><strong>${escapeHtml(link.name)}</strong><span>${escapeHtml(link.category)} · ${escapeHtml(link.note)}${link.by ? ` · door ${escapeHtml(link.by)}` : ''}</span></div>
+	      <div><strong>${escapeHtml(link.name)}</strong><span>${escapeHtml([link.category, link.note, link.by ? `door ${link.by}` : '', linkDateMeta(link)].filter(Boolean).join(' · '))}</span></div>
 	      <div class="rowActions"><a class="button small" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">Open</a><button class="button small primary" data-approve-link="${index}" type="button">Goedkeuren</button><button class="button small hot" data-reject-link="${index}" type="button">Afwijzen</button></div>
 	    </article>`).join('') : '<div class="empty">Er wachten geen links op goedkeuring.</div>';
 	  }
+  function renderSubmittedIdeas(){
+    const hidden = hiddenTeamIds();
+    const deleted = deletedIdeaKeys();
+    const items = storedTeamIdeas()
+      .map(item => ({
+        key:item.id,
+        kind:'collega-toegevoegd',
+        title:item.title,
+        domain:item.domain,
+        source:item.source || `Ingebracht door ${item.by}`,
+        rules:item.materials || item.note || '',
+        hidden:hidden.has(item.id)
+      }))
+      .filter(item => !deleted.has(item.key) && !deleted.has(normalize(item.title)));
+    $('#submittedIdeaCount').textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+    $('#submittedIdeaList').innerHTML = items.length ? items.map(item => `<article class="row ${item.hidden ? 'hiddenItem' : ''}">
+      <div><strong>${titleWithIcon(item.title, item.domain)}</strong><span>${escapeHtml([item.source, item.rules].filter(Boolean).join(' · '))}</span></div>
+      <div class="rowActions">${item.hidden ? '<span class="pill warn">Verborgen</span>' : '<span class="pill ok">Zichtbaar</span>'}${adminIdeaActions(item)}</div>
+    </article>`).join('') : '<div class="empty">Er wachten geen toegevoegde inspiratie-items.</div>';
+  }
+  function renderReports(){
+    const items = reports();
+    $('#reportCount').textContent = `${items.length} open`;
+    $('#reportList').innerHTML = items.length ? items.map(report => {
+      const meta = [report.kind, report.reason, reportDate(report.createdAt)].filter(Boolean).join(' · ');
+      return `<article class="row">
+        <div><strong>${escapeHtml(report.title || 'Melding')}</strong><span>${escapeHtml(meta)}</span></div>
+        <div class="rowActions"><button class="button small primary" data-resolve-report="${escapeHtml(report.id)}" type="button">Afhandelen</button></div>
+      </article>`;
+    }).join('') : '<div class="empty">Er zijn geen open meldingen.</div>';
+  }
 	  function renderAgendaReview(){
 	    const hidden = hiddenAgendaIds();
+	    const deleted = deletedAgendaIds();
 	    const verified = verifiedAgendaIds();
-	    const items = autoAgendaItems();
+	    const items = agendaReviewItems().filter(item => !deleted.has(item.id) && !deleted.has(agendaItemKey(item)) && !deleted.has(agendaContentKey(item)));
 	    $('#agendaReviewCount').textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+	    const pendingCount = items.filter(item => {
+	      const key = agendaItemKey(item);
+	      const isHidden = hidden.has(item.id) || hidden.has(key);
+	      const isVerified = verified.has(item.id) || verified.has(key) || item.reviewStatus === 'verified';
+	      return !isHidden && !isVerified;
+	    }).length;
+	    const approveAllButton = $('#approveAllAgendaBtn');
+	    approveAllButton.disabled = !pendingCount;
+	    approveAllButton.textContent = pendingCount ? `Alles goedkeuren (${pendingCount})` : 'Alles is goedgekeurd';
 	    $('#agendaReviewList').innerHTML = items.length ? items.map(item => {
 	      const key = agendaItemKey(item);
 	      const isHidden = hidden.has(item.id) || hidden.has(key);
 	      const isVerified = verified.has(item.id) || verified.has(key) || item.reviewStatus === 'verified';
-	      return `<article class="row ${isHidden ? 'hiddenItem' : ''}">
-	        <div><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml([item.week, item.date, item.time, item.where, item.source].filter(Boolean).join(' · '))}</span></div>
-	        <div class="rowActions">${isVerified ? '<span class="pill ok">Gecheckt</span>' : '<span class="pill warn">Nog even checken</span>'}<a class="button small" href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener">Open</a><button class="button small primary" data-verify-agenda="${escapeHtml(item.id)}" type="button">Gecheckt</button><button class="button small ${isHidden ? '' : 'warn'}" data-hide-agenda="${escapeHtml(item.id)}" data-hidden="${isHidden ? '1' : '0'}" type="button">${isHidden ? 'Toon' : 'Verberg'}</button></div>
+	      const isNew = !isHidden && !isVerified;
+	      const typePill = item.agendaKind === 'auto' ? '<span class="pill warn">Automatisch</span>' : '<span class="pill ok">Vast item</span>';
+	      const status = isHidden ? '<span class="pill warn">Verborgen</span>' : isVerified ? '<span class="pill ok">Gecheckt</span>' : '<span class="pill new">Nieuw</span><span class="pill warn">Nog checken</span>';
+	      const meta = [
+	        [item.week, item.date, item.time].filter(Boolean).join(' · ') || 'Nog bepalen',
+	        [item.domain || 'Categorie nog checken', item.where].filter(Boolean).join(' · '),
+	        item.source
+	      ].filter(Boolean).join(' · ');
+	      const verifyAction = isVerified || isHidden ? '' : `<button class="button small primary" data-verify-agenda="${escapeHtml(item.id)}" type="button">Goedkeuren</button>`;
+	      return `<article class="row ${isHidden ? 'hiddenItem' : ''} ${isNew ? 'newItem' : ''}">
+	        <div><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(meta)}</span>${item.fit ? `<span>${escapeHtml(item.fit)}</span>` : ''}</div>
+	        <div class="rowActions">${typePill}${status}<a class="button small" href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener">Open</a>${verifyAction}<button class="button small ${isHidden ? '' : 'warn'}" data-hide-agenda="${escapeHtml(item.id)}" data-hidden="${isHidden ? '1' : '0'}" type="button">${isHidden ? 'Toon' : 'Verberg'}</button><button class="button small hot" data-delete-agenda="${escapeHtml(item.id)}" type="button">Verwijder</button></div>
 	      </article>`;
-	    }).join('') : '<div class="empty">Nog geen automatische vondsten in beheer.</div>';
+	    }).join('') : '<div class="empty">Geen agenda-items om te beheren.</div>';
 	  }
   async function updateTitleVisibility(key, action){
     const titles = new Set(loadArray(ADMIN_HIDDEN_INSPIRATION_KEY).map(normalize));
@@ -611,11 +1392,7 @@
   }
   async function updateTeamVisibility(key, action){
     const ids = new Set(loadArray(COLLEAGUE_HIDDEN_KEY));
-    if(action === 'delete'){
-      if(!window.confirm('Deze collega-aanvulling echt verwijderen?')) return;
-      saveArray(COLLEAGUE_STORAGE_KEY, storedTeamIdeas().filter(item => item.id !== key));
-      ids.delete(key);
-    }else if(action === 'hide'){
+    if(action === 'hide'){
       ids.add(key);
     }else{
       ids.delete(key);
@@ -628,14 +1405,34 @@
     renderIdeas();
     setStatus('#adminStatus', 'De inspiratiebank is aangepast. Ververs de gewone pagina om dit te zien.', 'ok');
   }
+  async function deleteIdea(key, kind, title){
+    if(!window.confirm('Deze activiteit echt verwijderen? Dit is niet hetzelfde als tijdelijk verbergen.')) return;
+    const deleted = deletedIdeaKeys();
+    deleted.add(String(key));
+    if(title) deleted.add(normalize(title));
+    saveArray(ADMIN_DELETED_INSPIRATION_KEY, [...deleted]);
+    if(kind === 'basis'){
+      const hidden = new Set(loadArray(ADMIN_HIDDEN_INSPIRATION_KEY).map(normalize));
+      hidden.delete(normalize(key));
+      if(title) hidden.delete(normalize(title));
+      saveArray(ADMIN_HIDDEN_INSPIRATION_KEY, [...hidden]);
+    }else{
+      const hidden = new Set(loadArray(COLLEAGUE_HIDDEN_KEY));
+      hidden.delete(key);
+      saveArray(COLLEAGUE_HIDDEN_KEY, [...hidden]);
+      saveArray(COLLEAGUE_STORAGE_KEY, storedTeamIdeas().filter(item => item.id !== key));
+    }
+    if(!(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Verwijderen lukte niet in de online opslag.', 'warn');
+      return;
+    }
+    setupIdeaFilters();
+    renderIdeas();
+    setStatus('#adminStatus', 'Activiteit verwijderd. De gewone pagina neemt dit over na verversen.', 'ok');
+  }
   async function addCustomLink(event){
     event.preventDefault();
-    const link = normalizeLink({
-      name:$('#linkName').value,
-      url:$('#linkUrl').value,
-      category:$('#linkCategory').value,
-      note:$('#linkNote').value
-    });
+    const link = linkFromForm();
     if(!link.name || !link.url){
       setStatus('#linkStatus', 'Vul minimaal een naam en website in.', 'warn');
       return;
@@ -644,23 +1441,90 @@
       setStatus('#linkStatus', 'Gebruik een volledige link, bijvoorbeeld https://...', 'warn');
       return;
     }
-    const links = customLinks();
-    const exists = links.some(item => normalize(item.name) === normalize(link.name) || item.url === link.url);
+    const currentEntry = editingSourceLink;
+    const exists = sourceLinkHasDuplicate(link, currentEntry);
     if(exists){
-      setStatus('#linkStatus', 'Deze link staat al tussen de eigen bronlinks.', 'warn');
+      setStatus('#linkStatus', 'Deze link staat al tussen de bronlinks.', 'warn');
       return;
     }
-    links.push(link);
-    saveArray(ADMIN_LINKS_KEY, links);
+    if(currentEntry){
+      if(currentEntry.kind === 'custom'){
+        const links = customLinks();
+        const current = links[Number(currentEntry.index)] || {};
+        links[Number(currentEntry.index)] = {...link, createdAt:current.createdAt || link.createdAt || new Date().toISOString()};
+        saveArray(ADMIN_LINKS_KEY, links);
+      }else{
+        const overrides = sourceLinkOverrides().filter(item => item.key !== currentEntry.key);
+        overrides.push({...link, key:currentEntry.key});
+        saveArray(SOURCE_LINK_OVERRIDES_KEY, overrides);
+      }
+    }else{
+      const links = customLinks();
+      links.push({...link, createdAt:link.createdAt || new Date().toISOString()});
+      saveArray(ADMIN_LINKS_KEY, links);
+    }
     if(!(await saveCentralStorage())){
       setStatus('#linkStatus', 'Opslaan in de online opslag lukte niet.', 'warn');
       return;
     }
-    event.target.reset();
+    resetLinkForm();
     renderLinks();
-    setStatus('#linkStatus', 'Link toegevoegd. Ververs de gewone pagina om hem daar te zien.', 'ok');
+    setStatus('#linkStatus', currentEntry ? 'Bronlink gewijzigd en direct zichtbaar bij Bronnen na verversen.' : 'Link toegevoegd en direct zichtbaar bij Bronnen na verversen.', 'ok');
   }
+	  function linkFromForm(){
+	    return normalizeLink({
+	      name:$('#linkName').value,
+	      url:$('#linkUrl').value,
+	      category:$('#linkCategory').value,
+	      note:$('#linkNote').value
+	    });
+	  }
+	  function themeOptionFor(value=''){
+	    const current = normalize(value);
+	    const exact = SOURCE_THEME_OPTIONS.find(option => normalize(option) === current);
+	    if(exact) return exact;
+	    if(current.includes('creatief') || current.includes('expressie')) return 'Creatief & Expressie';
+	    if(current.includes('cultuur') || current.includes('ontdek')) return 'Cultuur & Ontdekken';
+	    if(current.includes('natuur') || current.includes('buiten')) return 'Natuur & Buiten';
+	    if(current.includes('ontmoet') || current.includes('spel') || current.includes('vaardig')) return 'Ontmoeten, Spel & Vaardigheden';
+	    if(current.includes('sport') || current.includes('beweeg')) return 'Sport & Bewegen';
+	    if(current.includes('actie') || current.includes('amusement')) return 'Actie & Amusement';
+	    return SOURCE_THEME_OPTIONS[1];
+	  }
+	  function resetLinkForm(){
+	    $('#linkForm').reset();
+	    $('#linkCategory').value = SOURCE_THEME_OPTIONS[1];
+	    syncCustomSelect($('#linkCategory'));
+	    editingSourceLink = null;
+	    $('#linkSubmitBtn').textContent = 'Link toevoegen';
+	    $('#cancelLinkEditBtn').hidden = true;
+	  }
+	  function sourceLinkHasDuplicate(next, currentEntry){
+	    return managedSourceLinks().some(entry => {
+	      if(currentEntry && currentEntry.kind === 'custom' && entry.kind === 'custom' && Number(entry.index) === Number(currentEntry.index)) return false;
+	      if(currentEntry && currentEntry.kind === 'base' && entry.kind === 'base' && entry.key === currentEntry.key) return false;
+	      return normalize(entry.link.name) === normalize(next.name) || entry.link.url === next.url;
+	    });
+	  }
+	  function editSourceLink(kind, identifier){
+	    const currentEntry = kind === 'custom'
+	      ? managedSourceLinks().find(entry => entry.kind === 'custom' && Number(entry.index) === Number(identifier))
+	      : managedSourceLinks().find(entry => entry.kind === 'base' && entry.key === identifier);
+	    if(!currentEntry) return;
+	    editingSourceLink = currentEntry;
+	    $('#linkName').value = currentEntry.link.name || '';
+	    $('#linkUrl').value = currentEntry.link.url || '';
+	    $('#linkCategory').value = themeOptionFor(currentEntry.link.category);
+	    syncCustomSelect($('#linkCategory'));
+	    $('#linkNote').value = currentEntry.link.note || '';
+	    $('#linkSubmitBtn').textContent = 'Wijziging opslaan';
+	    $('#cancelLinkEditBtn').hidden = false;
+	    $('#linkName').focus();
+	    $('#sourceOwnPanel').scrollIntoView({behavior:'smooth', block:'start'});
+	    setStatus('#linkStatus', 'Pas de velden aan en klik op Wijziging opslaan.', 'ok');
+	  }
 	  async function removeCustomLink(index){
+	    if(!window.confirm('Deze eigen bronlink verwijderen?')) return;
 	    const links = customLinks();
     links.splice(Number(index), 1);
     saveArray(ADMIN_LINKS_KEY, links);
@@ -671,13 +1535,37 @@
 	    renderLinks();
 	    setStatus('#linkStatus', 'Link verwijderd.', 'ok');
 	  }
+	  async function hideBaseSourceLink(key){
+	    const entry = managedSourceLinks().find(link => link.kind === 'base' && link.key === key);
+	    if(!entry) return;
+	    if(!window.confirm(`Bronlink "${entry.link.name}" verwijderen uit de lijst?`)) return;
+	    const hidden = hiddenSourceLinkKeys();
+	    hidden.add(key);
+	    saveArray(HIDDEN_SOURCE_LINKS_KEY, [...hidden]);
+	    saveArray(SOURCE_LINK_OVERRIDES_KEY, sourceLinkOverrides().filter(link => link.key !== key));
+	    if(!(await saveCentralStorage())){
+	      setStatus('#linkStatus', 'Opslaan in de online opslag lukte niet.', 'warn');
+	      return;
+	    }
+	    renderLinks();
+	    setStatus('#linkStatus', 'Bronlink verwijderd uit de lijst. Je kunt vaste bronlinks herstellen via Overnemen of herstellen.', 'ok');
+	  }
+	  async function resetBaseSourceLink(key){
+	    saveArray(SOURCE_LINK_OVERRIDES_KEY, sourceLinkOverrides().filter(link => link.key !== key));
+	    if(!(await saveCentralStorage())){
+	      setStatus('#linkStatus', 'Opslaan in de online opslag lukte niet.', 'warn');
+	      return;
+	    }
+	    renderLinks();
+	    setStatus('#linkStatus', 'Vaste bronlink teruggezet naar de standaardgegevens.', 'ok');
+	  }
 	  async function approvePendingLink(index){
 	    const waiting = pendingLinks();
 	    const link = waiting.splice(Number(index), 1)[0];
 	    if(!link) return;
 	    const approved = customLinks();
-	    const exists = approved.some(item => normalize(item.name) === normalize(link.name) || item.url === link.url);
-	    if(!exists) approved.unshift({...link, status:'approved'});
+	    const exists = managedSourceLinks().some(item => normalize(item.link.name) === normalize(link.name) || item.link.url === link.url);
+	    if(!exists) approved.unshift({...link, status:'approved', createdAt:link.createdAt || new Date().toISOString()});
 	    saveArray(PENDING_LINKS_KEY, waiting);
 	    saveArray(ADMIN_LINKS_KEY, approved);
 	    if(!(await saveCentralStorage())){
@@ -699,6 +1587,16 @@
 	    renderLinks();
 	    setStatus('#linkStatus', 'Link afgewezen.', 'ok');
 	  }
+  async function resolveReport(id){
+    const items = loadArray(REPORTS_KEY).map(report => report.id === id ? {...report, status:'resolved', resolvedAt:new Date().toISOString()} : report);
+    saveArray(REPORTS_KEY, items);
+    if(!(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Melding afhandelen lukte niet in de online opslag.', 'warn');
+      return;
+    }
+    renderReports();
+    setStatus('#adminStatus', 'Melding afgehandeld.', 'ok');
+  }
 	  async function verifyAgendaItem(id){
 	    const ids = new Set(loadArray(VERIFIED_AGENDA_KEY));
 	    ids.add(id);
@@ -709,6 +1607,36 @@
 	    }
 	    renderAgendaReview();
 	    setStatus('#adminStatus', 'UIT-agenda item gemarkeerd als gecheckt.', 'ok');
+	  }
+	  async function verifyAllAgendaItems(){
+	    const hidden = hiddenAgendaIds();
+	    const deleted = deletedAgendaIds();
+	    const verified = verifiedAgendaIds();
+	    const ids = new Set(loadArray(VERIFIED_AGENDA_KEY));
+	    let count = 0;
+	    agendaReviewItems().forEach(item => {
+	      const key = agendaItemKey(item);
+	      const contentKey = agendaContentKey(item);
+	      const isDeleted = deleted.has(item.id) || deleted.has(key) || deleted.has(contentKey);
+	      const isHidden = hidden.has(item.id) || hidden.has(key);
+	      const isVerified = verified.has(item.id) || verified.has(key) || item.reviewStatus === 'verified';
+	      if(isDeleted || isHidden || isVerified) return;
+	      ids.add(item.id);
+	      ids.add(key);
+	      count += 1;
+	    });
+	    if(!count){
+	      renderAgendaReview();
+	      setStatus('#adminStatus', 'Er staan geen UIT-agenda items meer open om goed te keuren.', 'ok');
+	      return;
+	    }
+	    saveArray(VERIFIED_AGENDA_KEY, [...ids]);
+	    if(!(await saveCentralStorage())){
+	      setStatus('#adminStatus', 'Alles goedkeuren lukte niet in de online opslag.', 'warn');
+	      return;
+	    }
+	    renderAgendaReview();
+	    setStatus('#adminStatus', `${count} UIT-agenda item${count === 1 ? '' : 's'} goedgekeurd.`, 'ok');
 	  }
 	  async function toggleAgendaItemVisibility(id, hidden){
 	    const ids = new Set(loadArray(HIDDEN_AGENDA_KEY));
@@ -722,18 +1650,54 @@
 	    renderAgendaReview();
 	    setStatus('#adminStatus', hidden ? 'UIT-agenda item weer zichtbaar gemaakt.' : 'UIT-agenda item verborgen.', 'ok');
 	  }
+	  async function deleteAgendaItem(id){
+	    if(!window.confirm('Dit agenda-item echt verwijderen?')) return;
+	    const deleted = deletedAgendaIds();
+	    const items = autoAgendaItems();
+	    const item = agendaReviewItems().find(offer => offer.id === id || agendaItemKey(offer) === id);
+	    deleted.add(id);
+	    if(item){
+	      deleted.add(agendaItemKey(item));
+	      deleted.add(agendaContentKey(item));
+	    }
+	    saveArray(DELETED_AGENDA_KEY, [...deleted]);
+	    if(item && item.agendaKind === 'auto'){
+	      saveArray(AUTO_AGENDA_KEY, items.filter(offer => offer.id !== id && agendaItemKey(offer) !== id && agendaContentKey(offer) !== agendaContentKey(item)));
+	    }
+	    const hidden = new Set(loadArray(HIDDEN_AGENDA_KEY));
+	    hidden.delete(id);
+	    if(item) hidden.delete(agendaItemKey(item));
+	    if(item) hidden.delete(agendaContentKey(item));
+	    saveArray(HIDDEN_AGENDA_KEY, [...hidden]);
+	    const verified = new Set(loadArray(VERIFIED_AGENDA_KEY));
+	    verified.delete(id);
+	    if(item) verified.delete(agendaItemKey(item));
+	    if(item) verified.delete(agendaContentKey(item));
+	    saveArray(VERIFIED_AGENDA_KEY, [...verified]);
+	    if(!(await saveCentralStorage())){
+	      setStatus('#adminStatus', 'Verwijderen lukte niet in de online opslag.', 'warn');
+	      return;
+	    }
+	    renderAgendaReview();
+	    setStatus('#adminStatus', 'Agenda-item verwijderd.', 'ok');
+	  }
   function exportAdminData(){
     const payload = {
       version:1,
 	      exportedAt:new Date().toISOString(),
 	      hiddenInspirationTitles:loadArray(ADMIN_HIDDEN_INSPIRATION_KEY),
+	      deletedInspirationKeys:loadArray(ADMIN_DELETED_INSPIRATION_KEY),
 	      hiddenTeamIdeaIds:loadArray(COLLEAGUE_HIDDEN_KEY),
 	      hiddenAgendaItemIds:loadArray(HIDDEN_AGENDA_KEY),
+	      deletedAgendaItemIds:loadArray(DELETED_AGENDA_KEY),
 	      verifiedAgendaItemIds:loadArray(VERIFIED_AGENDA_KEY),
 	      customLinks:customLinks(),
 	      pendingLinks:pendingLinks(),
+	      sourceLinkOverrides:sourceLinkOverrides(),
+	      hiddenSourceLinkKeys:[...hiddenSourceLinkKeys()],
 	      autoAgendaItems:autoAgendaItems(),
-	      colleagueIdeas:storedTeamIdeas()
+	      colleagueIdeas:storedTeamIdeas(),
+	      reports:loadArray(REPORTS_KEY)
 	    };
     const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
     const url = URL.createObjectURL(blob);
@@ -757,6 +1721,16 @@
     });
     return merged;
   }
+  function mergeSourceOverrides(existing, imported){
+    const merged = existing.map(normalizeSourceOverride);
+    const seen = new Set(merged.map(link => link.key));
+    imported.map(normalizeSourceOverride).forEach(link => {
+      if(!link.key || !link.name || !link.url || seen.has(link.key)) return;
+      seen.add(link.key);
+      merged.push(link);
+    });
+    return merged;
+  }
   function mergeTeamIdeas(existing, imported){
     const merged = [...existing];
     const seen = new Set(existing.map(item => `${normalize(item.title)}|${normalize(item.by)}|${normalize(item.note)}`));
@@ -772,19 +1746,25 @@
     const file = event.target.files && event.target.files[0];
     if(!file) return;
     try{
-      const parsed = JSON.parse(await file.text());
+	      const parsed = JSON.parse(await file.text());
 	      saveArray(ADMIN_HIDDEN_INSPIRATION_KEY, uniqueNormalized([...loadArray(ADMIN_HIDDEN_INSPIRATION_KEY), ...(parsed.hiddenInspirationTitles || [])]));
+	      saveArray(ADMIN_DELETED_INSPIRATION_KEY, [...new Set([...loadArray(ADMIN_DELETED_INSPIRATION_KEY), ...(parsed.deletedInspirationKeys || [])].map(String))]);
 	      saveArray(COLLEAGUE_HIDDEN_KEY, [...new Set([...loadArray(COLLEAGUE_HIDDEN_KEY), ...(parsed.hiddenTeamIdeaIds || [])])]);
 	      saveArray(HIDDEN_AGENDA_KEY, [...new Set([...loadArray(HIDDEN_AGENDA_KEY), ...(parsed.hiddenAgendaItemIds || [])])]);
+	      saveArray(DELETED_AGENDA_KEY, [...new Set([...loadArray(DELETED_AGENDA_KEY), ...(parsed.deletedAgendaItemIds || [])])]);
 	      saveArray(VERIFIED_AGENDA_KEY, [...new Set([...loadArray(VERIFIED_AGENDA_KEY), ...(parsed.verifiedAgendaItemIds || [])])]);
 	      saveArray(ADMIN_LINKS_KEY, mergeLinks(customLinks(), parsed.customLinks || []));
 	      saveArray(PENDING_LINKS_KEY, mergeLinks(pendingLinks(), parsed.pendingLinks || []));
+	      saveArray(SOURCE_LINK_OVERRIDES_KEY, mergeSourceOverrides(sourceLinkOverrides(), parsed.sourceLinkOverrides || []));
+	      saveArray(HIDDEN_SOURCE_LINKS_KEY, [...new Set([...loadArray(HIDDEN_SOURCE_LINKS_KEY), ...(parsed.hiddenSourceLinkKeys || [])].map(String))]);
 	      saveArray(AUTO_AGENDA_KEY, [...autoAgendaItems(), ...(parsed.autoAgendaItems || [])].map(normalizeAgendaOffer));
 	      saveArray(COLLEAGUE_STORAGE_KEY, mergeTeamIdeas(storedTeamIdeas(), parsed.colleagueIdeas || []));
+	      saveArray(REPORTS_KEY, [...loadArray(REPORTS_KEY), ...(parsed.reports || [])]);
       if(!(await saveCentralStorage())){
 	        setStatus('#adminStatus', 'Importeren lukte niet in de online opslag.', 'warn');
         return;
       }
+	      setupIdeaFilters();
 	      renderIdeas();
 	      renderLinks();
 	      renderAgendaReview();
@@ -807,6 +1787,21 @@
     renderIdeas();
     setStatus('#adminStatus', 'Alle verborgen items zijn hersteld.', 'ok');
   }
+	  async function restoreSourceLinks(){
+	    if(!sourceLinkOverrides().length && !hiddenSourceLinkKeys().size){
+	      setStatus('#adminStatus', 'De vaste bronlinks staan al op de standaardinstellingen.', 'warn');
+	      return;
+	    }
+	    if(!window.confirm('Alle aangepaste en verwijderde vaste bronlinks terugzetten naar de standaardlijst? Eigen toegevoegde links blijven staan.')) return;
+	    removeArray(SOURCE_LINK_OVERRIDES_KEY);
+	    removeArray(HIDDEN_SOURCE_LINKS_KEY);
+	    if(!(await saveCentralStorage())){
+	      setStatus('#adminStatus', 'Opslaan in de online opslag lukte niet.', 'warn');
+	      return;
+	    }
+	    renderLinks();
+	    setStatus('#adminStatus', 'Vaste bronlinks zijn hersteld. Eigen toegevoegde links zijn blijven staan.', 'ok');
+	  }
   async function clearCustomLinks(){
     if(!customLinks().length){
       setStatus('#adminStatus', 'Er zijn geen eigen links om te wissen.', 'warn');
@@ -822,38 +1817,85 @@
     setStatus('#adminStatus', 'Eigen bronlinks zijn gewist.', 'ok');
   }
 	  function showAdmin(){
+	    $('#adminHero').hidden = false;
+	    $('#adminMenu').hidden = false;
+	    $('#logoutBtn').hidden = false;
 	    $('#loginPanel').hidden = true;
 	    $('#adminApp').hidden = false;
 	    sessionStorage.setItem(ADMIN_SESSION_KEY, '1');
+	    renderAdminThemeLegend();
+	    setupIdeaFilters();
 	    renderIdeas();
+	    setAdminIdeaView('list');
 	    renderLinks();
+	    renderReports();
 	    renderAgendaReview();
+	  }
+	  function logoutAdmin(){
+	    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+	    $('#adminHero').hidden = true;
+	    $('#adminMenu').hidden = true;
+	    $('#adminMenu').open = false;
+	    $('#logoutBtn').hidden = true;
+	    $('#adminApp').hidden = true;
+	    $('#loginPanel').hidden = false;
+	    $('#passwordInput').value = '';
+	    setStatus('#loginStatus', 'Je bent afgemeld.', 'ok');
+	    window.requestAnimationFrame(() => $('#loginPanel').scrollIntoView({behavior:'smooth', block:'start'}));
 	  }
   async function init(){
     await loadCentralStorage();
     if(sessionStorage.getItem(ADMIN_SESSION_KEY) === '1') showAdmin();
+    $('#logoutBtn').addEventListener('click', logoutAdmin);
     $('#loginForm').addEventListener('submit', event => {
       event.preventDefault();
       if($('#passwordInput').value === ADMIN_PASSWORD) showAdmin();
       else setStatus('#loginStatus', 'Wachtwoord klopt niet.', 'warn');
     });
     $('#ideaSearch').addEventListener('input', renderIdeas);
-    $('#showAllBtn').addEventListener('click', () => { activeFilter = 'all'; renderIdeas(); });
-    $('#showVisibleBtn').addEventListener('click', () => { activeFilter = 'visible'; renderIdeas(); });
-    $('#showHiddenBtn').addEventListener('click', () => { activeFilter = 'hidden'; renderIdeas(); });
+    ['#ideaDomainFilter','#ideaLocationFilter','#ideaDistanceFilter','#ideaCostFilter','#ideaStimulusFilter']
+      .forEach(selector => $(selector).addEventListener('change', renderIdeas));
+    $('#adminResetBtn').addEventListener('click', resetIdeaFilters);
+    $('#adminFilterToggle').addEventListener('click', () => {
+      const filters = $('#adminIdeaFilters');
+      const expanded = filters.classList.toggle('expanded');
+      $('#adminFilterToggle').setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+    $('#adminMenu').addEventListener('click', event => {
+      if(event.target.closest('a')) $('#adminMenu').open = false;
+    });
+    document.querySelectorAll('[data-admin-view]').forEach(btn => btn.addEventListener('click', () => setAdminIdeaView(btn.dataset.adminView)));
+    enhanceCustomSelect($('#linkCategory'));
+    resetLinkForm();
     $('#linkForm').addEventListener('submit', addCustomLink);
+    $('#cancelLinkEditBtn').addEventListener('click', () => {
+      resetLinkForm();
+      setStatus('#linkStatus', 'Wijzigen geannuleerd.', 'warn');
+    });
     $('#exportBtn').addEventListener('click', exportAdminData);
     $('#importBtn').addEventListener('click', () => $('#importFile').click());
     $('#importFile').addEventListener('change', importAdminData);
     $('#restoreHiddenBtn').addEventListener('click', restoreHidden);
+    $('#restoreSourceLinksBtn').addEventListener('click', restoreSourceLinks);
     $('#clearLinksBtn').addEventListener('click', clearCustomLinks);
+    $('#approveAllAgendaBtn').addEventListener('click', verifyAllAgendaItems);
     document.addEventListener('click', event => {
+      if(!event.target.closest('.customSelect')) closeCustomSelects();
+      if(!event.target.closest('#adminMenu')) $('#adminMenu').open = false;
       const titleButton = event.target.closest('[data-title-action]');
       if(titleButton) updateTitleVisibility(titleButton.dataset.key, titleButton.dataset.titleAction);
       const teamButton = event.target.closest('[data-team-action]');
       if(teamButton) updateTeamVisibility(teamButton.dataset.key, teamButton.dataset.teamAction);
+      const deleteIdeaButton = event.target.closest('[data-delete-idea]');
+      if(deleteIdeaButton) deleteIdea(deleteIdeaButton.dataset.deleteIdea, deleteIdeaButton.dataset.kind, deleteIdeaButton.dataset.title);
 	      const linkButton = event.target.closest('[data-remove-link]');
 	      if(linkButton) removeCustomLink(linkButton.dataset.removeLink);
+	      const editLinkButton = event.target.closest('[data-edit-link-kind]');
+	      if(editLinkButton) editSourceLink(editLinkButton.dataset.editLinkKind, editLinkButton.dataset.editLinkIndex || editLinkButton.dataset.editLinkKey);
+	      const hideSourceLinkButton = event.target.closest('[data-hide-source-link]');
+	      if(hideSourceLinkButton) hideBaseSourceLink(hideSourceLinkButton.dataset.hideSourceLink);
+	      const resetBaseLinkButton = event.target.closest('[data-reset-base-link]');
+	      if(resetBaseLinkButton) resetBaseSourceLink(resetBaseLinkButton.dataset.resetBaseLink);
 	      const approveButton = event.target.closest('[data-approve-link]');
 	      if(approveButton) approvePendingLink(approveButton.dataset.approveLink);
 	      const rejectButton = event.target.closest('[data-reject-link]');
@@ -862,7 +1904,16 @@
 	      if(verifyButton) verifyAgendaItem(verifyButton.dataset.verifyAgenda);
 	      const agendaHideButton = event.target.closest('[data-hide-agenda]');
 	      if(agendaHideButton) toggleAgendaItemVisibility(agendaHideButton.dataset.hideAgenda, agendaHideButton.dataset.hidden === '1');
+	      const agendaDeleteButton = event.target.closest('[data-delete-agenda]');
+	      if(agendaDeleteButton) deleteAgendaItem(agendaDeleteButton.dataset.deleteAgenda);
+	      const reportButton = event.target.closest('[data-resolve-report]');
+	      if(reportButton) resolveReport(reportButton.dataset.resolveReport);
 	    });
+    document.addEventListener('keydown', event => {
+      if(event.key !== 'Escape') return;
+      closeCustomSelects();
+      $('#adminMenu').open = false;
+    });
   }
   init();
   </script>
