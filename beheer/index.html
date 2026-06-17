@@ -283,7 +283,7 @@
     .agendaAdminToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
     .agendaAdminTools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .agendaAdminTools .customSelect{min-width:142px}
-    .agendaAdminFilters{grid-template-columns:minmax(220px,1.4fr) repeat(3,minmax(128px,.8fr)) auto}
+    .agendaAdminFilters{grid-template-columns:minmax(220px,1.5fr) repeat(7,minmax(112px,.75fr)) auto}
     .agendaAdminThemeLegend{margin:0 0 12px}
     .agendaReviewWeekView{display:grid;gap:14px}
     .agendaReviewWeek{border:1px solid rgba(11,18,32,.07);border-radius:20px;background:rgba(255,255,255,.48);overflow:hidden}
@@ -524,6 +524,9 @@
             <div class="filters agendaAdminFilters" id="agendaAdminFilters">
               <div class="filterSearch"><input id="agendaAdminSearch" type="search" placeholder="Zoek titel, plek, bron of notitie..."></div>
               <select id="agendaAdminDomainFilter" data-theme-select="true" aria-label="Categorie filteren"></select>
+              <select id="agendaAdminDistanceFilter" aria-label="Afstand filteren"><option value="all">Afstand</option></select>
+              <select id="agendaAdminCostFilter" aria-label="Kosten filteren"><option value="all">Kosten</option></select>
+              <select id="agendaAdminStimulusFilter" aria-label="Prikkelbelasting filteren"><option value="all">Prikkelbelasting</option></select>
               <select id="agendaAdminKindFilter" aria-label="Soort filteren">
                 <option value="all">Soort</option>
                 <option value="auto">Automatisch</option>
@@ -1823,12 +1826,15 @@
 	    const domainSelect = $('#agendaAdminDomainFilter');
 	    if(domainSelect){
 	      const currentDomain = domainSelect.value || 'all';
-	      const domains = [...new Set(agendaReviewItems().map(item => item.domain).filter(Boolean))].sort((a,b) => domainDisplayLabel(a).localeCompare(domainDisplayLabel(b), 'nl'));
-	      domainSelect.innerHTML = `<option value="all">Categorie</option>${domains.map(domain => `<option value="${escapeHtml(domain)}">${escapeHtml(domainDisplayLabel(domain))}</option>`).join('')}`;
+	      const domains = [...new Set(agendaReviewItems().map(item => domainDisplayLabel(item.domain)).filter(Boolean))].sort((a,b) => a.localeCompare(b, 'nl'));
+	      domainSelect.innerHTML = `<option value="all">Categorie</option>${domains.map(domain => `<option value="${escapeHtml(domain)}">${escapeHtml(domain)}</option>`).join('')}`;
 	      domainSelect.value = domains.includes(currentDomain) ? currentDomain : 'all';
 	      enhanceCustomSelect(domainSelect);
 	    }
-	    ['#agendaAdminStatusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter'].forEach(selector => enhanceCustomSelect($(selector)));
+	    fillIdeaFilter('#agendaAdminDistanceFilter', IDEA_DISTANCE_OPTIONS, 'Afstand');
+	    fillIdeaFilter('#agendaAdminCostFilter', IDEA_COST_OPTIONS, 'Kosten');
+	    fillIdeaFilter('#agendaAdminStimulusFilter', IDEA_STIMULUS_OPTIONS, 'Prikkelbelasting');
+	    ['#agendaAdminStatusFilter','#agendaAdminDistanceFilter','#agendaAdminCostFilter','#agendaAdminStimulusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter'].forEach(selector => enhanceCustomSelect($(selector)));
 	    $('#agendaAdminThemeLegend').innerHTML = agendaThemeLegendHtml();
 	  }
 	  function setAgendaAdminView(view='week'){
@@ -1846,6 +1852,9 @@
 	      query:$('#agendaAdminSearch')?.value || '',
 	      week:$('#agendaAdminWeekSelect')?.value || 'w29',
 	      domain:$('#agendaAdminDomainFilter')?.value || 'all',
+	      distanceBand:$('#agendaAdminDistanceFilter')?.value || 'all',
+	      cost:$('#agendaAdminCostFilter')?.value || 'all',
+	      stimulus:$('#agendaAdminStimulusFilter')?.value || 'all',
 	      status:$('#agendaAdminStatusFilter')?.value || 'all',
 	      kind:$('#agendaAdminKindFilter')?.value || 'all',
 	      period:$('#agendaAdminPeriodFilter')?.value || 'all'
@@ -1859,9 +1868,12 @@
 	    return {isHidden, isVerified, isNew:!isHidden && !isVerified};
 	  }
 	  function agendaMatchesFilters(item, state, filters){
-	    if(filters.query && !normalize([item.title, item.where, item.source, item.fit, item.url, item.domain].filter(Boolean).join(' ')).includes(normalize(filters.query))) return false;
+	    if(filters.query && !normalize([item.title, item.where, item.source, item.fit, item.url, item.domain, item.distanceBand, item.cost, item.stimulus, item.tags?.join(' ')].filter(Boolean).join(' ')).includes(normalize(filters.query))) return false;
 	    if(filters.week !== 'all' && !itemWeekIds(item).includes(filters.week)) return false;
 	    if(filters.domain !== 'all' && domainDisplayLabel(item.domain) !== domainDisplayLabel(filters.domain)) return false;
+	    if(filters.distanceBand !== 'all' && normalizeIdeaDistance(item.distanceBand, item) !== filters.distanceBand) return false;
+	    if(filters.cost !== 'all' && normalizeIdeaCost(item.cost) !== filters.cost) return false;
+	    if(filters.stimulus !== 'all' && normalizeIdeaStimulus(item.stimulus) !== filters.stimulus) return false;
 	    if(filters.status === 'new' && !state.isNew) return false;
 	    if(filters.status === 'verified' && !state.isVerified) return false;
 	    if(filters.status === 'hidden' && !state.isHidden) return false;
@@ -2630,16 +2642,19 @@
       setAgendaAdminView(btn.dataset.agendaView);
       renderAgendaReview();
     }));
-    ['#agendaAdminSearch','#agendaAdminWeekSelect','#agendaAdminDomainFilter','#agendaAdminStatusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter']
+    ['#agendaAdminSearch','#agendaAdminWeekSelect','#agendaAdminDomainFilter','#agendaAdminDistanceFilter','#agendaAdminCostFilter','#agendaAdminStimulusFilter','#agendaAdminStatusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter']
       .forEach(selector => $(selector).addEventListener(selector === '#agendaAdminSearch' ? 'input' : 'change', renderAgendaReview));
     $('#agendaAdminResetBtn').addEventListener('click', () => {
       $('#agendaAdminSearch').value = '';
       $('#agendaAdminWeekSelect').value = 'w29';
       $('#agendaAdminDomainFilter').value = 'all';
+      $('#agendaAdminDistanceFilter').value = 'all';
+      $('#agendaAdminCostFilter').value = 'all';
+      $('#agendaAdminStimulusFilter').value = 'all';
       $('#agendaAdminStatusFilter').value = 'all';
       $('#agendaAdminKindFilter').value = 'all';
       $('#agendaAdminPeriodFilter').value = 'all';
-      ['#agendaAdminWeekSelect','#agendaAdminDomainFilter','#agendaAdminStatusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter'].forEach(selector => syncCustomSelect($(selector)));
+      ['#agendaAdminWeekSelect','#agendaAdminDomainFilter','#agendaAdminDistanceFilter','#agendaAdminCostFilter','#agendaAdminStimulusFilter','#agendaAdminStatusFilter','#agendaAdminKindFilter','#agendaAdminPeriodFilter'].forEach(selector => syncCustomSelect($(selector)));
       renderAgendaReview();
     });
     enhanceCustomSelect($('#linkCategory'));
