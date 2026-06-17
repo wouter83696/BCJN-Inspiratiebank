@@ -708,8 +708,8 @@
       .agendaActionIcon svg{width:18px;height:18px}
       .agendaToolbar .formButton,.agendaToolbar .largeAction{width:100%;min-height:42px;padding:10px 12px;font-size:.84rem}
       .agendaSearchFilters.more{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
-      .agendaSearchFilters.more .filterSearch{grid-column:1/-1}
-      .agendaSearchFilters.more .filterToggle{grid-column:1;justify-self:start;min-width:0}
+      .agendaSearchFilters.more .filterSearch{grid-column:1;min-width:0}
+      .agendaSearchFilters.more .filterToggle{grid-column:2;justify-self:end;min-width:0}
       .agendaSearchFilters.more .agendaSearchStatus{grid-column:1/-1}
       .agendaLegendBar{align-items:flex-start;flex-direction:column}
       .agendaThemeLegend{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
@@ -717,7 +717,7 @@
       .inspirationToolbar .viewBar{display:none}
       .mobileViewBar{display:flex;justify-content:flex-end;margin:0}
       .filters.more{grid-template-columns:minmax(0,1fr) auto auto;align-items:center}
-      .filters.more .filterSearch{grid-column:1/-1}
+      .filters.more .filterSearch{grid-column:1;min-width:0}
       .filters.more .filterToggle{grid-column:auto;justify-self:start;min-width:0}
       .filters.more .mobileViewBar{grid-column:auto}
       .filters.more .mobileViewBar .viewSwitch{border-radius:18px;padding:4px}
