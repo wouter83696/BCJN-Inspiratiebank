@@ -464,10 +464,10 @@
     .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:0;align-items:center}
     .filters.more{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
     .filterSearch{position:relative;min-width:0}
-    .filterToggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:148px;min-height:52px;border:1px solid rgba(255,255,255,.78);border-radius:22px;background:rgba(255,255,255,.78);color:var(--accent-dark);padding:12px 24px;font:inherit;font-size:.92rem;font-weight:500;white-space:nowrap;cursor:pointer;box-shadow:0 12px 30px rgba(20,38,42,.08);backdrop-filter:blur(18px);transition:background .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease)}
-    .filterToggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .filterToggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:124px;min-height:48px;border:1px solid rgba(255,255,255,.78);border-radius:20px;background:rgba(255,255,255,.78);color:var(--accent-dark);padding:10px 18px;font:inherit;font-size:.9rem;font-weight:500;white-space:nowrap;cursor:pointer;box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px);transition:background .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease)}
+    .filterToggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .filterSearch::before{content:"";position:absolute;left:15px;top:50%;width:16px;height:16px;transform:translateY(-50%);pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235f6973' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center/contain no-repeat}
-    .filters input,.filters select{width:100%;min-width:0;min-height:52px;border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.78);border-radius:22px;padding:12px 16px;color:var(--ink);font-size:.92rem;box-shadow:0 12px 30px rgba(20,38,42,.08);backdrop-filter:blur(18px)}
+    .filters input,.filters select{width:100%;min-width:0;min-height:48px;border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.78);border-radius:20px;padding:10px 16px;color:var(--ink);font-size:.9rem;box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px)}
     .filterSearch input{padding-left:42px}
     .filters select{padding-right:30px}
     .agendaSearchFilters{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center;column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
@@ -482,7 +482,7 @@
     .agendaSearchStatus{color:var(--muted);font-size:.84rem;white-space:nowrap}
     .customNativeSelect{position:absolute !important;width:1px !important;height:1px !important;min-height:0 !important;opacity:0;pointer-events:none;overflow:hidden;padding:0 !important;border:0 !important}
     .customSelect{position:relative;min-width:0}
-    .customSelectButton{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;min-width:0;min-height:52px;box-sizing:border-box;border:1px solid rgba(255,255,255,.78);border-radius:22px;background:rgba(255,255,255,.78);color:var(--ink);padding:12px 16px;font-size:.92rem;text-align:left;cursor:pointer;box-shadow:0 12px 30px rgba(20,38,42,.08);backdrop-filter:blur(18px)}
+    .customSelectButton{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;min-width:0;min-height:44px;box-sizing:border-box;border:1px solid rgba(11,18,32,.055);border-radius:16px;background:rgba(255,255,255,.72);color:var(--ink);padding:9px 13px;font-size:.88rem;text-align:left;cursor:pointer;box-shadow:none;backdrop-filter:blur(18px)}
     .customSelectLabel{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .customSelectButton::after{content:"";flex:0 0 13px;width:13px;height:13px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s var(--ease)}
     .customSelect.open .customSelectButton::after{transform:rotate(180deg)}
@@ -498,9 +498,21 @@
     .themeSelect .customSelectOption:hover,.themeSelect .customSelectOption.active{background:rgba(11,18,32,.035);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
     .themeSelect .customSelectButton .domainIcon,.themeSelect .customSelectOption .domainIcon{width:22px;height:22px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
     .themeSelect .customSelectButton .domainIcon svg,.themeSelect .customSelectOption .domainIcon svg{width:12px;height:12px}
-    .filterReset{display:inline-flex;align-items:center;gap:7px;min-height:52px;border:0;background:transparent;color:var(--accent);padding:12px 6px 12px 10px;font:inherit;font-size:.9rem;font-weight:500;white-space:nowrap;cursor:pointer}
-    .filterReset svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .filterReset{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;border:0;border-radius:16px;background:transparent;color:var(--accent);padding:9px 10px;font:inherit;font-size:.88rem;font-weight:500;white-space:nowrap;cursor:pointer}
+    .filterReset svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .filterReset:hover{color:var(--accent-dark)}
+    .filterOptions{
+      grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;
+      max-height:0;opacity:0;overflow:hidden;visibility:hidden;pointer-events:none;transform:translateY(-8px);
+      padding:0 10px;border:1px solid rgba(255,255,255,.66);border-radius:24px;background:rgba(255,255,255,.50);
+      box-shadow:0 16px 38px rgba(20,38,42,.065);backdrop-filter:blur(18px);
+      transition:max-height .34s var(--ease),opacity .24s var(--ease),transform .34s var(--ease),padding .34s var(--ease),visibility 0s linear .34s;
+    }
+    .filters.more.expanded .filterOptions,
+    .agendaSearchFilters.more.expanded .filterOptions{
+      max-height:92px;opacity:1;overflow:visible;visibility:visible;pointer-events:auto;transform:translateY(0);padding:10px;
+      transition:max-height .38s var(--ease),opacity .24s var(--ease) .06s,transform .38s var(--ease),padding .38s var(--ease),visibility 0s;
+    }
     .filters.more>select,
     .filters.more>.customSelect,
     .filters.more>.filterReset,
@@ -528,20 +540,21 @@
     #ideaFilters .filterSearch{grid-column:1 / 9}
     #ideaFilters .filterToggle{grid-column:9 / 11}
     #ideaFilters .mobileViewBar{grid-column:11 / 13}
-    #ideaFilters .customSelect[data-select-id="ideaDomain"]{grid-column:1 / 3}
-    #ideaFilters .customSelect[data-select-id="ideaLocation"]{grid-column:3 / 5}
-    #ideaFilters .customSelect[data-select-id="ideaDistance"]{grid-column:5 / 7}
-    #ideaFilters .customSelect[data-select-id="ideaCost"]{grid-column:7 / 9}
-    #ideaFilters .customSelect[data-select-id="ideaStimulus"]{grid-column:9 / 11}
-    #ideaFilters .filterReset{grid-column:11 / 13}
+    #ideaFilters .filterOptions .customSelect[data-select-id="ideaDomain"]{grid-column:1 / 3}
+    #ideaFilters .filterOptions .customSelect[data-select-id="ideaLocation"]{grid-column:3 / 5}
+    #ideaFilters .filterOptions .customSelect[data-select-id="ideaDistance"]{grid-column:5 / 7}
+    #ideaFilters .filterOptions .customSelect[data-select-id="ideaCost"]{grid-column:7 / 9}
+    #ideaFilters .filterOptions .customSelect[data-select-id="ideaStimulus"]{grid-column:9 / 11}
+    #ideaFilters .filterOptions .filterReset{grid-column:11 / 13}
     #agendaFilters .filterSearch{grid-column:1 / 9}
     #agendaFilters .filterToggle{grid-column:9 / 11}
     #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:11 / 13;max-height:76px;opacity:1;overflow:visible;visibility:visible;pointer-events:auto;transform:none}
-    #agendaFilters .customSelect[data-select-id="agendaDomain"]{grid-column:1 / 5}
-    #agendaFilters .customSelect[data-select-id="agendaDistance"]{grid-column:5 / 7}
-    #agendaFilters .customSelect[data-select-id="agendaCost"]{grid-column:7 / 9}
-    #agendaFilters .customSelect[data-select-id="agendaStimulus"]{grid-column:9 / 11}
-    #agendaFilters .filterReset{grid-column:11 / 13}
+    #agendaFilters .filterOptions .customSelect[data-select-id="agendaDomain"]{grid-column:1 / 5}
+    #agendaFilters .filterOptions .customSelect[data-select-id="agendaDistance"]{grid-column:5 / 7}
+    #agendaFilters .filterOptions .customSelect[data-select-id="agendaCost"]{grid-column:7 / 9}
+    #agendaFilters .filterOptions .customSelect[data-select-id="agendaStimulus"]{grid-column:9 / 11}
+    #agendaFilters .filterOptions .filterReset{grid-column:11 / 12}
+    #agendaFilters .filterOptions .agendaSearchStatus{grid-column:12 / 13;align-self:center}
     .teamHead{margin-top:28px}
     #longerOffers{scroll-margin-top:100px}
     .ideaToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;flex-wrap:wrap}
@@ -586,10 +599,10 @@
     .viewBar{display:flex;justify-content:flex-end;align-items:center;margin:10px 0 14px}
     .ideaToolbar .viewBar,.sectionToolbar .viewBar{margin:0}
     .mobileViewBar{display:flex;justify-content:flex-end;margin:0}
-    .viewSwitch{display:inline-flex;align-items:center;gap:1px;margin:0;padding:4px;border:1px solid rgba(255,255,255,.78);border-radius:22px;background:rgba(255,255,255,.78);box-shadow:0 12px 30px rgba(20,38,42,.08);backdrop-filter:blur(18px)}
+    .viewSwitch{display:inline-flex;align-items:center;gap:1px;margin:0;padding:4px;border:1px solid rgba(255,255,255,.78);border-radius:20px;background:rgba(255,255,255,.78);box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px)}
     .viewBtn{
       border:0;background:transparent;color:rgba(11,18,32,.52);
-      width:44px;height:44px;border-radius:17px;padding:0;cursor:pointer;transition:.18s var(--ease);
+      width:40px;height:40px;border-radius:16px;padding:0;cursor:pointer;transition:.18s var(--ease);
       display:inline-flex;align-items:center;justify-content:center;
     }
     .viewBtn:hover{background:rgba(168,225,221,.18);color:var(--accent-dark)}
@@ -817,6 +830,15 @@
       #ideaFilters .filterReset,
       #agendaFilters .customSelect,
       #agendaFilters .filterReset{grid-column:1 / -1}
+      #ideaFilters .filterOptions,
+      #agendaFilters .filterOptions{grid-template-columns:1fr;gap:8px;border-radius:22px}
+      #ideaFilters.expanded .filterOptions,
+      #agendaFilters.expanded .filterOptions{max-height:430px;padding:9px}
+      #ideaFilters .filterOptions .customSelect,
+      #ideaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .customSelect,
+      #agendaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .agendaSearchStatus{grid-column:1 / -1}
       #agendaFilters .filterSearch{grid-column:1}
       #agendaFilters .filterToggle{grid-column:2}
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:1 / -1}
@@ -902,15 +924,17 @@
             Filters
           </button>
           <select id="agendaWeekFilter" aria-label="Week filteren"><option value="">Week</option></select>
-          <select id="agendaDomain" data-theme-select="true" aria-label="Categorie filteren"><option value="all">Categorie</option></select>
-          <select id="agendaDistance" aria-label="Afstand filteren"><option value="all">Afstand</option></select>
-          <select id="agendaCost" aria-label="Kosten filteren"><option value="all">Kosten</option></select>
-          <select id="agendaStimulus" aria-label="Prikkelbelasting filteren"><option value="all">Prikkelbelasting</option></select>
-          <button class="filterReset" id="agendaResetBtn" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
-            Reset
-          </button>
-          <span id="agendaSearchStatus" class="agendaSearchStatus"></span>
+          <div class="filterOptions">
+            <select id="agendaDomain" data-theme-select="true" aria-label="Categorie filteren"><option value="all">Categorie</option></select>
+            <select id="agendaDistance" aria-label="Afstand filteren"><option value="all">Afstand</option></select>
+            <select id="agendaCost" aria-label="Kosten filteren"><option value="all">Kosten</option></select>
+            <select id="agendaStimulus" aria-label="Prikkelbelasting filteren"><option value="all">Prikkelbelasting</option></select>
+            <button class="filterReset" id="agendaResetBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+              Reset
+            </button>
+            <span id="agendaSearchStatus" class="agendaSearchStatus"></span>
+          </div>
         </div>
       </div>
       <div class="agendaLegendBar">
@@ -994,15 +1018,17 @@
               </button>
             </div>
           </div>
-          <select id="ideaDomain"><option value="all">Categorie</option></select>
-          <select id="ideaLocation"><option value="all">Locatie</option></select>
-          <select id="ideaDistance"><option value="all">Afstand</option></select>
-          <select id="ideaCost"><option value="all">Kosten</option></select>
-          <select id="ideaStimulus"><option value="all">Prikkelbelasting</option></select>
-          <button class="filterReset" id="resetBtn" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
-            <span>Filters wissen</span>
-          </button>
+          <div class="filterOptions">
+            <select id="ideaDomain"><option value="all">Categorie</option></select>
+            <select id="ideaLocation"><option value="all">Locatie</option></select>
+            <select id="ideaDistance"><option value="all">Afstand</option></select>
+            <select id="ideaCost"><option value="all">Kosten</option></select>
+            <select id="ideaStimulus"><option value="all">Prikkelbelasting</option></select>
+            <button class="filterReset" id="resetBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+              <span>Filters wissen</span>
+            </button>
+          </div>
         </div>
       </div>
       <div id="inspirationThemeLegend"></div>
