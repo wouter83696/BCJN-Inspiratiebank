@@ -133,9 +133,9 @@
     .heroCopy .lead + .lead{margin-top:10px}
     .tabHero{
       position:relative;overflow:hidden;isolation:isolate;
-      min-height:clamp(340px,38vw,460px);
+      min-height:clamp(390px,42vw,520px);
       margin:-164px calc(50% - 50vw) 0;
-      padding:clamp(224px,19vw,260px) max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px))) clamp(78px,9vw,112px);
+      padding:clamp(224px,19vw,260px) max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px))) clamp(116px,11vw,148px);
       border:0;border-radius:0;
       background:
         radial-gradient(ellipse at 96% 8%,rgba(214,236,242,.42) 0 16%,transparent 38%),
@@ -191,7 +191,12 @@
     .tabHeroKicker{position:relative;z-index:1;display:block;margin:0 0 12px;color:var(--accent-dark);font-size:.88rem;font-weight:500;letter-spacing:.04em}
     .tabHeroTitle{position:relative;z-index:1;margin:0;color:var(--accent-dark);font-family:Georgia,"Times New Roman",serif;font-size:5.8rem;font-weight:400;line-height:.9;letter-spacing:0}
     .tabHeroLine{position:relative;z-index:1;margin:18px 0 0;color:var(--accent);font-size:1.5rem;line-height:1.2;font-weight:400}
-    .tabHero + .filterBar{position:relative;z-index:2;margin-top:-52px}
+    .tabHeroActions{position:relative;z-index:1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:30px}
+    .tabHeroButton{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(20,38,42,.08);color:var(--accent-dark);font-weight:500;text-decoration:none;cursor:pointer;backdrop-filter:blur(16px)}
+    .tabHeroButton.primary{background:#005766;color:#fff;border-color:rgba(0,87,102,.18);box-shadow:0 14px 32px rgba(0,87,102,.20)}
+    .tabHeroButton svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .tabHeroButton:hover{transform:translateY(-1px)}
+    .tabHero + .filterBar{position:relative;z-index:2;margin-top:-34px}
     .quick{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:10px}
     .quickCard{display:flex;align-items:center;gap:14px;padding:17px;box-shadow:0 10px 30px rgba(20,38,42,.06)}
     .quickIcon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:rgba(168,225,221,.28);color:var(--accent-dark)}
@@ -746,9 +751,9 @@
     @media (max-width:640px){.sectionToolbar .formButton.secondary.largeAction.downloadAction{width:100%;min-height:42px;padding:9px 13px}}
     @media (max-width:640px){
       .tabHero{
-        min-height:360px;
+        min-height:430px;
         margin:-160px calc(50% - 50vw) 0;
-        padding:224px max(28px,calc((100vw - var(--max)) / 2 + 28px)) 78px;
+        padding:224px max(28px,calc((100vw - var(--max)) / 2 + 28px)) 112px;
         border:0;border-radius:0;
         box-shadow:none;
       }
@@ -757,7 +762,10 @@
       .tabHeroKicker{font-size:.82rem;margin-bottom:8px}
       .tabHeroTitle{font-size:3rem;line-height:.94}
       .tabHeroLine{margin-top:12px;font-size:1.08rem}
-      .tabHero + .filterBar{margin-top:-54px}
+      .tabHeroActions{margin-top:22px;gap:10px}
+      .tabHeroButton{min-height:44px;padding:10px 15px;font-size:.86rem}
+      .tabHeroButton svg{width:17px;height:17px}
+      .tabHero + .filterBar{margin-top:-42px}
       .hero{display:flex;flex-direction:column;gap:14px;padding-top:44px}
       .quick{order:1;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr;gap:8px}
       .heroMain{order:0;padding:24px 22px}
@@ -943,6 +951,16 @@
         <span class="tabHeroKicker">BCJN</span>
         <h1 class="tabHeroTitle" id="inspirationHeroTitle">Inspiratiebank</h1>
         <p class="tabHeroLine">Ontdek iets nieuws.</p>
+        <div class="tabHeroActions">
+          <a class="tabHeroButton primary" href="#teamAdditions">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+            <span>Inspiratie toevoegen</span>
+          </a>
+          <button class="tabHeroButton" id="randomIdeaBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 5.1L19 10l-5.3 1.9L12 17l-1.7-5.1L5 10l5.3-1.9L12 3Z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"></path></svg>
+            <span>Verras me</span>
+          </button>
+        </div>
       </section>
       <div class="filterBar">
         <div class="filters more" id="ideaFilters">
