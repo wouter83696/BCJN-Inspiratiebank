@@ -108,31 +108,6 @@
   ],
   "external": [
     {
-      "title": "Verhalenvertellers bij De Barendonk",
-      "week": "w29",
-      "date": "Dinsdag 14 juli 2026",
-      "time": "10.30",
-      "domain": "Cultuur & Ontdekken",
-      "where": "De Barendonk, Beers",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald/soms gratis",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
-      "source": "Land van Cuijk",
-      "url": "https://www.landvancuijk.nl/agenda/2026/07/",
-      "tags": [
-        "verhalen",
-        "beers",
-        "kleinschalig",
-        "cultuur",
-        "zomer 2026",
-        "regio",
-        "uitje"
-      ],
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
       "title": "Nimma Sportzomer – Goffert Waterfestival",
       "week": "w29",
       "date": "Woensdag 15 juli 2026",
@@ -838,31 +813,6 @@
       "distanceBand": "In de regio (10-30 km)"
     },
     {
-      "title": "Verhalenvertellers bij De Barendonk",
-      "week": "w31",
-      "date": "Dinsdag 28 juli 2026",
-      "time": "10.30",
-      "domain": "Cultuur & Ontdekken",
-      "where": "De Barendonk, Beers",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald/soms gratis",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
-      "source": "Land van Cuijk",
-      "url": "https://www.landvancuijk.nl/agenda/2026/07/",
-      "tags": [
-        "verhalen",
-        "beers",
-        "kleinschalig",
-        "cultuur",
-        "zomer 2026",
-        "regio",
-        "uitje"
-      ],
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
       "title": "Nimma Sportzomer – Balsport & Spel",
       "week": "w31",
       "date": "Woensdag 29 juli 2026",
@@ -883,31 +833,6 @@
         "week 31"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Verhalenvertellers bij De Barendonk",
-      "week": "w32",
-      "date": "Dinsdag 4 augustus 2026",
-      "time": "10.30",
-      "domain": "Cultuur & Ontdekken",
-      "where": "De Barendonk, Beers",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald/soms gratis",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
-      "source": "Land van Cuijk",
-      "url": "https://www.landvancuijk.nl/agenda/2026/08/",
-      "tags": [
-        "verhalen",
-        "beers",
-        "kleinschalig",
-        "cultuur",
-        "zomer 2026",
-        "regio",
-        "uitje"
-      ],
-      "distanceBand": "In de regio (10-30 km)"
     },
     {
       "title": "Nimma Sportzomer – Beweeg en fiets mee op Staddijk",
@@ -951,31 +876,6 @@
         "grave",
         "festival",
         "visueel",
-        "zomer 2026",
-        "regio",
-        "uitje"
-      ],
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Verhalenvertellers bij De Barendonk",
-      "week": "w33",
-      "date": "Dinsdag 11 augustus 2026",
-      "time": "10.30",
-      "domain": "Cultuur & Ontdekken",
-      "where": "De Barendonk, Beers",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald/soms gratis",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
-      "source": "Land van Cuijk",
-      "url": "https://www.landvancuijk.nl/agenda/2026/08/",
-      "tags": [
-        "verhalen",
-        "beers",
-        "kleinschalig",
-        "cultuur",
         "zomer 2026",
         "regio",
         "uitje"
@@ -1159,7 +1059,7 @@
       "cost": "€€",
       "stimulus": "Hoog",
       "bus": "Nee/soms",
-      "fit": "Veel keuze op een locatie: elektrisch karten, lasergamen, bowlen, glowgolf, karaoke, shuffleboard, arcade en De vloer is lava. Kies vooraf een activiteit en reserveer een rustig tijdslot.",
+      "fit": "Veel keuze op een locatie: elektrisch karten, lasergamen, bowlen, glowgolf, karaoke, shuffleboard, arcade en De vloer is lava.",
       "source": "Planet Awesome",
       "url": "https://planet-awesome.com/",
       "tags": [
@@ -1185,7 +1085,7 @@
       "cost": "€€",
       "stimulus": "Middel/hoog",
       "bus": "Nee/soms",
-      "fit": "Bowlen geeft een voorspelbare beurtstructuur. Prison Island bestaat uit korte samenwerkingsopdrachten; kies een beperkt aantal kamers en spreek vooraf een stopmoment af.",
+      "fit": "Bowlen geeft een vaste beurtstructuur. Prison Island bestaat uit korte samenwerkingsopdrachten en werkt goed voor jongeren die graag puzzelen of samenwerken.",
       "source": "Olround Nijmegen",
       "url": "https://www.olroundnijmegen.nl/",
       "tags": [
@@ -1208,7 +1108,7 @@
       "cost": "€",
       "stimulus": "Middel/hoog",
       "bus": "Nee/soms",
-      "fit": "Veel korte spellen en duidelijke scores. Spreek een budget, tijdsduur en rustige pauzeplek af; doordeweeks vroeg op de dag is vaak overzichtelijker.",
+      "fit": "Veel korte spellen, herkenbare gamecultuur en directe scores. Budget en tijdsduur vooraf kiezen is handig.",
       "source": "Pop Culture Arcade",
       "url": "http://www.popculturearcade.nl/",
       "tags": [
@@ -1231,7 +1131,7 @@
       "cost": "€€",
       "stimulus": "Middel/hoog",
       "bus": "Soms",
-      "fit": "Combineer een film met arcadegames of een digitale X-Cube escape-opdracht. Kies stoelen en starttijd vooraf en vermijd zo nodig de drukste avondvoorstellingen.",
+      "fit": "Combineer een film met arcadegames of een digitale X-Cube escape-opdracht.",
       "source": "Pathe Nijmegen",
       "url": "https://www.pathe.nl/nl/bioscopen/pathe-nijmegen",
       "tags": [
@@ -1256,7 +1156,7 @@
       "cost": "€€",
       "stimulus": "Laag/middel",
       "bus": "Nee/soms",
-      "fit": "Een duidelijk afgebakend uitje met vaste begin- en eindtijd. Kies vooraf een passende film, rustige voorstelling en stoelen aan het gangpad als tussendoor weggaan prettig is.",
+      "fit": "Een overzichtelijk uitje met vaste begin- en eindtijd. Film, starttijd en stoelen vooraf kiezen is handig.",
       "source": "Vue Nijmegen",
       "url": "https://www.vuecinemas.nl/cinema/nijmegen/nu-in-de-bioscoop",
       "tags": [
@@ -1279,7 +1179,7 @@
       "cost": "€€",
       "stimulus": "Hoog",
       "bus": "Nee/soms",
-      "fit": "Sterk immersief en prikkelend. Begin met een korte, rustige ervaring, check gevoeligheid voor beweging en plan herstelruimte na afloop.",
+      "fit": "Sterk immersief en prikkelend. Vooral interessant voor jongeren die van gaming, techniek of avontuur houden.",
       "source": "EnjoyVR",
       "url": "https://enjoyvr.nl/groepsuitje-nijmegen/",
       "tags": [
@@ -1302,7 +1202,7 @@
       "cost": "€€",
       "stimulus": "Middel",
       "bus": "Nee/soms",
-      "fit": "Concrete routes en direct zichtbaar resultaat. Ga op een rustig tijdstip, kies een klein deel van de hal en bouw voldoende pauzes in.",
+      "fit": "Concrete routes en direct zichtbaar resultaat. Een rustiger tijdstip werkt vaak prettiger.",
       "source": "GRIP Boulderhal Nijmegen",
       "url": "https://gripnijmegen.nl/boulderhal/",
       "tags": [
@@ -1334,30 +1234,6 @@
         "step",
         "urban",
         "nijmegen"
-      ]
-    },
-    {
-      "title": "Fundustry Nijmegen/Ewijk - paintball, airsoft en klimpark",
-      "week": "w29,w30,w31,w32,w33,w34",
-      "date": "13 juli t/m 23 augustus 2026",
-      "time": "op reservering",
-      "domain": "Actie & amusement",
-      "where": "Fundustry, Groene Heuvels 1, Ewijk",
-      "locationType": "Buiten de deur",
-      "distanceBand": "In de regio (10-30 km)",
-      "distanceKm": "ca. 14 km",
-      "cost": "€€€",
-      "stimulus": "Hoog",
-      "bus": "Ja/soms",
-      "fit": "Groot aanbod met paintball, airsoft, klimpark en andere groepsactiviteiten. Kies een duidelijke activiteit, vraag naar rustige begeleiding en maak vooraf veiligheids- en stopafspraken.",
-      "source": "Fundustry Nijmegen",
-      "url": "https://www.fundustry.nl/locaties/nijmegen/",
-      "tags": [
-        "paintball",
-        "airsoft",
-        "klimpark",
-        "outdoor",
-        "ewijk"
       ]
     },
     {
@@ -1470,7 +1346,7 @@
       "tags": [
         "dieren",
         "rhenen",
-        "verder weg"
+        "daguitstap"
       ]
     },
     {
@@ -1494,7 +1370,7 @@
         "strand",
         "outdoor",
         "volkel",
-        "verder weg"
+        "daguitstap"
       ]
     },
     {
@@ -1516,7 +1392,7 @@
       "tags": [
         "dieren",
         "overloon",
-        "verder weg"
+        "daguitstap"
       ]
     },
     {
@@ -1532,7 +1408,7 @@
       "cost": "€€",
       "stimulus": "Hoog",
       "bus": "Nee/soms",
-      "fit": "Veel beweging, muziek en andere springers. Kies een rustig tijdsblok, bespreek de veiligheidsregels vooraf en maak een duidelijke afspraak over pauzeren en stoppen.",
+      "fit": "Veel beweging, muziek en energie. Vooral passend voor jongeren die graag fysiek bezig zijn.",
       "source": "You Jump Nijmegen",
       "url": "https://www.trampolinepark.nl/nl/locaties/nijmegen",
       "tags": [
@@ -1601,7 +1477,7 @@
       "cost": "€€",
       "stimulus": "Middel/hoog",
       "bus": "Nee/soms",
-      "fit": "Actief groepsaanbod in en rond de stad. Kies een programma met duidelijke stappen, controleer de loopafstand en spreek een rustige verzamelplek af.",
+      "fit": "Actief groepsaanbod in en rond de stad, zoals citygames en groepsopdrachten.",
       "source": "Nijmegen Outdoor",
       "url": "https://nijmegenoutdoor.nl/",
       "tags": [
@@ -1633,11 +1509,181 @@
         "buiten",
         "nijmegen"
       ]
+    },
+    {
+      "title": "LaserQuest Nijmegen - lasergamen, Mystic Golf en StepZone",
+      "week": "w29,w30,w31,w32,w33,w34",
+      "date": "13 juli t/m 23 augustus 2026",
+      "time": "reserveren aanbevolen",
+      "domain": "Actie & amusement",
+      "where": "LaserQuest, Ziekerstraat 3, Nijmegen",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "distanceKm": "ca. 7 km",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Nee/soms",
+      "fit": "Centrumlocatie met lasergamen, glow-in-the-dark golf, LaserSquash en interactieve StepZone.",
+      "source": "LaserQuest Nijmegen",
+      "url": "https://www.laserquestnijmegen.nl/",
+      "tags": [
+        "lasergamen",
+        "glowgolf",
+        "stepzone",
+        "lasersquash",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Fundustry Nijmegen/Ewijk - klimpark, paintball en outdoor challenges",
+      "week": "w29,w30,w31,w32,w33,w34",
+      "date": "13 juli t/m 23 augustus 2026",
+      "time": "op reservering",
+      "domain": "Actie & amusement",
+      "where": "Fundustry, Groene Heuvels 1, Ewijk",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "distanceKm": "ca. 14 km",
+      "cost": "€€€",
+      "stimulus": "Hoog",
+      "bus": "Ja/soms",
+      "fit": "Dichtbij outdoor-aanbod met klimpark, paintball, airsoft, crossbaan en teamchallenges bij de Groene Heuvels.",
+      "source": "Fundustry Nijmegen",
+      "url": "https://www.fundustry.nl/locaties/nijmegen/",
+      "tags": [
+        "klimpark",
+        "klimbos",
+        "paintball",
+        "airsoft",
+        "outdoor",
+        "hindernis",
+        "ewijk"
+      ]
+    },
+    {
+      "title": "Verhalenvertellers bij De Barendonk",
+      "week": "w29",
+      "date": "Dinsdag 14 juli 2026",
+      "time": "10.30",
+      "domain": "Cultuur & Ontdekken",
+      "where": "De Barendonk, Beers",
+      "locationType": "Buiten de deur",
+      "cost": "Betaald/soms gratis",
+      "stimulus": "Laag/middel",
+      "bus": "Soms",
+      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
+      "source": "Land van Cuijk",
+      "url": "https://www.landvancuijk.nl/agenda/2026/07/",
+      "tags": [
+        "verhalen",
+        "beers",
+        "kleinschalig",
+        "cultuur",
+        "zomer 2026",
+        "regio",
+        "uitje"
+      ]
+    },
+    {
+      "title": "Pop Culture Arcade – PCA Challenge",
+      "week": "w29,w30,w31",
+      "date": "13 t/m 30 juli 2026",
+      "time": "dagelijks 12.00–23.00",
+      "domain": "Ontmoeten, Spel & Vaardigheden",
+      "where": "Pop Culture Arcade, Mariënburg 28, Nijmegen",
+      "locationType": "Buiten de deur",
+      "cost": "Gratis/laag",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "fit": "Uitdagend voor jongeren die houden van games, scores en korte missies. Plan dit als compact blok en check drukte vooraf.",
+      "source": "Visit Nijmegen",
+      "url": "https://www.visitnijmegen.com/evenementen/4179578618/pca-challenge",
+      "tags": [
+        "gaming",
+        "challenge",
+        "arcade",
+        "nijmegen",
+        "zomer 2026",
+        "regio",
+        "uitje"
+      ]
+    },
+    {
+      "title": "Verhalenvertellers bij De Barendonk",
+      "week": "w31",
+      "date": "Dinsdag 28 juli 2026",
+      "time": "10.30",
+      "domain": "Cultuur & Ontdekken",
+      "where": "De Barendonk, Beers",
+      "locationType": "Buiten de deur",
+      "cost": "Betaald/soms gratis",
+      "stimulus": "Laag/middel",
+      "bus": "Soms",
+      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
+      "source": "Land van Cuijk",
+      "url": "https://www.landvancuijk.nl/agenda/2026/07/",
+      "tags": [
+        "verhalen",
+        "beers",
+        "kleinschalig",
+        "cultuur",
+        "zomer 2026",
+        "regio",
+        "uitje"
+      ]
+    },
+    {
+      "title": "Verhalenvertellers bij De Barendonk",
+      "week": "w32",
+      "date": "Dinsdag 4 augustus 2026",
+      "time": "10.30",
+      "domain": "Cultuur & Ontdekken",
+      "where": "De Barendonk, Beers",
+      "locationType": "Buiten de deur",
+      "cost": "Betaald/soms gratis",
+      "stimulus": "Laag/middel",
+      "bus": "Soms",
+      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
+      "source": "Land van Cuijk",
+      "url": "https://www.landvancuijk.nl/agenda/2026/08/",
+      "tags": [
+        "verhalen",
+        "beers",
+        "kleinschalig",
+        "cultuur",
+        "zomer 2026",
+        "regio",
+        "uitje"
+      ]
+    },
+    {
+      "title": "Verhalenvertellers bij De Barendonk",
+      "week": "w33",
+      "date": "Dinsdag 11 augustus 2026",
+      "time": "10.30",
+      "domain": "Cultuur & Ontdekken",
+      "where": "De Barendonk, Beers",
+      "locationType": "Buiten de deur",
+      "cost": "Betaald/soms gratis",
+      "stimulus": "Laag/middel",
+      "bus": "Soms",
+      "fit": "Kleinschalige verhalenactiviteit met duidelijke starttijd. Fijn voor jongeren die geschiedenis en plekverhalen leuk vinden.",
+      "source": "Land van Cuijk",
+      "url": "https://www.landvancuijk.nl/agenda/2026/08/",
+      "tags": [
+        "verhalen",
+        "beers",
+        "kleinschalig",
+        "cultuur",
+        "zomer 2026",
+        "regio",
+        "uitje"
+      ]
     }
   ],
   "inspiration": [
     {
-      "title": "Beatmaking / DJ-light sessie",
+      "title": "Beatmaking / DJ sessie",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -1686,7 +1732,7 @@
       "group": "1–8",
       "bus": "Nee",
       "materials": "Djembés, emmers, stokken, koptelefoonoptie of geluidsafspraken.",
-      "fit": "Prikkelend en ontladend. Werkt goed in korte blokken met duidelijke beurtstructuur.",
+      "fit": "Prikkelend en ontladend. Werkt goed in korte blokken met beurtstructuur.",
       "tags": [
         "muziek",
         "ritme",
@@ -1754,7 +1800,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Klei / keramiek-light",
+      "title": "Klei / keramiek",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -1859,7 +1905,7 @@
       "group": "1–8",
       "bus": "Nee/soms",
       "materials": "Kies liefst een korte workshop met helder begin, eind en concreet resultaat.",
-      "fit": "Creatief aanbod met duidelijke werkvorm. Past goed bij jongeren die willen maken, proberen en toch overzicht nodig hebben.",
+      "fit": "Creatief aanbod met werkvorm. Past goed bij jongeren die willen maken, proberen en toch overzicht nodig hebben.",
       "source": "Lindenberg",
       "url": "https://www.delindenberg.com/wat-kun-je-doen-in-nijmegen",
       "tags": [
@@ -1934,7 +1980,7 @@
       "cost": "Gratis/laag",
       "stimulus": "Middel",
       "bus": "Nee/soms",
-      "materials": "Telefoon, vragenkaart, eenvoudige montage-app en duidelijke rolverdeling.",
+      "materials": "Telefoon, vragenkaart, eenvoudige montage-app en rolverdeling.",
       "fit": "Prikkelend en activerend voor jongeren die graag filmen, presenteren of de wereld observeren via hun camera.",
       "distanceBand": "Op terrein"
     },
@@ -1953,34 +1999,18 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Mini-podcast of audioverhaal opnemen",
+      "title": "Mini-podcast of interview opnemen",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
       "cost": "Gratis/laag",
       "stimulus": "Laag/middel",
-      "duration": "30-75 min",
+      "duration": "30-90 min",
       "group": "1-4",
       "bus": "Nee",
-      "materials": "Telefoon of recorder, rustige ruimte en een vaste structuur: intro, midden, afsluiting.",
-      "fit": "Past goed bij jongeren die liever inspreken dan schrijven en die baat hebben bij een helder format.",
+      "materials": "Telefoon of recorder, rustige ruimte, vragenkaartjes en een vaste structuur: intro, midden, afsluiting.",
+      "fit": "Past bij jongeren die liever inspreken dan schrijven. Kan als audioverhaal of kort interview zonder publicatiedruk.",
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Modekwartier of etalageroute Arnhem",
-      "domain": "Creatief & Expressie",
-      "type": "Bestaand extern aanbod / route",
-      "locationType": "Buiten de deur",
-      "duration": "60-120 min",
-      "group": "2-6",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Fotochallenge, moodboard-opdracht of lijstje met favoriete kleuren, outfits of details.",
-      "fit": "Past goed bij jongeren die graag kijken, vergelijken en iets visueels doen zonder dat het te schools wordt.",
-      "source": "Visit Arnhem UITagenda",
-      "url": "https://www.visitarnhem.com/evenementen",
-      "distanceBand": "In de regio (10-30 km)"
     },
     {
       "title": "Modelbouw of miniatuur schilderen",
@@ -2003,22 +2033,6 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Modespeurtocht of designkijkkaart",
-      "domain": "Creatief & Expressie",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "duration": "45-90 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Kaart met opdrachten zoals: vind iets opvallends, iets simpels, iets dat je zelf zou dragen of iets met een gek materiaal.",
-      "fit": "Maakt mode of design toegankelijker voor jongeren die niet vanzelf een tentoonstelling inlopen.",
-      "source": "Visit Arnhem zomervakantie tips",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
       "title": "Muziek maken met apps",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
@@ -2038,25 +2052,6 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Podcast of mini-interview opnemen",
-      "domain": "Creatief & Expressie",
-      "type": "Eigen aanbod",
-      "locationType": "Op groep",
-      "cost": "Gratis",
-      "stimulus": "Middel",
-      "duration": "60–120 min",
-      "group": "2–6",
-      "bus": "Nee",
-      "materials": "Telefoon/laptop, vragenkaartjes, rustige ruimte",
-      "fit": "Voor jongeren met interesse in media. Kan ook zonder publicatie, puur als oefening.",
-      "tags": [
-        "media",
-        "podcast",
-        "vragen"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
       "title": "Reparatie- of makerchallenge",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
@@ -2066,30 +2061,8 @@
       "cost": "Gratis/laag",
       "stimulus": "Laag/middel",
       "bus": "Nee",
-      "materials": "Kapotte spullen, tape, lijm, schroevendraaiers, handschoenen en duidelijke veiligheidsspelregels.",
+      "materials": "Kapotte spullen, tape, lijm, schroevendraaiers, handschoenen en veiligheidsspelregels.",
       "fit": "Past bij jongeren die graag sleutelen, oplossen of praktisch bezig zijn zonder veel praat eromheen.",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Rozet agenda of workshop kiezen",
-      "domain": "Creatief & Expressie",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/middel",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Kies samen 2 opties en vergelijk op duur, drukte, kosten en locatie.",
-      "fit": "Goede bron voor exposities, bijeenkomsten en workshops in Arnhem. Fijn als jongeren mee mogen kiezen binnen duidelijke kaders.",
-      "source": "Rozet",
-      "url": "https://rozet.nl/agenda/?type-activiteit=expositie,evenement,bijeenkomst",
-      "tags": [
-        "rozet",
-        "arnhem",
-        "agenda",
-        "workshops"
-      ],
       "distanceBand": "Op terrein"
     },
     {
@@ -2115,22 +2088,6 @@
       "distanceBand": "In de regio (10-30 km)"
     },
     {
-      "title": "Rozet MakerCosmos of workshop kiezen",
-      "domain": "Creatief & Expressie",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Laag/middel",
-      "duration": "45-120 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Laat jongeren kiezen tussen maken, kijken, lezen of een korte workshop; print eventueel 3 opties vooraf uit.",
-      "fit": "Geeft keuzevrijheid zonder chaos en past goed bij jongeren die creatief zijn maar wel overzicht nodig hebben.",
-      "source": "Rozet agenda",
-      "url": "https://rozet.nl/agenda/",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "Sneaker custom of pet design",
       "domain": "Creatief & Expressie",
       "type": "Eigen aanbod",
@@ -2141,7 +2098,7 @@
       "group": "1–6",
       "bus": "Nee",
       "materials": "Textielstiften, sjablonen, oude pet of canvas schoenen, inspiratiebeelden.",
-      "fit": "Sterke motivatie door mode en eigen stijl. Goed als er voldoende keuze maar ook duidelijke stappen zijn.",
+      "fit": "Sterke motivatie door mode en eigen stijl. Goed als er voldoende keuze maar ook stappen zijn.",
       "tags": [
         "mode",
         "design",
@@ -2175,7 +2132,7 @@
       "group": "1–6",
       "bus": "Nee",
       "materials": "Telefoon of tablet, statief, props, storyboardkaart.",
-      "fit": "Geeft duidelijke rollen en een klein eindproduct. Goed voor jongeren die liever maken dan lang praten.",
+      "fit": "Geeft rollen en een klein eindproduct. Goed voor jongeren die liever maken dan lang praten.",
       "tags": [
         "film",
         "stopmotion",
@@ -2191,11 +2148,11 @@
       "locationType": "Buiten de deur",
       "cost": "Gratis",
       "stimulus": "Middel",
-      "duration": "60–120 min",
-      "group": "1–6",
+      "duration": "60-120 min",
+      "group": "1-6",
       "bus": "Soms",
-      "materials": "Telefoons, route, 5 foto-opdrachten en rustplek onderweg.",
-      "fit": "Buitenactiviteit met duidelijke opdracht en visuele prikkels, zonder dat veel sociaal gesprek nodig is.",
+      "materials": "Route, telefoon of camera, 5 foto-opdrachten en rustplek onderweg.",
+      "fit": "Cultuur zonder lange uitleg: jongeren kunnen kijken, fotograferen en kiezen. Buitenactiviteit met opdracht zonder veel sociaal gesprek.",
       "tags": [
         "street art",
         "route",
@@ -2347,58 +2304,6 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Backstageblik of theatertechniek-gesprek",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "duration": "45-90 min",
-      "group": "2-6",
-      "cost": "Laag/betaald",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Vooraf contact leggen, vragenkaart maken en jongeren een rol geven als interviewer, spotter of fotograaf.",
-      "fit": "Leuk voor jongeren die nieuwsgierig zijn naar geluid, licht of wat er achter de schermen gebeurt.",
-      "source": "Musis & Stadstheater Arnhem",
-      "url": "https://www.musisenstadstheater.nl/nl/agenda",
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Bioscoopagenda of filmblok kiezen",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "15-25 min voorbereiding",
-      "group": "1-4",
-      "cost": "Betaald",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "materials": "Trailer kijken, duur afspreken, stoelvoorkeur kiezen en een rustige vertrektijd plannen.",
-      "fit": "Handig voor jongeren die wel iets willen ondernemen, maar liever een duidelijk begin en einde hebben.",
-      "source": "Into Nijmegen bioscoopagenda",
-      "url": "https://www.intonijmegen.com/agenda/uitagenda/filmagenda",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Braderie of zomermarkt met opdrachtkaart",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod / bestaand aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel/hoog",
-      "duration": "45–120 min",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Kleine opdrachtkaart: zoek 3 kraampjes, proef 1 nieuw ding, maak 2 foto’s en kies 1 favoriet.",
-      "fit": "Prikkelend maar goed te begrenzen. Werkt beter als de route kort is, de opdracht helder is en er een rustige exit is.",
-      "tags": [
-        "markt",
-        "braderie",
-        "stad",
-        "prikkelend"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "Dakterrasbios of openluchtfilm",
       "domain": "Cultuur & Ontdekken",
       "type": "Bestaand extern aanbod",
@@ -2409,7 +2314,7 @@
       "group": "1–6",
       "bus": "Soms",
       "materials": "Kaarten, kleding voor buiten, rustige terugreis en alternatief bij slecht weer.",
-      "fit": "Meer bijzonder dan een gewone filmavond en daardoor motiverend. Wel alleen passend als buitenprikkels en drukte te hanteren zijn.",
+      "fit": "Meer bijzonder dan een gewone filmavond en daardoor motiverend. Vooral fijn op een overzichtelijk moment.",
       "tags": [
         "film",
         "buiten",
@@ -2417,93 +2322,6 @@
         "prikkelend"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "De Bastei met Waalbalkon-opdracht",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "60-150 min",
-      "group": "2-8",
-      "cost": "Betaald/soms laag",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "materials": "Kijkkaart, korte route, één verdieping kiezen en afsluiten met buitenkijkpunt aan de Waal.",
-      "fit": "Concreet, visueel en goed te doseren. Handig voor jongeren die graag een echte plek bezoeken zonder meteen een volle dag weg te zijn.",
-      "source": "Museum De Bastei",
-      "url": "https://www.debastei.nl/nl/agenda",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Eusebius panoramalift met uitzichtchallenge",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel/hoog",
-      "duration": "30-75 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Fotolijst-opdracht, durf-schaal van 1-5 en een rustige napraatplek beneden.",
-      "fit": "Goed voor jongeren die spanning leuk vinden, zolang het duidelijk oké is om niet op het glazen balkon te stappen.",
-      "source": "Visit Arnhem zomervakantie tips",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Expositie of workshop via Uitagenda",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Bestaand aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/middel",
-      "duration": "1–3 uur",
-      "group": "2–8",
-      "bus": "Soms",
-      "materials": "Actuele agenda checken, reserveren indien nodig",
-      "fit": "Gebruik Visit/Into om per week iets kleins en passends te kiezen.",
-      "tags": [
-        "agenda",
-        "workshop",
-        "cultuur"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Festivalblok met timebox en rustanker",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "duration": "45-150 min",
-      "group": "2-6",
-      "cost": "Gratis/betaald",
-      "stimulus": "Hoog",
-      "bus": "Soms",
-      "materials": "Vaste aankomst- en vertrektijd, oordoppen, rustplek, duidelijke taakverdeling en noodplan.",
-      "fit": "Goed voor jongeren die wel nieuwsgierig zijn naar drukke evenementen, maar alleen als het stevig wordt ingekaderd.",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Focus agenda of filmavond kiezen",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Laag/middel",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Kies tijd, genre en terugreis vooraf. Gebruik de agenda om 1 rustige optie te selecteren.",
-      "fit": "Geschikt voor jongeren die graag film kijken en een duidelijk begin en einde prettig vinden.",
-      "source": "Focus Arnhem",
-      "url": "https://www.focusarnhem.nl/agenda/",
-      "tags": [
-        "film",
-        "arnhem",
-        "agenda",
-        "cultuur"
-      ],
-      "distanceBand": "Op terrein"
     },
     {
       "title": "Focus Filmtheater Arnhem",
@@ -2515,8 +2333,8 @@
       "duration": "2–3 uur",
       "group": "1–6",
       "bus": "Soms",
-      "materials": "Kies een duidelijke filmtijd en plan vooraf eten, pauze en nabespreking.",
-      "fit": "Duidelijke activiteit met helder begin en einde. Fijn voor jongeren die structuur prettig vinden maar wel een culturele prikkel aankunnen.",
+      "materials": "Kies een filmtijd en plan vooraf eten, pauze en nabespreking.",
+      "fit": "Activiteit met helder begin en einde. Fijn voor jongeren die structuur prettig vinden maar wel een culturele prikkel aankunnen.",
       "source": "Focus Arnhem",
       "url": "https://www.focusarnhem.nl/",
       "tags": [
@@ -2526,42 +2344,6 @@
         "structuur"
       ],
       "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Gemeente Nijmegen – evenementenkalender",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "duration": "10–20 min checken",
-      "group": "1–8",
-      "bus": "Soms",
-      "materials": "Controleer drukte, locatie en eventuele afsluitingen voor vertrek.",
-      "fit": "Nuttig om drukte en evenementen vroeg te zien. Helpt bij voorspelbaarheid voor jongeren die baat hebben bij goede voorbereiding.",
-      "source": "Gemeente Nijmegen",
-      "url": "https://www.nijmegen.nl/diensten/evenementen/evenementenkalender/",
-      "tags": [
-        "agenda",
-        "drukte",
-        "nijmegen",
-        "planning"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Gratis festivalblok met strakke timebox",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "duration": "45-120 min",
-      "group": "2-6",
-      "cost": "Gratis",
-      "stimulus": "Hoog",
-      "bus": "Soms",
-      "materials": "Tijdblok, vaste ontmoetplek, oordoppen, snackpauze en exitplan vooraf afspreken.",
-      "fit": "Geeft toch de sfeer van een festival zonder dat jongeren er eindeloos in hoeven blijven of over hun grens gaan.",
-      "distanceBand": "Dichtbij (0-10 km)"
     },
     {
       "title": "Historische stadswandeling Nijmegen",
@@ -2574,85 +2356,11 @@
       "group": "2–8",
       "bus": "Nee/soms",
       "materials": "Route, kijkopdracht, pauzeplek",
-      "fit": "Goed met duidelijke opdracht: zoek 5 oude plekken, maak foto's, kies je favoriete verhaal.",
+      "fit": "Goed met opdracht: zoek 5 oude plekken, maak foto's, kies je favoriete verhaal.",
       "tags": [
         "stad",
         "geschiedenis",
         "wandelen"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Into Nijmegen – uitagenda en jongerenactiviteiten",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–8",
-      "bus": "Soms",
-      "materials": "Selecteer vooraf rustige of juist wat actievere opties, passend bij de jongere.",
-      "fit": "Fijn voor jongerenaanbod, cultuur en kleinschalige activiteiten. Werkt goed als je samen één overzichtelijke keuze maakt.",
-      "source": "Into Nijmegen",
-      "url": "https://www.intonijmegen.com/agenda/agenda-overzicht",
-      "tags": [
-        "agenda",
-        "jongeren",
-        "extern aanbod",
-        "nijmegen"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Into Nijmegen festivalwijzer als prikkelkeuze",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "20-40 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Middel/hoog",
-      "bus": "Soms",
-      "materials": "Gebruik een stoplichtsysteem: groen voor rustig, oranje voor spannend, rood voor te veel. Kies daarna samen één haalbare festivaloptie.",
-      "fit": "Handig om prikkelende dingen toch veilig bespreekbaar en planbaar te maken.",
-      "source": "Into Nijmegen festivalwijzer",
-      "url": "https://www.intonijmegen.com/zien-en-doen/cultuur-nijmegen/festival/festivalwijzer-nijmegen",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Into Nijmegen weektips samen kiezen",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "15-30 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "bus": "Soms",
-      "materials": "Selecteer samen 2 haalbare opties, bespreek reistijd en kies ook een rustiger back-upplan.",
-      "fit": "Goed voor jongeren die willen meebeslissen maar baat hebben bij een korte, voorgefilterde keuzelijst.",
-      "source": "Into Nijmegen weektips",
-      "url": "https://www.intonijmegen.com/blijf-op-de-hoogte/nieuws/weektips",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Kermis-light met duidelijk exitplan",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Bestaand aanbod / eigen begeleiding",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Hoog",
-      "duration": "60–120 min",
-      "group": "1–4",
-      "bus": "Soms",
-      "materials": "Budget, prikkelafspraken, duidelijke begin- en eindtijd en rustige uitwijkplek.",
-      "fit": "Alleen geschikt voor jongeren die echt van spanning houden. Kort houden en altijd een terugtrekroute afspreken.",
-      "tags": [
-        "kermis",
-        "hoog prikkel",
-        "keuze",
-        "begeleiding"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
     },
@@ -2677,22 +2385,6 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "LUX film, debat of expositie kiezen",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "90-180 min",
-      "group": "2-8",
-      "cost": "Betaald/soms laag",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "materials": "Vooraf samen programma kiezen, rustige zitplek, duidelijke begin- en eindtijd.",
-      "fit": "Mooi voor jongeren die wel iets cultureels willen, maar baat hebben bij een afgebakend tijdsblok en een duidelijke setting.",
-      "source": "LUX Nijmegen",
-      "url": "https://www.lux-nijmegen.nl/programma/",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "LUX kieskaart: film, expo of nagesprek",
       "domain": "Cultuur & Ontdekken",
       "type": "Zoekbron / extern",
@@ -2702,8 +2394,8 @@
       "duration": "60-150 min",
       "group": "1-6",
       "bus": "Nee/soms",
-      "materials": "Maak een kaartje met drie routes: alleen film, film plus drankje, of korte expo plus film.",
-      "fit": "Helpt jongeren kiezen op niveau van energie en sociale ruimte, niet alleen op inhoud.",
+      "materials": "Maak een kaartje met drie routes: alleen film, film plus drankje, of korte expo plus film. Spreek begin- en eindtijd af.",
+      "fit": "Helpt jongeren kiezen op niveau van energie en sociale ruimte, niet alleen op inhoud. Cultureel uitje in een afgebakend tijdsblok.",
       "source": "LUX programma",
       "url": "https://www.lux-nijmegen.nl/programma/",
       "distanceBand": "Dichtbij (0-10 km)"
@@ -2792,44 +2484,6 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Museumpark Orientalis activiteitenagenda",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Laag/middel",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Check actuele activiteiten zoals verhalen, workshops of rondleidingen voor vertrek.",
-      "fit": "Maakt een museumparkbezoek aantrekkelijker voor jongeren die iets extra’s willen doen naast alleen rondlopen.",
-      "source": "Museumpark Orientalis",
-      "url": "https://www.museumparkorientalis.nl/activiteitenagenda/",
-      "tags": [
-        "agenda",
-        "museumpark",
-        "berg en dal",
-        "activiteiten"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Musis of Stadstheater met keuzekaart",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "90-180 min",
-      "group": "2-8",
-      "cost": "Betaald",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Vooraf kort uitleggen wat er komt, zitplaats kiezen, pauzemoment en exitplan afspreken.",
-      "fit": "Geeft uitdaging en beleving, maar blijft voorspelbaar als de voorstelling vooraf samen wordt uitgekozen.",
-      "source": "Musis & Stadstheater Arnhem",
-      "url": "https://www.musisenstadstheater.nl/nl/agenda",
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
       "title": "muZIEum – zintuiglijke museumervaring",
       "domain": "Cultuur & Ontdekken",
       "type": "Bestaand extern aanbod",
@@ -2840,7 +2494,7 @@
       "group": "1–6",
       "bus": "Nee/soms",
       "materials": "Boek op tijd en bereid de ervaring kort voor met de jongere.",
-      "fit": "Sterke ervaring die vaak indruk maakt. Goed te doseren met goede voorbereiding, één duidelijke focus en nabespreking achteraf.",
+      "fit": "Sterke ervaring die vaak indruk maakt. Goed te doseren met goede voorbereiding, één focus en nabespreking achteraf.",
       "source": "muZIEum",
       "url": "https://www.muzieum.nl/",
       "tags": [
@@ -2915,42 +2569,6 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Openluchtmuseum activiteitenagenda",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Laag/middel",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Kijk vooraf naar bijzondere activiteiten of drukkere dagen in de ticketshop.",
-      "fit": "Handige zoekbron om een museumbezoek concreter te maken met een activiteit, route of thema.",
-      "source": "Nederlands Openluchtmuseum",
-      "url": "https://www.openluchtmuseum.nl/nl/activiteitenagenda#event",
-      "tags": [
-        "museum",
-        "arnhem",
-        "agenda",
-        "activiteiten"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Parkoptreden of openluchtmuziek-light",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "duration": "45-90 min",
-      "group": "2-8",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Kleedje, water, schaduwplek en duidelijke begin- en eindtijd.",
-      "fit": "Laagdrempeliger dan een druk festival, maar wel gezellig, zomers en sociaal.",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "Podcast luisteren en recensie maken",
       "domain": "Cultuur & Ontdekken",
       "type": "Eigen aanbod",
@@ -2971,54 +2589,6 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Podiumavond kiezen via Musis of Stadstheater",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel",
-      "duration": "75-150 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Kies vooraf tussen muziek, cabaret of familievoorstelling en bespreek regels rond wachten, zitten en pauzes.",
-      "fit": "Kan juist fijn zijn voor jongeren die duidelijk kader, vaste plekken en een begin/eindmoment prettig vinden.",
-      "source": "Musis & Stadstheater agenda",
-      "url": "https://www.musisenstadstheater.nl/nl/agenda",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Regenproof uitje kiezen met slechtweer-lijst",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "15-25 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/middel",
-      "bus": "Soms",
-      "materials": "Maak een vaste slechtweer-top 5 met film, museum, lasergame, gamehal of binnenworkshop.",
-      "fit": "Handig voor onrustige zomerdagen waarop je snel iets wilt kunnen kiezen zonder opnieuw te moeten zoeken.",
-      "source": "Visit Nijmegen zomervakantie",
-      "url": "https://www.visitnijmegen.com/artikelen/zomervakantie-nijmegen",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Rozet stadswandeling of erfgoedroute",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Laag/middel",
-      "duration": "45-90 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Kies een wandeling met 3 kijkopdrachten, rustpauze en een eindpunt met drinken of ijsje.",
-      "fit": "Rustiger dan een groot event, maar toch verrassend en leerzaam door de stad.",
-      "source": "Rozet agenda",
-      "url": "https://rozet.nl/agenda/",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "Special interest route: strips, games of platenzaken",
       "domain": "Cultuur & Ontdekken",
       "type": "Eigen aanbod / buiten de deur",
@@ -3035,25 +2605,6 @@
         "winkelroute",
         "games",
         "muziek"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Street-art route / fotomissie",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Eigen aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis",
-      "stimulus": "Middel",
-      "duration": "90–150 min",
-      "group": "2–8",
-      "bus": "Nee/soms",
-      "materials": "Route, camera/telefoon, opdrachtkaart",
-      "fit": "Cultuur zonder lange uitleg. Jongeren kunnen kijken, fotograferen en kiezen.",
-      "tags": [
-        "streetart",
-        "fotografie",
-        "stad"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
     },
@@ -3088,76 +2639,6 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Land van Cuijk UITagenda als verbredingsbron",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "duration": "15-30 min zoeken + uitje",
-      "group": "1-8",
-      "bus": "Soms/ja",
-      "materials": "Kies vooraf 2 of 3 opties, let op reistijd vanaf Nijmegen en maak een rustige terugvaloptie.",
-      "fit": "Handig om buiten de standaard Nijmegen-Arnhem-route te kijken naar film, workshops, markten en kleinere evenementen in de regio.",
-      "source": "Land van Cuijk Uitagenda",
-      "url": "https://www.landvancuijk.nl/agenda/",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Beuningen Samen agenda als extra zoekbron",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "duration": "10-25 min zoeken + uitje",
-      "group": "1-8",
-      "bus": "Nee/soms",
-      "materials": "Filter op jongeren en datum, kies 1 of 2 haalbare opties in Weurt, Beuningen, Ewijk of Winssen en maak vooraf een kort plan.",
-      "fit": "Sterke lokale bron voor laagdrempelige activiteiten, buurtinitiatieven en kleine evenementen die niet altijd in de grotere regionale agenda's opduiken.",
-      "source": "Beuningen Samen agenda",
-      "url": "https://beuningensamen.nl/agenda",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Visit Arnhem UITagenda als keuzemenu",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "20-40 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "bus": "Soms",
-      "materials": "Kies samen 2 of 3 opties, maak een top 1 en spreek ook een terugvaloptie af.",
-      "fit": "Fijn voor jongeren die graag eerst overzicht willen voordat ze kiezen. Werkt goed als begeleider de keuzeruimte alvast afbakent.",
-      "source": "Visit Arnhem UITagenda",
-      "url": "https://www.visitarnhem.com/evenementen",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Visit Nijmegen Uitagenda",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "duration": "15–30 min zoeken + uitje",
-      "group": "1–8",
-      "bus": "Soms",
-      "materials": "Kies vooraf 2 of 3 opties met vaste tijden, reistijd en terugvalplan.",
-      "fit": "Handige zoekbron voor kleine, concrete uitjes in Nijmegen en omgeving. Goed als jongeren binnen duidelijke kaders iets mogen kiezen.",
-      "source": "Visit Nijmegen",
-      "url": "https://www.visitnijmegen.com/evenementen",
-      "tags": [
-        "agenda",
-        "extern aanbod",
-        "nijmegen",
-        "keuzevrijheid"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
       "title": "Vrijheidsmuseum Groesbeek",
       "domain": "Cultuur & Ontdekken",
       "type": "Bestaand extern aanbod",
@@ -3168,7 +2649,7 @@
       "group": "1–6",
       "bus": "Soms",
       "materials": "Kies vooraf één onderwerp of route, zodat het bezoek niet te vol wordt.",
-      "fit": "Sterke verhalen en duidelijke thema's. Geschikt voor jongeren die verdieping aankunnen als het bezoek compact blijft.",
+      "fit": "Sterke verhalen en thema's. Geschikt voor jongeren die verdieping aankunnen als het bezoek compact blijft.",
       "source": "Vrijheidsmuseum",
       "url": "https://vrijheidsmuseum.nl/",
       "tags": [
@@ -3177,54 +2658,6 @@
         "museum",
         "thema"
       ],
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Zomervakantie tips uit regio Arnhem",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "20-40 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "bus": "Soms",
-      "materials": "Kies vanuit de tips één actief uitje, één rustig uitje en één prikkelend uitje als reserve.",
-      "fit": "Geeft veel afwisseling zonder dat je alles zelf hoeft uit te zoeken.",
-      "source": "Visit Arnhem zomervakantie",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Zomervakantie tips uit Rijk van Nijmegen",
-      "domain": "Cultuur & Ontdekken",
-      "type": "Zoekbron / extern",
-      "locationType": "Online / buiten de deur",
-      "duration": "20-40 min voorbereiding",
-      "group": "1-4",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/hoog",
-      "bus": "Soms",
-      "materials": "Werk met categorieën zoals zwemmen, festival, museum en route. Laat jongeren elk één favoriet aanwijzen.",
-      "fit": "Heel bruikbaar als brede inspiratiebron voor vakantieweken waarin je nog niet precies weet wat gaat passen.",
-      "source": "Visit Nijmegen zomervakantie",
-      "url": "https://www.visitnijmegen.com/artikelen/zomervakantie-nijmegen",
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Blauwe Bever vaartocht of natuurexpeditie",
-      "domain": "Natuur & Buiten",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel",
-      "duration": "90-180 min",
-      "group": "2-8",
-      "bus": "Soms",
-      "materials": "Neem verrekijker, pet, water en een simpele speuropdracht mee voor onderweg.",
-      "fit": "Biedt avontuur en natuur zonder stedelijke drukte; veel jongeren vinden het fijn dat de route al vastligt.",
-      "source": "Visit Arnhem zomervakantie tips",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
       "distanceBand": "In de regio (10-30 km)"
     },
     {
@@ -3270,26 +2703,7 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Geocaching",
-      "domain": "Natuur & Buiten",
-      "type": "Eigen aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis",
-      "stimulus": "Middel",
-      "duration": "90–150 min",
-      "group": "2–6",
-      "bus": "Soms",
-      "materials": "Telefoon/GPS, route, afspraken",
-      "fit": "Voor jongeren die puzzelen, zoeken en buiten zijn leuk vinden. Goede teamactiviteit.",
-      "tags": [
-        "puzzel",
-        "wandelen",
-        "buiten"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Geocaching of GPS-speurtocht",
+      "title": "Geocaching / GPS-speurtocht",
       "domain": "Natuur & Buiten",
       "type": "Eigen aanbod / buiten de deur",
       "locationType": "Buiten de deur",
@@ -3298,8 +2712,8 @@
       "duration": "60–150 min",
       "group": "1–6",
       "bus": "Soms",
-      "materials": "Telefoon met geocache-app, powerbank, vaste route en noodstop.",
-      "fit": "Combineert beweging, zoeken en een concreet doel. Fijn voor jongeren die graag puzzelen zonder druk sociaal programma.",
+      "materials": "Telefoon of GPS-app, powerbank, route, afspraken en noodstop.",
+      "fit": "Combineert beweging, zoeken, puzzelen en een concreet doel. Fijn voor jongeren die buiten willen zijn zonder druk sociaal programma.",
       "tags": [
         "zoeken",
         "gps",
@@ -3319,7 +2733,7 @@
       "group": "1–6",
       "bus": "Soms",
       "materials": "Kies een korte fietsroute, vaste rustplek en eventueel een picknickmoment.",
-      "fit": "Beweging, natuur en eigen tempo komen hier mooi samen. Goed voor jongeren die vrijheid prettig vinden binnen een duidelijke route.",
+      "fit": "Beweging, natuur en eigen tempo komen hier mooi samen. Goed voor jongeren die vrijheid prettig vinden binnen een route.",
       "source": "De Hoge Veluwe",
       "url": "https://hogeveluwe.nl/",
       "tags": [
@@ -3350,28 +2764,6 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Natuurmonumenten – agenda natuuractiviteiten",
-      "domain": "Natuur & Buiten",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/middel",
-      "duration": "30 min zoeken + uitje",
-      "group": "1–8",
-      "bus": "Soms",
-      "materials": "Selecteer alleen activiteiten met duidelijke duur, route en rustmomenten.",
-      "fit": "Fijn voor wandelingen, excursies en buitenactiviteiten die prikkelarm kunnen zijn maar toch iets nieuws bieden.",
-      "source": "Natuurmonumenten",
-      "url": "https://www.natuurmonumenten.nl/agenda",
-      "tags": [
-        "natuur",
-        "agenda",
-        "wandelen",
-        "excursie"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
       "title": "Ooijpolder – wandelroute met foto-opdrachten",
       "domain": "Natuur & Buiten",
       "type": "Bestaand extern aanbod",
@@ -3382,7 +2774,7 @@
       "group": "1–6",
       "bus": "Nee/soms",
       "materials": "Kies een kort stuk van de route en geef 3 tot 5 observatieopdrachten mee.",
-      "fit": "Rustig, groen en overzichtelijk. Werkt goed voor jongeren die liever lopen met een duidelijke opdracht dan zomaar wandelen.",
+      "fit": "Rustig, groen en overzichtelijk. Werkt goed voor jongeren die liever lopen met een opdracht dan zomaar wandelen.",
       "source": "Visit Nijmegen",
       "url": "https://www.visitnijmegen.com/routes/1298714414/boswachterspad-ooijpolder",
       "tags": [
@@ -3412,22 +2804,6 @@
         "natuur"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Park Sonsbeek picknick met muziekbubbel",
-      "domain": "Natuur & Buiten",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Laag/middel",
-      "duration": "45-120 min",
-      "group": "1-8",
-      "bus": "Soms",
-      "materials": "Kleedje, snacks, bluetoothspeaker op zacht volume of ieder eigen koptelefoonmoment.",
-      "fit": "Zomers, sociaal en ontspannen; je kunt de prikkels goed terugschroeven zonder dat het saai wordt.",
-      "source": "Visit Arnhem zomervakantie tips",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
-      "distanceBand": "In de regio (10-30 km)"
     },
     {
       "title": "Podcastwandeling of audio-opdracht",
@@ -3489,28 +2865,6 @@
       "materials": "Verrekijker, checklist met vogels, insecten of sporen en een korte looproute.",
       "fit": "Rustig en verrassend voor jongeren die graag observeren en details opmerken.",
       "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Staatsbosbeheer – activiteiten in de natuur",
-      "domain": "Natuur & Buiten",
-      "type": "Zoekbron / agenda",
-      "locationType": "Online / buiten de deur",
-      "cost": "Gratis/betaald",
-      "stimulus": "Laag/middel",
-      "duration": "30 min zoeken + uitje",
-      "group": "1–8",
-      "bus": "Soms",
-      "materials": "Zoek excursies of korte natuurmomenten die passen bij de spanningsboog van de jongere.",
-      "fit": "Handige zoekbron voor buitenactiviteiten met duidelijke opzet. Goed als natuur rust geeft maar er wel iets te doen moet zijn.",
-      "source": "Staatsbosbeheer",
-      "url": "https://www.staatsbosbeheer.nl/uit-in-de-natuur/activiteiten",
-      "tags": [
-        "natuur",
-        "agenda",
-        "buiten",
-        "rust"
-      ],
-      "distanceBand": "Op terrein"
     },
     {
       "title": "Terrarium, stekjes of plantlab",
@@ -3587,7 +2941,7 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Wandeling Duivelsberg / N70-light",
+      "title": "Wandeling Duivelsberg / N70",
       "domain": "Natuur & Buiten",
       "type": "Eigen aanbod",
       "locationType": "Buiten de deur",
@@ -3597,7 +2951,7 @@
       "group": "2–6",
       "bus": "Ja/soms",
       "materials": "Route, stevige schoenen, water",
-      "fit": "Pittiger door hoogteverschil. Alleen voor jongeren die dit fysiek en prikkelmatig aankunnen.",
+      "fit": "Pittiger door hoogteverschil. Voor jongeren die een stevige wandeling aankunnen.",
       "tags": [
         "wandelen",
         "hoogteverschil",
@@ -3664,41 +3018,6 @@
         "route"
       ],
       "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Arcade of gamehall-bezoek",
-      "domain": "Actie & amusement",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Hoog",
-      "duration": "45–90 min",
-      "group": "1–4",
-      "bus": "Soms",
-      "materials": "Werk met speeltijd, muntjesbudget en duidelijke pauzemomenten.",
-      "fit": "Sterk motiverend voor gamegerichte jongeren. Alleen geschikt als er genoeg structuur en stopafspraken zijn.",
-      "tags": [
-        "gaming",
-        "arcade",
-        "hoog prikkel",
-        "uitje"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Arcade, pool of gamehal-light",
-      "domain": "Actie & amusement",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "60-120 min",
-      "group": "2-6",
-      "cost": "Laag/betaald",
-      "stimulus": "Middel/hoog",
-      "bus": "Soms",
-      "materials": "Timebox, muntjes of afgesproken budget, observatie-optie en vertrekmoment vooraf vastleggen.",
-      "fit": "Prikkelend en motiverend voor jongeren die houden van competitie, gamecultuur of korte succesmomenten.",
-      "source": "Eigen keuze in regio",
-      "distanceBand": "Dichtbij (0-10 km)"
     },
     {
       "title": "Barista- of ijskoffielab",
@@ -3769,7 +3088,7 @@
       "group": "2–8",
       "bus": "Nee/soms",
       "materials": "Kies liever een compacte opdracht dan een te lang programma.",
-      "fit": "Werkt goed bij jongeren die houden van een missie, competitie of spelvorm in de stad. Zorg voor duidelijke rollen en timeboxes.",
+      "fit": "Werkt goed bij jongeren die houden van een missie, competitie of spelvorm in de stad. Zorg voor rollen en tijdblokken.",
       "source": "DoeNijmegen",
       "url": "https://www.doenijmegen.nl/",
       "tags": [
@@ -3800,28 +3119,8 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Escape museum of speurroute buiten de deur",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Bestaand extern aanbod / eigen begeleiding",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald/soms laag",
-      "stimulus": "Middel",
-      "duration": "60–120 min",
-      "group": "2–6",
-      "bus": "Soms",
-      "materials": "Reservering of route, rolverdeling en een duidelijk eindpunt.",
-      "fit": "Goed voor jongeren die spanning, puzzels en samenwerken leuk vinden, zolang het doel en de rollen helder zijn.",
-      "tags": [
-        "escape",
-        "speurtocht",
-        "puzzel",
-        "samenwerken"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
       "title": "Escape room op de groep",
-      "domain": "Actie & amusement",
+      "domain": "Actie & Amusement",
       "type": "Eigen aanbod",
       "locationType": "Op groep",
       "cost": "Gratis/laag",
@@ -3830,33 +3129,13 @@
       "group": "3–8",
       "bus": "Nee",
       "materials": "Slotjes, enveloppen, puzzels, timer",
-      "fit": "Duidelijk doel, samenwerking en uitdaging. Zorg voor hints en duidelijke veiligheidsafspraak.",
+      "fit": "Samenwerken aan een duidelijk doel, met hints achter de hand.",
       "tags": [
         "escape",
         "puzzel",
         "samenwerken"
       ],
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Escape walk light in centrum",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Eigen aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "duration": "60–90 min",
-      "group": "2–6",
-      "bus": "Nee/soms",
-      "materials": "Kaart, 3 tot 4 checkpoints, timer, back-up route.",
-      "fit": "Meer prikkelend, maar overzichtelijk als je klein blijft. Werkt goed bij jongeren die houden van opdrachten, puzzels en een duidelijke missie.",
-      "tags": [
-        "escape",
-        "missie",
-        "centrum",
-        "uitdagend"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
     },
     {
       "title": "Esports of game-toernooi op kleine schaal",
@@ -3869,7 +3148,7 @@
       "group": "2–8",
       "bus": "Nee",
       "materials": "Console of pc, vaste rondes, spelregels, time-outplek.",
-      "fit": "Sterk aansprekend voor veel jongeren. Belangrijk zijn duidelijke afspraken over beurt, verlies en pauze.",
+      "fit": "Sterk aansprekend voor veel jongeren. Belangrijk zijn afspraken over beurt, verlies en pauze.",
       "tags": [
         "esports",
         "gaming",
@@ -3898,7 +3177,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Filmavond met nagesprek-light",
+      "title": "Filmavond met nagesprek",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep",
@@ -3917,7 +3196,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Foodhall of proefroute met keuzekaart",
+      "title": "Foodhall of streetfood-proefroute met keuzekaart",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Bestaand extern aanbod / eigen opdracht",
       "locationType": "Buiten de deur",
@@ -3926,43 +3205,9 @@
       "cost": "Laag/betaald",
       "stimulus": "Middel/hoog",
       "bus": "Soms",
-      "materials": "Budget per persoon, vaste eindtijd, vooraf kiezen hoeveel stops er zijn en waar rust mogelijk is.",
-      "fit": "Maakt eten sociaal en concreet. Werkt goed als jongeren iets mogen proeven, vergelijken en beoordelen zonder lange zit.",
+      "materials": "Budget per persoon, 2 of 3 eetopties, vaste eindtijd, rustige zitplek en een simpele beoordelingskaart.",
+      "fit": "Maakt eten sociaal en concreet. Werkt goed als jongeren mogen proeven, vergelijken en kiezen binnen vaste kaders.",
       "source": "Eigen keuze in stad",
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Foodhall of streetfood-proeverij",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Laag/middel",
-      "stimulus": "Middel/hoog",
-      "duration": "60–120 min",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Kies vooraf budget, 2 eetopties en een rustige zitplek.",
-      "fit": "Sociaal en zintuiglijk, maar beter in kleine setting. Goed voor jongeren die graag kiezen en proeven binnen vaste kaders.",
-      "tags": [
-        "eten",
-        "proeven",
-        "sociaal",
-        "stad"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Foodtruck- of streekmarkt proefronde",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "duration": "60-120 min",
-      "group": "2-6",
-      "cost": "Laag/betaald",
-      "stimulus": "Middel/hoog",
-      "bus": "Soms",
-      "materials": "Vast budget, proefkaart, zitplek als rustpunt en heldere afspraak over aantal stops.",
-      "fit": "Leuk, verrassend en zintuiglijk. Past goed bij jongeren die graag proeven, vergelijken en op pad zijn zonder een hele dag vast te zitten.",
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
@@ -4022,36 +3267,23 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Mocktail-workshop",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Eigen aanbod",
-      "locationType": "Op groep / terrein",
-      "cost": "Laag",
-      "stimulus": "Middel",
-      "duration": "60–90 min",
-      "group": "3–10",
-      "bus": "Nee",
-      "materials": "Sap, fruit, ijs, glazen, receptkaarten",
-      "fit": "Zomers, sociaal en overzichtelijk. Goed te combineren met filmavond of quiz.",
-      "tags": [
-        "mocktail",
-        "zomer",
-        "sociaal"
-      ],
-      "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Mocktailbar en tapasplank light",
+      "title": "Mocktail-workshop met kleine tapasplank",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
       "cost": "Laag/middel",
       "stimulus": "Middel",
       "duration": "45-90 min",
-      "group": "2-8",
+      "group": "2-10",
       "bus": "Nee",
-      "materials": "Sap, bruiswater, ijs, fruit, kleine hapjes en een kaartje met 3 veilige combinaties.",
-      "fit": "Voelt speciaal en feestelijk zonder meteen groot of chaotisch te worden.",
+      "materials": "Sap, bruiswater, fruit, ijs, glazen, receptkaarten, kleine hapjes en 3 veilige combinaties.",
+      "fit": "Zomers, sociaal en overzichtelijk. Kan als kleine workshop of als rustige mocktailbar bij filmavond, quiz of afsluiting.",
+      "tags": [
+        "mocktail",
+        "zomer",
+        "sociaal",
+        "eten"
+      ],
       "distanceBand": "Op terrein"
     },
     {
@@ -4064,12 +3296,12 @@
       "cost": "Gratis/laag",
       "stimulus": "Middel",
       "bus": "Nee",
-      "materials": "Rollenkaart, scorekaart, pionnen, krijt of lint en een duidelijke start-stopstructuur.",
+      "materials": "Rollenkaart, scorekaart, pionnen, krijt of lint en een start-stopstructuur.",
       "fit": "Fijn voor jongeren die willen meedoen, maar ook houvast nodig hebben over hun rol, taak of moment van rust.",
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Oude elektronica openmaken / repairlab-light",
+      "title": "Oude elektronica openmaken / repairlab",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -4083,42 +3315,23 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "OV-oefenuitje met mini-missie",
+      "title": "OV-oefenuitje met planner en mini-missie",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod / oriëntatie",
       "locationType": "Buiten de deur",
-      "cost": "Laag",
+      "cost": "Gratis/laag",
       "stimulus": "Middel",
       "duration": "60–120 min",
       "group": "1–4",
       "bus": "Ja",
-      "materials": "OV-app, routekaart, vaste opdracht en pauzeplek.",
-      "fit": "Vergroot zelfstandigheid stap voor stap. Goed voor jongeren die willen oefenen met reizen, kiezen en tijd bewaken.",
+      "materials": "OV-app, reisdoel, routekaart of printscreen, vaste opdracht, pauzeplek en terugvalplan.",
+      "fit": "Vergroot zelfstandigheid stap voor stap. Oefent plannen, reizen, wachten, schakelen en hulp vragen in kleine stappen.",
       "tags": [
         "ov",
         "zelfstandigheid",
         "missie",
-        "vaardigheden"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "OV-planner en overstapchallenge",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Eigen aanbod / buiten de deur",
-      "locationType": "Buiten de deur",
-      "cost": "Gratis",
-      "stimulus": "Middel",
-      "duration": "45–120 min",
-      "group": "1–4",
-      "bus": "Ja/soms",
-      "materials": "OV-app, reisdoel, printscreen van route en terugvalplan.",
-      "fit": "Sterk voor zelfstandigheid en vertrouwen. Oefent plannen, wachten, schakelen en hulp vragen in kleine stappen.",
-      "tags": [
-        "ov",
-        "zelfstandigheid",
         "plannen",
-        "vertrouwen"
+        "vaardigheden"
       ],
       "distanceBand": "Dichtbij (0-10 km)"
     },
@@ -4175,7 +3388,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Science- of techlab met kleine proefjes",
+      "title": "Techlab met stroom, licht en kleine proefjes",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -4184,7 +3397,7 @@
       "duration": "45–90 min",
       "group": "1–6",
       "bus": "Nee",
-      "materials": "Magneten, batterijen, ledlampjes, proefkaartjes, veiligheidsafspraken.",
+      "materials": "Magneten, batterijen, ledlampjes, simpele stroomkringen, proefkaartjes en veiligheidsafspraken.",
       "fit": "Sterk voor jongeren die nieuwsgierig zijn naar techniek en graag ontdekken door te doen.",
       "tags": [
         "techniek",
@@ -4193,20 +3406,6 @@
         "special interest"
       ],
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Streetfood- of foodtruckavond met budget",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Eigen aanbod / extern aansluiten",
-      "locationType": "Buiten de deur",
-      "cost": "Laag/middel",
-      "stimulus": "Middel",
-      "duration": "45-90 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Werk met een vast budget per jongere en een keuze-opdracht: zoet, zout, nieuw of vertrouwd.",
-      "fit": "Maakt een markt of festival concreter en speelser zonder dat jongeren overal tegelijk iets van hoeven te vinden.",
-      "distanceBand": "Dichtbij (0-10 km)"
     },
     {
       "title": "Sushirollen of snacklab",
@@ -4229,7 +3428,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "TCG / kaartspeltoernooi light",
+      "title": "TCG / kaartspeltoernooi",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -4238,7 +3437,7 @@
       "duration": "45–120 min",
       "group": "2–8",
       "bus": "Nee",
-      "materials": "Kaartspellen, duidelijke regels, scorekaart en rustige tafelopstelling.",
+      "materials": "Kaartspellen, regels, scorekaart en rustige tafelopstelling.",
       "fit": "Sterke match voor jongeren met speciale interesses. Structuur en herhaling maken het veilig en motiverend.",
       "tags": [
         "kaartspel",
@@ -4259,7 +3458,7 @@
       "group": "1–6",
       "bus": "Soms",
       "materials": "Budget per persoon, speuropdrachten, foto-opdracht en maximaal aantal aankopen.",
-      "fit": "Prikkelend maar heel taakgericht. Werkt goed als jongeren iets mogen zoeken, vergelijken en binnen duidelijke grenzen kiezen.",
+      "fit": "Prikkelend maar heel taakgericht. Werkt goed als jongeren iets mogen zoeken, vergelijken en binnen grenzen kiezen.",
       "tags": [
         "markt",
         "speuren",
@@ -4269,7 +3468,7 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Vrijwilligerswerk verkennen",
+      "title": "Vrijwilligerswerk verkennen op papier",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod / oriëntatie",
       "locationType": "Op groep / buiten de deur",
@@ -4279,7 +3478,7 @@
       "group": "1–6",
       "bus": "Soms",
       "materials": "Laptop, voorbeeldorganisaties, gesprekkaart",
-      "fit": "Past bij participatie: jongeren onderzoeken wat ze later zelf zouden kunnen doen.",
+      "fit": "Past bij participatie: jongeren onderzoeken rustig welke vormen van helpen later bij hen zouden kunnen passen, zonder meteen iets te hoeven doen.",
       "tags": [
         "participatie",
         "vaardigheid",
@@ -4288,7 +3487,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Water- en techniekproefjes",
+      "title": "Waterproefjes met bouwen en testen",
       "domain": "Ontmoeten, Spel & Vaardigheden",
       "type": "Eigen aanbod",
       "locationType": "Op groep / terrein",
@@ -4297,7 +3496,7 @@
       "duration": "45–90 min",
       "group": "1–6",
       "bus": "Nee",
-      "materials": "Bekers, bakjes, rietjes, trechters, doekjes en proefkaartjes.",
+      "materials": "Bekers, bakjes, rietjes, trechters, doekjes, waterbak en proefkaartjes.",
       "fit": "Concreet, actief en voorspelbaar. Past goed bij jongeren die willen ontdekken door te doen in plaats van lang te luisteren.",
       "tags": [
         "techniek",
@@ -4306,38 +3505,6 @@
         "doen"
       ],
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Weekmarkt Bemmel met budget- of kijkopdracht",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "60-120 min",
-      "group": "2-6",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Klein budget, kijklijst, foto-opdracht of kieschallenge met vaste eindtijd.",
-      "fit": "Prikkelend maar overzichtelijk. Jongeren kunnen kijken, vergelijken, iets kleins kopen of alleen sfeer proeven.",
-      "source": "Visit Arnhem",
-      "url": "https://www.visitarnhem.com/evenementen/2997368542/weekmarkt-bemmel",
-      "distanceBand": "In de regio (10-30 km)"
-    },
-    {
-      "title": "Weekmarkt Elst met proef- of fotokaart",
-      "domain": "Ontmoeten, Spel & Vaardigheden",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "duration": "60-120 min",
-      "group": "2-6",
-      "cost": "Gratis/laag",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Kijkkaart, proefopdracht, prijzen vergelijken of een lijstje met 5 dingen die je wilt spotten.",
-      "fit": "Geeft veel gespreksstof zonder dat het zwaar voelt. Fijn voor jongeren die graag buiten, onder de mensen en toch met een duidelijke opdracht op pad zijn.",
-      "source": "Visit Arnhem",
-      "url": "https://www.visitarnhem.com/evenementen/925029949/weekmarkt-elst",
-      "distanceBand": "In de regio (10-30 km)"
     },
     {
       "title": "Badmintontoernooi",
@@ -4359,7 +3526,7 @@
       "distanceBand": "Op terrein"
     },
     {
-      "title": "Bootcamp-light",
+      "title": "Bootcamp",
       "domain": "Sport & Bewegen",
       "type": "Eigen aanbod",
       "locationType": "Op terrein",
@@ -4369,72 +3536,13 @@
       "group": "3–10",
       "bus": "Nee",
       "materials": "Matjes, timer, muziek optioneel",
-      "fit": "Alleen passend als jongeren kunnen kiezen uit niveaus en rustopties.",
+      "fit": "Passend als jongeren kunnen kiezen uit niveaus.",
       "tags": [
         "sport",
         "conditie",
         "terrein"
       ],
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Boulderen / klimmen",
-      "domain": "Sport & Bewegen",
-      "type": "Bestaand aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel/hoog",
-      "duration": "2–3 uur",
-      "group": "3–8",
-      "bus": "Soms",
-      "materials": "Reservering, sportkleding, begeleidingsafspraken",
-      "fit": "Veel jongeren vinden het uitdagend en concreet. Check hoogtevrees, drukte en instructie.",
-      "tags": [
-        "klimmen",
-        "sport",
-        "betaald"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Boulderen of klimintro met timebox",
-      "domain": "Sport & Bewegen",
-      "type": "Bestaand extern aanbod / eigen begeleiding",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel/hoog",
-      "duration": "60–90 min",
-      "group": "1–6",
-      "bus": "Soms",
-      "materials": "Reservering, sportkleding, duidelijke kijk- en pauzemomenten en vertrekplan.",
-      "fit": "Intens en motiverend voor jongeren die uitdaging zoeken. Met korte blokken en observatieoptie blijft het overzichtelijk.",
-      "tags": [
-        "sport",
-        "uitdaging",
-        "klimmen",
-        "prikkelend"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Bowlen of glowgolf light",
-      "domain": "Actie & amusement",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel",
-      "duration": "60–90 min",
-      "group": "2–8",
-      "bus": "Soms",
-      "materials": "Reservering, teams, heldere tijdsduur en eventueel oordoppen.",
-      "fit": "Actief maar overzichtelijk. Goed voor jongeren die iets samen willen doen zonder veel verbale druk.",
-      "tags": [
-        "bowlen",
-        "glowgolf",
-        "sociaal",
-        "bewegen"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
     },
     {
       "title": "Fietscheck en korte fietstocht",
@@ -4473,42 +3581,6 @@
         "sport"
       ],
       "distanceBand": "Op terrein"
-    },
-    {
-      "title": "Lasergame of paintball-light oriëntatie",
-      "domain": "Actie & amusement",
-      "type": "Bestaand extern aanbod",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Hoog",
-      "duration": "45–90 min",
-      "group": "2–8",
-      "bus": "Soms",
-      "materials": "Vooraf verwachtingen bespreken, beschermingsmateriaal, rustoptie voor wie wil observeren.",
-      "fit": "Echt prikkelend, maar soms juist heel passend voor jongeren die spanning, missie en snelheid zoeken.",
-      "tags": [
-        "actie",
-        "hoog prikkel",
-        "missie",
-        "team"
-      ],
-      "distanceBand": "Dichtbij (0-10 km)"
-    },
-    {
-      "title": "Lingevaart kano of SUP met keuzeroute",
-      "domain": "Sport & Bewegen",
-      "type": "Zoekbron / extern",
-      "locationType": "Buiten de deur",
-      "cost": "Betaald",
-      "stimulus": "Middel",
-      "duration": "60-150 min",
-      "group": "1-6",
-      "bus": "Soms",
-      "materials": "Kies korte of langere route, droge spullen in tas en vooraf duidelijke veiligheidsafspraken.",
-      "fit": "Prikkelend en stoer, maar met veel autonomie omdat het tempo en de route goed te doseren zijn.",
-      "source": "Visit Arnhem zomervakantie tips",
-      "url": "https://www.visitarnhem.com/artikelen/zomervakantie-arnhem",
-      "distanceBand": "In de regio (10-30 km)"
     },
     {
       "title": "Silent disco of koptelefoonplaylist wandeling",
@@ -4601,7 +3673,7 @@
       "group": "4–12",
       "bus": "Nee",
       "materials": "Waterballonnen alternatief, sponzen, emmers, handdoeken, droge plek",
-      "fit": "Laagdrempelig alternatief voor zwemmen. Maak duidelijke spelregels en rustige uitstapmogelijkheid.",
+      "fit": "Laagdrempelig alternatief voor zwemmen. Maak spelregels en rustige uitstapmogelijkheid.",
       "tags": [
         "water",
         "terrein",
@@ -4648,68 +3720,550 @@
       "distanceBand": "Dichtbij (0-10 km)"
     },
     {
-      "title": "Kies-je-eigen amusementmiddag",
-      "domain": "Actie & amusement",
-      "type": "Eigen aanbod",
-      "locationType": "Binnen + buiten",
-      "distanceBand": "Dichtbij (0-10 km)",
-      "duration": "2-4 uur",
-      "group": "2-8",
-      "cost": "€€",
-      "stimulus": "Middel",
-      "bus": "Soms",
-      "materials": "Keuzekaart met maximaal drie activiteiten, budget, reservering en rustplan.",
-      "fit": "Laat jongeren kiezen tussen bijvoorbeeld film, bowlen, arcade of boulderen. Beperk de keuze vooraf zodat het leuk blijft zonder keuzestress.",
-      "source": "Eigen aanbod",
-      "url": ""
-    },
-    {
-      "title": "Arcadechallenge met vast budget",
-      "domain": "Actie & amusement",
-      "type": "Eigen aanbod",
+      "title": "Poolen, snooker of darts in Nijmegen",
+      "domain": "Actie & Amusement",
+      "type": "Zoekbron / extern",
       "locationType": "Buiten de deur",
       "distanceBand": "Dichtbij (0-10 km)",
-      "duration": "60-90 min",
+      "duration": "60-120 min",
       "group": "2-6",
       "cost": "€",
-      "stimulus": "Hoog",
+      "stimulus": "Middel",
       "bus": "Nee/soms",
-      "materials": "Vast speelbudget, timer, scorekaart en afgesproken pauzeplek.",
-      "fit": "Maak van een drukke arcade een voorspelbare opdracht: kies drie spellen, noteer scores en stop op een afgesproken moment.",
-      "source": "Eigen aanbod",
+      "materials": "Leeftijd, openingstijden en reserveren checken.",
+      "fit": "Laagdrempelig voor oudere jongeren die een volwassen uitje willen zonder groot programma.",
+      "source": "Actueel zoeken in Nijmegen",
       "url": ""
     },
     {
-      "title": "Bioscoop met eigen rustplan",
-      "domain": "Actie & amusement",
-      "type": "Eigen aanbod",
+      "title": "Karaoke-room of muziekchallenge",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod / eigen variant",
+      "locationType": "Binnen + buiten",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "45-90 min",
+      "group": "2-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Soms",
+      "materials": "Kamer, tijdsduur en prijs checken.",
+      "fit": "Leuk voor jongeren die muziek, performance of humor zoeken. Meedoen kan ook als DJ, jurylid of playlistmaker.",
+      "source": "Planet Awesome / eigen aanbod",
+      "url": "https://planet-awesome.com/"
+    },
+    {
+      "title": "Bijlwerpen, archery tag of schietspel",
+      "domain": "Actie & Amusement",
+      "type": "Zoekbron / extern",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-120 min",
+      "group": "3-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Ja/soms",
+      "materials": "Leeftijd, begeleiding en veiligheidsmateriaal checken.",
+      "fit": "Past bij jongeren die actie en focus willen.",
+      "source": "Fundustry / regio-aanbod",
+      "url": "https://www.fundustry.nl/locaties/nijmegen/"
+    },
+    {
+      "title": "Escape walk, citygame of telefoonmissie",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod / eigen begeleiding",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-120 min",
+      "group": "2-6",
+      "cost": "Gratis/€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Telefoon, powerbank en route-informatie.",
+      "fit": "Fijn voor 15-25 omdat het spel, stad en zelfstandigheid combineert.",
+      "source": "Nijmegen Outdoor / DoeNijmegen / eigen route",
+      "url": "https://nijmegenoutdoor.nl/"
+    },
+    {
+      "title": "Skatepark, pumptrack of urban sports sessie",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod / eigen begeleiding",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "45-120 min",
+      "group": "1-8",
+      "cost": "Gratis/€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Materiaal, helm/bescherming en locatie checken.",
+      "fit": "Voor jongeren die liever doen dan praten. Ook meekijken, filmen of fotograferen kan een volwaardige deelname zijn.",
+      "source": "Waalhalla / NYMA / openbare skateplekken",
+      "url": "https://www.waalhalla-centrum.nl/"
+    },
+    {
+      "title": "Planet Awesome Nijmegen - karten, lasergamen, bowling en arcade",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Planet Awesome, Energieweg 102, Nijmegen.",
+      "fit": "Veel keuze op een locatie: elektrisch karten, lasergamen, bowlen, glowgolf, karaoke, shuffleboard, arcade en De vloer is lava.",
+      "source": "Planet Awesome",
+      "url": "https://planet-awesome.com/",
+      "tags": [
+        "karten",
+        "lasergamen",
+        "bowlen",
+        "arcade",
+        "glowgolf",
+        "karaoke",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Olround Nijmegen - bowlen en Prison Island",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Olround, Heyendaalseweg 90-92, Nijmegen.",
+      "fit": "Bowlen geeft een vaste beurtstructuur. Prison Island bestaat uit korte samenwerkingsopdrachten en werkt goed voor jongeren die graag puzzelen of samenwerken.",
+      "source": "Olround Nijmegen",
+      "url": "https://www.olroundnijmegen.nl/",
+      "tags": [
+        "bowlen",
+        "prison island",
+        "samenwerken",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "LaserQuest Nijmegen - lasergamen, Mystic Golf en StepZone",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: LaserQuest, Ziekerstraat 3, Nijmegen.",
+      "fit": "Centrumlocatie met lasergamen, glow-in-the-dark golf, LaserSquash en interactieve StepZone.",
+      "source": "LaserQuest Nijmegen",
+      "url": "https://www.laserquestnijmegen.nl/",
+      "tags": [
+        "lasergamen",
+        "glowgolf",
+        "stepzone",
+        "lasersquash",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Pop Culture Arcade Nijmegen - vrij spelen en challenges",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Pop Culture Arcade, Marienburg 28, Nijmegen.",
+      "fit": "Veel korte spellen, herkenbare gamecultuur en directe scores. Budget en tijdsduur vooraf kiezen is handig.",
+      "source": "Pop Culture Arcade",
+      "url": "http://www.popculturearcade.nl/",
+      "tags": [
+        "arcade",
+        "gaming",
+        "challenge",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Pathe Nijmegen - film, Pathe Games en X-Cube",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
       "locationType": "Buiten de deur",
       "distanceBand": "Dichtbij (0-10 km)",
       "duration": "2-3 uur",
-      "group": "2-8",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Pathe Nijmegen, Willem van Arenbergstraat 4, Nijmegen-Lent.",
+      "fit": "Combineer een film met arcadegames of een digitale X-Cube escape-opdracht.",
+      "source": "Pathe Nijmegen",
+      "url": "https://www.pathe.nl/nl/bioscopen/pathe-nijmegen",
+      "tags": [
+        "bioscoop",
+        "film",
+        "arcade",
+        "x-cube",
+        "escape",
+        "lent"
+      ]
+    },
+    {
+      "title": "Vue Nijmegen Plein - reguliere bioscoopfilm",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "2-3 uur",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Laag/middel",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Vue Nijmegen Plein, Nijmegen.",
+      "fit": "Een overzichtelijk uitje met vaste begin- en eindtijd. Film, starttijd en stoelen vooraf kiezen is handig.",
+      "source": "Vue Nijmegen",
+      "url": "https://www.vuecinemas.nl/cinema/nijmegen/nu-in-de-bioscoop",
+      "tags": [
+        "bioscoop",
+        "film",
+        "nijmegen",
+        "binnen"
+      ]
+    },
+    {
+      "title": "EnjoyVR Nijmegen - virtual reality in een eigen tijdsblok",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: EnjoyVR, Nijmegen.",
+      "fit": "Sterk immersief en prikkelend. Vooral interessant voor jongeren die van gaming, techniek of avontuur houden.",
+      "source": "EnjoyVR",
+      "url": "https://enjoyvr.nl/groepsuitje-nijmegen/",
+      "tags": [
+        "vr",
+        "gaming",
+        "immersief",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "GRIP Boulderhal Nijmegen - boulderen op eigen niveau",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
       "cost": "€€",
       "stimulus": "Middel",
       "bus": "Nee/soms",
-      "materials": "Filmkeuze, stoelen aan gangpad, oordoppen, vaste verzamelplek en eindtijd.",
-      "fit": "Een bioscoopbezoek wordt overzichtelijker door filmduur, trailerdrukte, zitplek en een mogelijke uitstappauze vooraf te bespreken.",
-      "source": "Eigen aanbod",
-      "url": ""
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: GRIP Boulderhal, Nijmegen.",
+      "fit": "Concrete routes en direct zichtbaar resultaat. Een rustiger tijdstip werkt vaak prettiger.",
+      "source": "GRIP Boulderhal Nijmegen",
+      "url": "https://gripnijmegen.nl/boulderhal/",
+      "tags": [
+        "boulderen",
+        "klimmen",
+        "sport",
+        "nijmegen"
+      ]
     },
     {
-      "title": "Outdoor actiedag met stopkaart",
-      "domain": "Actie & amusement",
-      "type": "Eigen aanbod",
+      "title": "Waalhalla Nijmegen - skateboard, BMX, step en urban sport",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Waalhalla, Winselingseweg 12, Nijmegen.",
+      "fit": "Urban sport en creatieve sfeer. Check vooraf materiaal, beschermers en drukte; kijken of fotograferen kan ook een eerste stap zijn.",
+      "source": "Waalhalla",
+      "url": "https://www.waalhalla-centrum.nl/",
+      "tags": [
+        "skate",
+        "bmx",
+        "step",
+        "urban",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "De Wijchense Berg - skiën, snowboarden, tuben en outdoor",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
       "locationType": "Buiten de deur",
       "distanceBand": "In de regio (10-30 km)",
-      "duration": "3-5 uur",
+      "duration": "60-180 min",
+      "group": "4-10",
+      "cost": "€€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Skicentrum De Wijchense Berg, Wijchen.",
+      "fit": "Bijzondere sportervaring met instructie en herhaling. Naast skiën en snowboarden zijn er outdooractiviteiten en tuben; controleer vooraf welke onderdelen in de zomer beschikbaar zijn.",
+      "source": "Skicentrum De Wijchense Berg",
+      "url": "https://www.dewijchenseberg.nl/",
+      "tags": [
+        "ski",
+        "snowboard",
+        "tuben",
+        "outdoor",
+        "wijchen",
+        "bijzonder"
+      ]
+    },
+    {
+      "title": "Pretpark Tivoli Berg en Dal - attracties in compact park",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-180 min",
+      "group": "4-10",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Pretpark Tivoli, Berg en Dal.",
+      "fit": "Compact pretpark waardoor een route vooraf goed af te spreken is. Let op leeftijdsbeleving, wachtrijen, geluid en kies enkele attracties in plaats van alles.",
+      "source": "Pretpark Tivoli",
+      "url": "https://www.parktivoli.nl/",
+      "tags": [
+        "pretpark",
+        "attracties",
+        "berg en dal"
+      ]
+    },
+    {
+      "title": "Gamestate Arnhem - arcadehal met meer dan 50 games",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Ja/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Gamestate, Oude Stationsstraat 11A, Arnhem.",
+      "fit": "Grote arcade met veel keuze, licht en geluid. Budget vooraf kiezen helpt.",
+      "source": "Gamestate Arnhem",
+      "url": "https://www.gamestate.com/nl/arnhem",
+      "tags": [
+        "arcade",
+        "gaming",
+        "arnhem"
+      ]
+    },
+    {
+      "title": "VR SO Real Arnhem - virtual reality kiezen op niveau",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Ja/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: VR SO Real, Kronenburgpassage 31, Arnhem.",
+      "fit": "Kies een ervaring die past bij de groep. Let bij VR op bewegingsgevoeligheid.",
+      "source": "VR SO Real",
+      "url": "http://www.vrsoreal.nl/",
+      "tags": [
+        "vr",
+        "gaming",
+        "arnhem"
+      ]
+    },
+    {
+      "title": "You Jump Nijmegen - trampolinepark en jumpactiviteiten",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: You Jump, Nijmegen.",
+      "fit": "Veel beweging, muziek en energie. Vooral passend voor jongeren die graag fysiek bezig zijn.",
+      "source": "You Jump Nijmegen",
+      "url": "https://www.trampolinepark.nl/nl/locaties/nijmegen",
+      "tags": [
+        "trampoline",
+        "jump",
+        "bewegen",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Escape Boot Nijmegen - escaperooms en Escape Arena",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Escape Boot, Nijmegen.",
+      "fit": "Gezamenlijke missie in een afgebakende tijd. Check vooraf het thema, mogelijke schrikeffecten en of hints snel beschikbaar zijn.",
+      "source": "Escape Boot Nijmegen",
+      "url": "https://escapebootnijmegen.nl/",
+      "tags": [
+        "escaperoom",
+        "puzzels",
+        "samenwerken",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "ROX Escape Nijmegen - escaperooms op NYMA",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: ROX Escape, NYMA Nijmegen.",
+      "fit": "Geschikt voor jongeren die graag puzzelen en samenwerken. Bekijk vooraf de moeilijkheid, sfeer en eventuele spannende elementen en verdeel rollen binnen de groep.",
+      "source": "ROX Escape Nijmegen",
+      "url": "https://roxescape.nl/",
+      "tags": [
+        "escaperoom",
+        "puzzels",
+        "nyma",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Nijmegen Outdoor - stadsspellen en actieve groepsuitjes",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "4-10",
+      "cost": "€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Nee/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Centrum Nijmegen en omgeving.",
+      "fit": "Actief groepsaanbod in en rond de stad, zoals citygames en groepsopdrachten.",
+      "source": "Nijmegen Outdoor",
+      "url": "https://nijmegenoutdoor.nl/",
+      "tags": [
+        "outdoor",
+        "stadsspel",
+        "groepsuitje",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "SUP & SURF Nijmegen - suppen en watersport",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "Dichtbij (0-10 km)",
+      "duration": "60-180 min",
+      "group": "1-8",
+      "cost": "€€",
+      "stimulus": "Middel/hoog",
+      "bus": "Soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: SUP & SURF, Nijmegen.",
+      "fit": "Actieve waterervaring die goed in kleine stappen is op te bouwen. Check zwemvaardigheid, weer, kleding, begeleiding en een droog alternatief vooraf.",
+      "source": "SUP & SURF Nijmegen",
+      "url": "https://supensurf-nijmegen.nl/",
+      "tags": [
+        "sup",
+        "watersport",
+        "buiten",
+        "nijmegen"
+      ]
+    },
+    {
+      "title": "Rage room / smashactiviteit in de regio checken",
+      "domain": "Actie & Amusement",
+      "type": "Zoekbron / extern",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "45-90 min",
+      "group": "1-4",
+      "cost": "€€",
+      "stimulus": "Hoog",
+      "bus": "Soms",
+      "materials": "Aanbieder, leeftijd, veiligheidsmateriaal, begeleiding en prijs checken.",
+      "fit": "Kan passend zijn voor jongeren die spanning en fysieke ontlading zoeken.",
+      "source": "Actueel zoeken in Nijmegen/Arnhem/regio",
+      "url": "",
+      "tags": [
+        "rage room",
+        "smash",
+        "actie",
+        "veiligheid",
+        "hoog prikkel"
+      ]
+    },
+    {
+      "title": "Hindernis- of Expeditie Robinson challenge in Ewijk",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-120 min",
       "group": "4-10",
       "cost": "€€€",
       "stimulus": "Hoog",
       "bus": "Ja/soms",
-      "materials": "Reservering, veiligheidsinformatie, kledinglijst, water en persoonlijke stopkaart.",
-      "fit": "Voor paintball, klimpark of andere stevige actie. Een stopkaart en alternatief programma maken deelname minder alles-of-niets.",
-      "source": "Eigen aanbod",
-      "url": ""
+      "materials": "Activiteit, leeftijd, kleding, begeleiding en groepsgrootte checken.",
+      "fit": "Voor jongeren die fysieke actie, samenwerken en competitie leuk vinden. Goed alternatief als je iets zoekt richting hindernisbaan of Wipeout, maar dan realistischer in de regio.",
+      "source": "Fundustry Nijmegen/Ewijk",
+      "url": "https://www.fundustry.nl/locaties/nijmegen/"
+    },
+    {
+      "title": "Fundustry Nijmegen/Ewijk - klimpark, paintball en outdoor challenges",
+      "domain": "Actie & Amusement",
+      "type": "Bestaand extern aanbod",
+      "locationType": "Buiten de deur",
+      "distanceBand": "In de regio (10-30 km)",
+      "duration": "60-180 min",
+      "group": "4-10",
+      "cost": "€€€",
+      "stimulus": "Hoog",
+      "bus": "Ja/soms",
+      "materials": "Actuele openingstijden, kosten en reserveren checken. Locatie: Fundustry, Groene Heuvels 1, Ewijk.",
+      "fit": "Dichtbij outdoor-aanbod met klimpark, paintball, airsoft, crossbaan en teamchallenges bij de Groene Heuvels.",
+      "source": "Fundustry Nijmegen",
+      "url": "https://www.fundustry.nl/locaties/nijmegen/",
+      "tags": [
+        "klimpark",
+        "klimbos",
+        "paintball",
+        "airsoft",
+        "outdoor",
+        "hindernis",
+        "ewijk"
+      ]
     }
   ],
   "links": [
@@ -5137,7 +4691,7 @@
       "name": "Fundustry Nijmegen/Ewijk",
       "url": "https://www.fundustry.nl/locaties/nijmegen/",
       "category": "Outdoor & amusement",
-      "note": "Paintball, airsoft, klimpark en andere groepsactiviteiten bij de Groene Heuvels."
+      "note": "Klimpark, paintball, crossbaan, wateractiviteiten en teamchallenges bij de Groene Heuvels."
     },
     {
       "name": "Skicentrum De Wijchense Berg",
@@ -5210,9 +4764,15 @@
       "url": "https://supensurf-nijmegen.nl/",
       "category": "Actie & amusement",
       "note": "Suppen en andere watersportactiviteiten in Nijmegen."
+    },
+    {
+      "name": "LaserQuest Nijmegen",
+      "url": "https://www.laserquestnijmegen.nl/",
+      "category": "Actie & amusement",
+      "note": "Lasergamen, Mystic Golf, LaserSquash en StepZone in het centrum van Nijmegen."
     }
   ],
-  "generated": "16 juni 2026",
+  "generated": "17 juni 2026",
   "sourceCheck": {
     "lastCheckedAt": "2026-06-16T14:49:36.620Z",
     "reviewFile": "website-bestanden/data/offers_pending_review.json",
