@@ -842,6 +842,21 @@
       #agendaFilters .filterSearch{grid-column:1}
       #agendaFilters .filterToggle{grid-column:2}
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:1 / -1}
+      #ideaFilters.filters.more,
+      #agendaFilters.agendaSearchFilters.more{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+      #ideaFilters .filterSearch,
+      #agendaFilters .filterSearch{grid-column:1 / -1;min-width:0}
+      #ideaFilters .filterToggle,
+      #agendaFilters .filterToggle{grid-column:1;justify-self:start;min-width:0;max-width:100%;padding:10px 16px}
+      #ideaFilters .mobileViewBar{grid-column:2;justify-self:end;min-width:0}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:2;justify-self:end;min-width:124px;max-width:148px}
+      #ideaFilters .filterOptions,
+      #agendaFilters .filterOptions{grid-column:1 / -1;grid-template-columns:1fr;width:100%;box-sizing:border-box}
+      #ideaFilters .filterOptions .customSelect,
+      #ideaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .customSelect,
+      #agendaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .agendaSearchStatus{grid-column:1 / -1;width:100%}
       #inspirationThemeLegend{display:block;position:relative;width:100%;margin:12px 0 18px;overflow:hidden}
       #inspirationThemeLegend .agendaThemeLegend{
         display:flex;flex-wrap:nowrap;gap:6px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 78px 2px 0;
