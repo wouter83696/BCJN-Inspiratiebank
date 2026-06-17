@@ -42,7 +42,7 @@
       --focus:0 0 0 4px rgba(127,207,201,.38);
     }
     *{box-sizing:border-box}
-    html{background:var(--bg);scroll-behavior:smooth}
+    html{background:var(--bg);scroll-behavior:smooth;overflow-x:hidden}
     body{
       margin:0;
       padding-top:36px;
@@ -149,7 +149,7 @@
     .tabHeroKicker{position:relative;z-index:1;display:block;margin:0 0 8px;color:var(--accent-dark);font-size:.86rem;font-weight:500;letter-spacing:.04em}
     .tabHeroTitle{position:relative;z-index:1;margin:0;color:var(--accent-dark);font-family:"IBM Plex Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:5rem;font-weight:400;line-height:.9;letter-spacing:-.055em}
     .tabHeroLine{position:relative;z-index:1;margin:10px 0 0;color:var(--accent);font-size:1.28rem;line-height:1.2;font-weight:400}
-    .tabHeroActions{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:22px}
+    .tabHeroActions{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:48px}
     .tabHeroButton{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 20px;border-radius:999px;border:1px solid rgba(79,142,158,.16);background:rgba(255,255,255,.74);box-shadow:0 12px 30px rgba(20,38,42,.08);color:var(--accent-dark);font-weight:500;text-decoration:none;cursor:pointer;backdrop-filter:blur(16px)}
     .tabHeroButton.primary{background:var(--accent);color:#fff;border-color:rgba(79,142,158,.20);box-shadow:0 14px 32px rgba(79,142,158,.22)}
     .tabHeroButton svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -467,8 +467,9 @@
     .filterToggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:112px;min-height:46px;border:1px solid rgba(255,255,255,.78);border-radius:18px;background:rgba(255,255,255,.78);color:var(--accent-dark);padding:9px 15px;font:inherit;font-size:.88rem;font-weight:500;white-space:nowrap;cursor:pointer;box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px);transition:background .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease)}
     .filterToggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .filterSearch::before{content:"";position:absolute;left:15px;top:50%;width:16px;height:16px;transform:translateY(-50%);pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235f6973' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center/contain no-repeat}
-    .filters input,.filters select{width:100%;min-width:0;min-height:46px;border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.78);border-radius:18px;padding:9px 15px;color:var(--ink);font-size:.88rem;box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px)}
+    .filters input,.filters select{width:100%;min-width:0;min-height:46px;border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.78);border-radius:18px;padding:9px 15px;color:var(--ink);font-size:.88rem;text-align:left;box-shadow:0 10px 24px rgba(20,38,42,.07);backdrop-filter:blur(18px)}
     .filterSearch input{padding-left:42px}
+    .filterSearch input::placeholder{text-align:left}
     .filters select{padding-right:30px}
     .agendaSearchFilters{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center;column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
     .agendaSearchFilters .filterSearch{min-width:0}
@@ -485,6 +486,7 @@
     .customSelectButton{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;min-width:0;min-height:44px;box-sizing:border-box;border:1px solid rgba(11,18,32,.055);border-radius:16px;background:rgba(255,255,255,.72);color:var(--ink);padding:9px 13px;font-size:.88rem;text-align:left;cursor:pointer;box-shadow:none;backdrop-filter:blur(18px)}
     .customSelectLabel{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .customSelectButton::after{content:"";flex:0 0 13px;width:13px;height:13px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s var(--ease)}
+    .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton::before{content:"";flex:0 0 16px;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%233b6470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='3'/%3E%3Cpath d='M8 2v4M16 2v4M3 10h18'/%3E%3C/svg%3E") center/contain no-repeat}
     .customSelect.open .customSelectButton::after{transform:rotate(180deg)}
     .customSelectMenu{position:absolute;left:0;top:calc(100% + 7px);z-index:40;display:none;width:max-content;min-width:100%;max-width:min(310px,calc(100vw - 30px));max-height:280px;overflow:auto;padding:6px;border:1px solid rgba(11,18,32,.08);border-radius:16px;background:rgba(255,255,255,.98);box-shadow:0 18px 44px rgba(20,38,42,.17)}
     .customSelect.open .customSelectMenu{display:grid;gap:2px}
@@ -560,20 +562,20 @@
     .ideaToolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;flex-wrap:wrap}
     .ideaToolbar.viewOnly{justify-content:flex-end;margin-top:0}
     .sectionToolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;margin:16px 0 12px}
-    .agendaToolbar{display:flex;justify-content:flex-end;margin:18px 0 10px}
+    .agendaToolbar{display:flex;justify-content:flex-end;margin:8px 0 8px}
     .sectionHead.updatedHead + .sectionToolbar{margin-top:22px}
     .sectionHead.updatedHead + .inspirationToolbar{margin-top:18px}
     .inspirationToolbar{margin-bottom:24px}
     .toolbarActions{display:flex;align-items:center;align-content:center;gap:18px;flex-wrap:wrap;min-height:52px}
     .agendaTools{
-      display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-left:auto;min-height:34px;
-      padding:6px 8px;border-radius:16px;background:rgba(255,255,255,.52);
+      display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-left:auto;min-height:32px;
+      padding:5px 7px;border-radius:15px;background:rgba(255,255,255,.52);
       border:1px solid rgba(255,255,255,.70);box-shadow:0 6px 16px rgba(20,38,42,.025)
     }
     .agendaActionLink{
       appearance:none;border:1px solid rgba(79,142,158,.10);background:rgba(255,255,255,.62);color:rgba(49,95,107,.78);
-      min-height:34px;border-radius:14px;font:inherit;font-size:.8rem;font-weight:500;
-      display:inline-flex;align-items:center;gap:6px;padding:6px 11px;text-decoration:none;cursor:pointer;
+      min-height:32px;border-radius:13px;font:inherit;font-size:.78rem;font-weight:500;
+      display:inline-flex;align-items:center;gap:6px;padding:5px 10px;text-decoration:none;cursor:pointer;
       box-shadow:none;
       transition:color .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease)
     }
@@ -774,7 +776,7 @@
       .tabHeroKicker{font-size:.8rem;margin-bottom:6px}
       .tabHeroTitle{font-size:2.62rem;line-height:.94}
       .tabHeroLine{margin-top:8px;font-size:1rem}
-      .tabHeroActions{margin-top:22px;gap:7px}
+      .tabHeroActions{margin-top:44px;gap:7px}
       .tabHeroButton{min-height:42px;padding:9px 13px;font-size:.82rem}
       .tabHeroButton svg{width:16px;height:16px}
       .tabHero + .filterBar{margin-top:-24px}
@@ -795,29 +797,29 @@
       .quickText > span span{display:none}
       .heroTitle{font-size:clamp(2.25rem,12vw,3.1rem);letter-spacing:-.025em;overflow-wrap:anywhere}
       .lead{font-size:.98rem;line-height:1.45}
-      .agendaToolbar{display:grid;grid-template-columns:1fr;align-items:stretch;gap:10px}
+      .agendaToolbar{display:grid;grid-template-columns:1fr;align-items:stretch;gap:8px;margin:6px 0 8px}
       .agendaToolbar .toolbarActions{display:grid;grid-template-columns:1fr;width:100%;gap:10px}
-      .agendaTools{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:9px;margin-left:0;padding:7px 9px}
-      .agendaActionLink{justify-content:flex-start;min-height:30px;font-size:.8rem}
+      .agendaTools{display:inline-flex;justify-content:flex-start;width:auto;gap:7px;margin-left:0;padding:5px 7px;justify-self:start}
+      .agendaActionLink{justify-content:flex-start;min-height:30px;font-size:.78rem;padding:5px 10px}
       .agendaActionIcon{width:19px;height:19px;flex-basis:19px}
       .agendaActionIcon svg{width:18px;height:18px}
       .agendaToolbar .formButton,.agendaToolbar .largeAction{width:100%;min-height:42px;padding:10px 12px;font-size:.84rem}
-      .agendaSearchFilters.more{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px}
+      .agendaSearchFilters.more{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(96px,112px);gap:6px;max-width:100%;overflow:visible}
       .agendaSearchFilters.more .filterSearch{grid-column:1;min-width:0}
       .agendaSearchFilters.more .filterToggle{grid-column:2;justify-self:end;min-width:0}
       .agendaSearchFilters.more .agendaSearchStatus{grid-column:1/-1}
       .agendaLegendBar{align-items:flex-start;flex-direction:column;position:relative;width:100%;overflow:hidden}
       .agendaThemeLegend{
-        display:flex;flex-wrap:nowrap;gap:6px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 78px 2px 0;
+        display:flex;flex-wrap:nowrap;gap:6px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:0 22px 2px 0;
         -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;
-        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 84px),transparent calc(100% - 22px),transparent);
-        mask-image:linear-gradient(to right,#000 calc(100% - 84px),transparent calc(100% - 22px),transparent)
+        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent);
+        mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent)
       }
       .agendaThemeLegend::-webkit-scrollbar{display:none}
       .agendaLegendItem{flex:0 0 auto;justify-content:flex-start;min-height:32px;padding:6px 8px;scroll-snap-align:start;white-space:nowrap}
       .inspirationToolbar .viewBar{display:none}
       .mobileViewBar{display:flex;justify-content:flex-end;margin:0}
-      .filters.more{grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:6px}
+      .filters.more{grid-template-columns:minmax(0,1fr) 44px auto;align-items:center;gap:6px;max-width:100%;overflow:visible}
       .filters.more .filterSearch{grid-column:1;min-width:0}
       .filters.more .filterToggle{grid-column:auto;justify-self:start;min-width:0}
       .filters.more .mobileViewBar{grid-column:auto}
@@ -842,8 +844,8 @@
       #agendaFilters .filterSearch{grid-column:1}
       #agendaFilters .filterToggle{grid-column:2}
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:1 / -1}
-      #ideaFilters.filters.more,
-      #agendaFilters.agendaSearchFilters.more{grid-template-columns:minmax(0,1fr) auto auto;align-items:center;column-gap:6px;row-gap:8px}
+      #ideaFilters.filters.more{grid-template-columns:minmax(0,1fr) 44px auto;align-items:center;column-gap:6px;row-gap:8px;width:100%;max-width:100%;overflow:visible}
+      #agendaFilters.agendaSearchFilters.more{grid-template-columns:minmax(0,1fr) 44px minmax(96px,112px);align-items:center;column-gap:6px;row-gap:8px;width:100%;max-width:100%;overflow:visible}
       #ideaFilters .filterSearch,
       #agendaFilters .filterSearch{grid-column:1;grid-row:1;min-width:0}
       #ideaFilters .filterToggle,
@@ -852,24 +854,53 @@
       #agendaFilters .filterToggle{font-size:0}
       #agendaFilters .filterToggle svg{margin:0}
       #ideaFilters .mobileViewBar{grid-column:3;grid-row:1;justify-self:end;min-width:0}
-      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:3;grid-row:1;justify-self:end;min-width:94px;max-width:112px}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"]{grid-column:3;grid-row:1;justify-self:stretch;min-width:0;max-width:112px;width:100%}
       #ideaFilters .filterOptions,
-      #agendaFilters .filterOptions{grid-column:1 / -1;grid-row:2;grid-template-columns:1fr;width:100%;box-sizing:border-box}
+      #agendaFilters .filterOptions{grid-column:1 / -1;grid-row:2;display:grid !important;grid-template-columns:minmax(0,1fr) !important;width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
       #ideaFilters .filterOptions .customSelect,
       #ideaFilters .filterOptions .filterReset,
       #agendaFilters .filterOptions .customSelect,
       #agendaFilters .filterOptions .filterReset,
-      #agendaFilters .filterOptions .agendaSearchStatus{grid-column:1 / -1;width:100%}
+      #agendaFilters .filterOptions .agendaSearchStatus{grid-column:1 / -1;width:100%;max-width:100%;min-width:0}
+      #ideaFilters .filterOptions .customSelect[data-select-id],
+      #agendaFilters .filterOptions .customSelect[data-select-id],
+      #ideaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .filterReset,
+      #agendaFilters .filterOptions .agendaSearchStatus{grid-column:1 / -1 !important;justify-self:stretch;width:100%;min-width:0;max-width:100%}
       #ideaFilters .filterOptions .customSelectButton,
       #agendaFilters .filterOptions .customSelectButton{min-height:44px}
       #ideaFilters .filterOptions .filterReset,
       #agendaFilters .filterOptions .filterReset{justify-content:flex-start;min-height:42px;padding:8px 10px}
+      #ideaFilters .filterSearch input,
+      #agendaFilters .filterSearch input{height:44px;min-height:44px;padding-left:38px;padding-right:10px;text-align:left}
+      #ideaFilters .filterSearch::before,
+      #agendaFilters .filterSearch::before{left:13px}
+      #ideaFilters .filterOptions .customSelect,
+      #agendaFilters .filterOptions .customSelect{min-width:0;max-width:100%;overflow:visible}
+      #ideaFilters .filterOptions .customSelectMenu,
+      #agendaFilters .filterOptions .customSelectMenu{left:0;right:0;width:100%;min-width:0;max-width:100%}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton{height:44px;min-height:44px;padding:8px 10px;border-radius:16px;font-size:.82rem}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton::before{width:15px;height:15px;flex-basis:15px}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton::after{width:11px;height:11px;flex-basis:11px}
+      #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectLabel{max-width:54px}
+      .weekTop{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 14px;padding:16px 14px}
+      .weekTitle{display:contents}
+      .weekBadge{grid-column:1;grid-row:1;width:52px;height:52px;font-size:1.32rem;border-radius:13px}
+      .weekTitle > div{grid-column:2;grid-row:1;min-width:0}
+      .weekTop h3{font-size:1.42rem}
+      .weekTop .dates{margin-top:6px;font-size:.95rem}
+      .weekTop .status{margin-top:6px}
+      .weekMeta{grid-column:1 / -1;display:grid;grid-template-columns:52px minmax(0,1fr);align-items:start;justify-content:stretch;gap:7px 10px;max-width:none;padding-top:0}
+      .weekNav{grid-column:1;grid-row:1;display:flex;gap:5px;width:auto;margin:0;justify-content:center}
+      .weekNavButton{width:24px;height:24px}
+      .weekNavButton svg{width:13px;height:13px}
+      .weekMeta .pill{grid-column:2;justify-self:start}
       #inspirationThemeLegend{display:block;position:relative;width:100%;margin:8px 0 12px;overflow:hidden}
       #inspirationThemeLegend .agendaThemeLegend{
-        display:flex;flex-wrap:nowrap;gap:6px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 78px 2px 0;
+        display:flex;flex-wrap:nowrap;gap:6px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:0 22px 2px 0;
         -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;
-        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 84px),transparent calc(100% - 22px),transparent);
-        mask-image:linear-gradient(to right,#000 calc(100% - 84px),transparent calc(100% - 22px),transparent)
+        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent);
+        mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent)
       }
       #inspirationThemeLegend .agendaThemeLegend::-webkit-scrollbar{display:none}
       #inspirationThemeLegend .agendaLegendItem{flex:0 0 auto;min-width:0;min-height:32px;padding:6px 8px;scroll-snap-align:start;white-space:nowrap}
@@ -936,6 +967,10 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg>
             <span>Bekijk activiteiten</span>
           </a>
+          <a class="tabHeroButton" href="#sourceAdditions">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+            <span>Activiteit toevoegen</span>
+          </a>
         </div>
       </section>
       <div class="filterBar">
@@ -970,12 +1005,6 @@
             </span>
             <span>Bron toevoegen</span>
           </a>
-          <button class="agendaActionLink" id="downloadCalendarBtn" type="button">
-            <span class="agendaActionIcon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path><path d="M5 16v4"></path><path d="M19 16v4"></path></svg>
-            </span>
-            <span>Agenda downloaden</span>
-          </button>
         </div>
       </div>
       <div id="weekPanels" class="weekStack"></div>
@@ -1013,14 +1042,14 @@
         <h1 class="tabHeroTitle" id="inspirationHeroTitle">Inspiratiebank</h1>
         <p class="tabHeroLine">Ontdek iets nieuws.</p>
         <div class="tabHeroActions">
-          <a class="tabHeroButton primary" href="#teamAdditions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
-            <span>Inspiratie toevoegen</span>
-          </a>
-          <button class="tabHeroButton" id="randomIdeaBtn" type="button">
+          <button class="tabHeroButton primary" id="randomIdeaBtn" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 5.1L19 10l-5.3 1.9L12 17l-1.7-5.1L5 10l5.3-1.9L12 3Z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"></path></svg>
             <span>Verras me</span>
           </button>
+          <a class="tabHeroButton" href="#teamAdditions">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+            <span>Inspiratie toevoegen</span>
+          </a>
         </div>
       </section>
       <div class="filterBar">
