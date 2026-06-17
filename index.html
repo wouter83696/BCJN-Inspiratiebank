@@ -715,9 +715,15 @@
       .agendaSearchFilters.more .filterSearch{grid-column:1;min-width:0}
       .agendaSearchFilters.more .filterToggle{grid-column:2;justify-self:end;min-width:0}
       .agendaSearchFilters.more .agendaSearchStatus{grid-column:1/-1}
-      .agendaLegendBar{align-items:flex-start;flex-direction:column}
-      .agendaThemeLegend{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
-      .agendaLegendItem{justify-content:flex-start;min-height:38px;padding:7px 9px}
+      .agendaLegendBar{align-items:flex-start;flex-direction:column;position:relative;width:100%;overflow:hidden}
+      .agendaThemeLegend{
+        display:flex;flex-wrap:nowrap;gap:7px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 54px 2px 0;
+        -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;
+        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 54px),transparent);
+        mask-image:linear-gradient(to right,#000 calc(100% - 54px),transparent)
+      }
+      .agendaThemeLegend::-webkit-scrollbar{display:none}
+      .agendaLegendItem{flex:0 0 auto;justify-content:flex-start;min-height:36px;padding:7px 9px;scroll-snap-align:start;white-space:nowrap}
       .inspirationToolbar .viewBar{display:none}
       .mobileViewBar{display:flex;justify-content:flex-end;margin:0}
       .filters.more{grid-template-columns:minmax(0,1fr) auto auto;align-items:center}
@@ -728,13 +734,13 @@
       .filters.more .mobileViewBar .viewBtn{width:35px;height:33px}
       #inspirationThemeLegend{display:block;position:relative;width:100%;margin:12px 0 18px;overflow:hidden}
       #inspirationThemeLegend .agendaThemeLegend{
-        display:flex;flex-wrap:nowrap;gap:8px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 32px 2px 0;
+        display:flex;flex-wrap:nowrap;gap:7px;width:100%;overflow-x:auto;overflow-y:hidden;padding:0 54px 2px 0;
         -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;
-        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent);
-        mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent)
+        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 54px),transparent);
+        mask-image:linear-gradient(to right,#000 calc(100% - 54px),transparent)
       }
       #inspirationThemeLegend .agendaThemeLegend::-webkit-scrollbar{display:none}
-      #inspirationThemeLegend .agendaLegendItem{flex:0 0 auto;min-width:0;min-height:34px;padding:7px 10px;scroll-snap-align:start;white-space:nowrap}
+      #inspirationThemeLegend .agendaLegendItem{flex:0 0 auto;min-width:0;min-height:34px;padding:7px 9px;scroll-snap-align:start;white-space:nowrap}
       .cards{gap:10px;width:100%;min-width:0}
       .card{width:100%;min-width:0;min-height:0;padding:13px 14px;gap:8px;border-radius:18px;overflow:hidden}
       .card h3{font-size:1rem;line-height:1.16}
