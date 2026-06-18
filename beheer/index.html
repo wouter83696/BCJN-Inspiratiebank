@@ -520,6 +520,8 @@
     .card .fine{color:var(--muted);font-size:.86rem}
     .cardPills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
     .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+    .ideaAdminCardActions{margin-top:2px;justify-content:flex-start}
+    .ideaAdminCardActions .ideaActions{width:100%;justify-content:flex-start}
     .ideaActions{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
     .ideaActions .editIdeaAction{background:rgba(214,236,242,.72);border-color:rgba(79,142,158,.20);color:#315f6d}
     .small{font-size:.84rem;color:var(--muted);line-height:1.36}
@@ -2165,7 +2167,8 @@
       ${description}
       <p>${escapeHtml(meta || item.source || item.kind)}</p>
       ${practical || `<p class="fine">${escapeHtml(item.source || item.kind)}</p>`}
-      <div class="cardFooter">${website}${adminIdeaActions(item)}</div>
+      ${website ? `<div class="cardFooter">${website}</div>` : ''}
+      <div class="agendaReviewCardActions ideaAdminCardActions">${adminIdeaActions(item)}</div>
     </article>`;
   }
   function adminIdeaRow(item){
