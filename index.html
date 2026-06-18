@@ -151,7 +151,7 @@
     .tabHeroTitle{position:relative;z-index:1;margin:0 0 0 -.045em;color:var(--accent-dark);font-family:"IBM Plex Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:5rem;font-weight:400;line-height:.9;letter-spacing:-.055em}
     .tabHeroLine{position:relative;z-index:1;margin:10px 0 0;color:var(--accent);font-size:1.28rem;line-height:1.2;font-weight:400}
     .tabHeroActions{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:48px}
-    .tabHeroButton{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 20px;border-radius:999px;border:1px solid rgba(79,142,158,.16);background:rgba(255,255,255,.74);box-shadow:0 12px 30px rgba(20,38,42,.08);color:var(--accent-dark);font-weight:500;text-decoration:none;cursor:pointer;backdrop-filter:blur(16px)}
+    .tabHeroButton{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid rgba(79,142,158,.16);background:rgba(255,255,255,.74);box-shadow:0 12px 30px rgba(20,38,42,.08);color:var(--accent-dark);font-weight:500;line-height:1;text-decoration:none;white-space:nowrap;cursor:pointer;backdrop-filter:blur(16px)}
     .tabHeroButton.primary{background:var(--accent);color:#fff;border-color:rgba(79,142,158,.20);box-shadow:0 14px 32px rgba(79,142,158,.22)}
     .tabHeroButton svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
     .tabHeroButton:hover{transform:translateY(-1px)}
@@ -786,7 +786,7 @@
       .tabHeroTitle{order:2;font-size:2.62rem;line-height:.94}
       .tabHeroLine{order:3;margin-top:8px;font-size:1rem}
       .tabHeroActions{order:4;margin-top:36px;gap:7px}
-      .tabHeroButton{min-height:42px;padding:9px 13px;font-size:.82rem}
+      .tabHeroButton{height:42px;min-height:42px;padding:0 13px;font-size:.82rem}
       .tabHeroButton svg{width:16px;height:16px}
       .tabHeroStats{order:5;position:relative;right:auto;top:auto;display:inline-flex;margin-top:18px;gap:8px 10px;font-size:.76rem}
       .tabHeroStatDivider{display:inline}
@@ -1122,7 +1122,7 @@
             <select id="ideaCost"><option value="all">Kosten</option></select>
             <select id="ideaStimulus"><option value="all">Prikkelbelasting</option></select>
             <button class="filterShuffle" id="mixIdeasBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5"></path><path d="M4 20 21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 5.1L19 10l-5.3 1.9L12 17l-1.7-5.1L5 10l5.3-1.9L12 3Z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"></path></svg>
               <span>Mix aanbod</span>
             </button>
             <button class="filterReset" id="resetBtn" type="button">
