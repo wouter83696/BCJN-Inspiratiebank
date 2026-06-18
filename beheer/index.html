@@ -477,6 +477,11 @@
     .adminIdeaEditPanel .teamField.wide{grid-column:1 / -1}
     .adminIdeaEditPanel .teamField span{font-size:.84rem;color:var(--accent-dark);font-weight:500}
     .adminIdeaEditPanel .teamActionBar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .adminImagePreview{display:none;overflow:hidden;width:min(240px,100%);aspect-ratio:16 / 9;border-radius:14px;border:1px solid rgba(79,142,158,.10);background:rgba(232,242,242,.48)}
+    .adminImagePreview.active{display:block}
+    .adminImagePreview img{width:100%;height:100%;object-fit:cover;display:block}
+    .adminCheckField{display:flex !important;align-items:center;gap:9px}
+    .adminCheckField input{width:auto;min-width:18px;height:18px}
     .adminIdeaDescription{display:block;margin-top:5px;color:rgba(11,18,32,.70);font-size:.86rem;line-height:1.38}
     .card .adminIdeaDescription{margin-top:-2px;font-size:.9rem}
     .rowActions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
@@ -814,6 +819,15 @@
               <label class="teamField wide">
                 <span>Website of bronlink (optioneel)</span>
                 <input id="adminEditIdeaUrl" type="url" placeholder="https://">
+              </label>
+              <label class="teamField wide">
+                <span>Afbeelding voor tegel (optioneel)</span>
+                <textarea id="adminEditIdeaImage" placeholder="Bijv. website-bestanden/afbeeldingen/activiteiten/voorbeeld.jpg"></textarea>
+              </label>
+              <div id="adminEditIdeaImagePreview" class="adminImagePreview" aria-hidden="true"></div>
+              <label class="teamField wide adminCheckField">
+                <input id="adminEditIdeaImageApproved" type="checkbox">
+                <span>Foto goedgekeurd en tonen op de inspiratietegel</span>
               </label>
               <label class="teamField wide">
                 <span>Beschrijving</span>
@@ -1675,6 +1689,9 @@
       description:item.fit || item.description || '',
       rules:item.rules || item.materials || item.note || '',
       url:item.url || '',
+      image:item.image || '',
+      imageAlt:item.imageAlt || item.title || '',
+      imageStatus:item.imageStatus || (item.imageApproved ? 'approved' : ''),
       hidden:titleHidden.has(normalize(item.title))
     })).filter(item => !deleted.has(item.key));
     const seedIdeas = baseTeamIdeas().map(item => ({
@@ -1691,6 +1708,9 @@
       description:item.fit || item.description || '',
       rules:item.materials || item.note || '',
       url:item.url || '',
+      image:item.image || '',
+      imageAlt:item.imageAlt || item.title || '',
+      imageStatus:item.imageStatus || (item.imageApproved ? 'approved' : ''),
       hidden:teamHidden.has(item.id)
     })).filter(item => !deleted.has(item.key) && !deleted.has(normalize(item.title)));
     const userIdeas = storedTeamIdeas().map(item => ({
@@ -1707,6 +1727,9 @@
       description:item.fit || item.description || '',
       rules:item.materials || item.note || '',
       url:item.url || '',
+      image:item.image || '',
+      imageAlt:item.imageAlt || item.title || '',
+      imageStatus:item.imageStatus || (item.imageApproved ? 'approved' : ''),
       hidden:teamHidden.has(item.id)
     })).filter(item => !deleted.has(item.key) && !deleted.has(normalize(item.title)));
     return [...userIdeas, ...seedIdeas, ...baseIdeas].sort((a,b) => a.title.localeCompare(b.title, 'nl'));
@@ -2955,8 +2978,23 @@
     const panel = $('#adminIdeaEditPanel');
     const form = $('#adminIdeaEditForm');
     if(form) form.reset();
+    syncAdminIdeaImagePreview();
     if(panel) panel.hidden = true;
     setStatus('#adminIdeaEditStatus', '');
+  }
+  function syncAdminIdeaImagePreview(){
+    const preview = $('#adminEditIdeaImagePreview');
+    const value = String($('#adminEditIdeaImage')?.value || '').trim();
+    if(!preview) return;
+    if(!value){
+      preview.classList.remove('active');
+      preview.setAttribute('aria-hidden', 'true');
+      preview.innerHTML = '';
+      return;
+    }
+    preview.classList.add('active');
+    preview.setAttribute('aria-hidden', 'false');
+    preview.innerHTML = `<img src="${escapeHtml(value)}" alt="">`;
   }
   function startAdminIdeaEdit(kind, key){
     const item = allAdminIdeas().find(entry => entry.kind === kind && String(entry.key) === String(key));
@@ -2974,6 +3012,9 @@
     $('#adminEditIdeaDuration').value = item.duration || '';
     $('#adminEditIdeaGroup').value = item.group || '';
     $('#adminEditIdeaUrl').value = item.url || '';
+    $('#adminEditIdeaImage').value = item.image || '';
+    $('#adminEditIdeaImageApproved').checked = item.imageStatus === 'approved' || item.imageApproved === true;
+    syncAdminIdeaImagePreview();
     $('#adminEditIdeaDescription').value = item.description || '';
     $('#adminEditIdeaRules').value = item.rules || '';
     setStatus('#adminIdeaEditStatus', item.kind === 'collega-toegevoegd' ? 'Pas de velden aan en sla de wijziging op.' : 'Bij opslaan komt er een bewerkte online versie en wordt het vaste origineel verborgen.', 'ok');
@@ -2984,6 +3025,8 @@
     const title = $('#adminEditIdeaTitle').value.trim();
     const by = $('#adminEditIdeaBy').value.trim() || original.by || original.source || 'Beheer';
     const source = original.source || by;
+    const image = $('#adminEditIdeaImage').value.trim();
+    const imageApproved = $('#adminEditIdeaImageApproved').checked && Boolean(image);
     return normalizeTeamIdea({
       id: original.kind === 'collega-toegevoegd' ? original.key : `edited-${original.kind}-${original.key}`,
       title,
@@ -3001,6 +3044,9 @@
       note:$('#adminEditIdeaRules').value.trim(),
       materials:$('#adminEditIdeaRules').value.trim(),
       url:$('#adminEditIdeaUrl').value.trim(),
+      image,
+      imageAlt:title,
+      imageStatus:image ? (imageApproved ? 'approved' : 'pending') : '',
       source,
       editedFromKind:original.kind,
       editedFromKey:original.key,
@@ -3120,6 +3166,7 @@
     });
     $('#adminIdeaEditForm').addEventListener('submit', submitAdminIdeaEdit);
     $('#adminIdeaEditCancelBtn').addEventListener('click', resetAdminIdeaEditForm);
+    $('#adminEditIdeaImage').addEventListener('input', syncAdminIdeaImagePreview);
     ['#adminEditIdeaDomain','#adminEditIdeaLocation','#adminEditIdeaDistance','#adminEditIdeaCost','#adminEditIdeaStimulus','#adminEditIdeaBus']
       .forEach(selector => enhanceCustomSelect($(selector)));
     $('#exportBtn').addEventListener('click', exportAdminData);

@@ -135,9 +135,9 @@
     .tabHero{
       --hero-bg-image:url("website-bestanden/hero-achtergronden/inspiratiebank.svg");
       position:relative;overflow:hidden;isolation:isolate;
-      min-height:clamp(342px,34vw,438px);
+      min-height:clamp(342px,34vw,423px);
       margin:-142px calc(50% - 50vw) 0;
-      padding:clamp(184px,16vw,220px) var(--hero-edge) clamp(90px,8vw,116px);
+      padding:clamp(184px,16vw,220px) var(--hero-edge) clamp(75px,8vw,101px);
       border:0;border-radius:0;
       background:
         var(--hero-bg-image) center top/cover no-repeat,
@@ -344,7 +344,7 @@
     .siteButton::after{content:"↗";font-size:.82em;opacity:.85}
     .websiteCell{vertical-align:middle;text-align:center}
     .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .card{padding:16px;min-height:215px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 34px rgba(20,38,42,.07);transition:.2s var(--ease)}
+    .card{min-width:0;padding:16px;min-height:215px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 34px rgba(20,38,42,.07);transition:.2s var(--ease)}
     .card:hover{transform:translateY(-3px);background:#fff}
     .themeCreative{--theme-tint:rgba(229,0,90,.055);--theme-tint-strong:rgba(229,0,90,.13);--theme-line:rgba(229,0,90,.18);--theme-ink:#a00042;--agenda-tint:#fdf0f6;--agenda-line:rgba(229,0,90,.22)}
     .themeCulture{--theme-tint:rgba(72,70,184,.055);--theme-tint-strong:rgba(72,70,184,.13);--theme-line:rgba(72,70,184,.18);--theme-ink:#4644a0;--agenda-tint:#f1f0fb;--agenda-line:rgba(72,70,184,.22)}
@@ -353,20 +353,26 @@
     .themeSport{--theme-tint:rgba(0,132,168,.055);--theme-tint-strong:rgba(0,132,168,.14);--theme-line:rgba(0,132,168,.18);--theme-ink:#08677f;--agenda-tint:#edf8fb;--agenda-line:rgba(0,132,168,.22)}
     .themeAction{--theme-tint:rgba(238,126,27,.065);--theme-tint-strong:rgba(238,126,27,.16);--theme-line:rgba(199,92,11,.18);--theme-ink:#9a4f0f;--agenda-tint:#fff3e8;--agenda-line:rgba(199,92,11,.23)}
     .themeDefault{--theme-tint:rgba(0,185,86,.045);--theme-tint-strong:rgba(0,185,86,.11);--theme-line:rgba(0,155,72,.11);--theme-ink:#087b43;--agenda-tint:#eff9f3;--agenda-line:rgba(0,155,72,.18)}
-    .ideaThemeCard{background:rgba(250,250,248,.92);border-color:color-mix(in srgb,var(--theme-line) 55%,#EAECEF);box-shadow:0 12px 34px rgba(20,38,42,.055)}
+    .ideaThemeCard{min-width:0;background:rgba(250,250,248,.92);border-color:color-mix(in srgb,var(--theme-line) 55%,#EAECEF);box-shadow:0 12px 34px rgba(20,38,42,.055)}
     .ideaThemeCard:hover{background:linear-gradient(var(--theme-tint),var(--theme-tint)),rgba(255,255,255,.86);border-color:var(--theme-line);box-shadow:0 16px 38px rgba(20,38,42,.07)}
+    .ideaImageFrame{
+      position:relative;overflow:hidden;margin:-16px -16px 4px;border-radius:18px 18px 13px 13px;
+      aspect-ratio:16 / 8.8;background:linear-gradient(var(--theme-tint),rgba(255,255,255,.58));
+      border-bottom:1px solid rgba(79,142,158,.08)
+    }
+    .ideaImageFrame img{width:100%;height:100%;object-fit:cover;display:block}
     .ideaThemeRow td{background:rgba(255,255,255,.20)}
     .ideaThemeRow:hover td{background:var(--theme-tint)}
     .ideaThemeCard .domainIcon,.ideaThemeRow .domainIcon{background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
     .domainThemePill{background:var(--theme-tint-strong);color:var(--theme-ink)}
-    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:26px;padding:4px 8px 4px 7px;font-size:.69rem;font-weight:600}
+    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:0;min-height:26px;padding:4px 8px;font-size:.69rem;font-weight:600}
     .stimulusPill.low{background:linear-gradient(90deg,rgba(221,239,232,.98),rgba(221,239,232,.72));color:#426e5d}
     .stimulusPill.medium{background:linear-gradient(90deg,rgba(248,236,194,.96),rgba(248,236,194,.72));color:#80610b}
     .stimulusPill.high{background:linear-gradient(90deg,rgba(246,223,231,.96),rgba(246,223,231,.72));color:#84435a}
     .stimulusIcon{display:inline-flex;align-items:center;justify-content:center;width:21px;height:18px;flex:0 0 21px}
     .stimulusIcon svg{width:21px;height:18px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
     .card h3{margin:0;color:var(--accent-dark);font-size:1.08rem;line-height:1.18;font-weight:500}
-    .ideaThemeCard h3{margin-top:9px}
+    .ideaThemeCard h3{margin-top:6px}
     .ideaThemeCard h3 .ideaTitle{display:flex;align-items:flex-start;gap:10px}
     .card p{margin:0;color:rgba(11,18,32,.70);line-height:1.43}
     .ideaThemeCard > p:not(.fine){font-size:.95rem;line-height:1.48;color:rgba(11,18,32,.66)}
@@ -378,8 +384,10 @@
       color:rgba(11,18,32,.70);font-size:.82rem;line-height:1.35
     }
     .cardMetaLine strong{display:inline !important;margin:0 !important;color:var(--accent-dark);font-weight:600}
-    .cardPills{display:grid;gap:6px;justify-items:start}
-    .cardPillGroup{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+    .cardPills{display:grid;gap:6px;justify-items:start;min-width:0;max-width:100%}
+    .cardPillGroup{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0;max-width:100%}
+    .ideaThemeCard .cardPillGroup{flex-wrap:wrap}
+    .ideaThemeCard .pill{padding:6px 8px}
     .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:nowrap;align-items:center}
     .cardFooter .siteButton{
       min-width:0;max-width:calc(100% - 38px);overflow:hidden;text-overflow:ellipsis
@@ -672,6 +680,35 @@
     .teamField .customSelectMenu{width:100%;max-width:min(420px,calc(100vw - 30px));padding:7px}
     .teamField .customSelectOption{min-height:38px;padding:8px 10px;font-size:.96rem}
     .teamField textarea{resize:vertical;min-height:92px}
+    .teamFileField{position:relative}
+    .teamFileField input[type="file"]{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;
+      opacity:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);
+    }
+    .teamFileControl{
+      display:flex;align-items:center;gap:10px;min-height:50px;width:100%;box-sizing:border-box;
+      border:1px solid rgba(11,18,32,.08);border-radius:15px;background:#fff;
+      padding:8px;color:var(--ink);cursor:pointer;
+      transition:border-color .18s var(--ease),box-shadow .18s var(--ease),background .18s var(--ease)
+    }
+    .teamFileField:hover .teamFileControl{background:#fff;border-color:rgba(79,142,158,.16)}
+    .teamFileField:focus-within .teamFileControl{
+      border-color:rgba(79,142,158,.28);box-shadow:0 0 0 3px rgba(168,225,221,.2)
+    }
+    .teamFileButton{
+      display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 12px;
+      border:1px solid rgba(79,142,158,.12);border-radius:11px;background:#fff;
+      color:var(--accent-dark);font-size:.92rem;font-weight:600;white-space:nowrap
+    }
+    .teamFileButton svg{
+      width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;
+      stroke-linecap:round;stroke-linejoin:round
+    }
+    .teamFileName{
+      min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+      color:rgba(11,18,32,.46);font-size:.92rem;font-weight:500
+    }
+    .teamFieldHint{font-size:.78rem;line-height:1.35;color:rgba(11,18,32,.55)}
     .teamActionBar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
     .teamActionButtons{display:flex;gap:10px;flex-wrap:wrap}
     .ideaActions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -764,6 +801,7 @@
     .footerCopy strong{color:var(--accent-dark);font-weight:500}
     .footerContact{justify-self:end;margin-left:10px;margin-right:clamp(18px,4vw,56px);color:var(--accent-dark);font-weight:500;text-decoration:none;padding:8px 0}
     .footerContact:hover{color:var(--accent)}
+    @media (min-width:1180px){#ideaCards.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}#ideaCards .card{gap:9px}#ideaCards .ideaImageFrame{aspect-ratio:16 / 8.8}}
     @media (max-width:980px){.hero{grid-template-columns:1fr;gap:16px;padding-top:18px}.heroMain{min-height:auto}.quick{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.filters,.filters.more,.teamFormGrid,.agendaSearchFilters{grid-template-columns:1fr 1fr}.filterSearch{grid-column:1/-1}.weekBody{padding:0 12px 18px}.agendaBoard{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}.agendaDay{min-height:360px}.agendaDay:nth-child(odd){border-left:0}.agendaDay:nth-child(n+3){border-top:1px solid rgba(11,18,32,.06)}}
     @media (max-width:960px){.tabHeroTitle{font-size:4.8rem}.tabHeroLine{font-size:1.25rem}}
     @media (max-width:640px){body{padding-top:72px}.topbar{margin-top:14px;padding:0 8px;gap:6px;align-items:flex-start}.topbar .tabs{top:56px;left:14px;gap:3px;padding:4px}.topbar>.tabs .tab{min-height:36px;padding:8px 11px;font-size:.88rem;gap:0}.actions{display:none}.actions .tab,.actions .mini{min-height:30px;padding:6px 0;font-size:.76rem}.mini{padding:6px 0;font-size:.76rem}.hero{padding-top:44px}.heroTitle{font-size:clamp(2.7rem,16vw,4rem)}.quick{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.filterBar{padding:0;background:transparent;border:0;box-shadow:none}.filters,.teamFormGrid,.agendaSearchFilters{grid-template-columns:1fr}.filters.more{grid-template-columns:minmax(0,1fr) auto;column-gap:8px;row-gap:0}.filterSearch{grid-column:auto}.filterToggle{display:inline-flex}.filters.more.expanded .filterToggle,.agendaSearchFilters.more.expanded .filterToggle{background:rgba(168,225,221,.30);border-color:rgba(79,142,158,.14)}.filters.more>select,.filters.more>.customSelect,.filters.more>.filterReset,.agendaSearchFilters.more>select,.agendaSearchFilters.more>.customSelect,.agendaSearchFilters.more>.filterReset{grid-column:1/-1}.filterReset{justify-content:center}.agendaSearchStatus{white-space:normal}.weekTop{grid-template-columns:1fr;gap:16px}.weekTitle{gap:14px}.weekBadge{width:56px;height:56px;font-size:1.42rem}.weekTop h3{font-size:1.55rem}.weekMeta{justify-content:flex-start}.weekNav{order:-1;width:100%;margin:0 0 2px}.weekNavButton{width:40px;height:40px}.weekBody{padding:0}.weekTop{padding:18px 16px}.agendaBoard{grid-template-columns:1fr}.agendaDay{min-height:auto;padding:16px 12px 14px;gap:14px;border-left:0;border-top:1px solid rgba(11,18,32,.06)}.agendaDay:first-child{border-top:0}.agendaItem{min-height:132px}.ongoingAccordionButton{grid-template-columns:minmax(0,1fr);align-items:flex-start}.ongoingAccordionButton .pill{justify-self:start}.sectionHead{align-items:flex-start;flex-direction:column}.sectionTitleRow{align-items:flex-start;flex-direction:column;gap:4px}.sectionUpdated{text-align:left}.sectionToolbar{grid-template-columns:1fr;align-items:flex-start}.agendaToolbar{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px}.agendaTools{grid-column:1/-1;justify-content:flex-start;width:100%;margin-left:0}.agendaToolbar .largeAction{padding:10px 14px;font-size:.86rem}.ideaToolbar,.ideaToolbar.viewOnly{justify-content:flex-start}.ideaToolbar .viewBar{width:100%;justify-content:flex-start}.siteFooter{margin-top:48px;padding-top:30px;padding-bottom:30px}.footerCard{grid-template-columns:1fr;justify-items:start;gap:18px}.footerLogo{width:132px}.footerContact{justify-self:start;margin-left:0;margin-right:0;padding:0}}
@@ -927,6 +965,7 @@
       .cards{gap:10px;width:100%;min-width:0}
       .card{width:100%;min-width:0;min-height:0;padding:13px 14px;gap:8px;border-radius:18px;overflow:hidden}
       .card h3{font-size:1rem;line-height:1.16}
+      .ideaImageFrame{margin:-13px -14px 5px;border-radius:18px 18px 12px 12px;aspect-ratio:16 / 8}
       .ideaThemeCard h3{margin-top:4px}
       .ideaThemeCard h3 .ideaTitle{gap:8px}
       .ideaThemeCard > p:not(.fine){font-size:.9rem;line-height:1.38}
@@ -1189,6 +1228,18 @@
               <span>Website of bronlink (optioneel)</span>
               <input id="teamIdeaUrlInput" name="url" type="url" placeholder="https://">
             </label>
+            <label class="teamField wide teamFileField">
+              <span>Foto meesturen (optioneel)</span>
+              <input id="teamIdeaImageInput" name="image" type="file" accept="image/*">
+              <span class="teamFileControl">
+                <span class="teamFileButton">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="m21 15-4.5-4.5L9 18"></path><path d="m14 14-2-2-5 6"></path></svg>
+                  Afbeelding toevoegen
+                </span>
+                <span id="teamIdeaImageName" class="teamFileName">Geen bestand geselecteerd</span>
+              </span>
+              <small class="teamFieldHint">De foto wordt eerst beoordeeld en verschijnt pas daarna op een inspiratietegel.</small>
+            </label>
             <label class="teamField wide">
               <span>Beschrijving</span>
               <textarea id="teamIdeaFitInput" name="fit" placeholder="Bijv. waarom past dit idee goed, voor wie is het prettig, of wat maakt het inspirerend?"></textarea>
@@ -1278,6 +1329,29 @@
     .replace(/\bde jongere\b/gi, match => match[0] === match[0].toUpperCase() ? 'De persoon' : 'de persoon')
     .replace(/\bhet kind\b/gi, match => match[0] === match[0].toUpperCase() ? 'De persoon' : 'de persoon')
     .replace(/\bjullie\b/gi, match => match[0] === match[0].toUpperCase() ? 'Je' : 'je');
+  const IDEA_IMAGE_MAX_BYTES = 1500000;
+  const DEMO_IDEA_IMAGES = [
+    {match:'bijlwerpen archery tag', image:'website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', alt:'Buitenactiviteit met doelen in het groen'},
+    {match:'waterwandeling', image:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij de waterwandeling'},
+    {match:'watermuseum', image:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij het Watermuseum'},
+    {match:'lindenberg', image:'website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', alt:'Creatieve bijeenkomst of workshop als sfeerbeeld'}
+  ];
+  function approvedIdeaImage(item={}){
+    if(item.image && (item.imageStatus === 'approved' || item.imageApproved === true)){
+      return {src:item.image, alt:item.imageAlt || item.title || 'Activiteit'};
+    }
+    const title = normalize(item.title || '');
+    const demo = DEMO_IDEA_IMAGES.find(entry => title.includes(entry.match));
+    return demo ? {src:demo.image, alt:demo.alt} : null;
+  }
+  function readIdeaImageFile(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => resolve(reader.result));
+      reader.addEventListener('error', () => reject(reader.error));
+      reader.readAsDataURL(file);
+    });
+  }
   const weekName = id => { const w = ACTIVE_WEEKS.find(x=>x.id===id); return w ? 'Week '+w.week : id; };
   const isConcrete = item => !/doorlopend|wekelijks|bij mooi weer|check programma|actuele/i.test(String(item.date + ' ' + item.time));
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
@@ -1651,13 +1725,25 @@
     return 'Laag';
   }
   function compactPlacePills(locationLabel='', distanceLabel=''){
-    const location = String(locationLabel || '').trim();
-    const distance = String(distanceLabel || '').trim();
+    const location = compactIdeaBadgeLabel(locationLabel);
+    const distance = compactIdeaBadgeLabel(distanceLabel);
     const pills = [];
     if(location) pills.push(location);
     const sameTerrain = normalize(location).includes('terrein') && normalize(distance).includes('terrein');
     if(distance && !sameTerrain && normalize(distance) !== normalize(location)) pills.push(distance);
     return pills;
+  }
+  function compactIdeaBadgeLabel(label=''){
+    const raw = String(label || '').trim();
+    const v = normalize(raw);
+    if(!raw) return '';
+    if(v === 'buiten de deur') return 'Buiten';
+    if(v === 'binnen + buiten' || v === 'binnen en buiten') return 'Binnen/buiten';
+    if(v.includes('0-10')) return '0–10 km';
+    if(v.includes('10-25') || v.includes('10-30')) return '10–25 km';
+    if(v.includes('25-50') || v.includes('30-50') || v.includes('uitstap')) return '25–50 km';
+    if(v.includes('50+') || v.includes('ver weg') || v.includes('dagtrip')) return '50+ km';
+    return raw.replace(/\s*\([^)]*\)\s*/g, '').trim();
   }
   function stimulusPill(value=''){
     const label = normalizeIdeaStimulus(value);
@@ -1668,7 +1754,7 @@
       const y = yPositions[index];
       return `<path d="M1.5 ${y}c2.9-2.7 5.8 2.7 8.7 0S17.6 ${y - 2.7} 20.5 ${y}"></path>`;
     }).join('');
-    return `<span class="pill stimulusPill ${kind}" title="Prikkelbelasting: ${escapeHtml(label)}" aria-label="Prikkelbelasting: ${escapeHtml(label)}"><span class="stimulusIcon" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span>${escapeHtml(label)}</span>`;
+    return `<span class="pill stimulusPill ${kind}" title="Prikkelbelasting: ${escapeHtml(label)}" aria-label="Prikkelbelasting: ${escapeHtml(label)}"><span class="stimulusIcon" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span></span>`;
   }
   function cardMetaLine(item={}){
     const groupValue = String(item.group || 'Op maat').trim();
@@ -1734,6 +1820,9 @@
       fit: String(item.fit || item.note || '').trim(),
       note: String(item.note || '').trim(),
       url: String(item.url || '').trim(),
+      image: String(item.image || '').trim(),
+      imageAlt: String(item.imageAlt || item.title || '').trim(),
+      imageStatus: item.image ? String(item.imageStatus || 'pending').trim() : '',
       source: item.source || `Ingebracht door ${by}`,
       createdAt: item.createdAt || ''
     };
@@ -2194,6 +2283,7 @@
     return [...loadStoredTeamIdeas(), ...baseTeamIdeas()].filter(item => !hiddenIds.has(item.id) && !deleted.has(item.id) && !deleted.has(normalize(item.title)));
   }
   function teamIdeaToInspiration(item){
+    const approvedImage = approvedIdeaImage(item);
     return {
       teamIdeaId:item.id,
       teamIdeaBy:item.by,
@@ -2210,7 +2300,10 @@
       materials:item.note || item.materials || '',
       fit:item.fit || item.note || 'Toegevoegd door iemand uit de omgeving.',
       source:item.by ? `Ingebracht door: ${item.by}` : 'Inzending',
-      url:item.url || ''
+      url:item.url || '',
+      image:approvedImage && item.imageStatus === 'approved' ? approvedImage.src : '',
+      imageAlt:approvedImage && item.imageStatus === 'approved' ? approvedImage.alt : '',
+      imageStatus:item.imageStatus || ''
     };
   }
   function allInspirationItems(){
@@ -2364,8 +2457,14 @@
     }else if(placeholder) el.value = '';
     else if(options.length) el.value = options[0];
   }
+  function syncTeamIdeaImageName(){
+    const input = $('#teamIdeaImageInput');
+    const name = $('#teamIdeaImageName');
+    if(!input || !name) return;
+    name.textContent = input.files && input.files[0] ? input.files[0].name : 'Geen bestand geselecteerd';
+  }
   function setupTeamForm(){
-    fillSelectOptions('#teamIdeaDomainInput', unique(allInspirationItems().map(x=>x.domain)), domainDisplayLabel, 'Categorie');
+    fillSelectOptions('#teamIdeaDomainInput', unique(allInspirationItems().map(x=>x.domain)), domainDisplayLabel);
     fillSelectOptions('#teamIdeaLocationInput', IDEA_LOCATION_OPTIONS);
     fillSelectOptions('#teamIdeaDistanceInput', IDEA_DISTANCE_OPTIONS);
     fillSelectOptions('#teamIdeaCostInput', IDEA_COST_OPTIONS);
@@ -2377,6 +2476,7 @@
     enhanceCustomSelect($('#teamIdeaStimulusInput'));
     enhanceCustomSelect($('#teamIdeaBusInput'));
     if($('#teamIdeaBusInput') && !$('#teamIdeaBusInput').value) $('#teamIdeaBusInput').value = 'Nee';
+    syncTeamIdeaImageName();
   }
   function refreshCollections(){
     setupFilters();
@@ -2471,6 +2571,20 @@
     const form = event.currentTarget;
     const by = $('#teamIdeaByInput').value.trim();
     const domain = $('#teamIdeaDomainInput').value;
+    const imageFile = $('#teamIdeaImageInput')?.files?.[0] || null;
+    let imageData = '';
+    if(imageFile){
+      if(imageFile.size > IDEA_IMAGE_MAX_BYTES){
+        setTeamIdeaStatus('Kies een foto kleiner dan 1,5 MB.', 'warn');
+        return;
+      }
+      try{
+        imageData = await readIdeaImageFile(imageFile);
+      }catch(error){
+        setTeamIdeaStatus('De foto kon niet worden gelezen. Probeer een andere afbeelding.', 'warn');
+        return;
+      }
+    }
     const item = normalizeTeamIdea({
       id:`user-${Date.now()}`,
       title:$('#teamIdeaTitleInput').value.trim(),
@@ -2487,6 +2601,9 @@
       fit:$('#teamIdeaFitInput').value.trim(),
       note:$('#teamIdeaNoteInput').value.trim(),
       url:$('#teamIdeaUrlInput').value.trim(),
+      image:imageData,
+      imageAlt:$('#teamIdeaTitleInput').value.trim(),
+      imageStatus:imageData ? 'pending' : '',
       source:by ? `Ingebracht door ${by}` : 'Inzending',
       createdAt:new Date().toISOString()
     });
@@ -2512,7 +2629,8 @@
     syncCustomSelect($('#teamIdeaDistanceInput'));
     syncCustomSelect($('#teamIdeaCostInput'));
     syncCustomSelect($('#teamIdeaStimulusInput'));
-    setTeamIdeaStatus('Dankjewel. Je idee wordt eerst beoordeeld voordat het zichtbaar wordt in de inspiratiebank.', 'ok');
+    syncTeamIdeaImageName();
+    setTeamIdeaStatus('Dankjewel. Je idee en eventuele foto worden eerst beoordeeld voordat ze zichtbaar worden in de inspiratiebank.', 'ok');
     openTeamIdeaModal(item);
   }
 	  async function handleLinkAddSubmit(event){
@@ -2944,7 +3062,9 @@
     const costLabel = normalizeIdeaCost(item.cost);
     const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
     const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
+    const image = approvedIdeaImage(item);
     return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
+      ${image ? `<figure class="ideaImageFrame"><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async"></figure>` : ''}
       <div class="cardPills"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div></div>
       ${cardMetaLine(item)}
       <h3>${titleWithIcon(item.title, item.domain)}</h3>
@@ -3345,6 +3465,8 @@
     ['ideaSearch','ideaDomain','ideaLocation','ideaDistance','ideaCost','ideaStimulus'].forEach(id=>$('#'+id).addEventListener('input',renderIdeas));
     $$('[data-view-group="ideas"]').forEach(btn=>btn.addEventListener('click',()=>setIdeaView(btn.dataset.view)));
     $('#teamIdeaForm').addEventListener('submit', handleTeamIdeaSubmit);
+    const teamIdeaImageInput = $('#teamIdeaImageInput');
+    if(teamIdeaImageInput) teamIdeaImageInput.addEventListener('change', syncTeamIdeaImageName);
     $('#linkAddForm').addEventListener('submit', handleLinkAddSubmit);
     const randomIdeaBtn = $('#randomIdeaBtn');
     if(randomIdeaBtn) randomIdeaBtn.addEventListener('click', showRandomIdea);
