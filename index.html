@@ -776,7 +776,7 @@
         align-items:flex-start;
         min-height:360px;
         margin:-138px calc(50% - 50vw) 0;
-        padding:174px max(28px,calc((100vw - var(--max)) / 2 + 28px)) 76px;
+        padding:174px max(28px,calc((100vw - var(--max)) / 2 + 28px)) 88px;
         border:0;border-radius:0;
         box-shadow:none;
       }
@@ -796,6 +796,8 @@
       .tabHeroStat strong{display:inline;font-size:inherit;font-weight:700;line-height:inherit}
       .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:inline;margin-top:0;color:inherit;font-weight:500}
       .tabHero + .filterBar{margin-top:-22px}
+      .tabHero + .filterBar > .filters.more,
+      .tabHero + .filterBar > .agendaSearchFilters.more{transform:translateY(-12px)}
       .hero{display:flex;flex-direction:column;gap:14px;padding-top:44px}
       .quick{order:1;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr;gap:8px}
       .heroMain{order:0;padding:24px 22px}
