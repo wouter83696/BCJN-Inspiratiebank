@@ -510,6 +510,20 @@
     .themeSelect .customSelectOption:hover,.themeSelect .customSelectOption.active{background:rgba(11,18,32,.035);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
     .themeSelect .customSelectButton .domainIcon,.themeSelect .customSelectOption .domainIcon{width:22px;height:22px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
     .themeSelect .customSelectButton .domainIcon svg,.themeSelect .customSelectOption .domainIcon svg{width:12px;height:12px}
+    .choiceSelect .customSelectButton,.choiceSelect .customSelectOption{gap:8px}
+    .choiceSelect .customSelectOption{display:flex;align-items:center}
+    .choiceIcon{
+      display:inline-flex;align-items:center;justify-content:center;flex:0 0 24px;width:24px;height:24px;
+      border-radius:999px;border:1px solid rgba(11,18,32,.05);font-size:.74rem;font-weight:600;line-height:1
+    }
+    .choiceIcon svg{width:18px;height:15px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+    .choiceIcon.costFree{background:rgba(221,239,232,.88);color:#426e5d}
+    .choiceIcon.costLow{background:rgba(248,236,194,.92);color:#80610b}
+    .choiceIcon.costMid{background:rgba(248,225,172,.88);color:#80610b}
+    .choiceIcon.costHigh{background:rgba(246,223,231,.90);color:#84435a}
+    .choiceIcon.stimulusLow{background:rgba(221,239,232,.88);color:#426e5d}
+    .choiceIcon.stimulusMedium{background:rgba(248,236,194,.92);color:#80610b}
+    .choiceIcon.stimulusHigh{background:rgba(246,223,231,.90);color:#84435a}
     .filterReset{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;border:0;border-radius:16px;background:transparent;color:var(--accent);padding:9px 10px;font:inherit;font-size:.88rem;font-weight:500;white-space:nowrap;cursor:pointer}
     .filterReset svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .filterReset:hover{color:var(--accent-dark)}
@@ -660,6 +674,12 @@
       width:100%;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.76);
       border-radius:15px;padding:11px 12px;color:var(--ink)
     }
+    .teamField .customSelectButton{
+      min-height:48px;padding:11px 12px;border-color:rgba(11,18,32,.08);
+      border-radius:15px;background:rgba(255,255,255,.76);font-size:1rem
+    }
+    .teamField .customSelectMenu{width:100%;max-width:min(420px,calc(100vw - 30px));padding:7px}
+    .teamField .customSelectOption{min-height:38px;padding:8px 10px;font-size:.96rem}
     .teamField textarea{resize:vertical;min-height:92px}
     .teamActionBar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
     .teamActionButtons{display:flex;gap:10px;flex-wrap:wrap}
@@ -1166,11 +1186,11 @@
             </label>
             <label class="teamField">
               <span>Kosten</span>
-              <select id="teamIdeaCostInput" name="cost"></select>
+              <select id="teamIdeaCostInput" name="cost" data-choice-select="cost"></select>
             </label>
             <label class="teamField">
               <span>Prikkelbelasting</span>
-              <select id="teamIdeaStimulusInput" name="stimulus"></select>
+              <select id="teamIdeaStimulusInput" name="stimulus" data-choice-select="stimulus"></select>
             </label>
             <label class="teamField">
               <span>Bus nodig?</span>
@@ -1300,7 +1320,7 @@
   const weekName = id => { const w = ACTIVE_WEEKS.find(x=>x.id===id); return w ? 'Week '+w.week : id; };
   const isConcrete = item => !/doorlopend|wekelijks|bij mooi weer|check programma|actuele/i.test(String(item.date + ' ' + item.time));
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
-  const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online / voorbereiding'];
+  const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online'];
   const AGENDA_DISTANCE_OPTIONS = ['Op terrein','0–10 km (dichtbij)','10–25 km (regio)'];
   const INSPIRATION_DISTANCE_OPTIONS = ['Op terrein','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
   const IDEA_DISTANCE_OPTIONS = INSPIRATION_DISTANCE_OPTIONS;
@@ -1669,7 +1689,7 @@
     const hasOnline = v.includes('online');
     const hasOutside = v.includes('buiten de deur');
     const hasIndoor = v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('buurt') || v.includes('park');
-    if(hasOnline) return 'Online / voorbereiding';
+    if(hasOnline) return 'Online';
     if(v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen + buiten';
     if(hasOutside && hasIndoor) return 'Binnen + buiten';
     if(hasOutside) return 'Buiten de deur';
@@ -2434,6 +2454,11 @@
     fillSelectOptions('#teamIdeaCostInput', IDEA_COST_OPTIONS);
     fillSelectOptions('#teamIdeaStimulusInput', IDEA_STIMULUS_OPTIONS);
     enhanceCustomSelect($('#teamIdeaDomainInput'));
+    enhanceCustomSelect($('#teamIdeaLocationInput'));
+    enhanceCustomSelect($('#teamIdeaDistanceInput'));
+    enhanceCustomSelect($('#teamIdeaCostInput'));
+    enhanceCustomSelect($('#teamIdeaStimulusInput'));
+    enhanceCustomSelect($('#teamIdeaBusInput'));
     if($('#teamIdeaBusInput') && !$('#teamIdeaBusInput').value) $('#teamIdeaBusInput').value = 'Nee';
   }
   function refreshCollections(){
@@ -3243,6 +3268,28 @@
   function syncCustomSelect(select){
     if(select && typeof select._syncCustomSelect === 'function') select._syncCustomSelect();
   }
+  function customSelectChoiceIcon(type='', value=''){
+    const raw = String(value || '');
+    const normalized = normalize(raw);
+    if(type === 'cost'){
+      const label = normalizeIdeaCost(raw);
+      const iconClass = label === 'Gratis' ? 'costFree' : label === '€€€' ? 'costHigh' : label === '€€' ? 'costMid' : 'costLow';
+      return `<span class="choiceIcon ${iconClass}" aria-hidden="true">${label === 'Gratis' ? '€' : escapeHtml(label)}</span>`;
+    }
+    if(type === 'stimulus'){
+      const label = normalizeIdeaStimulus(raw);
+      const lines = label === 'Hoog' ? 3 : label === 'Middel' ? 2 : 1;
+      const iconClass = label === 'Hoog' ? 'stimulusHigh' : label === 'Middel' ? 'stimulusMedium' : 'stimulusLow';
+      const yPositions = lines === 1 ? [9] : lines === 2 ? [6,12] : [4,9,14];
+      const paths = Array.from({length:lines}, (_, index) => {
+        const y = yPositions[index];
+        return `<path d="M1.5 ${y}c2.9-2.7 5.8 2.7 8.7 0S17.6 ${y - 2.7} 20.5 ${y}"></path>`;
+      }).join('');
+      return `<span class="choiceIcon ${iconClass}" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span>`;
+    }
+    if(normalized) return '';
+    return '';
+  }
   function enhanceCustomSelect(select){
     if(!select) return;
     const previous = select.closest('.customSelect');
@@ -3252,8 +3299,9 @@
     }
     select.classList.add('customNativeSelect');
     const themed = select.dataset.themeSelect === 'true';
+    const choiceType = select.dataset.choiceSelect || '';
     const control = document.createElement('div');
-    control.className = themed ? 'customSelect themeSelect' : 'customSelect';
+    control.className = themed ? 'customSelect themeSelect' : choiceType ? 'customSelect choiceSelect' : 'customSelect';
     control.dataset.selectId = select.id || '';
     const button = document.createElement('button');
     button.type = 'button';
@@ -3263,9 +3311,13 @@
     const icon = document.createElement('span');
     icon.className = 'domainIcon';
     icon.setAttribute('aria-hidden','true');
+    const choiceIcon = document.createElement('span');
+    choiceIcon.className = 'choiceIconSlot';
+    choiceIcon.setAttribute('aria-hidden','true');
     const label = document.createElement('span');
     label.className = 'customSelectLabel';
     if(themed) button.appendChild(icon);
+    if(choiceType) button.appendChild(choiceIcon);
     button.appendChild(label);
     const menu = document.createElement('div');
     menu.className = 'customSelectMenu';
@@ -3286,6 +3338,14 @@
         const itemLabel = document.createElement('span');
         itemLabel.textContent = option.textContent;
         item.append(itemIcon, itemLabel);
+      }else if(choiceType){
+        const itemIconWrap = document.createElement('span');
+        itemIconWrap.innerHTML = customSelectChoiceIcon(choiceType, option.value);
+        const itemIcon = itemIconWrap.firstElementChild;
+        const itemLabel = document.createElement('span');
+        itemLabel.textContent = option.textContent;
+        if(itemIcon) item.append(itemIcon);
+        item.append(itemLabel);
       }else{
         item.textContent = option.textContent;
       }
@@ -3313,6 +3373,9 @@
         icon.innerHTML = domainIcon(selected.value);
       }else if(themed){
         icon.innerHTML = '';
+      }
+      if(choiceType){
+        choiceIcon.innerHTML = customSelectChoiceIcon(choiceType, selected ? selected.value : '');
       }
       menu.querySelectorAll('.customSelectOption').forEach(item => {
         const active = item.dataset.value === select.value;
