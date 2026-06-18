@@ -38,6 +38,7 @@
       --radius:24px;
       --radius-sm:16px;
       --max:1280px;
+      --hero-edge:max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px)));
       --ease:cubic-bezier(.22,1,.36,1);
       --focus:0 0 0 4px rgba(127,207,201,.38);
     }
@@ -71,7 +72,7 @@
     .topbar .tabs{
       position:fixed;
       top:24px;
-      left:max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px)));
+      left:var(--hero-edge);
       z-index:30;
       pointer-events:auto;
       gap:0;
@@ -136,7 +137,7 @@
       position:relative;overflow:hidden;isolation:isolate;
       min-height:clamp(342px,34vw,438px);
       margin:-142px calc(50% - 50vw) 0;
-      padding:clamp(184px,16vw,220px) max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px))) clamp(90px,8vw,116px);
+      padding:clamp(184px,16vw,220px) var(--hero-edge) clamp(90px,8vw,116px);
       border:0;border-radius:0;
       background:
         var(--hero-bg-image) center top/cover no-repeat,
@@ -155,7 +156,7 @@
     .tabHeroButton svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
     .tabHeroButton:hover{transform:translateY(-1px)}
     .tabHeroStats{
-      position:absolute;z-index:1;right:max(clamp(14px,3vw,28px),calc((100vw - var(--max)) / 2 + clamp(14px,3vw,28px)));
+      position:absolute;z-index:1;right:var(--hero-edge);
       top:clamp(152px,13.8vw,190px);display:grid;gap:24px;color:var(--accent-dark);font-size:.84rem;font-weight:500;line-height:1.08
     }
     .tabHeroStat{display:grid;grid-template-columns:36px auto;grid-template-rows:auto auto;align-items:center;column-gap:14px;white-space:nowrap}
