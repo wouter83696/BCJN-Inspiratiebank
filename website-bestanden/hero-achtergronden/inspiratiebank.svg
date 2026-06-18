@@ -23,7 +23,6 @@
       #warm-arc{transform:translateY(44px)}
       @media (max-width: 640px){
         #warm-arc{transform:translateY(82px)}
-        #mint-dot{transform:translate(340px,-72px)}
       }
     </style>
   </defs>
@@ -38,7 +37,7 @@
   <path d="M690 290c164 96 325 114 479 28 132-73 269-80 431-18" fill="none" stroke="#ffffff" stroke-opacity="0.42" stroke-width="1.1"/>
   <path d="M860 90c24 210 165 285 421 275" fill="none" stroke="#ffffff" stroke-opacity="0.26" stroke-width="1"/>
   <path d="M1010 122c-12 142 73 234 255 276" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1"/>
-  <circle id="mint-dot" cx="806" cy="106" r="12" fill="#7fcfc9" opacity="0.55"/>
+  <circle cx="806" cy="106" r="12" fill="#7fcfc9" opacity="0.55"/>
   <circle cx="947" cy="204" r="8" fill="#f5d98a" opacity="0.76"/>
   <circle cx="1089" cy="172" r="10" fill="#b6abdc" opacity="0.65"/>
   <circle cx="1204" cy="394" r="11" fill="#0ca0b2" opacity="0.68"/>
