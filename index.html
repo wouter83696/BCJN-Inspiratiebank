@@ -1331,17 +1331,52 @@
     .replace(/\bjullie\b/gi, match => match[0] === match[0].toUpperCase() ? 'Je' : 'je');
   const IDEA_IMAGE_MAX_BYTES = 1500000;
   const DEMO_IDEA_IMAGES = [
-    {match:'bijlwerpen archery tag', image:'website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', alt:'Buitenactiviteit met doelen in het groen'},
-    {match:'waterwandeling', image:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij de waterwandeling'},
-    {match:'watermuseum', image:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij het Watermuseum'},
-    {match:'lindenberg', image:'website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', alt:'Creatieve bijeenkomst of workshop als sfeerbeeld'}
+    {keywords:['bijlwerpen','archery','fundustry'], image:'website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', alt:'Buitenactiviteit met doelen in het groen'},
+    {keywords:['waterwandeling','watermuseum','watermuseum.nl'], image:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij het Watermuseum'},
+    {keywords:['lindenberg','lindenberg.nl'], image:'website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', alt:'Creatieve bijeenkomst of workshop als sfeerbeeld'}
   ];
+  function ideaImageMatchText(item={}){
+    return normalize([
+      item.title,
+      item.source,
+      item.url,
+      item.where,
+      item.domain,
+      Array.isArray(item.tags) ? item.tags.join(' ') : item.tags
+    ].filter(Boolean).join(' '));
+  }
+  function imageMatchScore(entry={}, item={}){
+    const text = ideaImageMatchText(item);
+    return (entry.keywords || []).reduce((score, keyword) => score + (text.includes(normalize(keyword)) ? 1 : 0), 0);
+  }
+  function suggestedIdeaImage(item={}){
+    return DEMO_IDEA_IMAGES
+      .map(entry => ({...entry, score:imageMatchScore(entry, item)}))
+      .filter(entry => entry.score > 0)
+      .sort((a,b)=>b.score - a.score)[0] || null;
+  }
+  function responsiveImageSrcset(src=''){
+    if(!src || src.startsWith('data:') || !/\.jpe?g($|\?)/i.test(src)) return '';
+    const base = src.replace(/\.jpe?g($|\?)/i, '');
+    return `${base}-480.jpg 480w, ${base}-800.jpg 800w, ${src} 1200w`;
+  }
+  function ideaImageMarkup(image={}){
+    const srcset = responsiveImageSrcset(image.src || '');
+    const attrs = [
+      `src="${escapeHtml(image.src || '')}"`,
+      srcset ? `srcset="${escapeHtml(srcset)}"` : '',
+      srcset ? 'sizes="(max-width: 640px) calc(100vw - 28px), (min-width: 1180px) 24vw, 33vw"' : '',
+      `alt="${escapeHtml(image.alt || 'Activiteit')}"`,
+      'loading="lazy"',
+      'decoding="async"'
+    ].filter(Boolean).join(' ');
+    return `<figure class="ideaImageFrame"><img ${attrs}></figure>`;
+  }
   function approvedIdeaImage(item={}){
     if(item.image && (item.imageStatus === 'approved' || item.imageApproved === true)){
       return {src:item.image, alt:item.imageAlt || item.title || 'Activiteit'};
     }
-    const title = normalize(item.title || '');
-    const demo = DEMO_IDEA_IMAGES.find(entry => title.includes(entry.match));
+    const demo = suggestedIdeaImage(item);
     return demo ? {src:demo.image, alt:demo.alt} : null;
   }
   function readIdeaImageFile(file){
@@ -3068,7 +3103,7 @@
     const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
     const image = approvedIdeaImage(item);
     return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
-      ${image ? `<figure class="ideaImageFrame"><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async"></figure>` : ''}
+      ${image ? ideaImageMarkup(image) : ''}
       <div class="cardPills"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div></div>
       ${cardMetaLine(item)}
       <h3>${titleWithIcon(item.title, item.domain)}</h3>

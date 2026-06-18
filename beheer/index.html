@@ -481,6 +481,13 @@
     .adminImagePreview{display:none;overflow:hidden;width:min(240px,100%);aspect-ratio:16 / 9;border-radius:14px;border:1px solid rgba(79,142,158,.10);background:rgba(232,242,242,.48)}
     .adminImagePreview.active{display:block}
     .adminImagePreview img{width:100%;height:100%;object-fit:cover;display:block}
+    .adminImageSuggestion{display:none;grid-column:1 / -1;grid-template-columns:minmax(92px,138px) minmax(0,1fr);gap:12px;align-items:center;padding:10px;border:1px solid rgba(79,142,158,.12);border-radius:16px;background:rgba(232,242,242,.48)}
+    .adminImageSuggestion.active{display:grid}
+    .adminImageSuggestion img{width:100%;aspect-ratio:16 / 9;object-fit:cover;border-radius:12px;border:1px solid rgba(79,142,158,.10)}
+    .adminImageSuggestionText{display:grid;gap:7px;min-width:0}
+    .adminImageSuggestionText strong{color:var(--accent-dark);font-size:.92rem;font-weight:600}
+    .adminImageSuggestionText span{color:var(--muted);font-size:.84rem;line-height:1.35}
+    .adminImageSuggestionText .button{justify-self:start}
     .adminCheckField{display:flex !important;align-items:center;gap:9px}
     .adminCheckField input{width:auto;min-width:18px;height:18px}
     .adminIdeaDescription{display:block;margin-top:5px;color:rgba(11,18,32,.70);font-size:.86rem;line-height:1.38}
@@ -826,6 +833,7 @@
                 <textarea id="adminEditIdeaImage" placeholder="Bijv. website-bestanden/afbeeldingen/activiteiten/voorbeeld.jpg"></textarea>
               </label>
               <div id="adminEditIdeaImagePreview" class="adminImagePreview" aria-hidden="true"></div>
+              <div id="adminEditIdeaImageSuggestion" class="adminImageSuggestion" aria-live="polite"></div>
               <label class="teamField wide adminCheckField">
                 <input id="adminEditIdeaImageApproved" type="checkbox">
                 <span>Foto goedgekeurd en tonen op de inspiratietegel</span>
@@ -1947,26 +1955,44 @@
     return '';
   }
   const ADMIN_DEMO_IDEA_IMAGES = [
-    {match:'bijlwerpen archery tag', image:'../website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', alt:'Buitenactiviteit met doelen in het groen'},
-    {match:'waterwandeling', image:'../website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij de waterwandeling'},
-    {match:'watermuseum', image:'../website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij het Watermuseum'},
-    {match:'lindenberg', image:'../website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', alt:'Creatieve bijeenkomst of workshop als sfeerbeeld'}
+    {keywords:['bijlwerpen','archery','fundustry'], image:'../website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/archery-outdoor-foto.jpg', alt:'Buitenactiviteit met doelen in het groen'},
+    {keywords:['waterwandeling','watermuseum','watermuseum.nl'], image:'../website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/watermuseum-foto.jpg', alt:'Museumachtige binnenruimte als sfeerbeeld bij het Watermuseum'},
+    {keywords:['lindenberg','lindenberg.nl'], image:'../website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', publicImage:'website-bestanden/afbeeldingen/activiteiten/creatieve-workshop-foto.jpg', alt:'Creatieve bijeenkomst of workshop als sfeerbeeld'}
   ];
+  function adminIdeaImageMatchText(item={}){
+    return normalize([
+      item.title,
+      item.source,
+      item.url,
+      item.where,
+      item.domain,
+      Array.isArray(item.tags) ? item.tags.join(' ') : item.tags
+    ].filter(Boolean).join(' '));
+  }
+  function adminImageMatchScore(entry={}, item={}){
+    const text = adminIdeaImageMatchText(item);
+    return (entry.keywords || []).reduce((score, keyword) => score + (text.includes(normalize(keyword)) ? 1 : 0), 0);
+  }
+  function suggestedAdminIdeaImage(item={}){
+    return ADMIN_DEMO_IDEA_IMAGES
+      .map(entry => ({...entry, score:adminImageMatchScore(entry, item)}))
+      .filter(entry => entry.score > 0)
+      .sort((a,b)=>b.score - a.score)[0] || null;
+  }
   function adminIdeaImage(item={}){
     if(item.image){
       const approved = item.imageStatus === 'approved' || item.imageApproved === true;
       return {src:item.image, publicSrc:item.image, alt:item.imageAlt || item.title || 'Activiteit', approved, pending:!approved};
     }
-    const title = normalize(item.title || '');
-    const demo = ADMIN_DEMO_IDEA_IMAGES.find(entry => title.includes(entry.match));
-    return demo ? {src:demo.image, publicSrc:demo.publicImage, alt:demo.alt, approved:true, pending:false, demo:true} : null;
+    const demo = suggestedAdminIdeaImage(item);
+    return demo ? {src:demo.image, publicSrc:demo.publicImage, alt:demo.alt, approved:true, pending:false, suggested:true} : null;
   }
   function adminIdeaPhotoCell(item={}){
     const image = adminIdeaImage(item);
     if(!image) return '<span class="pill soft">Nee</span>';
-    const label = image.pending ? 'Wacht' : 'Ja';
-    const title = image.pending ? 'Foto aanwezig, nog niet goedgekeurd' : 'Foto beschikbaar';
-    return `<span class="pill ${image.pending ? 'warn' : 'ok'}" title="${escapeHtml(title)}">${actionIcon('image')}${escapeHtml(label)}</span>`;
+    const label = image.suggested ? 'Voorstel' : image.pending ? 'Wacht' : 'Ja';
+    const title = image.suggested ? 'Foto automatisch voorgesteld op basis van titel, bron of URL' : image.pending ? 'Foto aanwezig, nog niet goedgekeurd' : 'Foto beschikbaar';
+    return `<span class="pill ${image.pending ? 'warn' : image.suggested ? 'soft' : 'ok'}" title="${escapeHtml(title)}">${actionIcon('image')}${escapeHtml(label)}</span>`;
   }
   function adminIdeaActions(item){
     const statusLabel = item.hidden ? 'Maak zichtbaar' : 'Verberg tijdelijk';
@@ -3004,6 +3030,7 @@
     const form = $('#adminIdeaEditForm');
     if(form) form.reset();
     syncAdminIdeaImagePreview();
+    syncAdminIdeaImageSuggestion();
     if(panel) panel.hidden = true;
     setStatus('#adminIdeaEditStatus', '');
   }
@@ -3022,6 +3049,42 @@
     preview.setAttribute('aria-hidden', 'false');
     preview.innerHTML = `<img src="${escapeHtml(previewSrc)}" alt="">`;
   }
+  function adminIdeaDraftForImage(){
+    if(!editingAdminIdea) return {};
+    return {
+      ...editingAdminIdea,
+      title:$('#adminEditIdeaTitle')?.value || editingAdminIdea.title,
+      source:$('#adminEditIdeaBy')?.value || editingAdminIdea.source,
+      url:$('#adminEditIdeaUrl')?.value || editingAdminIdea.url
+    };
+  }
+  function syncAdminIdeaImageSuggestion(){
+    const box = $('#adminEditIdeaImageSuggestion');
+    if(!box) return;
+    const hasManualImage = Boolean(String($('#adminEditIdeaImage')?.value || '').trim());
+    const suggestion = hasManualImage ? null : suggestedAdminIdeaImage(adminIdeaDraftForImage());
+    if(!suggestion){
+      box.classList.remove('active');
+      box.innerHTML = '';
+      return;
+    }
+    box.classList.add('active');
+    box.innerHTML = `
+      <img src="${escapeHtml(suggestion.image)}" alt="">
+      <div class="adminImageSuggestionText">
+        <strong>Foto voorstel</strong>
+        <span>Deze foto lijkt te passen op basis van titel, bron of URL.</span>
+        <button class="button" type="button" data-use-admin-image-suggestion="${escapeHtml(suggestion.publicImage)}" data-suggestion-alt="${escapeHtml(suggestion.alt)}">Gebruik voorstel</button>
+      </div>`;
+  }
+  function useAdminImageSuggestion(button){
+    const src = button?.dataset.useAdminImageSuggestion || '';
+    if(!src) return;
+    $('#adminEditIdeaImage').value = src;
+    $('#adminEditIdeaImageApproved').checked = true;
+    syncAdminIdeaImagePreview();
+    syncAdminIdeaImageSuggestion();
+  }
   function startAdminIdeaEdit(kind, key){
     const item = allAdminIdeas().find(entry => entry.kind === kind && String(entry.key) === String(key));
     if(!item) return;
@@ -3038,10 +3101,11 @@
     $('#adminEditIdeaDuration').value = item.duration || '';
     $('#adminEditIdeaGroup').value = item.group || '';
     $('#adminEditIdeaUrl').value = item.url || '';
-    const image = adminIdeaImage(item);
+    const image = item.image ? adminIdeaImage(item) : null;
     $('#adminEditIdeaImage').value = image ? (image.publicSrc || image.src || '') : '';
     $('#adminEditIdeaImageApproved').checked = image ? image.approved : false;
     syncAdminIdeaImagePreview();
+    syncAdminIdeaImageSuggestion();
     $('#adminEditIdeaDescription').value = item.description || '';
     $('#adminEditIdeaRules').value = item.rules || '';
     setStatus('#adminIdeaEditStatus', item.kind === 'collega-toegevoegd' ? 'Pas de velden aan en sla de wijziging op.' : 'Bij opslaan komt er een bewerkte online versie en wordt het vaste origineel verborgen.', 'ok');
@@ -3193,7 +3257,17 @@
     });
     $('#adminIdeaEditForm').addEventListener('submit', submitAdminIdeaEdit);
     $('#adminIdeaEditCancelBtn').addEventListener('click', resetAdminIdeaEditForm);
-    $('#adminEditIdeaImage').addEventListener('input', syncAdminIdeaImagePreview);
+    $('#adminEditIdeaImage').addEventListener('input', () => {
+      syncAdminIdeaImagePreview();
+      syncAdminIdeaImageSuggestion();
+    });
+    $('#adminEditIdeaImageSuggestion').addEventListener('click', event => {
+      const button = event.target.closest('[data-use-admin-image-suggestion]');
+      if(button) useAdminImageSuggestion(button);
+    });
+    ['#adminEditIdeaTitle','#adminEditIdeaBy','#adminEditIdeaUrl'].forEach(selector => {
+      $(selector)?.addEventListener('input', syncAdminIdeaImageSuggestion);
+    });
     ['#adminEditIdeaDomain','#adminEditIdeaLocation','#adminEditIdeaDistance','#adminEditIdeaCost','#adminEditIdeaStimulus','#adminEditIdeaBus']
       .forEach(selector => enhanceCustomSelect($(selector)));
     $('#exportBtn').addEventListener('click', exportAdminData);
