@@ -1569,7 +1569,7 @@
   const weekName = id => { const w = ACTIVE_WEEKS.find(x=>x.id===id); return w ? 'Week '+w.week : id; };
   const isConcrete = item => !/doorlopend|wekelijks|bij mooi weer|check programma|actuele/i.test(String(item.date + ' ' + item.time));
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
-  const IDEA_LOCATION_OPTIONS = ['Op locatie','Buiten de deur','Online'];
+  const IDEA_LOCATION_OPTIONS = ['Binnen','Buiten','Op pad','Online'];
   const AGENDA_DISTANCE_OPTIONS = ['Op locatie','0–10 km (dichtbij)','10–25 km (regio)'];
   const INSPIRATION_DISTANCE_OPTIONS = ['Op locatie','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
   const IDEA_DISTANCE_OPTIONS = INSPIRATION_DISTANCE_OPTIONS;
@@ -1926,16 +1926,18 @@
   }
   function normalizeIdeaLocation(value=''){
     const v = normalize(value);
-    if(!v) return 'Op locatie';
+    if(!v) return 'Binnen';
     const hasOnline = v.includes('online');
-    const hasOutside = v.includes('buiten de deur');
-    const hasIndoor = v.includes('op locatie') || v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('thuis') || v.includes('buurt') || v.includes('park');
+    const hasOutside = v.includes('buiten de deur') || v.includes('op pad') || v.includes('ergens anders') || v.includes('niet thuis') || v.includes('extern');
+    const hasOutdoor = v === 'buiten' || v.includes('buitenactiviteit') || v.includes('buitenruimte') || v.includes('wandelen') || v.includes('park') || v.includes('route');
+    const hasIndoor = v === 'binnen' || v.includes('op locatie') || v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('thuis') || v.includes('binnenruimte');
     if(hasOnline) return 'Online';
-    if(v.includes('op locatie + buiten') || v.includes('binnen + buiten') || v.includes('binnen en buiten')) return hasOutside ? 'Buiten de deur' : 'Op locatie';
-    if(hasOutside && hasIndoor) return 'Buiten de deur';
-    if(hasOutside) return 'Buiten de deur';
-    if(hasIndoor) return 'Op locatie';
-    return 'Op locatie';
+    if(v.includes('op locatie + buiten') || v.includes('binnen + buiten') || v.includes('binnen en buiten')) return hasOutside ? 'Op pad' : 'Buiten';
+    if(hasOutside && hasIndoor) return 'Op pad';
+    if(hasOutside) return 'Op pad';
+    if(hasOutdoor) return 'Buiten';
+    if(hasIndoor) return 'Binnen';
+    return 'Binnen';
   }
   function normalizeIdeaCost(value=''){
     const v = normalize(value);
@@ -1977,8 +1979,9 @@
     const raw = String(label || '').trim();
     const v = normalize(raw);
     if(!raw) return '';
-    if(v === 'buiten de deur') return 'Buiten';
-    if(v === 'op locatie + buiten' || v === 'binnen + buiten' || v === 'binnen en buiten') return 'Op locatie';
+    if(v === 'buiten de deur' || v === 'op pad' || v === 'ergens anders') return 'Op pad';
+    if(v === 'op locatie') return 'Binnen';
+    if(v === 'op locatie + buiten' || v === 'binnen + buiten' || v === 'binnen en buiten') return 'Buiten';
     if(v.includes('0-10')) return '0–10 km';
     if(v.includes('10-25') || v.includes('10-30')) return '10–25 km';
     if(v.includes('25-50') || v.includes('30-50') || v.includes('uitstap')) return '25–50 km';
@@ -2198,7 +2201,7 @@
     if(/arnhem|cuijk|grave|gennep|beers|beugen|millingen|groesbeek|berg en dal|ewijk|mook|malden|overasselt|bemmel|elst|huissen|gendt/.test(location)) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(/nijmegen|dukenburg|lent|wijchen|beuningen|weurt|ooij|ubbergen/.test(location)) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
     const locationType = normalizeIdeaLocation(item.locationType);
-    return locationType === 'Buiten de deur' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op locatie';
+    return locationType === 'Op pad' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op locatie';
   }
   function normalizedIdeaField(item, key){
     if(key === 'type') return normalizeIdeaType(item.type);
@@ -2492,7 +2495,7 @@
 	      time:String(item.time || item.timeLabel || 'check tijd').trim(),
 	      domain:String(item.domain || 'Cultuur & Ontdekken').trim(),
 	      where:String(item.where || item.place || item.location || 'Regio Nijmegen/Arnhem').trim(),
-	      locationType:String(item.locationType || 'Buiten de deur').trim(),
+	      locationType:normalizeIdeaLocation(item.locationType || 'Op pad'),
 	      cost:String(item.cost || 'Nog checken').trim(),
 	      stimulus:String(item.stimulus || 'Middel').trim(),
 	      fit:String(item.fit || item.note || 'Automatisch gevonden. Check details voordat je dit plant.').trim(),
