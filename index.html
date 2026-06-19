@@ -497,6 +497,32 @@
     .ideaModalActions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:16px}
     .ideaModalClose{min-width:120px}
     .ideaModalActions .primary{min-width:120px}
+    @media (max-width:640px){
+      .ideaModal{
+        align-items:start;place-items:start center;
+        padding:clamp(10px,3svh,18px) 12px max(12px,env(safe-area-inset-bottom));
+        min-height:100dvh;overflow:auto;-webkit-overflow-scrolling:touch
+      }
+      .ideaModalCard{
+        width:min(100%,520px);max-height:calc(100dvh - 24px - env(safe-area-inset-bottom));
+        overflow:auto;padding:15px 16px 16px;border-radius:20px
+      }
+      .ideaModalTop{gap:10px}
+      .ideaModalBadge{flex-basis:34px;width:34px;height:34px}
+      .ideaModalBadge svg{width:18px;height:18px}
+      .ideaModalKicker{font-size:.78rem}
+      .ideaModalTitle{margin:3px 0 8px;font-size:1.24rem;line-height:1.12}
+      .ideaModalText{font-size:.96rem;line-height:1.45}
+      .ideaModalActions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+      .ideaModalActions .formButton{width:100%;min-width:0;min-height:44px;padding:10px 12px;justify-content:center}
+      .ideaModalActions .primary{grid-column:1/-1;order:-1}
+      .ideaModalActions span:empty{display:none}
+      .locationForm{gap:10px;margin-top:12px}
+      .locationField input,.locationField select{min-height:44px;border-radius:13px;font-size:16px}
+      .locationToggle{padding:9px 10px;border-radius:13px}
+      .locationHint{font-size:.82rem;line-height:1.35}
+      #locationModal .ideaModalCard{max-height:calc(100dvh - 20px - env(safe-area-inset-bottom))}
+    }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
     .locationLegendItem{background:rgba(221,239,232,.72);border-color:rgba(79,142,158,.14);color:var(--accent-dark)}
     .locationLegendItem .locationIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:18px;color:var(--accent-dark)}
