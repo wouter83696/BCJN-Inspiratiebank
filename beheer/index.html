@@ -1750,7 +1750,7 @@
   }
   function cardMetaLine(item={}){
     const groupValue = String(item.group || 'Op maat').trim();
-    return `<span class="cardMetaLine"><strong>Duur:</strong> ${escapeHtml(item.duration || 'Op maat')} • <strong>Personen:</strong> ${escapeHtml(groupValue)}</span>`;
+    return `<span class="cardMetaLine"><strong>Personen:</strong> ${escapeHtml(groupValue)} • <strong>Duur:</strong> ${escapeHtml(item.duration || 'Op maat')}</span>`;
   }
   function distanceLabelForKm(km, context='inspiration'){
     if(!Number.isFinite(km)) return '';
@@ -2647,7 +2647,7 @@
     const source = item.source || item.kind;
     const website = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Open')}</a>` : '<span class="small">-</span>';
     return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}" data-idea-key="${escapeHtml(item.key)}">
-      <td data-label="Activiteit">${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}<div class="small">${escapeHtml(item.duration || '')} • groep ${escapeHtml(item.group || '')}${item.hidden ? ' • Verborgen' : ''}</div><div class="small">${escapeHtml(source)}</div></td>
+      <td data-label="Activiteit">${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}<div class="small">groep ${escapeHtml(item.group || '')} • ${escapeHtml(item.duration || '')}${item.hidden ? ' • Verborgen' : ''}</div><div class="small">${escapeHtml(source)}</div></td>
       <td data-label="Categorie">${escapeHtml(domainDisplayLabel(item.domain))}</td>
       <td data-label="Foto">${adminIdeaPhotoPreview(item)}</td>
       <td data-label="Badges"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel || item.stimulus)}</div></td>
