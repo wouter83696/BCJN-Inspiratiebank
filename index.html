@@ -161,8 +161,8 @@
     }
     .tabHeroStat{
       display:grid;grid-template-columns:22px minmax(0,auto) minmax(0,auto);align-items:center;column-gap:8px;white-space:nowrap;
-      padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.38);border:1px solid rgba(79,142,158,.055);
-      box-shadow:0 5px 14px rgba(20,38,42,.035);backdrop-filter:blur(10px)
+      padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.24);border:1px solid rgba(79,142,158,.035);
+      box-shadow:0 3px 10px rgba(20,38,42,.02);backdrop-filter:blur(8px)
     }
     .tabHeroStat svg{width:17px;height:17px;margin-top:0;align-self:center;justify-self:center;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;opacity:.82;color:rgba(49,95,107,.82)}
     .tabHeroStat strong{display:block;font-size:.86rem;font-weight:600;line-height:1;color:var(--accent-dark)}
@@ -841,12 +841,12 @@
       .tabHeroButton svg{width:16px;height:16px}
       .tabHeroStats{
         order:5;position:relative;right:auto;top:auto;display:flex;align-items:center;flex-wrap:nowrap;
-        width:100%;max-width:380px;margin-top:clamp(12px,2.2svh,16px);gap:0;
-        padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.42);
-        border:1px solid rgba(79,142,158,.06);box-shadow:0 5px 14px rgba(20,38,42,.035);
-        backdrop-filter:blur(10px);font-size:clamp(.68rem,3vw,.74rem);color:rgba(11,18,32,.70)
+        width:100%;max-width:380px;margin-top:clamp(12px,2.2svh,16px);gap:14px;
+        padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.24);
+        border:1px solid rgba(79,142,158,.035);box-shadow:0 3px 10px rgba(20,38,42,.02);
+        backdrop-filter:blur(8px);font-size:clamp(.68rem,3vw,.74rem);color:rgba(11,18,32,.68)
       }
-      .tabHeroStatDivider{display:block;flex:0 0 1px;width:1px;height:18px;margin:0 8px;background:rgba(49,95,107,.13);color:transparent}
+      .tabHeroStatDivider{display:none}
       .tabHeroStat{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:0;flex:1 1 0;white-space:nowrap;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
       .tabHeroStat svg{width:15px;height:15px;margin-top:0;flex:0 0 15px}
       .tabHeroStat strong{display:inline;font-size:inherit;font-weight:700;line-height:inherit}
