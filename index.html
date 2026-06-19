@@ -525,10 +525,11 @@
       #locationModal .ideaModalCard{max-height:calc(100dvh - 20px - env(safe-area-inset-bottom))}
     }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-    .locationLegendItem{background:rgba(221,239,232,.72);border-color:rgba(79,142,158,.14);color:var(--accent-dark)}
+    .locationLegendItem{background:rgba(255,255,255,.78);border-color:rgba(79,142,158,.28);box-shadow:inset 0 0 0 1px rgba(79,142,158,.12);color:var(--accent-dark)}
+    .locationLegendItem.locationSet{background:rgba(221,239,232,.78);border-color:rgba(79,142,158,.34)}
     .locationLegendItem .locationIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:18px;color:var(--accent-dark)}
     .locationLegendItem .locationIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-    .locationLegendItem:hover{background:rgba(221,239,232,.92);border-color:rgba(79,142,158,.22)}
+    .locationLegendItem:hover{background:rgba(221,239,232,.92);border-color:rgba(79,142,158,.36)}
     .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:0;align-items:center}
     .filters.more{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
     .filterSearch{position:relative;min-width:0}
@@ -1250,7 +1251,7 @@
       <div class="filterBar">
         <div class="filters more" id="ideaFilters">
           <div class="filterSearch"><input id="ideaSearch" type="search" placeholder="Zoek in ideeën..."></div>
-          <label class="regionFilterToggle" title="Verberg uitjes die niet bij de huidige regio passen">
+          <label class="regionFilterToggle" title="Toon alleen activiteiten in en rond Nijmegen">
             <input id="hideOutOfRegionFilter" type="checkbox">
             <span>Alleen regio</span>
           </label>
@@ -1454,7 +1455,7 @@
           <h2 id="locationModalTitle" class="ideaModalTitle">Vanaf jouw postcode</h2>
         </div>
       </div>
-      <p id="locationModalText" class="ideaModalText">De inspiratie is nu vooral gevuld voor regio Nijmegen. Vul je postcode in voor betere afstand.</p>
+      <p id="locationModalText" class="ideaModalText">Op dit moment vind je hier vooral activiteiten in en rond Nijmegen. Vul je postcode in voor betere afstand.</p>
       <form id="locationForm" class="locationForm">
         <label class="locationField">
           <span>Postcode</span>
