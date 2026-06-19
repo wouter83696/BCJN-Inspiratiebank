@@ -903,13 +903,13 @@
               <span class="adminNavText">Uitsluitingen</span>
               <span class="adminNavHint">regels</span>
             </button>
-            <button class="adminNavButton adminNavSub" type="button" data-admin-target="sources" title="Bronnen">
+            <button class="adminNavButton adminNavSub" type="button" data-admin-target="agenda" data-admin-scroll="sourceOwnPanel" title="Bronnen">
               <span class="adminNavIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span>
               <span class="adminNavText">Bronnen</span>
               <span class="adminNavHint">links</span>
             </button>
             <button class="adminNavButton" type="button" data-admin-target="backup" title="Herstel">
-              <span class="adminNavIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="6.5" ry="2.8"></ellipse><path d="M5.5 5.5v7c0 1.5 2.9 2.8 6.5 2.8 1.2 0 2.3-.1 3.3-.4"></path><path d="M18.5 5.5v5.2"></path><path d="M5.5 9c0 1.5 2.9 2.8 6.5 2.8 1.2 0 2.3-.1 3.3-.4"></path><path d="M20 16.4a4.2 4.2 0 1 1-1.3-3.1"></path><path d="M20 12.8v3.6h-3.6"></path></svg></span>
+              <span class="adminNavIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2"></circle><path d="M12 8v4.2l2.8 1.7"></path><path d="M8.2 4.8 6.4 3"></path><path d="M15.8 4.8 17.6 3"></path></svg></span>
               <span class="adminNavText">Herstel</span>
               <span class="adminNavHint">data</span>
             </button>
@@ -993,6 +993,46 @@
           </div>
           <div id="agendaBlockedRules" class="agendaRuleList"></div>
         </section>
+
+      <div class="sourceGrid">
+        <section class="panel tintedPanel toneSource" id="sourceOwnPanel">
+          <div class="panelHead">
+            <div>
+              <h2>Bronlinks</h2>
+              <p>Voeg bronnen toe en beheer de links die op de gewone pagina bij Bronnen staan. Je kunt bronlinks openen, wijzigen of verwijderen.</p>
+            </div>
+          </div>
+          <form id="linkForm" class="formGrid">
+            <label>
+              Naam
+              <input id="linkName" type="text" placeholder="Bijv. lokale agenda">
+            </label>
+            <label>
+              Website
+              <input id="linkUrl" type="text" inputmode="url" placeholder="https://">
+            </label>
+            <label>
+              Categorie
+              <select id="linkCategory" data-theme-select="true">
+                <option value="">Categorie</option>
+                <option value="Creatief & Expressie">Creatief & Expressie</option>
+                <option value="Cultuur & Ontdekken">Cultuur & Ontdekken</option>
+                <option value="Natuur & Buiten">Natuur & Buiten</option>
+                <option value="Ontmoeten, Spel & Vaardigheden">Ontmoeten, Spel & Vaardigheden</option>
+                <option value="Sport & Bewegen">Sport & Bewegen</option>
+                <option value="Actie & Amusement">Actie & Amusement</option>
+              </select>
+            </label>
+            <div class="toolbar linkFormActions">
+              <button class="button primary" id="linkSubmitBtn" type="submit">Link toevoegen</button>
+              <button class="button" id="cancelLinkEditBtn" type="button" hidden>Annuleer wijzigen</button>
+            </div>
+            <span id="linkStatus" class="status" role="status" aria-live="polite"></span>
+          </form>
+          <div class="sectionDivider"></div>
+          <div id="customLinkList" class="list"></div>
+        </section>
+      </div>
 
         <section class="panel tintedPanel toneAgenda agendaReviewPanel" id="agendaReviewPanel">
           <div class="panelHead">
@@ -1224,54 +1264,6 @@
       </section>
           </section>
 
-          <section class="adminWorkspace" data-admin-workspace="sources" hidden>
-            <div class="workspaceHeader">
-              <div>
-                <h2>Bronnen</h2>
-                <p>Beheer vaste en eigen bronlinks voor de inspiratiebank en agenda.</p>
-              </div>
-            </div>
-      <div class="sourceGrid">
-        <section class="panel tintedPanel toneSource" id="sourceOwnPanel">
-          <div class="panelHead">
-            <div>
-              <h2>Bronlinks</h2>
-              <p>Voeg bronnen toe en beheer de links die op de gewone pagina bij Bronnen staan. Je kunt bronlinks openen, wijzigen of verwijderen.</p>
-            </div>
-          </div>
-          <form id="linkForm" class="formGrid">
-            <label>
-              Naam
-              <input id="linkName" type="text" placeholder="Bijv. lokale agenda">
-            </label>
-            <label>
-              Website
-              <input id="linkUrl" type="text" inputmode="url" placeholder="https://">
-            </label>
-            <label>
-              Categorie
-              <select id="linkCategory" data-theme-select="true">
-                <option value="">Categorie</option>
-                <option value="Creatief & Expressie">Creatief & Expressie</option>
-                <option value="Cultuur & Ontdekken">Cultuur & Ontdekken</option>
-                <option value="Natuur & Buiten">Natuur & Buiten</option>
-                <option value="Ontmoeten, Spel & Vaardigheden">Ontmoeten, Spel & Vaardigheden</option>
-                <option value="Sport & Bewegen">Sport & Bewegen</option>
-                <option value="Actie & Amusement">Actie & Amusement</option>
-              </select>
-            </label>
-            <div class="toolbar linkFormActions">
-              <button class="button primary" id="linkSubmitBtn" type="submit">Link toevoegen</button>
-              <button class="button" id="cancelLinkEditBtn" type="button" hidden>Annuleer wijzigen</button>
-            </div>
-            <span id="linkStatus" class="status" role="status" aria-live="polite"></span>
-          </form>
-          <div class="sectionDivider"></div>
-          <div id="customLinkList" class="list"></div>
-        </section>
-      </div>
-          </section>
-
           <section class="adminWorkspace" data-admin-workspace="backup" hidden>
             <div class="workspaceHeader">
               <div>
@@ -1361,6 +1353,7 @@
 	  const SUPABASE_TABLE = CONFIG.supabaseTable || 'bcjn_state';
 	  const SUPABASE_STATE_ID = CONFIG.supabaseStateId || 'bcjn-zomer-2026';
   const $ = selector => document.querySelector(selector);
+  const $$ = selector => Array.from(document.querySelectorAll(selector));
   let confirmDialogResolve = null;
   function closeConfirmDialog(result=false){
     const modal = $('#confirmModal');
@@ -3187,7 +3180,7 @@
 	    $('#linkSubmitBtn').textContent = 'Wijziging opslaan';
 	    $('#cancelLinkEditBtn').hidden = false;
 	    $('#linkName').focus();
-	    setAdminWorkspace('sources', {scroll:false});
+	    setAdminWorkspace('agenda', {scroll:false, scrollTarget:'sourceOwnPanel'});
 	    $('#sourceOwnPanel').scrollIntoView({behavior:'smooth', block:'start'});
 	    setStatus('#linkStatus', 'Pas de velden aan en klik op Wijziging opslaan.', 'ok');
 	  }
@@ -3745,10 +3738,11 @@
   }
   function adminScrollTargetFromHash(){
     const hash = String(window.location.hash || '').replace('#','');
-    return hash === 'agendaRulesPanel' ? hash : '';
+    if(hash === 'sources') return 'sourceOwnPanel';
+    return ['agendaRulesPanel','sourceOwnPanel'].includes(hash) ? hash : '';
   }
   function setAdminWorkspace(target='meldkamer', options={}){
-    const next = ['meldkamer','agenda','inspiration','sources','backup'].includes(target) ? target : 'meldkamer';
+    const next = ['meldkamer','agenda','inspiration','backup'].includes(target) ? target : 'meldkamer';
     const scrollTarget = options.scrollTarget || '';
     document.querySelectorAll('[data-admin-workspace]').forEach(panel => {
       panel.hidden = panel.dataset.adminWorkspace !== next;
@@ -3796,8 +3790,9 @@
       submittedIdeasPanel:'meldkamer',
       agendaReviewPanel:'agenda',
       agendaRulesPanel:'agenda',
+      sources:'agenda',
       inspirationAdminPanel:'inspiration',
-      sourceOwnPanel:'sources',
+      sourceOwnPanel:'agenda',
       backupPanel:'backup'
     };
     return legacy[hash] || hash || 'meldkamer';
