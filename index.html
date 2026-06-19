@@ -530,10 +530,12 @@
       #locationModal .locationForm{margin-left:0;max-width:none}
     }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-    .locationLegendItem{background:rgba(255,255,255,.78);border-color:rgba(79,142,158,.28);box-shadow:inset 0 0 0 1px rgba(79,142,158,.12);color:var(--accent-dark)}
+    .locationLegendItem{background:rgba(255,255,255,.82);border-color:rgba(79,142,158,.24);box-shadow:inset 0 0 0 1px rgba(79,142,158,.10),0 8px 18px rgba(20,38,42,.045);color:var(--accent-dark)}
     .locationLegendItem.locationSet{background:rgba(221,239,232,.78);border-color:rgba(79,142,158,.34)}
     .locationLegendItem .locationIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:18px;color:var(--accent-dark)}
     .locationLegendItem .locationIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .locationLegendItem .locationRadius{display:inline-flex;align-items:center;gap:6px;color:rgba(49,95,107,.74)}
+    .locationLegendItem .locationRadius::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:rgba(79,142,158,.42)}
     .locationLegendItem:hover{background:rgba(221,239,232,.92);border-color:rgba(79,142,158,.36)}
     .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:0;align-items:center}
     .filters.more{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
@@ -864,22 +866,11 @@
     .locationForm{display:grid;gap:12px;margin-top:16px}
     .locationField{display:grid;gap:6px}
     .locationField>span,.locationField>label{font-size:.82rem;font-weight:600;color:var(--accent-dark)}
-    .locationInputRow{display:grid;grid-template-columns:minmax(0,1fr) 30px;gap:8px;align-items:center}
     .locationField input,.locationField select{
       width:100%;min-height:46px;border:1px solid rgba(11,18,32,.10);border-radius:14px;
       background:rgba(255,255,255,.76);padding:10px 12px;color:var(--ink)
     }
     .locationField input::placeholder{color:rgba(11,18,32,.38)}
-    .regionMiniCheck{
-      display:inline-flex;align-items:center;justify-content:center;width:30px;height:46px;cursor:pointer;position:relative
-    }
-    .regionMiniCheck input{position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;opacity:0;cursor:pointer}
-    .regionMiniCheck span{
-      display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid rgba(79,142,158,.34);
-      border-radius:7px;color:transparent;background:rgba(255,255,255,.66);transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease)
-    }
-    .regionMiniCheck span::before{content:"";width:8px;height:4px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg) translateY(-1px)}
-    .regionMiniCheck input:checked+span{background:rgba(79,142,158,.92);border-color:rgba(79,142,158,.92);color:#fff}
     .locationToggle{
       display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border-radius:14px;
       background:rgba(255,255,255,.54);border:1px solid rgba(11,18,32,.07);color:rgba(11,18,32,.68);line-height:1.35
@@ -1452,21 +1443,25 @@
           </svg>
         </div>
         <div>
-          <p class="ideaModalKicker">Afstand</p>
-          <h2 id="locationModalTitle" class="ideaModalTitle">Vanaf jouw postcode</h2>
+          <p class="ideaModalKicker">In de buurt</p>
+          <h2 id="locationModalTitle" class="ideaModalTitle">Maak inspiratie lokaal</h2>
         </div>
       </div>
-      <p id="locationModalText" class="ideaModalText">Vooral activiteiten rond Nijmegen. Vul je postcode in voor een nauwkeuriger afstand.</p>
+      <p id="locationModalText" class="ideaModalText">Vul een postcode in en kies hoe ruim je wilt kijken. De inspiratie blijft vrij, maar wordt makkelijker dichtbij te maken.</p>
       <form id="locationForm" class="locationForm">
         <div class="locationField">
           <label for="locationPostcodeInput">Postcode</label>
-          <div class="locationInputRow">
-            <input id="locationPostcodeInput" type="text" inputmode="text" autocomplete="postal-code" placeholder="Bijv. 6603 AB">
-            <label class="regionMiniCheck" title="Uitjes buiten de regio verbergen" aria-label="Uitjes buiten de regio verbergen">
-              <input id="hideOutOfRegionFilter" type="checkbox">
-              <span aria-hidden="true"></span>
-            </label>
-          </div>
+          <input id="locationPostcodeInput" type="text" inputmode="text" autocomplete="postal-code" placeholder="Bijv. 6603 AB">
+        </div>
+        <div class="locationField">
+          <label for="locationRadiusInput">Afstand</label>
+          <select id="locationRadiusInput">
+            <option value="3">Binnen 3 km</option>
+            <option value="5">Binnen 5 km</option>
+            <option value="10">Binnen 10 km</option>
+            <option value="25">Binnen 25 km</option>
+            <option value="50">Binnen 50 km</option>
+          </select>
         </div>
         <p id="locationStatus" class="locationHint" role="status" aria-live="polite"></p>
         <div class="ideaModalActions locationActionsSplit">
@@ -1586,7 +1581,6 @@
 	  const BLOCKED_AGENDA_RULES_KEY = 'zomerprogramma_blocked_agenda_rules_v1';
 	  const REPORTS_KEY = 'zomerprogramma_item_reports_v1';
 	  const USER_LOCATION_KEY = 'zomerprogramma_user_location_v1';
-	  const HIDE_OUT_OF_REGION_KEY = 'zomerprogramma_hide_out_of_region_v1';
 	  const DEFAULT_LOCATION = {label:'Nijmegen', lat:51.8240, lon:5.8040, isDefault:true};
 	  const SUPPORTED_REGION_RADIUS_KM = 70;
 	  const KNOWN_PLACE_COORDS = {
@@ -1606,7 +1600,6 @@
 	  const SUPABASE_STATE_ID = CONFIG.supabaseStateId || 'bcjn-zomer-2026';
 	  let centralStorage = null;
 	  let userLocation = loadUserLocation();
-	  let hideOutOfRegionTrips = loadHideOutOfRegionTrips();
 
 	  function normalizeCentralStorage(value={}){
 	    return {
@@ -1984,19 +1977,6 @@
     }catch(error){}
     return {...DEFAULT_LOCATION};
   }
-  function loadHideOutOfRegionTrips(){
-    if(typeof localStorage === 'undefined') return false;
-    return localStorage.getItem(HIDE_OUT_OF_REGION_KEY) === '1';
-  }
-  function setHideOutOfRegionTrips(value){
-    hideOutOfRegionTrips = Boolean(value);
-    if(typeof localStorage !== 'undefined'){
-      if(hideOutOfRegionTrips) localStorage.setItem(HIDE_OUT_OF_REGION_KEY, '1');
-      else localStorage.removeItem(HIDE_OUT_OF_REGION_KEY);
-    }
-    syncLocationUi();
-    renderIdeas();
-  }
   function saveUserLocation(location){
     userLocation = location && Number.isFinite(location.lat) && Number.isFinite(location.lon)
       ? {...location, postcode:cleanPostcode(location.postcode || ''), isDefault:false}
@@ -2013,7 +1993,6 @@
     const label = $('#locationSettingsLabel');
     const button = $('#locationSettingsBtn');
     const input = $('#locationPostcodeInput');
-    const hideOutOfRegionInput = $('#hideOutOfRegionFilter');
     const status = $('#locationStatus');
     const text = userLocation?.isDefault
       ? 'Nijmegen'
@@ -2021,7 +2000,6 @@
     if(label) label.textContent = text;
     if(button) button.classList.toggle('locationSet', !userLocation?.isDefault);
     if(input) input.value = userLocation?.isDefault ? '' : cleanPostcode(userLocation.postcode || '');
-    if(hideOutOfRegionInput) hideOutOfRegionInput.checked = hideOutOfRegionTrips;
     if(status){
       status.classList.remove('warn');
       status.textContent = userLocation?.isDefault ? 'Standaard: regio Nijmegen.' : 'Je postcode is lokaal bewaard op dit apparaat.';
@@ -2092,11 +2070,6 @@
   function isSupportedLocation(location){
     const km = supportedRegionDistanceKm(location);
     return Number.isFinite(km) && km <= SUPPORTED_REGION_RADIUS_KM;
-  }
-  function outOfRegionHiddenByPreference(item={}){
-    if(!hideOutOfRegionTrips) return false;
-    const km = itemDistanceKm(item);
-    return Number.isFinite(km) && km > SUPPORTED_REGION_RADIUS_KM;
   }
   function haversineKm(a, b){
     if(!a || !b) return NaN;
@@ -3540,7 +3513,6 @@
     </article>`;
   }
   function matches(item, query, filters){
-    if(outOfRegionHiddenByPreference(item)) return false;
     const text = JSON.stringify(item);
     if(query && !includes(text, query)) return false;
     for(const [key,val] of Object.entries(filters)){
@@ -3990,9 +3962,6 @@
     $('#locationResetBtn').addEventListener('click', () => {
       saveUserLocation(null);
       closeLocationModal();
-    });
-    $('#hideOutOfRegionFilter')?.addEventListener('change', event => {
-      setHideOutOfRegionTrips(event.target.checked);
     });
     $('#locationForm').addEventListener('submit', async event => {
       event.preventDefault();
