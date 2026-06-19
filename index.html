@@ -3339,7 +3339,7 @@
   function scrollToTop(){
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const distance = window.scrollY;
-    const duration = distance > 1200 ? 0 : 360;
+    const duration = distance > 1800 ? 280 : distance > 900 ? 340 : 360;
     animatePageScroll(0, reduceMotion ? 0 : duration);
   }
   function animatePageScroll(targetTop, duration=420){
