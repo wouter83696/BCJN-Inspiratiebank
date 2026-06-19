@@ -544,14 +544,6 @@
     .filterSearch input{position:relative;padding-left:42px}
     .filterSearch input::placeholder{text-align:left}
     .filters select{padding-right:30px}
-    .regionFilterToggle{
-      display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:40px;
-      border:1px solid rgba(255,255,255,.78);border-radius:16px;background:rgba(255,255,255,.78);
-      color:var(--accent-dark);padding:8px 12px;font-size:.84rem;font-weight:500;white-space:nowrap;
-      box-shadow:0 8px 20px rgba(20,38,42,.055);backdrop-filter:blur(18px);cursor:pointer
-    }
-    .regionFilterToggle input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
-    .regionFilterToggle:has(input:checked){background:rgba(168,225,221,.32);border-color:rgba(79,142,158,.18)}
     .agendaSearchFilters{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center;column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
     .agendaSearchFilters .filterSearch{min-width:0}
     .agendaSearchFilters .customSelect{flex:0 1 124px;min-width:104px}
@@ -637,8 +629,7 @@
       transition:max-height .38s var(--ease),opacity .24s var(--ease) .06s,transform .38s var(--ease),visibility 0s;
       grid-column:auto
     }
-    #ideaFilters .filterSearch{grid-column:1 / 8}
-    #ideaFilters .regionFilterToggle{grid-column:8 / 10}
+    #ideaFilters .filterSearch{grid-column:1 / 10}
     #ideaFilters .filterToggle{grid-column:10 / 11;justify-self:end}
     #ideaFilters .mobileViewBar{grid-column:11 / 13;justify-self:start}
     #ideaFilters .filterOptions .customSelect[data-select-id="ideaDomain"]{grid-column:1 / 3}
@@ -871,12 +862,24 @@
     .teamFormStatus.warn{color:#7a6424}
     .locationForm{display:grid;gap:12px;margin-top:16px}
     .locationField{display:grid;gap:6px}
-    .locationField span{font-size:.82rem;font-weight:600;color:var(--accent-dark)}
+    .locationField>span,.locationField>label{font-size:.82rem;font-weight:600;color:var(--accent-dark)}
+    .locationInputRow{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px;align-items:center}
     .locationField input,.locationField select{
       width:100%;min-height:46px;border:1px solid rgba(11,18,32,.10);border-radius:14px;
       background:rgba(255,255,255,.76);padding:10px 12px;color:var(--ink)
     }
     .locationField input::placeholder{color:rgba(11,18,32,.38)}
+    .regionMiniCheck{
+      display:inline-flex;align-items:center;justify-content:center;width:44px;height:46px;border:1px solid rgba(11,18,32,.10);
+      border-radius:14px;background:rgba(255,255,255,.76);cursor:pointer;position:relative
+    }
+    .regionMiniCheck input{position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;opacity:0;cursor:pointer}
+    .regionMiniCheck span{
+      display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid rgba(79,142,158,.34);
+      border-radius:7px;color:transparent;background:rgba(255,255,255,.66);transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease)
+    }
+    .regionMiniCheck span::before{content:"";width:8px;height:4px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg) translateY(-1px)}
+    .regionMiniCheck input:checked+span{background:rgba(79,142,158,.92);border-color:rgba(79,142,158,.92);color:#fff}
     .locationToggle{
       display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border-radius:14px;
       background:rgba(255,255,255,.54);border:1px solid rgba(11,18,32,.07);color:rgba(11,18,32,.68);line-height:1.35
@@ -990,7 +993,6 @@
       .filters.more .mobileViewBar .viewSwitch{border-radius:16px;padding:3px}
       .filters.more .mobileViewBar .viewBtn{width:32px;height:32px;border-radius:13px}
       #ideaFilters .filterSearch{grid-column:1}
-      #ideaFilters .regionFilterToggle{grid-column:1 / -1;grid-row:2;justify-content:flex-start;min-height:38px;padding:8px 10px;border-radius:15px;font-size:.82rem}
       #ideaFilters .filterToggle{grid-column:2}
       #ideaFilters .mobileViewBar{grid-column:3}
       #ideaFilters .customSelect,
@@ -1014,7 +1016,6 @@
       #agendaFilters.agendaSearchFilters.more{grid-template-columns:minmax(0,1fr) 44px minmax(118px,130px);align-items:center;column-gap:6px;row-gap:8px;width:100%;max-width:100%;overflow:visible}
       #ideaFilters .filterSearch,
       #agendaFilters .filterSearch{grid-column:1;grid-row:1;min-width:0}
-      #ideaFilters .regionFilterToggle{grid-column:1 / -1;grid-row:2}
       #ideaFilters .filterToggle,
       #agendaFilters .filterToggle{grid-column:2;grid-row:1;justify-self:stretch;min-width:44px;width:44px;height:44px;min-height:44px;max-width:44px;padding:0;border-radius:16px;background:rgba(255,255,255,.78);border-color:rgba(11,18,32,.055);box-shadow:0 8px 20px rgba(20,38,42,.04)}
       #ideaFilters .filterToggle span{display:none}
@@ -1255,10 +1256,6 @@
       <div class="filterBar">
         <div class="filters more" id="ideaFilters">
           <div class="filterSearch"><input id="ideaSearch" type="search" placeholder="Zoek in ideeën..."></div>
-          <label class="regionFilterToggle" title="Toon alleen activiteiten in en rond Nijmegen">
-            <input id="hideOutOfRegionFilter" type="checkbox">
-            <span>Alleen regio</span>
-          </label>
           <button class="filterToggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="ideaFilters">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"></path><path d="M7 12h10"></path><path d="M10 19h4"></path></svg>
             <span>Filters</span>
@@ -1461,10 +1458,16 @@
       </div>
       <p id="locationModalText" class="ideaModalText">Op dit moment vind je hier vooral activiteiten in en rond Nijmegen. Vul je postcode in voor betere afstand.</p>
       <form id="locationForm" class="locationForm">
-        <label class="locationField">
-          <span>Postcode</span>
-          <input id="locationPostcodeInput" type="text" inputmode="text" autocomplete="postal-code" placeholder="Bijv. 6603 AB">
-        </label>
+        <div class="locationField">
+          <label for="locationPostcodeInput">Postcode</label>
+          <div class="locationInputRow">
+            <input id="locationPostcodeInput" type="text" inputmode="text" autocomplete="postal-code" placeholder="Bijv. 6603 AB">
+            <label class="regionMiniCheck" title="Uitjes buiten de regio verbergen" aria-label="Uitjes buiten de regio verbergen">
+              <input id="hideOutOfRegionFilter" type="checkbox">
+              <span aria-hidden="true"></span>
+            </label>
+          </div>
+        </div>
         <p id="locationStatus" class="locationHint" role="status" aria-live="polite"></p>
         <div class="ideaModalActions locationActionsSplit">
           <button id="locationResetBtn" class="formButton secondary" type="button">Standaard</button>
