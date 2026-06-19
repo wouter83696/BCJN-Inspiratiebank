@@ -157,16 +157,16 @@
     .tabHeroButton:hover{transform:translateY(-1px)}
     .tabHeroStats{
       position:absolute;z-index:1;right:var(--hero-edge);
-      top:calc(clamp(152px,13.8vw,190px) + 14px);display:grid;gap:7px;color:rgba(11,18,32,.66);font-size:.78rem;font-weight:500;line-height:1.2
-    }
-    .tabHeroStat{
-      display:grid;grid-template-columns:22px minmax(0,auto) minmax(0,auto);align-items:center;column-gap:8px;white-space:nowrap;
-      padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.24);border:1px solid rgba(79,142,158,.035);
+      top:calc(clamp(152px,13.8vw,190px) + 14px);display:grid;gap:14px;color:rgba(11,18,32,.66);font-size:.78rem;font-weight:500;line-height:1.16;
+      padding:9px 12px;border-radius:10px;background:rgba(232,242,242,.24);border:1px solid rgba(79,142,158,.035);
       box-shadow:0 3px 10px rgba(20,38,42,.02);backdrop-filter:blur(8px)
     }
-    .tabHeroStat svg{width:17px;height:17px;margin-top:0;align-self:center;justify-self:center;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;opacity:.82;color:rgba(49,95,107,.82)}
-    .tabHeroStat strong{display:block;font-size:.86rem;font-weight:600;line-height:1;color:var(--accent-dark)}
-    .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:block;margin-top:0;color:rgba(11,18,32,.62)}
+    .tabHeroStat{
+      display:grid;grid-template-columns:30px minmax(0,auto);grid-template-rows:auto auto;align-items:center;column-gap:11px;white-space:nowrap
+    }
+    .tabHeroStat svg{grid-row:1 / 3;width:24px;height:24px;margin-top:0;align-self:center;justify-self:center;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;opacity:.86;color:rgba(49,95,107,.86)}
+    .tabHeroStat strong{display:block;font-size:1.34rem;font-weight:500;line-height:.98;color:var(--accent-dark)}
+    .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:block;margin-top:2px;color:rgba(11,18,32,.58)}
     .tabHeroStatDivider{display:none;color:rgba(49,95,107,.52)}
     .tabHero + .filterBar{position:relative;z-index:2;margin-top:-24px}
     .quick{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:10px}
@@ -841,14 +841,14 @@
       .tabHeroButton svg{width:16px;height:16px}
       .tabHeroStats{
         order:5;position:relative;right:auto;top:auto;display:flex;align-items:center;flex-wrap:nowrap;
-        width:100%;max-width:380px;margin-top:clamp(12px,2.2svh,16px);gap:14px;
-        padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.24);
+        width:100%;max-width:380px;margin-top:clamp(12px,2.2svh,16px);gap:12px;
+        padding:8px 10px;border-radius:10px;background:rgba(232,242,242,.24);
         border:1px solid rgba(79,142,158,.035);box-shadow:0 3px 10px rgba(20,38,42,.02);
-        backdrop-filter:blur(8px);font-size:clamp(.68rem,3vw,.74rem);color:rgba(11,18,32,.68)
+        backdrop-filter:blur(8px);font-size:clamp(.76rem,3.15vw,.82rem);color:rgba(11,18,32,.68)
       }
       .tabHeroStatDivider{display:none}
       .tabHeroStat{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:0;flex:1 1 0;white-space:nowrap;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
-      .tabHeroStat svg{width:15px;height:15px;margin-top:0;flex:0 0 15px}
+      .tabHeroStat svg{width:17px;height:17px;margin-top:0;flex:0 0 17px}
       .tabHeroStat strong{display:inline;font-size:inherit;font-weight:700;line-height:inherit}
       .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:inline;margin-top:0;color:inherit;font-weight:500}
       .tabHero + .filterBar{margin-top:calc(var(--mobile-search-row-height) / -2);margin-bottom:4px}
