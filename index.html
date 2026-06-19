@@ -531,12 +531,12 @@
       #locationModal .locationForm{margin-left:0;max-width:none}
     }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-    .locationLegendItem{background:rgba(255,255,255,.48);border-color:rgba(79,142,158,.12);box-shadow:0 6px 16px rgba(20,38,42,.04);color:rgba(49,95,107,.88);backdrop-filter:blur(16px)}
-    .locationLegendItem.locationSet{background:rgba(255,255,255,.58);border-color:rgba(79,142,158,.14);box-shadow:0 6px 16px rgba(20,38,42,.045)}
+    .locationLegendItem{padding:8px 13px;background:rgba(255,255,255,.48);border-color:rgba(79,142,158,.12);box-shadow:0 6px 16px rgba(20,38,42,.04);color:rgba(49,95,107,.88);font-size:.86rem;line-height:1;font-weight:500;backdrop-filter:blur(16px)}
+    .locationLegendItem.locationSet{background:rgba(255,255,255,.48);border-color:rgba(79,142,158,.12);box-shadow:0 6px 16px rgba(20,38,42,.04)}
     .locationLegendItem .locationIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:18px;color:var(--accent-dark)}
     .locationLegendItem .locationIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-    .locationLegendItem .locationRadius{display:inline-flex;align-items:center;gap:6px;color:rgba(49,95,107,.74)}
-    .locationLegendItem .locationRadius::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:rgba(79,142,158,.42)}
+    .locationLegendItem .locationRadius{display:inline-flex;align-items:center;gap:7px;color:rgba(49,95,107,.74)}
+    .locationLegendItem .locationRadius::before{content:"-";color:rgba(49,95,107,.42)}
     .locationLegendItem:hover{background:rgba(255,255,255,.72);border-color:rgba(79,142,158,.16)}
     .filters{display:grid;grid-template-columns:1.5fr repeat(4,minmax(130px,1fr));gap:8px;margin:0;align-items:center}
     .filters.more{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:12px;row-gap:0;transition:row-gap .24s var(--ease)}
