@@ -218,6 +218,15 @@
     .button.iconAction{width:38px;height:38px;padding:0;gap:0}
     .button.iconAction svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
     .button.largeAction{padding:12px 18px;font-size:.98rem}
+    .siteButton{
+      display:inline-flex;align-items:center;gap:7px;justify-content:center;
+      border:1px solid rgba(79,142,158,.10);border-radius:999px;background:rgba(255,255,255,.78);color:var(--accent-dark) !important;text-decoration:none;
+      padding:9px 12px;font-size:.86rem;font-weight:500;white-space:nowrap;box-shadow:0 8px 20px rgba(20,38,42,.04);
+      transition:transform .18s cubic-bezier(.22,1,.36,1), background .18s ease, border-color .18s ease
+    }
+    .siteButton:hover{transform:translateY(-1px);background:#fff;border-color:rgba(79,142,158,.16);text-decoration:none}
+    .siteButton.secondary{background:rgba(168,225,221,.34);border:1px solid rgba(79,142,158,.10);box-shadow:none;color:var(--accent-dark) !important}
+    .siteButton::after{content:"↗";font-size:.82em;opacity:.85}
     .status{font-size:.92rem;color:var(--muted);line-height:1.4}
     .status.ok{color:#426e5d}
     .status.warn{color:#7a6424}
@@ -505,11 +514,15 @@
     .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
     .card{padding:16px;min-height:215px;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(250,250,248,.90);box-shadow:0 12px 34px rgba(20,38,42,.07);transition:.2s cubic-bezier(.22,1,.36,1)}
     .card:hover{transform:translateY(-3px);background:#fff}
-    .adminIdeaImageFrame{position:relative;margin:-16px -16px 2px;overflow:hidden;border-radius:18px 18px 0 0;background:rgba(232,242,242,.62);aspect-ratio:16 / 8.8}
+    .adminIdeaImageFrame{
+      position:relative;overflow:hidden;margin:-16px -16px 4px;border-radius:18px 18px 0 0;
+      aspect-ratio:16 / 8.8;background:linear-gradient(var(--theme-tint),rgba(255,255,255,.58));
+      border-bottom:1px solid rgba(79,142,158,.08)
+    }
     .adminIdeaImageFrame img{width:100%;height:100%;display:block;object-fit:cover}
     .adminIdeaImageBadge{position:absolute;left:10px;bottom:10px;border-radius:999px;padding:5px 8px;background:rgba(255,255,255,.88);color:var(--accent-dark);font-size:.72rem;font-weight:600;box-shadow:0 8px 20px rgba(20,38,42,.10)}
-    .ideaThemeCard{background:rgba(250,250,248,.90);border-color:rgba(255,255,255,.72)}
-    .ideaThemeCard:hover{background:linear-gradient(145deg,var(--theme-tint),#fff 68%)}
+    .ideaThemeCard{min-width:0;background:rgba(250,250,248,.92);border-color:color-mix(in srgb,var(--theme-line) 55%,#EAECEF);box-shadow:0 12px 34px rgba(20,38,42,.055)}
+    .ideaThemeCard:hover{background:linear-gradient(var(--theme-tint),var(--theme-tint)),rgba(255,255,255,.86);border-color:var(--theme-line);box-shadow:0 16px 38px rgba(20,38,42,.07)}
     .ideaThemeRow td{background:rgba(255,255,255,.20)}
     .ideaThemeRow:hover td{background:var(--theme-tint)}
     .ideaThemeRow.hiddenItem td{background:rgba(11,18,32,.035);opacity:.72}
@@ -526,11 +539,31 @@
     }
     .adminIdeaPhotoIcon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
     .domainThemePill{background:var(--theme-tint-strong);color:var(--theme-ink)}
+    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:0;min-height:26px;padding:4px 8px;font-size:.69rem;font-weight:600}
+    .stimulusPill.low{background:linear-gradient(90deg,rgba(221,239,232,.98),rgba(221,239,232,.72));color:#426e5d}
+    .stimulusPill.medium{background:linear-gradient(90deg,rgba(248,236,194,.96),rgba(248,236,194,.72));color:#80610b}
+    .stimulusPill.high{background:linear-gradient(90deg,rgba(246,223,231,.96),rgba(246,223,231,.72));color:#84435a}
+    .stimulusIcon{display:inline-flex;align-items:center;justify-content:center;width:21px;height:18px;flex:0 0 21px}
+    .stimulusIcon svg{width:21px;height:18px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
     .card h3{margin:0;color:var(--accent-dark);font-size:1.08rem;line-height:1.18;font-weight:500}
+    .ideaThemeCard h3{margin-top:6px}
+    .ideaThemeCard h3 .ideaTitle{display:flex;align-items:flex-start;gap:10px}
     .card p{margin:0;color:rgba(11,18,32,.70);line-height:1.43}
+    .ideaThemeCard > p:not(.fine){font-size:.95rem;line-height:1.48;color:rgba(11,18,32,.66)}
     .card .fine{color:var(--muted);font-size:.86rem}
-    .cardPills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-    .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+    .card .fine strong{display:block;margin-top:7px;margin-bottom:2px;color:var(--accent-dark)}
+    .cardMetaLine{
+      display:block;width:100%;margin:2px 0 2px;padding:6px 10px;
+      border-radius:10px;background:rgba(232,242,242,.42);border:1px solid rgba(79,142,158,.06);
+      color:rgba(11,18,32,.70);font-size:.82rem;line-height:1.35
+    }
+    .cardMetaLine strong{display:inline !important;margin:0 !important;color:var(--accent-dark);font-weight:600}
+    .cardPills{display:grid;gap:6px;justify-items:start;min-width:0;max-width:100%}
+    .cardPillGroup{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0;max-width:100%}
+    .ideaThemeCard .cardPillGroup{flex-wrap:wrap}
+    .ideaThemeCard .pill{padding:6px 8px}
+    .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:nowrap;align-items:center}
+    .cardFooter .siteButton{min-width:0;max-width:calc(100% - 38px);overflow:hidden;text-overflow:ellipsis}
     .ideaAdminCardActions{margin-top:2px;justify-content:flex-start}
     .ideaAdminCardActions .ideaActions{width:100%;justify-content:flex-start}
     .ideaActions{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
@@ -551,6 +584,8 @@
     th{color:rgba(11,18,32,.56);font-weight:500;background:rgba(255,255,255,.55)}
     tr:last-child td{border-bottom:0}
     td span{display:block;color:var(--muted);font-size:.86rem;line-height:1.35;margin-top:3px}
+    td .pill,td .stimulusPill{display:inline-flex;margin-top:0;color:inherit;font-size:.76rem}
+    td .stimulusIcon{display:inline-flex;margin-top:0}
     .agendaReviewTable .rowActions{justify-content:flex-start}
     .confirmModal{
       position:fixed;inset:0;z-index:95;display:grid;place-items:center;
@@ -1337,6 +1372,56 @@
     if(v.includes('middel')) return 'Middel';
     if(v.includes('laag')) return 'Laag';
     return 'Laag';
+  }
+  const cssKind = value => {
+    const v = String(value || '').toLowerCase();
+    if(v.includes('hoog')) return 'hot';
+    if(v.includes('€')) return v.includes('€€') ? 'warn' : 'ok';
+    if(v.includes('gratis')) return 'ok';
+    if(v.includes('betaald') || v.includes('laag') || v.includes('museumkaart')) return 'warn';
+    return 'soft';
+  };
+  function costPill(value){
+    const label = normalizeIdeaCost(value);
+    return pill(label, cssKind(label));
+  }
+  function compactIdeaBadgeLabel(label=''){
+    const raw = String(label || '').trim();
+    const v = normalize(raw);
+    if(!raw) return '';
+    if(v === 'buiten de deur') return 'Buiten';
+    if(v === 'binnen + buiten' || v === 'binnen en buiten') return 'Binnen/buiten';
+    if(v.includes('0-10')) return '0–10 km';
+    if(v.includes('10-25') || v.includes('10-30')) return '10–25 km';
+    if(v.includes('25-50') || v.includes('30-50') || v.includes('uitstap')) return '25–50 km';
+    if(v.includes('50+') || v.includes('ver weg') || v.includes('dagtrip')) return '50+ km';
+    return raw.replace(/\s*\([^)]*\)\s*/g, '').trim();
+  }
+  function compactPlacePills(locationLabel='', distanceLabel=''){
+    const location = compactIdeaBadgeLabel(locationLabel);
+    const distance = compactIdeaBadgeLabel(distanceLabel);
+    const pills = [];
+    if(location) pills.push(location);
+    const sameTerrain = normalize(location).includes('terrein') && normalize(distance).includes('terrein');
+    if(distance && !sameTerrain && normalize(distance) !== normalize(location)) pills.push(distance);
+    return pills;
+  }
+  function stimulusPill(value=''){
+    const label = normalizeIdeaStimulus(value);
+    const lines = label === 'Hoog' ? 3 : label === 'Middel' ? 2 : 1;
+    const kind = label === 'Hoog' ? 'high' : label === 'Middel' ? 'medium' : 'low';
+    const yPositions = lines === 1 ? [9] : lines === 2 ? [6,12] : [4,9,14];
+    const paths = Array.from({length:lines}, (_, index) => {
+      const y = yPositions[index];
+      return `<path d="M1.5 ${y}c2.9-2.7 5.8 2.7 8.7 0S17.6 ${y - 2.7} 20.5 ${y}"></path>`;
+    }).join('');
+    return `<span class="pill stimulusPill ${kind}" title="Prikkelbelasting: ${escapeHtml(label)}" aria-label="Prikkelbelasting: ${escapeHtml(label)}"><span class="stimulusIcon" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span></span>`;
+  }
+  function cardMetaLine(item={}){
+    const groupValue = String(item.group || 'Op maat').trim();
+    const busValue = String(item.bus || 'Nee').trim();
+    const autoLabel = /soms/i.test(busValue) ? 'soms' : /^ja$/i.test(busValue) ? 'nodig' : 'nee';
+    return `<span class="cardMetaLine"><strong>Duur:</strong> ${escapeHtml(item.duration || 'Op maat')} • <strong>Personen:</strong> ${escapeHtml(groupValue)} • <strong>Auto:</strong> ${escapeHtml(autoLabel)}</span>`;
   }
   function distanceLabelForKm(km, context='inspiration'){
     if(!Number.isFinite(km)) return '';
@@ -2178,23 +2263,26 @@
   }
   function adminIdeaCard(item){
     const image = adminIdeaImage(item);
+    const locationLabel = normalizeIdeaLocation(item.locationType);
+    const distanceLabel = normalizeIdeaDistance(item.distanceBand, item);
+    const costLabel = normalizeIdeaCost(item.cost);
+    const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
+    const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
     const imageMarkup = image
       ? `<div class="adminIdeaImageFrame"><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || item.title || 'Activiteit')}" loading="lazy">${image.suggested ? '<span class="adminIdeaImageBadge">Foto voorstel</span>' : image.pending ? '<span class="adminIdeaImageBadge">Wacht op goedkeuring</span>' : ''}</div>`
       : '';
-    const meta = [item.type, item.locationType, item.distanceBand, item.cost, item.stimulus].filter(Boolean).join(' · ');
-    const description = item.description ? `<p class="adminIdeaDescription">${escapeHtml(item.description)}</p>` : '';
-    const practical = item.rules ? `<p class="fine"><strong>Handig om te checken:</strong> ${escapeHtml(item.rules)}</p>` : '';
-    const source = item.source || item.kind;
-    const website = item.url ? `<a class="button" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open</a>` : '';
+    const description = item.description || item.fit || '';
+    const practical = item.rules || item.materials || 'Nog bepalen';
+    const source = item.source || item.kind || '';
+    const website = item.url ? `<a class="siteButton" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Bekijk website')}</a>` : '';
     return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}">
       ${imageMarkup}
-      <div class="cardPills"><span class="pill domainThemePill">${escapeHtml(domainDisplayLabel(item.domain))}</span> ${item.hidden ? '<span class="pill warn">Verborgen</span>' : '<span class="pill ok">Zichtbaar</span>'}</div>
+      <div class="cardPills"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)} ${item.hidden ? '<span class="pill warn">Verborgen</span>' : ''}</div></div>
+      ${cardMetaLine(item)}
       <h3>${titleWithIcon(item.title, item.domain)}</h3>
-      <div class="small">${escapeHtml(source)}</div>
-      ${adminIdeaQualityCell(item)}
-      ${description}
-      <p>${escapeHtml(meta || item.source || item.kind)}</p>
-      ${practical || `<p class="fine">${escapeHtml(item.source || item.kind)}</p>`}
+      ${source ? `<div class="small">${escapeHtml(source)}</div>` : ''}
+      <p>${escapeHtml(description)}</p>
+      <p class="fine"><strong>Praktisch:</strong>${escapeHtml(practical)}</p>
       ${website ? `<div class="cardFooter">${website}</div>` : ''}
       <div class="agendaReviewCardActions ideaAdminCardActions">${adminIdeaActions(item)}</div>
     </article>`;
@@ -2205,14 +2293,14 @@
     const costLabel = normalizeIdeaCost(item.cost);
     const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
     const source = item.source || item.kind;
-    const website = item.url ? `<a class="button" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open</a>` : '';
+    const website = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Open')}</a>` : '<span class="small">-</span>';
     return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}" data-idea-key="${escapeHtml(item.key)}">
       <td>${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}<div class="small">${escapeHtml(item.duration || '')} • groep ${escapeHtml(item.group || '')}${item.hidden ? ' • Verborgen' : ''}</div><div class="small">${escapeHtml(source)}</div></td>
       <td>${escapeHtml(domainDisplayLabel(item.domain))}</td>
       <td>${escapeHtml(locationLabel)}<div class="small">${escapeHtml(distanceLabel)} • Bus: ${escapeHtml(item.bus || 'Nee')}</div></td>
       <td>${adminIdeaPhotoPreview(item)}</td>
-      <td>${item.cost ? `<span class="pill soft">${escapeHtml(costLabel)}</span>` : '<span class="small">-</span>'}</td>
-      <td>${item.stimulus ? `<span class="pill soft">${escapeHtml(stimulusLabel || item.stimulus)}</span>` : '<span class="small">-</span>'}</td>
+      <td>${costPill(costLabel)}</td>
+      <td>${stimulusPill(stimulusLabel || item.stimulus)}</td>
       <td><div class="small">${escapeHtml(item.rules || item.materials || item.description || '-')}</div></td>
       <td>${website}</td>
       <td>${adminIdeaActions(item)}</td>
