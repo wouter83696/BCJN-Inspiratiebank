@@ -497,6 +497,9 @@
     .ideaModalActions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:16px}
     .ideaModalClose{min-width:120px}
     .ideaModalActions .primary{min-width:120px}
+    #locationModal .ideaModalCard{width:min(520px,100%);padding:22px 24px 24px}
+    #locationModal .ideaModalText{margin-left:52px;max-width:390px}
+    #locationModal .locationForm{margin-left:52px}
     @media (max-width:640px){
       .ideaModal{
         align-items:start;place-items:start center;
@@ -522,7 +525,8 @@
       .locationField input,.locationField select{min-height:44px;border-radius:13px;font-size:16px}
       .locationToggle{padding:9px 10px;border-radius:13px}
       .locationHint{font-size:.82rem;line-height:1.35}
-      #locationModal .ideaModalCard{max-height:calc(100dvh - 20px - env(safe-area-inset-bottom))}
+      #locationModal .ideaModalCard{max-height:calc(100dvh - 20px - env(safe-area-inset-bottom));padding:15px 16px 16px}
+      #locationModal .ideaModalText,#locationModal .locationForm{margin-left:0;max-width:none}
     }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
     .locationLegendItem{background:rgba(255,255,255,.78);border-color:rgba(79,142,158,.28);box-shadow:inset 0 0 0 1px rgba(79,142,158,.12);color:var(--accent-dark)}
