@@ -831,12 +831,20 @@
     .locationForm{display:grid;gap:12px;margin-top:16px}
     .locationField{display:grid;gap:6px}
     .locationField span{font-size:.82rem;font-weight:600;color:var(--accent-dark)}
-    .locationField input{
+    .locationField input,.locationField select{
       width:100%;min-height:46px;border:1px solid rgba(11,18,32,.10);border-radius:14px;
       background:rgba(255,255,255,.76);padding:10px 12px;color:var(--ink)
     }
     .locationField input::placeholder{color:rgba(11,18,32,.38)}
+    .locationToggle{
+      display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border-radius:14px;
+      background:rgba(255,255,255,.54);border:1px solid rgba(11,18,32,.07);color:rgba(11,18,32,.68);line-height:1.35
+    }
+    .locationToggle input{width:17px;height:17px;margin:1px 0 0;accent-color:var(--accent)}
+    .locationToggle span{display:block;font-size:.9rem}
+    .locationActionsSplit{justify-content:space-between}
     .locationHint{margin:0;color:rgba(11,18,32,.58);font-size:.86rem;line-height:1.4}
+    .locationHint.warn{color:#7a6424}
     .empty{padding:20px;border:1px dashed rgba(11,18,32,.14);border-radius:18px;background:rgba(255,255,255,.40);color:var(--muted);text-align:center}
     .sourceAdditionsBlock{margin:14px 0 18px;scroll-margin-top:100px}
     .sourceAdditionsBlock .sectionHead{margin:0 0 16px}
@@ -1259,7 +1267,22 @@
               <select id="teamIdeaLocationInput" name="locationType"></select>
             </label>
             <label class="teamField">
-              <span>Afstand vanaf 6545 AL</span>
+              <span>Postcode</span>
+              <input id="teamIdeaPostcodeInput" name="postcode" type="text" autocomplete="postal-code" placeholder="Bijv. 6525 AB">
+            </label>
+            <label class="teamField">
+              <span>Huisnummer</span>
+              <input id="teamIdeaHouseNumberInput" name="houseNumber" type="text" autocomplete="address-line2" placeholder="Bijv. 12A">
+            </label>
+            <label class="teamField wide">
+              <span>Adres</span>
+              <input id="teamIdeaAddressInput" name="address" type="text" autocomplete="street-address" placeholder="Wordt automatisch aangevuld of vul handmatig in">
+              <small id="teamIdeaAddressStatus" class="teamFieldHint" role="status" aria-live="polite"></small>
+              <input id="teamIdeaLatInput" type="hidden" name="lat">
+              <input id="teamIdeaLonInput" type="hidden" name="lon">
+            </label>
+            <label class="teamField">
+              <span>Afstand</span>
               <select id="teamIdeaDistanceInput" name="distanceBand"></select>
             </label>
             <label class="teamField">
@@ -1389,15 +1412,20 @@
           <h2 id="locationModalTitle" class="ideaModalTitle">Vanaf jouw postcode</h2>
         </div>
       </div>
-      <p id="locationModalText" class="ideaModalText">Zonder postcode gebruiken we Nijmegen als startpunt. Met postcode worden afstanden en tegels persoonlijker.</p>
+      <p id="locationModalText" class="ideaModalText">Vul eventueel je postcode in om afstand beter in te schatten. Voor andere regio's tonen we pas aanbod zodra daar een lokale set voor is.</p>
       <form id="locationForm" class="locationForm">
         <label class="locationField">
           <span>Postcode</span>
           <input id="locationPostcodeInput" type="text" inputmode="text" autocomplete="postal-code" placeholder="Bijv. 6603 AB">
         </label>
+        <label class="locationToggle">
+          <input id="hideOutOfRegionInput" type="checkbox">
+          <span>Uitjes buiten de regio verbergen</span>
+        </label>
         <p id="locationStatus" class="locationHint" role="status" aria-live="polite"></p>
-        <div class="ideaModalActions">
-          <button id="locationResetBtn" class="formButton secondary" type="button">Nijmegen gebruiken</button>
+        <div class="ideaModalActions locationActionsSplit">
+          <button id="locationResetBtn" class="formButton secondary" type="button">Standaard gebruiken</button>
+          <span></span>
           <button id="locationModalCancel" class="formButton secondary ideaModalClose" type="button">Sluiten</button>
           <button class="formButton primary" type="submit">Afstand toepassen</button>
         </div>
@@ -1514,7 +1542,9 @@
 	  const BLOCKED_AGENDA_RULES_KEY = 'zomerprogramma_blocked_agenda_rules_v1';
 	  const REPORTS_KEY = 'zomerprogramma_item_reports_v1';
 	  const USER_LOCATION_KEY = 'zomerprogramma_user_location_v1';
+	  const HIDE_OUT_OF_REGION_KEY = 'zomerprogramma_hide_out_of_region_v1';
 	  const DEFAULT_LOCATION = {label:'Nijmegen', lat:51.8240, lon:5.8040, isDefault:true};
+	  const SUPPORTED_REGION_RADIUS_KM = 70;
 	  const KNOWN_PLACE_COORDS = {
 	    nijmegen:[51.8126,5.8372], dukenburg:[51.8130,5.7840], lent:[51.8610,5.8660], wijchen:[51.8090,5.7250],
 	    beuningen:[51.8590,5.7660], weurt:[51.8560,5.8180], ooij:[51.8540,5.9380], ubbergen:[51.8360,5.9010],
@@ -1532,6 +1562,7 @@
 	  const SUPABASE_STATE_ID = CONFIG.supabaseStateId || 'bcjn-zomer-2026';
 	  let centralStorage = null;
 	  let userLocation = loadUserLocation();
+	  let hideOutOfRegionTrips = loadHideOutOfRegionTrips();
 
 	  function normalizeCentralStorage(value={}){
 	    return {
@@ -1909,6 +1940,19 @@
     }catch(error){}
     return {...DEFAULT_LOCATION};
   }
+  function loadHideOutOfRegionTrips(){
+    if(typeof localStorage === 'undefined') return false;
+    return localStorage.getItem(HIDE_OUT_OF_REGION_KEY) === '1';
+  }
+  function setHideOutOfRegionTrips(value){
+    hideOutOfRegionTrips = Boolean(value);
+    if(typeof localStorage !== 'undefined'){
+      if(hideOutOfRegionTrips) localStorage.setItem(HIDE_OUT_OF_REGION_KEY, '1');
+      else localStorage.removeItem(HIDE_OUT_OF_REGION_KEY);
+    }
+    syncLocationUi();
+    renderIdeas();
+  }
   function saveUserLocation(location){
     userLocation = location && Number.isFinite(location.lat) && Number.isFinite(location.lon)
       ? {...location, postcode:cleanPostcode(location.postcode || ''), isDefault:false}
@@ -1925,6 +1969,7 @@
     const label = $('#locationSettingsLabel');
     const button = $('#locationSettingsBtn');
     const input = $('#locationPostcodeInput');
+    const hideOutOfRegionInput = $('#hideOutOfRegionInput');
     const status = $('#locationStatus');
     const text = userLocation?.isDefault
       ? 'Nijmegen'
@@ -1932,7 +1977,12 @@
     if(label) label.textContent = text;
     if(button) button.classList.toggle('locationSet', !userLocation?.isDefault);
     if(input) input.value = userLocation?.isDefault ? '' : cleanPostcode(userLocation.postcode || '');
-    if(status) status.textContent = userLocation?.isDefault ? 'We gebruiken de vaste startlocatie in Nijmegen als standaard.' : 'Je postcode is lokaal bewaard op dit apparaat.';
+    if(hideOutOfRegionInput) hideOutOfRegionInput.checked = hideOutOfRegionTrips;
+    if(status){
+      status.classList.remove('warn');
+      const regionNote = hideOutOfRegionTrips ? ' Uitjes buiten de regio worden verborgen.' : '';
+      status.textContent = (userLocation?.isDefault ? 'We gebruiken de huidige lokale set als standaard.' : 'Je postcode is lokaal bewaard op dit apparaat.') + regionNote;
+    }
   }
   function openLocationModal(){
     const modal = $('#locationModal');
@@ -1965,6 +2015,45 @@
     const point = parsePdokPoint(doc?.centroide_ll);
     if(!point || !Number.isFinite(point.lat) || !Number.isFinite(point.lon)) throw new Error('Deze postcode is niet gevonden.');
     return {label:clean, postcode:clean, lat:point.lat, lon:point.lon};
+  }
+  function addressLabelFromPdokDoc(doc={}){
+    const number = [doc.huisnummer, doc.huisletter, doc.huisnummertoevoeging].filter(Boolean).join('');
+    const streetLine = [doc.straatnaam, number].filter(Boolean).join(' ');
+    const cityLine = [doc.postcode, doc.woonplaatsnaam].filter(Boolean).join(' ');
+    return doc.weergavenaam || [streetLine, cityLine].filter(Boolean).join(', ');
+  }
+  async function lookupAddressByPostcode(postcode, houseNumber){
+    const clean = cleanPostcode(postcode);
+    const number = String(houseNumber || '').trim();
+    if(!/^\d{4}\s?[A-Z]{2}$/.test(clean)) throw new Error('Vul een volledige postcode in, bijvoorbeeld 6525 AB.');
+    if(!number) throw new Error('Vul ook een huisnummer in.');
+    const query = `${clean} ${number}`;
+    const url = `https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=${encodeURIComponent(query)}&fq=type:adres&rows=1`;
+    const response = await fetch(url, {headers:{Accept:'application/json'}});
+    if(!response.ok) throw new Error('Het adres kon nu niet worden opgezocht.');
+    const data = await response.json();
+    const doc = data?.response?.docs?.[0];
+    const point = parsePdokPoint(doc?.centroide_ll);
+    if(!doc) throw new Error('Geen adres gevonden bij deze postcode en dit huisnummer.');
+    return {
+      postcode:clean,
+      houseNumber:number,
+      address:addressLabelFromPdokDoc(doc),
+      lat:point?.lat,
+      lon:point?.lon
+    };
+  }
+  function supportedRegionDistanceKm(location){
+    return haversineKm(DEFAULT_LOCATION, location);
+  }
+  function isSupportedLocation(location){
+    const km = supportedRegionDistanceKm(location);
+    return Number.isFinite(km) && km <= SUPPORTED_REGION_RADIUS_KM;
+  }
+  function outOfRegionHiddenByPreference(item={}){
+    if(!hideOutOfRegionTrips) return false;
+    const km = itemDistanceKm(item);
+    return Number.isFinite(km) && km > SUPPORTED_REGION_RADIUS_KM;
   }
   function haversineKm(a, b){
     if(!a || !b) return NaN;
@@ -2071,6 +2160,10 @@
       distanceBand: normalizeIdeaDistance(item.distanceBand, item),
       distanceKm: String(item.distanceKm || '').trim(),
       address: String(item.address || item.where || item.place || item.location || '').trim(),
+      postcode: cleanPostcode(item.postcode || ''),
+      houseNumber: String(item.houseNumber || item.huisnummer || '').trim(),
+      lat: String(item.lat || '').trim(),
+      lon: String(item.lon || item.lng || '').trim(),
       duration: item.duration || 'Op maat',
       group: item.group || 'Op maat',
       cost: normalizeIdeaCost(item.cost || '€'),
@@ -2736,6 +2829,44 @@
     if(!input || !name) return;
     name.textContent = input.files && input.files[0] ? input.files[0].name : '';
   }
+  async function syncTeamIdeaAddressFromPostcode(){
+    const postcodeInput = $('#teamIdeaPostcodeInput');
+    const houseNumberInput = $('#teamIdeaHouseNumberInput');
+    const addressInput = $('#teamIdeaAddressInput');
+    const status = $('#teamIdeaAddressStatus');
+    const latInput = $('#teamIdeaLatInput');
+    const lonInput = $('#teamIdeaLonInput');
+    if(!postcodeInput || !houseNumberInput || !addressInput) return;
+    const postcode = postcodeInput.value.trim();
+    const houseNumber = houseNumberInput.value.trim();
+    if(!postcode || !houseNumber){
+      if(status) status.textContent = '';
+      if(latInput) latInput.value = '';
+      if(lonInput) lonInput.value = '';
+      return;
+    }
+    if(status) status.textContent = 'Adres opzoeken...';
+    try{
+      const result = await lookupAddressByPostcode(postcode, houseNumber);
+      postcodeInput.value = result.postcode;
+      addressInput.value = result.address;
+      if(latInput) latInput.value = Number.isFinite(result.lat) ? String(result.lat) : '';
+      if(lonInput) lonInput.value = Number.isFinite(result.lon) ? String(result.lon) : '';
+      const km = itemDistanceKm({lat:result.lat, lon:result.lon});
+      if(Number.isFinite(km)){
+        const distance = distanceLabelForKm(km);
+        $('#teamIdeaDistanceInput').value = distance;
+        syncCustomSelect($('#teamIdeaDistanceInput'));
+        if(status) status.textContent = `Adres aangevuld. Afstand wordt geschat op ${Math.round(km * 10) / 10} km.`;
+      }else if(status){
+        status.textContent = 'Adres aangevuld.';
+      }
+    }catch(error){
+      if(latInput) latInput.value = '';
+      if(lonInput) lonInput.value = '';
+      if(status) status.textContent = error.message || 'Adres automatisch aanvullen lukte niet. Je kunt het adres handmatig invullen.';
+    }
+  }
   function setupTeamForm(){
     fillSelectOptions('#teamIdeaDomainInput', unique(allInspirationItems().map(x=>x.domain)), domainDisplayLabel);
     fillSelectOptions('#teamIdeaLocationInput', IDEA_LOCATION_OPTIONS);
@@ -2866,6 +2997,14 @@
       type:'Inzending',
       locationType:$('#teamIdeaLocationInput').value,
       distanceBand:$('#teamIdeaDistanceInput').value,
+      distanceKm:Number.isFinite(Number($('#teamIdeaLatInput').value)) && Number.isFinite(Number($('#teamIdeaLonInput').value))
+        ? String(Math.round(itemDistanceKm({lat:$('#teamIdeaLatInput').value, lon:$('#teamIdeaLonInput').value}) * 10) / 10)
+        : '',
+      address:$('#teamIdeaAddressInput').value.trim(),
+      postcode:cleanPostcode($('#teamIdeaPostcodeInput').value),
+      houseNumber:$('#teamIdeaHouseNumberInput').value.trim(),
+      lat:$('#teamIdeaLatInput').value.trim(),
+      lon:$('#teamIdeaLonInput').value.trim(),
       duration:$('#teamIdeaDurationInput').value.trim() || 'Op maat',
       group:$('#teamIdeaGroupInput').value.trim() || 'Op maat',
       cost:$('#teamIdeaCostInput').value,
@@ -2903,6 +3042,9 @@
     syncCustomSelect($('#teamIdeaCostInput'));
     syncCustomSelect($('#teamIdeaStimulusInput'));
     syncTeamIdeaImageName();
+    $('#teamIdeaAddressStatus').textContent = '';
+    $('#teamIdeaLatInput').value = '';
+    $('#teamIdeaLonInput').value = '';
     setTeamIdeaStatus('Dankjewel. Je idee en eventuele foto worden eerst beoordeeld voordat ze zichtbaar worden in de inspiratiebank.', 'ok');
     openTeamIdeaModal(item);
   }
@@ -3346,6 +3488,7 @@
     </article>`;
   }
   function matches(item, query, filters){
+    if(outOfRegionHiddenByPreference(item)) return false;
     const text = JSON.stringify(item);
     if(query && !includes(text, query)) return false;
     for(const [key,val] of Object.entries(filters)){
@@ -3770,6 +3913,16 @@
       if(event.target.id === 'teamIdeaModal') closeTeamIdeaModal();
     });
     $('#teamIdeaModalClose').addEventListener('click', closeTeamIdeaModal);
+    ['#teamIdeaPostcodeInput','#teamIdeaHouseNumberInput'].forEach(selector => {
+      const input = $(selector);
+      if(input) input.addEventListener('change', syncTeamIdeaAddressFromPostcode);
+      if(input) input.addEventListener('blur', syncTeamIdeaAddressFromPostcode);
+    });
+    $('#teamIdeaAddressInput')?.addEventListener('input', () => {
+      $('#teamIdeaLatInput').value = '';
+      $('#teamIdeaLonInput').value = '';
+      $('#teamIdeaAddressStatus').textContent = '';
+    });
     $('#confirmModal').addEventListener('click', event => {
       if(event.target.id === 'confirmModal') closeConfirmDialog(false);
     });
@@ -3786,14 +3939,26 @@
       saveUserLocation(null);
       closeLocationModal();
     });
+    $('#hideOutOfRegionInput').addEventListener('change', event => {
+      setHideOutOfRegionTrips(event.target.checked);
+    });
     $('#locationForm').addEventListener('submit', async event => {
       event.preventDefault();
       const status = $('#locationStatus');
       const input = $('#locationPostcodeInput');
       const postcode = cleanPostcode(input?.value || '');
+      setHideOutOfRegionTrips($('#hideOutOfRegionInput')?.checked);
       if(status) status.textContent = 'Postcode opzoeken...';
       try{
         const location = await geocodePostcode(postcode);
+        if(!isSupportedLocation(location)){
+          const km = Math.round(supportedRegionDistanceKm(location));
+          if(status){
+            status.classList.add('warn');
+            status.textContent = `Voor deze locatie staat nog geen lokale set klaar. De huidige inspiratie is vooral voor de regio Nijmegen (${km} km vanaf jouw postcode). Kies 'Standaard gebruiken' om die set te bekijken.`;
+          }
+          return;
+        }
         saveUserLocation(location);
         closeLocationModal();
       }catch(error){

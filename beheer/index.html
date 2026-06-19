@@ -1170,10 +1170,21 @@
                   <option value="Online / voorbereiding">Online / voorbereiding</option>
                 </select>
               </label>
+              <label class="teamField">
+                <span>Postcode</span>
+                <input id="adminEditIdeaPostcode" type="text" autocomplete="postal-code" placeholder="Bijv. 6525 AB">
+              </label>
+              <label class="teamField">
+                <span>Huisnummer</span>
+                <input id="adminEditIdeaHouseNumber" type="text" autocomplete="address-line2" placeholder="Bijv. 12A">
+              </label>
               <label class="teamField wide">
                 <span>Adres of plaats</span>
                 <input id="adminEditIdeaAddress" type="text" placeholder="Bijv. Zijpendaalseweg 24A, Arnhem">
+                <small id="adminEditIdeaAddressStatus" class="distanceEstimateStatus" role="status" aria-live="polite"></small>
                 <small id="adminEditIdeaDistanceStatus" class="distanceEstimateStatus"></small>
+                <input id="adminEditIdeaLat" type="hidden">
+                <input id="adminEditIdeaLon" type="hidden">
               </label>
               <label class="teamField">
                 <span>Afstand vanaf 6545 AL</span>
@@ -1591,6 +1602,40 @@
   function normalize(value=''){
     return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
   }
+  function cleanPostcode(value=''){
+    return String(value || '').toUpperCase().replace(/\s+/g,'').replace(/^(\d{4})([A-Z]{2})$/, '$1 $2');
+  }
+  function parsePdokPoint(value=''){
+    const match = String(value || '').match(/POINT\(([-\d.]+)\s+([-\d.]+)\)/i);
+    return match ? {lon:Number(match[1]), lat:Number(match[2])} : null;
+  }
+  function addressLabelFromPdokDoc(doc={}){
+    const number = [doc.huisnummer, doc.huisletter, doc.huisnummertoevoeging].filter(Boolean).join('');
+    const streetLine = [doc.straatnaam, number].filter(Boolean).join(' ');
+    const cityLine = [doc.postcode, doc.woonplaatsnaam].filter(Boolean).join(' ');
+    return doc.weergavenaam || [streetLine, cityLine].filter(Boolean).join(', ');
+  }
+  async function lookupAddressByPostcode(postcode, houseNumber){
+    const clean = cleanPostcode(postcode);
+    const number = String(houseNumber || '').trim();
+    if(!/^\d{4}\s?[A-Z]{2}$/.test(clean)) throw new Error('Vul een volledige postcode in, bijvoorbeeld 6525 AB.');
+    if(!number) throw new Error('Vul ook een huisnummer in.');
+    const query = `${clean} ${number}`;
+    const url = `https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=${encodeURIComponent(query)}&fq=type:adres&rows=1`;
+    const response = await fetch(url, {headers:{Accept:'application/json'}});
+    if(!response.ok) throw new Error('Het adres kon nu niet worden opgezocht.');
+    const data = await response.json();
+    const doc = data?.response?.docs?.[0];
+    const point = parsePdokPoint(doc?.centroide_ll);
+    if(!doc) throw new Error('Geen adres gevonden bij deze postcode en dit huisnummer.');
+    return {
+      postcode:clean,
+      houseNumber:number,
+      address:addressLabelFromPdokDoc(doc),
+      lat:point?.lat,
+      lon:point?.lon
+    };
+  }
   function loadArray(key){
     const centralField = centralFieldForKey(key);
     if(centralStorageActive() && centralField) return centralStorage[centralField] || [];
@@ -1800,6 +1845,10 @@
       distanceBand:item.distanceBand || 'Op terrein',
       distanceKm:String(item.distanceKm || '').trim(),
       address:String(item.address || item.where || item.place || item.location || '').trim(),
+      postcode:cleanPostcode(item.postcode || ''),
+      houseNumber:String(item.houseNumber || item.huisnummer || '').trim(),
+      lat:String(item.lat || '').trim(),
+      lon:String(item.lon || item.lng || '').trim(),
       note:String(item.note || item.materials || item.fit || '').trim(),
       source:item.source || `Ingebracht door ${by}`
     };
@@ -3680,6 +3729,45 @@
       ? `Geschat: ${estimate.km} km vanaf ${BASE_POSTCODE_COORDS.label} op basis van "${estimate.matched}".`
       : `Geschat als op terrein.`;
   }
+  async function syncAdminAddressFromPostcode(){
+    const postcodeInput = $('#adminEditIdeaPostcode');
+    const houseNumberInput = $('#adminEditIdeaHouseNumber');
+    const addressInput = $('#adminEditIdeaAddress');
+    const addressStatus = $('#adminEditIdeaAddressStatus');
+    const distanceStatus = $('#adminEditIdeaDistanceStatus');
+    const latInput = $('#adminEditIdeaLat');
+    const lonInput = $('#adminEditIdeaLon');
+    if(!postcodeInput || !houseNumberInput || !addressInput) return;
+    const postcode = postcodeInput.value.trim();
+    const houseNumber = houseNumberInput.value.trim();
+    if(!postcode || !houseNumber){
+      if(addressStatus) addressStatus.textContent = '';
+      if(latInput) latInput.value = '';
+      if(lonInput) lonInput.value = '';
+      return;
+    }
+    if(addressStatus) addressStatus.textContent = 'Adres opzoeken...';
+    try{
+      const result = await lookupAddressByPostcode(postcode, houseNumber);
+      postcodeInput.value = result.postcode;
+      addressInput.value = result.address;
+      if(latInput) latInput.value = Number.isFinite(result.lat) ? String(result.lat) : '';
+      if(lonInput) lonInput.value = Number.isFinite(result.lon) ? String(result.lon) : '';
+      if(Number.isFinite(result.lat) && Number.isFinite(result.lon)){
+        const km = Math.round(haversineKm(BASE_POSTCODE_COORDS, {lat:result.lat, lng:result.lon}) * 10) / 10;
+        $('#adminEditIdeaDistanceKm').value = String(km);
+        setEditSelect('#adminEditIdeaDistance', distanceLabelForKm(km));
+        if(distanceStatus) distanceStatus.textContent = `Geschat: ${km} km vanaf ${BASE_POSTCODE_COORDS.label} op basis van postcode en huisnummer.`;
+      }else{
+        syncAdminDistanceFromAddress();
+      }
+      if(addressStatus) addressStatus.textContent = 'Adres aangevuld.';
+    }catch(error){
+      if(latInput) latInput.value = '';
+      if(lonInput) lonInput.value = '';
+      if(addressStatus) addressStatus.textContent = error.message || 'Adres automatisch aanvullen lukte niet. Vul het adres handmatig in.';
+    }
+  }
   async function handleAdminIdeaImageUpload(event){
     const file = event.target.files?.[0] || null;
     $('#adminEditIdeaImageUploadName').textContent = file ? file.name : 'Geen bestand geselecteerd';
@@ -3814,7 +3902,12 @@
     $('#adminEditIdeaDuration').value = item.duration || '';
     $('#adminEditIdeaGroup').value = item.group || '';
     $('#adminEditIdeaUrl').value = item.url || '';
+    $('#adminEditIdeaPostcode').value = cleanPostcode(item.postcode || '');
+    $('#adminEditIdeaHouseNumber').value = item.houseNumber || item.huisnummer || '';
     $('#adminEditIdeaAddress').value = item.address || item.where || '';
+    $('#adminEditIdeaLat').value = item.lat || '';
+    $('#adminEditIdeaLon').value = item.lon || item.lng || '';
+    $('#adminEditIdeaAddressStatus').textContent = '';
     $('#adminEditIdeaDistanceKm').value = item.distanceKm || '';
     $('#adminEditIdeaDistanceStatus').textContent = '';
     $('#adminEditIdeaImageUpload').value = '';
@@ -3847,6 +3940,10 @@
       distanceBand:$('#adminEditIdeaDistance').value,
       distanceKm:$('#adminEditIdeaDistanceKm').value.trim(),
       address:$('#adminEditIdeaAddress').value.trim(),
+      postcode:cleanPostcode($('#adminEditIdeaPostcode').value),
+      houseNumber:$('#adminEditIdeaHouseNumber').value.trim(),
+      lat:$('#adminEditIdeaLat').value.trim(),
+      lon:$('#adminEditIdeaLon').value.trim(),
       cost:$('#adminEditIdeaCost').value,
       stimulus:$('#adminEditIdeaStimulus').value,
       bus:$('#adminEditIdeaBus').value,
@@ -4020,7 +4117,17 @@
     ['#adminEditIdeaTitle','#adminEditIdeaBy','#adminEditIdeaUrl'].forEach(selector => {
       $(selector)?.addEventListener('input', syncAdminIdeaImageSuggestion);
     });
-    $('#adminEditIdeaAddress').addEventListener('input', syncAdminDistanceFromAddress);
+    ['#adminEditIdeaPostcode','#adminEditIdeaHouseNumber'].forEach(selector => {
+      const input = $(selector);
+      if(input) input.addEventListener('change', syncAdminAddressFromPostcode);
+      if(input) input.addEventListener('blur', syncAdminAddressFromPostcode);
+    });
+    $('#adminEditIdeaAddress').addEventListener('input', () => {
+      $('#adminEditIdeaLat').value = '';
+      $('#adminEditIdeaLon').value = '';
+      $('#adminEditIdeaAddressStatus').textContent = '';
+      syncAdminDistanceFromAddress();
+    });
     $('#adminEditIdeaDistanceKm').addEventListener('input', syncDistanceSelectFromKm);
     $('#adminEditIdeaImageUpload').addEventListener('change', handleAdminIdeaImageUpload);
     ['#adminEditIdeaDomain','#adminEditIdeaLocation','#adminEditIdeaDistance','#adminEditIdeaCost','#adminEditIdeaStimulus','#adminEditIdeaBus']
