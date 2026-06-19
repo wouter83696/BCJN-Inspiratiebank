@@ -135,9 +135,9 @@
     .tabHero{
       --hero-bg-image:url("website-bestanden/hero-achtergronden/inspiratiebank.svg");
       position:relative;overflow:hidden;isolation:isolate;
-      min-height:clamp(318px,31vw,382px);
+      min-height:clamp(286px,27.5vw,338px);
       margin:-142px calc(50% - 50vw) 0;
-      padding:clamp(148px,13.2vw,182px) var(--hero-edge) clamp(38px,4.8vw,58px);
+      padding:clamp(138px,12.2vw,162px) var(--hero-edge) clamp(26px,3.5vw,40px);
       border:0;border-radius:0;
       background:
         var(--hero-bg-image) center top/cover no-repeat,
@@ -150,7 +150,7 @@
     .tabHeroKicker{position:relative;z-index:1;display:block;margin:0 0 10px;color:var(--accent-dark);font-size:.78rem;font-weight:600;letter-spacing:.05em;line-height:1}
     .tabHeroTitle{position:relative;z-index:1;margin:0 0 0 -.045em;color:var(--accent-dark);font-family:"IBM Plex Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:5rem;font-weight:400;line-height:.9;letter-spacing:-.055em}
     .tabHeroLine{position:relative;z-index:1;margin:10px 0 0;color:var(--accent);font-size:1.28rem;line-height:1.2;font-weight:400}
-    .tabHeroActions{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:48px}
+    .tabHeroActions{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:26px}
     .tabHeroButton{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;min-height:48px;padding:0 18px;border-radius:999px;border:1px solid rgba(79,142,158,.12);background:rgba(255,255,255,.48);box-shadow:0 6px 16px rgba(20,38,42,.04);color:rgba(49,95,107,.88);font-weight:500;line-height:1;text-decoration:none;white-space:nowrap;cursor:pointer;backdrop-filter:blur(16px)}
     .tabHeroButton.primary{background:var(--accent);color:#fff;border-color:rgba(79,142,158,.20);box-shadow:0 14px 32px rgba(79,142,158,.22)}
     .tabHeroButton svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -168,9 +168,9 @@
     .tabHeroStat strong{display:block;font-size:1.34rem;font-weight:500;line-height:.98;color:var(--accent-dark)}
     .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:block;margin-top:2px;color:rgba(11,18,32,.58)}
     .tabHeroStatDivider{display:none;color:rgba(49,95,107,.52)}
-    .tabHero + .filterBar{position:relative;z-index:2;margin-top:-20px}
+    .tabHero + .filterBar{position:relative;z-index:2;margin-top:-34px}
     @media (min-width:641px){
-      .tabHeroTitle,.tabHeroLine,.tabHeroActions{transform:translateY(-24px)}
+      .tabHeroTitle,.tabHeroLine,.tabHeroActions{transform:translateY(-18px)}
       .tabHeroKicker,.tabHeroStats{transform:translateY(-14px)}
     }
     .quick{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:10px}
@@ -271,17 +271,18 @@
     .agendaItem .domainIcon svg{width:10px;height:10px}
     .agendaLegendBar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0 10px}
     .agendaThemeLegend{display:flex;flex-wrap:wrap;gap:6px;margin:0}
-    #inspirationThemeLegend{margin:12px 0 12px}
+    #inspirationThemeLegend{margin:10px 0 14px}
     .agendaLegendItem{
       appearance:none;font:inherit;text-align:left;
       display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 8px;
-      background:rgba(255,255,255,.58);border:1px solid var(--theme-line);
-      color:var(--theme-ink);font-size:.76rem;font-weight:500;line-height:1.12;white-space:normal
+      background:rgba(255,255,255,.52);border:1px solid color-mix(in srgb,var(--theme-line) 52%,transparent);
+      color:color-mix(in srgb,var(--theme-ink) 74%,var(--accent-dark));font-size:.76rem;font-weight:500;line-height:1.12;white-space:normal
     }
     button.agendaLegendItem{cursor:pointer;transition:background .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease)}
-    button.agendaLegendItem:hover,button.agendaLegendItem.active{background:var(--theme-tint);box-shadow:inset 0 0 0 1px var(--theme-line)}
+    button.agendaLegendItem:hover{background:rgba(255,255,255,.76);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--theme-line) 64%,transparent)}
+    button.agendaLegendItem.active{background:var(--theme-tint);box-shadow:inset 0 0 0 1px var(--theme-line);color:var(--theme-ink)}
     button.agendaLegendItem:hover{transform:translateY(-1px)}
-    .agendaLegendItem .domainIcon{width:18px;height:18px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
+    .agendaLegendItem .domainIcon{width:18px;height:18px;background:color-mix(in srgb,var(--theme-tint-strong) 56%,white);border-color:color-mix(in srgb,var(--theme-line) 54%,transparent);color:color-mix(in srgb,var(--theme-ink) 72%,var(--accent-dark))}
     .agendaLegendItem .domainIcon svg{width:11px;height:11px}
     .agendaItem.multiDayItem{background:var(--agenda-tint,var(--theme-tint))}
     .agendaItem.multiDayItem:hover,
@@ -839,13 +840,13 @@
       .tabHeroKicker{order:1;font-size:.86rem;margin-bottom:6px}
       .tabHeroTitle{order:2;font-size:clamp(2.34rem,11.8vw,2.76rem);line-height:.94}
       .tabHeroLine{order:3;margin-top:clamp(10px,2svh,14px);font-size:clamp(1rem,4.1vw,1.08rem)}
-      .tabHeroActions{order:4;margin-top:clamp(34px,6svh,48px);gap:7px}
+      .tabHeroActions{order:4;margin-top:clamp(24px,4.8svh,36px);gap:7px}
       .tabHeroButton{height:42px;min-height:42px;padding:0 11px;font-size:clamp(.72rem,3.2vw,.78rem)}
       .tabHeroButton.primary{padding:0 13px;font-size:clamp(.76rem,3.4vw,.82rem)}
       .tabHeroButton svg{width:16px;height:16px}
       .tabHeroStats{
         order:5;position:relative;right:auto;top:auto;display:flex;align-items:center;flex-wrap:nowrap;
-        width:calc(100% + 12px);max-width:calc(100% + 12px);margin-top:clamp(12px,2.2svh,16px);gap:12px;
+        width:calc(100% + 12px);max-width:calc(100% + 12px);margin-top:clamp(8px,1.6svh,12px);gap:12px;
         padding:8px 10px;border-radius:10px;background:rgba(232,242,242,.24);
         border:1px solid rgba(79,142,158,.035);box-shadow:0 3px 10px rgba(20,38,42,.02);
         backdrop-filter:blur(8px);font-size:clamp(.76rem,3.15vw,.82rem);color:rgba(11,18,32,.68)
