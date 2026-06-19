@@ -157,12 +157,12 @@
     .tabHeroButton:hover{transform:translateY(-1px)}
     .tabHeroStats{
       position:absolute;z-index:1;right:var(--hero-edge);
-      top:calc(clamp(152px,13.8vw,190px) + 14px);display:grid;gap:14px;color:rgba(11,18,32,.66);font-size:.78rem;font-weight:500;line-height:1.16;
-      padding:9px 12px;border-radius:10px;background:rgba(232,242,242,.24);border:1px solid rgba(79,142,158,.035);
-      box-shadow:0 3px 10px rgba(20,38,42,.02);backdrop-filter:blur(8px)
+      top:calc(clamp(152px,13.8vw,190px) + 14px);display:grid;gap:10px;color:rgba(11,18,32,.66);font-size:.78rem;font-weight:500;line-height:1.16
     }
     .tabHeroStat{
-      display:grid;grid-template-columns:30px minmax(0,auto);grid-template-rows:auto auto;align-items:center;column-gap:11px;white-space:nowrap
+      display:grid;grid-template-columns:30px minmax(0,auto);grid-template-rows:auto auto;align-items:center;column-gap:11px;white-space:nowrap;
+      padding:11px 13px;border-radius:10px;background:rgba(232,242,242,.24);border:1px solid rgba(79,142,158,.035);
+      box-shadow:0 3px 10px rgba(20,38,42,.02);backdrop-filter:blur(8px)
     }
     .tabHeroStat svg{grid-row:1 / 3;width:24px;height:24px;margin-top:0;align-self:center;justify-self:center;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;opacity:.86;color:rgba(49,95,107,.86)}
     .tabHeroStat strong{display:block;font-size:1.34rem;font-weight:500;line-height:.98;color:var(--accent-dark)}
