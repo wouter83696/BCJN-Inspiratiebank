@@ -2011,14 +2011,14 @@
     const saved = Number(localStorage.getItem(USER_LOCATION_RADIUS_KEY));
     return [3,5,10,25,50].includes(saved) ? saved : DEFAULT_LOCATION_RADIUS_KM;
   }
-  function saveUserLocationRadius(value){
+  function saveUserLocationRadius(value, {sync=true}={}){
     const next = Number(value);
     userLocationRadiusKm = [3,5,10,25,50].includes(next) ? next : DEFAULT_LOCATION_RADIUS_KM;
     if(typeof localStorage !== 'undefined'){
       if(userLocationRadiusKm === DEFAULT_LOCATION_RADIUS_KM) localStorage.removeItem(USER_LOCATION_RADIUS_KEY);
       else localStorage.setItem(USER_LOCATION_RADIUS_KEY, String(userLocationRadiusKm));
     }
-    syncLocationUi();
+    if(sync) syncLocationRadiusUi();
   }
   function saveUserLocation(location){
     userLocation = location && Number.isFinite(location.lat) && Number.isFinite(location.lon)
@@ -2032,24 +2032,28 @@
     renderIdeas();
     renderAgenda();
   }
-  function syncLocationUi(){
-    const label = $('#locationSettingsLabel');
+  function locationDisplayText(){
+    if(userLocation?.isDefault) return 'Nijmegen';
+    return userLocation.place || userLocation.label || cleanPostcode(userLocation.postcode || '') || 'Postcode';
+  }
+  function syncLocationRadiusUi(){
     const radiusLabel = $('#locationRadiusLabel');
-    const button = $('#locationSettingsBtn');
-    const input = $('#locationPostcodeInput');
     const radiusInput = $('#locationRadiusInput');
-    const status = $('#locationStatus');
-    const text = userLocation?.isDefault
-      ? 'Nijmegen'
-      : cleanPostcode(userLocation.postcode || userLocation.label || 'Postcode');
-    if(label) label.textContent = text;
     if(radiusLabel) radiusLabel.textContent = `${userLocationRadiusKm} km`;
-    if(button) button.classList.toggle('locationSet', !userLocation?.isDefault);
-    if(input) input.value = userLocation?.isDefault ? '' : cleanPostcode(userLocation.postcode || '');
     if(radiusInput){
       radiusInput.value = String(userLocationRadiusKm);
       syncCustomSelect(radiusInput);
     }
+  }
+  function syncLocationUi(){
+    const label = $('#locationSettingsLabel');
+    const button = $('#locationSettingsBtn');
+    const input = $('#locationPostcodeInput');
+    const status = $('#locationStatus');
+    if(label) label.textContent = locationDisplayText();
+    syncLocationRadiusUi();
+    if(button) button.classList.toggle('locationSet', !userLocation?.isDefault);
+    if(input) input.value = userLocation?.isDefault ? '' : cleanPostcode(userLocation.postcode || '');
     if(status){
       status.classList.remove('warn');
       status.textContent = userLocation?.isDefault ? 'Standaard: Nijmegen binnen 10 km.' : 'Je postcode en afstand zijn lokaal bewaard op dit apparaat.';
@@ -2085,7 +2089,7 @@
     const doc = data?.response?.docs?.[0];
     const point = parsePdokPoint(doc?.centroide_ll);
     if(!point || !Number.isFinite(point.lat) || !Number.isFinite(point.lon)) throw new Error('Deze postcode is niet gevonden.');
-    return {label:clean, postcode:clean, lat:point.lat, lon:point.lon};
+    return {label:doc.woonplaatsnaam || clean, place:doc.woonplaatsnaam || '', postcode:clean, lat:point.lat, lon:point.lon};
   }
   function addressLabelFromPdokDoc(doc={}){
     const number = [doc.huisnummer, doc.huisletter, doc.huisnummertoevoeging].filter(Boolean).join('');
@@ -4021,7 +4025,7 @@
       if(event.target.closest('#locationSettingsBtn')) openLocationModal();
     });
     $('#locationResetBtn').addEventListener('click', () => {
-      saveUserLocationRadius(DEFAULT_LOCATION_RADIUS_KM);
+      saveUserLocationRadius(DEFAULT_LOCATION_RADIUS_KM, {sync:false});
       saveUserLocation(null);
       closeLocationModal();
     });
@@ -4046,7 +4050,7 @@
           }
           return;
         }
-        saveUserLocationRadius(radiusInput?.value);
+        saveUserLocationRadius(radiusInput?.value, {sync:false});
         saveUserLocation(location);
         closeLocationModal();
       }catch(error){
