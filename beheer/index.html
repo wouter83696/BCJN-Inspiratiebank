@@ -1164,9 +1164,9 @@
               <label class="teamField">
                 <span>Locatie</span>
                 <select id="adminEditIdeaLocation">
-                  <option value="Op groep / terrein">Op groep / terrein</option>
+                  <option value="Op locatie">Op locatie</option>
                   <option value="Buiten de deur">Buiten de deur</option>
-                  <option value="Binnen + buiten">Binnen + buiten</option>
+                  <option value="Binnen en buiten">Binnen en buiten</option>
                   <option value="Online / voorbereiding">Online / voorbereiding</option>
                 </select>
               </label>
@@ -1189,7 +1189,7 @@
               <label class="teamField">
                 <span>Afstand vanaf 6545 AL</span>
                 <select id="adminEditIdeaDistance">
-                  <option value="Op terrein">Op terrein</option>
+                  <option value="Op locatie">Op locatie</option>
                   <option value="0–10 km">0–10 km</option>
                   <option value="10–25 km">10–25 km</option>
                   <option value="25–50 km (uitstap)">25–50 km</option>
@@ -1420,9 +1420,9 @@
     'Actie & Amusement'
   ];
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
-  const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online / voorbereiding'];
-  const AGENDA_DISTANCE_OPTIONS = ['Op terrein','0–10 km (dichtbij)','10–25 km (regio)'];
-  const INSPIRATION_DISTANCE_OPTIONS = ['Op terrein','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
+  const IDEA_LOCATION_OPTIONS = ['Op locatie','Buiten de deur','Binnen en buiten','Online / voorbereiding'];
+  const AGENDA_DISTANCE_OPTIONS = ['Op locatie','0–10 km (dichtbij)','10–25 km (regio)'];
+  const INSPIRATION_DISTANCE_OPTIONS = ['Op locatie','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
   const IDEA_DISTANCE_OPTIONS = INSPIRATION_DISTANCE_OPTIONS;
   const IDEA_COST_OPTIONS = ['Gratis','€','€€','€€€'];
   const IDEA_STIMULUS_OPTIONS = ['Laag','Middel','Hoog'];
@@ -1679,16 +1679,16 @@
   }
   function normalizeIdeaLocation(value=''){
     const v = normalize(value);
-    if(!v) return 'Op groep / terrein';
+    if(!v) return 'Op locatie';
     const hasOnline = v.includes('online');
     const hasOutside = v.includes('buiten de deur');
-    const hasIndoor = v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('buurt') || v.includes('park');
+    const hasIndoor = v.includes('op locatie') || v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('thuis') || v.includes('buurt') || v.includes('park');
     if(hasOnline) return 'Online / voorbereiding';
-    if(v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen + buiten';
-    if(hasOutside && hasIndoor) return 'Binnen + buiten';
+    if(v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen en buiten';
+    if(hasOutside && hasIndoor) return 'Binnen en buiten';
     if(hasOutside) return 'Buiten de deur';
-    if(hasIndoor) return 'Op groep / terrein';
-    return 'Op groep / terrein';
+    if(hasIndoor) return 'Op locatie';
+    return 'Op locatie';
   }
   function normalizeIdeaCost(value=''){
     const v = normalize(value);
@@ -1765,7 +1765,7 @@
   }
   function distanceLabelForKm(km, context='inspiration'){
     if(!Number.isFinite(km)) return '';
-    if(km <= 0) return 'Op terrein';
+    if(km <= 0) return 'Op locatie';
     if(km <= 10) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
     if(km <= 25) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(context === 'agenda') return '25+ km';
@@ -1785,7 +1785,7 @@
   function estimateDistanceFromAddress(value=''){
     const text = normalize(value);
     if(!text) return null;
-    if(text.includes('op groep') || text.includes('op terrein') || text.includes('online')) return {km:0, label:'Op terrein', matched:'op terrein'};
+    if(text.includes('op locatie') || text.includes('op groep') || text.includes('op terrein') || text.includes('online')) return {km:0, label:'Op locatie', matched:'op locatie'};
     const match = PLACE_DISTANCE_COORDS.find(([keyword]) => text.includes(normalize(keyword)));
     if(!match) return null;
     const [matched, lat, lng] = match;
@@ -1815,14 +1815,14 @@
     if(v.includes('daguitstap') || v.includes('uitstap') || v.includes('verder weg') || v.includes('30-50') || v.includes('25-50')) return context === 'agenda' ? '25+ km' : '25–50 km (uitstap)';
     if(v.includes('in de regio') || v.includes('10-30') || v.includes('10-25')) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(v.includes('dichtbij') || v.includes('0-10')) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
-    if(v.includes('op terrein') || v === '0 km') return 'Op terrein';
+    if(v.includes('op locatie') || v.includes('op terrein') || v === '0 km') return 'Op locatie';
     const location = normalize(`${item.locationType || ''} ${item.address || ''} ${item.where || ''} ${item.title || ''} ${item.source || ''}`);
-    if(location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op terrein';
+    if(location.includes('op locatie') || location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op locatie';
     if(/otterlo|rhenen|overloon|volkel|hemelrijk|hoge veluwe|kroller/.test(location)) return context === 'agenda' ? '25+ km' : '25–50 km (uitstap)';
     if(/arnhem|cuijk|grave|gennep|beers|beugen|millingen|groesbeek|berg en dal|ewijk|mook|malden|overasselt|bemmel|elst|huissen|gendt/.test(location)) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(/nijmegen|dukenburg|lent|wijchen|beuningen|weurt|ooij|ubbergen/.test(location)) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
     const locationType = normalizeIdeaLocation(item.locationType);
-    return locationType === 'Buiten de deur' || locationType === 'Binnen + buiten' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op terrein';
+    return locationType === 'Buiten de deur' || locationType === 'Binnen en buiten' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op locatie';
   }
   function normalizedIdeaField(item, key){
     if(key === 'domain') return domainDisplayLabel(item.domain);
@@ -1842,7 +1842,7 @@
       by,
       domain:item.domain || 'Ontmoeten, Spel & Vaardigheden',
       type:item.type || 'Inzending',
-      distanceBand:item.distanceBand || 'Op terrein',
+      distanceBand:item.distanceBand || 'Op locatie',
       distanceKm:String(item.distanceKm || '').trim(),
       address:String(item.address || item.where || item.place || item.location || '').trim(),
       postcode:cleanPostcode(item.postcode || ''),
@@ -3893,8 +3893,8 @@
     $('#adminIdeaEditPanel').hidden = false;
     $('#adminEditIdeaTitle').value = item.title || '';
     setEditSelect('#adminEditIdeaDomain', item.domain || 'Ontmoeten, Spel & Vaardigheden');
-    setEditSelect('#adminEditIdeaLocation', item.locationType || 'Op groep / terrein');
-    setEditSelect('#adminEditIdeaDistance', item.distanceBand || 'Op terrein');
+    setEditSelect('#adminEditIdeaLocation', item.locationType || 'Op locatie');
+    setEditSelect('#adminEditIdeaDistance', item.distanceBand || 'Op locatie');
     setEditSelect('#adminEditIdeaCost', item.cost || 'Gratis');
     setEditSelect('#adminEditIdeaStimulus', item.stimulus || 'Middel');
     setEditSelect('#adminEditIdeaBus', item.bus || 'Nee');

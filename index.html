@@ -1512,9 +1512,9 @@
   const weekName = id => { const w = ACTIVE_WEEKS.find(x=>x.id===id); return w ? 'Week '+w.week : id; };
   const isConcrete = item => !/doorlopend|wekelijks|bij mooi weer|check programma|actuele/i.test(String(item.date + ' ' + item.time));
   const IDEA_TYPE_OPTIONS = ['Eigen aanbod','Bestaand extern aanbod','Zoekbron / agenda','Inzending'];
-  const IDEA_LOCATION_OPTIONS = ['Op groep / terrein','Buiten de deur','Binnen + buiten','Online'];
-  const AGENDA_DISTANCE_OPTIONS = ['Op terrein','0–10 km (dichtbij)','10–25 km (regio)'];
-  const INSPIRATION_DISTANCE_OPTIONS = ['Op terrein','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
+  const IDEA_LOCATION_OPTIONS = ['Op locatie','Buiten de deur','Binnen en buiten','Online'];
+  const AGENDA_DISTANCE_OPTIONS = ['Op locatie','0–10 km (dichtbij)','10–25 km (regio)'];
+  const INSPIRATION_DISTANCE_OPTIONS = ['Op locatie','0–10 km','10–25 km','25–50 km (uitstap)','50+ km (ver weg / dagtrips)'];
   const IDEA_DISTANCE_OPTIONS = INSPIRATION_DISTANCE_OPTIONS;
   const IDEA_COST_OPTIONS = ['Gratis','€','€€','€€€'];
   const IDEA_STIMULUS_OPTIONS = ['Laag','Middel','Hoog'];
@@ -1868,16 +1868,16 @@
   }
   function normalizeIdeaLocation(value=''){
     const v = normalize(value);
-    if(!v) return 'Op groep / terrein';
+    if(!v) return 'Op locatie';
     const hasOnline = v.includes('online');
     const hasOutside = v.includes('buiten de deur');
-    const hasIndoor = v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('buurt') || v.includes('park');
+    const hasIndoor = v.includes('op locatie') || v.includes('op groep') || v.includes('op terrein') || v.includes('terrein') || v.includes('thuis') || v.includes('buurt') || v.includes('park');
     if(hasOnline) return 'Online';
-    if(v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen + buiten';
-    if(hasOutside && hasIndoor) return 'Binnen + buiten';
+    if(v.includes('op locatie + buiten') || v.includes('binnen + buiten') || v.includes('binnen en buiten')) return 'Binnen en buiten';
+    if(hasOutside && hasIndoor) return 'Binnen en buiten';
     if(hasOutside) return 'Buiten de deur';
-    if(hasIndoor) return 'Op groep / terrein';
-    return 'Op groep / terrein';
+    if(hasIndoor) return 'Op locatie';
+    return 'Op locatie';
   }
   function normalizeIdeaCost(value=''){
     const v = normalize(value);
@@ -1920,7 +1920,7 @@
     const v = normalize(raw);
     if(!raw) return '';
     if(v === 'buiten de deur') return 'Buiten';
-    if(v === 'binnen + buiten' || v === 'binnen en buiten') return 'Binnen/buiten';
+    if(v === 'op locatie + buiten' || v === 'binnen + buiten' || v === 'binnen en buiten') return 'Binnen/buiten';
     if(v.includes('0-10')) return '0–10 km';
     if(v.includes('10-25') || v.includes('10-30')) return '10–25 km';
     if(v.includes('25-50') || v.includes('30-50') || v.includes('uitstap')) return '25–50 km';
@@ -2084,7 +2084,7 @@
   }
   function personalDistanceLabel(item={}, context='inspiration'){
     const locationType = normalize(`${item.locationType || ''} ${item.address || ''} ${item.where || ''}`);
-    if(locationType.includes('op groep') || locationType.includes('op terrein') || locationType.includes('online')) return 'Op terrein';
+    if(locationType.includes('op locatie') || locationType.includes('op groep') || locationType.includes('op terrein') || locationType.includes('online')) return 'Op locatie';
     const km = itemDistanceKm(item);
     if(!Number.isFinite(km)) return normalizeIdeaDistance(item.distanceBand, item, context);
     if(km < .8) return '1 km';
@@ -2109,7 +2109,7 @@
   }
   function distanceLabelForKm(km, context='inspiration'){
     if(!Number.isFinite(km)) return '';
-    if(km <= 0) return 'Op terrein';
+    if(km <= 0) return 'Op locatie';
     if(km <= 10) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
     if(km <= 25) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(context === 'agenda') return '25+ km';
@@ -2124,7 +2124,7 @@
   function normalizeIdeaDistance(value='', item={}, context='inspiration'){
     const v = normalize(value);
     const location = normalize(`${item.locationType || ''} ${item.address || ''} ${item.where || ''} ${item.title || ''} ${item.source || ''}`);
-    if(location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op terrein';
+    if(location.includes('op locatie') || location.includes('op groep') || location.includes('op terrein') || location.includes('online')) return 'Op locatie';
     const measuredKm = itemDistanceKm(item);
     if(Number.isFinite(measuredKm)) return distanceLabelForKm(Math.max(measuredKm, 1), context);
     const kmLabel = distanceLabelForKm(parseDistanceKm(item), context);
@@ -2133,12 +2133,12 @@
     if(v.includes('daguitstap') || v.includes('uitstap') || v.includes('verder weg') || v.includes('30-50') || v.includes('25-50')) return context === 'agenda' ? '25+ km' : '25–50 km (uitstap)';
     if(v.includes('in de regio') || v.includes('10-30') || v.includes('10-25')) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(v.includes('dichtbij') || v.includes('0-10')) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
-    if(v.includes('op terrein') || v === '0 km') return 'Op terrein';
+    if(v.includes('op locatie') || v.includes('op terrein') || v === '0 km') return 'Op locatie';
     if(/otterlo|rhenen|overloon|volkel|hemelrijk|hoge veluwe|kroller/.test(location)) return context === 'agenda' ? '25+ km' : '25–50 km (uitstap)';
     if(/arnhem|cuijk|grave|gennep|beers|beugen|millingen|groesbeek|berg en dal|ewijk|mook|malden|overasselt|bemmel|elst|huissen|gendt/.test(location)) return context === 'agenda' ? '10–25 km (regio)' : '10–25 km';
     if(/nijmegen|dukenburg|lent|wijchen|beuningen|weurt|ooij|ubbergen/.test(location)) return context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km';
     const locationType = normalizeIdeaLocation(item.locationType);
-    return locationType === 'Buiten de deur' || locationType === 'Binnen + buiten' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op terrein';
+    return locationType === 'Buiten de deur' || locationType === 'Binnen en buiten' ? (context === 'agenda' ? '0–10 km (dichtbij)' : '0–10 km') : 'Op locatie';
   }
   function normalizedIdeaField(item, key){
     if(key === 'type') return normalizeIdeaType(item.type);
@@ -2156,7 +2156,7 @@
       by,
       domain: item.domain || 'Ontmoeten, Spel & Vaardigheden',
       type: normalizeIdeaType(item.type || 'Inzending'),
-      locationType: normalizeIdeaLocation(item.locationType || 'Op groep'),
+      locationType: normalizeIdeaLocation(item.locationType || 'Op locatie'),
       distanceBand: normalizeIdeaDistance(item.distanceBand, item),
       distanceKm: String(item.distanceKm || '').trim(),
       address: String(item.address || item.where || item.place || item.location || '').trim(),
