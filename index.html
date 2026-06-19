@@ -701,13 +701,14 @@
     }
     .teamForm{display:grid;gap:14px}
     .teamFormGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .teamField{display:grid;gap:7px}
+    .teamField{display:grid;gap:7px;min-width:0}
     .teamField.wide{grid-column:1 / -1}
     .teamField span{font-size:.88rem;color:var(--accent-dark);font-weight:500}
     .teamField input,.teamField select,.teamField textarea{
-      width:100%;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.76);
+      width:100%;min-width:0;max-width:100%;border:1px solid rgba(11,18,32,.08);background:rgba(255,255,255,.76);
       border-radius:15px;padding:11px 12px;color:var(--ink)
     }
+    .teamField .customSelect{width:100%;min-width:0;max-width:100%}
     .teamField .customSelectButton{
       min-height:48px;padding:11px 12px;border-color:rgba(11,18,32,.08);
       border-radius:15px;background:rgba(255,255,255,.76);font-size:1rem
@@ -872,7 +873,7 @@
       }
       .tabHeroStat svg{color:inherit;opacity:.82}
       .tabHeroStatDivider{display:none}
-      .tabHeroStat{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:0;flex:1 1 0;white-space:nowrap;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+      .tabHeroStat{display:inline-flex;align-items:center;justify-content:flex-start;gap:5px;min-width:0;flex:1 1 0;white-space:nowrap;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
       .tabHeroStat svg{width:16px;height:16px;margin-top:0;flex:0 0 16px}
       .tabHeroStat strong{display:inline;font-size:inherit;font-weight:650;line-height:inherit;color:inherit}
       .tabHeroStat span:not(.tabHeroStatDivider):not(.tabHeroStat){display:inline;margin-top:0;color:inherit;font-weight:500}
