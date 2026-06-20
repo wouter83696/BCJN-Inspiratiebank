@@ -371,8 +371,8 @@
     .siteButton::after{content:"↗";font-size:.82em;opacity:.85}
     .websiteCell{vertical-align:middle;text-align:center}
     .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .card{min-width:0;padding:16px;min-height:215px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 34px rgba(20,38,42,.07);transition:.2s var(--ease)}
-    .card:hover{transform:translateY(-3px);background:#fff}
+    .card{min-width:0;padding:18px;min-height:215px;display:flex;flex-direction:column;gap:10px;background:#fff;border-color:#EAECEF;box-shadow:0 10px 26px rgba(20,38,42,.045);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease)}
+    .card:hover{transform:translateY(-2px);background:#fff;box-shadow:0 16px 34px rgba(20,38,42,.075);border-color:rgba(79,142,158,.13)}
     .themeCreative{--theme-tint:rgba(229,0,90,.055);--theme-tint-strong:rgba(229,0,90,.13);--theme-line:rgba(229,0,90,.18);--theme-ink:#a00042;--agenda-tint:#fdf0f6;--agenda-line:rgba(229,0,90,.22)}
     .themeCulture{--theme-tint:rgba(72,70,184,.055);--theme-tint-strong:rgba(72,70,184,.13);--theme-line:rgba(72,70,184,.18);--theme-ink:#4644a0;--agenda-tint:#f1f0fb;--agenda-line:rgba(72,70,184,.22)}
     .themeNature{--theme-tint:rgba(0,155,72,.06);--theme-tint-strong:rgba(0,155,72,.14);--theme-line:rgba(0,155,72,.18);--theme-ink:#087b43;--agenda-tint:#eef8f2;--agenda-line:rgba(0,155,72,.22)}
@@ -380,8 +380,8 @@
     .themeSport{--theme-tint:rgba(0,132,168,.055);--theme-tint-strong:rgba(0,132,168,.14);--theme-line:rgba(0,132,168,.18);--theme-ink:#08677f;--agenda-tint:#edf8fb;--agenda-line:rgba(0,132,168,.22)}
     .themeAction{--theme-tint:rgba(238,126,27,.065);--theme-tint-strong:rgba(238,126,27,.16);--theme-line:rgba(199,92,11,.18);--theme-ink:#9a4f0f;--agenda-tint:#fff3e8;--agenda-line:rgba(199,92,11,.23)}
     .themeDefault{--theme-tint:rgba(0,185,86,.045);--theme-tint-strong:rgba(0,185,86,.11);--theme-line:rgba(0,155,72,.11);--theme-ink:#087b43;--agenda-tint:#eff9f3;--agenda-line:rgba(0,155,72,.18)}
-    .ideaThemeCard{min-width:0;background:rgba(250,250,248,.92);border-color:color-mix(in srgb,var(--theme-line) 55%,#EAECEF);box-shadow:0 12px 34px rgba(20,38,42,.055)}
-    .ideaThemeCard:hover{background:linear-gradient(var(--theme-tint),var(--theme-tint)),rgba(255,255,255,.86);border-color:var(--theme-line);box-shadow:0 16px 38px rgba(20,38,42,.07)}
+    .ideaThemeCard{min-width:0;background:#fff;border-color:#EAECEF;box-shadow:0 10px 26px rgba(20,38,42,.045)}
+    .ideaThemeCard:hover{background:#fff;border-color:color-mix(in srgb,var(--theme-line) 70%,#EAECEF);box-shadow:0 16px 34px rgba(20,38,42,.075)}
     .ideaImageFrame{
       position:relative;overflow:hidden;margin:-16px -16px 4px;border-radius:18px 18px 0 0;
       aspect-ratio:16 / 8.8;background:linear-gradient(var(--theme-tint),rgba(255,255,255,.58));
@@ -392,12 +392,24 @@
     .ideaThemeRow:hover td{background:var(--theme-tint)}
     .ideaThemeCard .domainIcon,.ideaThemeRow .domainIcon{background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
     .domainThemePill{background:var(--theme-tint-strong);color:var(--theme-ink)}
-    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:0;min-height:26px;padding:4px 8px;font-size:.69rem;font-weight:600}
-    .stimulusPill.low{background:linear-gradient(90deg,rgba(221,239,232,.98),rgba(221,239,232,.72));color:#426e5d}
-    .stimulusPill.medium{background:linear-gradient(90deg,rgba(248,236,194,.96),rgba(248,236,194,.72));color:#80610b}
-    .stimulusPill.high{background:linear-gradient(90deg,rgba(246,223,231,.96),rgba(246,223,231,.72));color:#84435a}
-    .stimulusIcon{display:inline-flex;align-items:center;justify-content:center;width:21px;height:18px;flex:0 0 21px}
-    .stimulusIcon svg{width:21px;height:18px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+    .categoryPill{background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink);min-width:0;max-width:42%}
+    .categoryPillText{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .categoryPill .domainIcon{width:14px;height:14px;border:0;background:transparent;color:currentColor}
+    .categoryPill .domainIcon svg{width:13px;height:13px;stroke-width:2}
+    .locationPill{background:rgba(232,242,242,.52);border-color:rgba(79,142,158,.08);color:rgba(49,95,107,.82)}
+    .locationPill.distanceNear{background:rgba(237,248,251,.82);border-color:rgba(0,132,168,.10);color:#356f7b}
+    .locationPill.distanceMid{background:rgba(227,244,249,.86);border-color:rgba(0,132,168,.14);color:#2f6878}
+    .locationPill.distanceFar{background:rgba(241,244,246,.86);border-color:rgba(11,18,32,.07);color:rgba(11,18,32,.58)}
+    .costPill.costFree,.costPill.costLow{background:rgba(221,239,232,.86);border-color:rgba(72,132,100,.12);color:#426e5d}
+    .costPill.costMid{background:rgba(248,236,194,.88);border-color:rgba(186,151,56,.16);color:#80610b}
+    .costPill.costHigh{background:rgba(248,225,172,.86);border-color:rgba(199,92,11,.16);color:#9a4f0f}
+    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:82px;min-width:82px;height:24px;min-height:24px;padding:5px 8px;font-size:.74rem;font-weight:500}
+    .stimulusPill.low{background:rgba(221,239,232,.86);border-color:rgba(72,132,100,.12);color:#426e5d}
+    .stimulusPill.medium{background:rgba(248,236,194,.88);border-color:rgba(186,151,56,.16);color:#80610b}
+    .stimulusPill.high{background:rgba(246,223,231,.88);border-color:rgba(132,67,90,.14);color:#84435a}
+    .stimulusIcon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;flex:0 0 14px}
+    .stimulusIcon svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .stimulusPillText{display:block;width:38px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .card h3{margin:0;color:var(--accent-dark);font-size:1.08rem;line-height:1.18;font-weight:500}
     .ideaThemeCard h3{margin-top:6px}
     .ideaThemeCard h3 .ideaTitle{display:flex;align-items:center;gap:10px}
@@ -411,10 +423,16 @@
       color:rgba(11,18,32,.70);font-size:.82rem;line-height:1.35
     }
     .cardMetaLine strong{display:inline !important;margin:0 !important;color:var(--accent-dark);font-weight:600}
-    .cardPills{display:grid;gap:6px;justify-items:start;min-width:0;max-width:100%}
-    .cardPillGroup{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0;max-width:100%}
+    .cardLabels{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden}
+    .cardLabelRow,.cardPillGroup{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;max-width:100%}
     .ideaThemeCard .cardPillGroup{flex-wrap:wrap}
-    .ideaThemeCard .pill{padding:6px 8px}
+    .pill{
+      display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 8px;
+      border:1px solid transparent;font-size:.74rem;font-weight:500;line-height:1;white-space:nowrap;flex:0 0 auto;
+      transition:background .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease)
+    }
+    .card .pill:hover,.agendaLegendItem:hover{box-shadow:0 0 0 3px color-mix(in srgb,var(--theme-line) 34%,transparent);transform:translateY(-1px)}
+    .ideaThemeCard .pill{padding:5px 8px}
     .cardFooter{margin-top:auto;display:flex;gap:8px;flex-wrap:nowrap;align-items:center}
     .cardFooter .siteButton{
       min-width:0;max-width:calc(100% - 38px);overflow:hidden;text-overflow:ellipsis
@@ -1107,7 +1125,7 @@
       .ideaThemeCard > p:not(.fine){font-size:.9rem;line-height:1.38}
       .card .fine{font-size:.8rem;line-height:1.34}
       .cardMetaLine{margin:0;padding:5px 8px 5px 5px;border-radius:9px;font-size:.78rem;line-height:1.28}
-      .cardPills{gap:5px}
+      .cardLabels{gap:5px}
       .cardPillGroup{gap:4px}
       .cardFooter{gap:7px}
       .cardFooter .siteButton{min-height:34px;padding:8px 12px;font-size:.85rem}
@@ -1592,6 +1610,7 @@
     return 'soft';
   };
   const pill = (text, kind='soft') => `<span class="pill ${kind}">${escapeHtml(text)}</span>`;
+  const categoryPill = domain => `<span class="pill categoryPill ${domainThemeClass(domain)}"><span class="domainIcon" aria-hidden="true">${domainIcon(domain)}</span><span class="categoryPillText">${escapeHtml(domainDisplayLabel(domain))}</span></span>`;
 	  const COLLEAGUE_STORAGE_KEY = 'zomerprogramma_colleague_ideas_v1';
 	  const COLLEAGUE_HIDDEN_KEY = 'zomerprogramma_hidden_colleague_ideas_v1';
 	  const ADMIN_HIDDEN_INSPIRATION_KEY = 'zomerprogramma_hidden_inspiration_titles_v1';
@@ -1964,7 +1983,8 @@
   }
   function costPill(value){
     const label = normalizeIdeaCost(value);
-    return pill(label, cssKind(label));
+    const kind = label === 'Gratis' ? 'costFree' : label === '€€€' ? 'costHigh' : label === '€€' ? 'costMid' : 'costLow';
+    return `<span class="pill costPill ${kind}" title="Kosten: ${escapeHtml(label)}" aria-label="Kosten: ${escapeHtml(label)}">${escapeHtml(label)}</span>`;
   }
   function normalizeIdeaStimulus(value=''){
     const v = normalize(value);
@@ -1982,6 +2002,14 @@
     const sameTerrain = normalize(location).includes('terrein') && normalize(distance).includes('terrein');
     if(distance && !sameTerrain && normalize(distance) !== normalize(location)) pills.push(distance);
     return pills;
+  }
+  function locationPill(label=''){
+    const normalized = normalize(label);
+    const distanceClass = normalized.includes('25') || normalized.includes('50') ? 'distanceFar'
+      : normalized.includes('10') ? 'distanceMid'
+      : normalized.includes('km') ? 'distanceNear'
+      : '';
+    return `<span class="pill locationPill ${distanceClass}">${escapeHtml(label)}</span>`;
   }
   function compactIdeaBadgeLabel(label=''){
     const raw = String(label || '').trim();
@@ -2172,7 +2200,7 @@
       const y = yPositions[index];
       return `<path d="M1.5 ${y}c2.9-2.7 5.8 2.7 8.7 0S17.6 ${y - 2.7} 20.5 ${y}"></path>`;
     }).join('');
-    return `<span class="pill stimulusPill ${kind}" title="Prikkelbelasting: ${escapeHtml(label)}" aria-label="Prikkelbelasting: ${escapeHtml(label)}"><span class="stimulusIcon" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span></span>`;
+    return `<span class="pill stimulusPill ${kind}" title="Prikkelbelasting: ${escapeHtml(label)}" aria-label="Prikkelbelasting: ${escapeHtml(label)}"><span class="stimulusIcon" aria-hidden="true"><svg viewBox="0 0 22 18">${paths}</svg></span><span class="stimulusPillText">${escapeHtml(label)}</span></span>`;
   }
   function cardMetaLine(item={}){
     const groupValue = String(item.group || 'Op maat').trim();
@@ -3487,11 +3515,11 @@
     const distanceLabel = personalDistanceLabel(item);
     const costLabel = normalizeIdeaCost(item.cost);
     const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
-    const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
+    const placePills = compactPlacePills(locationLabel, distanceLabel).map(locationPill).join(' ');
     const sourceLink = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Bekijk website')}</a>` : '<span class="small">-</span>';
     return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
       <td>${titleWithIcon(item.title, item.domain, 'nameWithIcon')}<div class="small">groep ${escapeHtml(item.group || '')} • ${escapeHtml(item.duration || '')}</div></td>
-      <td>${escapeHtml(domainDisplayLabel(item.domain))}</td>
+      <td>${categoryPill(item.domain)}</td>
       <td><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div></td>
       <td><div class="small">${escapeHtml(audienceText(item.materials || item.fit || ''))}</div></td>
       <td><div class="ideaActions">${sourceLink}${reportMenu('inspiratiebank', ideaDomKey(item), item.title)}${activityStatusIcon(item)}</div></td>
@@ -3547,13 +3575,13 @@
     const distanceLabel = personalDistanceLabel(item);
     const costLabel = normalizeIdeaCost(item.cost);
     const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
-    const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
+    const placePills = compactPlacePills(locationLabel, distanceLabel).map(locationPill).join(' ');
     const image = approvedIdeaImage(item);
     return `<article class="card ideaThemeCard ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
       ${image ? ideaImageMarkup(image) : ''}
-      <div class="cardPills"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div></div>
+      <div class="cardLabels">${categoryPill(item.domain)} ${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div>
+      <h3>${escapeHtml(item.title)}</h3>
       ${cardMetaLine(item)}
-      <h3>${titleWithIcon(item.title, item.domain)}</h3>
       <p>${escapeHtml(audienceText(item.fit))}</p>
       <p class="fine"><strong>Praktisch:</strong>${escapeHtml(audienceText(item.materials || 'Nog bepalen'))}</p>
       <div class="cardFooter">${item.url ? `<a class="siteButton" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Bekijk website')}</a>` : ''}${reportMenu('inspiratiebank', ideaDomKey(item), item.title)}${activityStatusIcon(item)}</div>
