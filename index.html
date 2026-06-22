@@ -214,14 +214,14 @@
     .weekStack{display:grid;gap:18px}
     .notice + .weekStack{margin-top:16px}
     .weekPanel{overflow:hidden;background:rgba(255,255,255,.84);border-color:rgba(234,236,239,.86);box-shadow:0 18px 48px rgba(20,38,42,.055)}
-    .weekTop{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;padding:28px 28px 22px;border-bottom:0;background:rgba(255,255,255,.70)}
+    .weekTop{display:block;padding:28px 28px 22px;border-bottom:0;background:rgba(255,255,255,.70)}
     .weekTitle{display:flex;gap:22px;align-items:flex-start}
     .weekBadge{width:66px;height:66px;border-radius:14px;background:linear-gradient(145deg,rgba(168,225,221,.90),rgba(216,242,238,.76));display:grid;place-items:center;color:#07345e;font-weight:600;font-size:1.75rem;flex:0 0 auto}
     .weekTop h3{margin:0;color:#07345e;font-weight:600;font-size:clamp(1.72rem,2.55vw,2.28rem);line-height:1.1;letter-spacing:-.025em}
     .weekTop .dates{color:#123968;margin-top:9px;font-size:1.04rem}
     .weekTop .status{margin-top:8px;line-height:1.42}
     .weekTop .status span{display:block;margin-top:3px;color:rgba(11,18,32,.68)}
-    .weekMeta{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;padding-top:8px;max-width:440px}
+    .weekMeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:11px}
     .pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:6px 9px;font-size:.76rem;font-weight:500;line-height:1;background:rgba(79,142,158,.10);color:#356f7b;white-space:nowrap}
     .pill.ok{background:rgba(221,239,232,.92);color:#426e5d}
     .pill.warn{background:rgba(248,236,194,.78);color:#7a6424}
@@ -415,8 +415,8 @@
     .ideaThemeCard h3 .ideaTitle{display:flex;align-items:center;gap:10px}
     .card p{margin:0;color:rgba(11,18,32,.70);line-height:1.43}
     .ideaThemeCard > p:not(.fine){font-size:.95rem;line-height:1.48;color:rgba(11,18,32,.66)}
-    .card .fine{color:var(--muted);font-size:.86rem}
-    .card .fine strong{display:block;margin-top:7px;margin-bottom:2px;color:var(--accent-dark)}
+    .card .fine{margin-top:2px;color:var(--muted);font-size:.86rem}
+    .card .fine strong{display:block;margin:7px 0 2px;color:var(--accent-dark)}
     .cardMetaLine{
       display:block;width:100%;margin:2px 0 2px;padding:6px 10px;
       border-radius:10px;background:rgba(232,242,242,.42);border:1px solid rgba(79,142,158,.06);
@@ -452,11 +452,11 @@
     .reportButton{
       display:inline-flex;align-items:center;justify-content:center;
       width:30px;height:30px;border:1px solid rgba(11,18,32,.07);border-radius:999px;
-      background:rgba(255,255,255,.60);color:#b85b68;cursor:pointer;
+      background:rgba(255,255,255,.60);color:rgba(11,18,32,.52);cursor:pointer;
       transition:color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease)
     }
-    .reportButton:hover{background:#fff;color:#9f3f4e;transform:translateY(-1px)}
-    .reportButton svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .reportButton:hover{background:#fff;color:rgba(11,18,32,.66);transform:translateY(-1px)}
+    .reportButton svg{width:15px;height:15px;fill:none;stroke:#b85b68;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
     .agendaItemActions{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin-top:10px}
     .agendaItem .reportMenu{position:relative;right:auto;top:auto;z-index:4;display:flex;justify-content:flex-end}
     .agendaItem .reportButton{width:25px;height:25px;background:rgba(255,255,255,.46)}
@@ -557,8 +557,8 @@
       #locationModal .locationForm{margin-left:0;max-width:none}
     }
     .filterBar{margin:10px 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-    .locationLegendItem{padding:8px 15px;background:rgba(255,255,255,.58);border-color:rgba(255,255,255,.78);box-shadow:0 7px 18px rgba(20,38,42,.045);color:rgba(49,95,107,.88);font-size:.86rem;line-height:1;font-weight:500;backdrop-filter:blur(16px)}
-    .locationLegendItem.locationSet{background:rgba(255,255,255,.58);border-color:rgba(255,255,255,.78);box-shadow:0 7px 18px rgba(20,38,42,.045)}
+    .locationLegendItem{padding:8px 16px;background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.86);box-shadow:0 9px 22px rgba(20,38,42,.055);color:rgba(49,95,107,.90);font-size:.86rem;line-height:1;font-weight:600;backdrop-filter:blur(16px)}
+    .locationLegendItem.locationSet{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.86);box-shadow:0 9px 22px rgba(20,38,42,.055)}
     .locationLegendItem .locationIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:18px;color:rgba(49,95,107,.82)}
     .locationLegendItem .locationIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round}
     .locationLegendItem .locationRadius{display:inline-flex;align-items:center;gap:7px;color:rgba(49,95,107,.74)}
@@ -968,9 +968,9 @@
       .tabHero::before{inset:6% -30% -18% 8%;opacity:.82}
       .tabHero::after{opacity:.42}
       .tabHeroKicker{order:1;font-size:.76rem;margin-bottom:5px}
-      .tabHeroTitle{order:2;font-size:clamp(3.08rem,15.8vw,3.72rem);line-height:.9}
-      .tabHeroLine{order:3;margin-top:clamp(10px,2svh,14px);font-size:clamp(1.06rem,4.35vw,1.16rem)}
-      .tabHeroActions{order:4;margin-top:clamp(26px,5svh,36px);gap:7px}
+      .tabHeroTitle{order:2;font-size:clamp(2.92rem,14.9vw,3.48rem);line-height:.91}
+      .tabHeroLine{order:3;margin-top:clamp(11px,2.2svh,15px);font-size:clamp(1.04rem,4.2vw,1.14rem)}
+      .tabHeroActions{order:4;margin-top:clamp(30px,5.4svh,40px);gap:7px}
       .tabHeroButton{height:42px;min-height:42px;padding:0 11px;font-size:clamp(.72rem,3.2vw,.78rem)}
       .tabHeroButton.primary{padding:0 13px;font-size:clamp(.76rem,3.4vw,.82rem)}
       .tabHeroButton svg{width:16px;height:16px}
@@ -1102,11 +1102,11 @@
       .weekTop h3{font-size:1.42rem}
       .weekTop .dates{margin-top:6px;font-size:.95rem}
       .weekTop .status{margin-top:6px}
-      .weekMeta{grid-column:1 / -1;display:grid;grid-template-columns:52px minmax(0,1fr);align-items:start;justify-content:stretch;gap:7px 10px;max-width:none;padding-top:0}
+      .weekMeta{display:flex;margin-top:8px}
       .weekNav{grid-column:1;grid-row:1;display:flex;gap:5px;width:auto;margin:0;justify-content:center}
       .weekNavButton{width:24px;height:24px}
       .weekNavButton svg{width:13px;height:13px}
-      .weekMeta .pill{grid-column:2;justify-self:start}
+      .weekMeta .pill{justify-self:start}
       #inspirationThemeLegend{display:block;position:relative;width:100%;margin:0 0 10px;overflow:hidden}
       #inspirationThemeLegend .agendaThemeLegend{
         display:flex;flex-wrap:nowrap;gap:6px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:0 22px 2px 0;
@@ -1116,6 +1116,7 @@
       }
       #inspirationThemeLegend .agendaThemeLegend::-webkit-scrollbar{display:none}
       #inspirationThemeLegend .agendaLegendItem{flex:0 0 auto;min-width:0;min-height:32px;padding:6px 8px;scroll-snap-align:start;white-space:nowrap}
+      .locationLegendItem{padding:7px 12px}
       .cards{gap:10px;width:100%;min-width:0}
       .card{width:100%;min-width:0;min-height:0;padding:13px 14px;gap:8px;border-radius:18px;overflow:hidden}
       .card h3{font-size:1rem;line-height:1.16}
@@ -1208,7 +1209,7 @@
       </section>
       <div class="filterBar">
         <div class="filters agendaSearchFilters more" id="agendaFilters">
-          <div class="filterSearch"><input id="agendaSearch" type="search" placeholder="Zoek in de UIT-agenda..."></div>
+          <div class="filterSearch"><input id="agendaSearch" type="search" placeholder="Zoek in activiteiten..."></div>
           <button class="filterToggle" id="agendaFilterToggle" type="button" aria-expanded="false" aria-controls="agendaFilters">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"></path><path d="M7 12h10"></path><path d="M10 19h4"></path></svg>
             Filters
@@ -1295,7 +1296,7 @@
       </section>
       <div class="filterBar">
         <div class="filters more" id="ideaFilters">
-          <div class="filterSearch"><input id="ideaSearch" type="search" placeholder="Zoek in ideeën..."></div>
+          <div class="filterSearch"><input id="ideaSearch" type="search" placeholder="Zoek inspiratie..."></div>
           <button class="filterToggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="ideaFilters">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"></path><path d="M7 12h10"></path><path d="M10 19h4"></path></svg>
             <span>Filters</span>
@@ -1627,7 +1628,7 @@
 	  const USER_LOCATION_KEY = 'zomerprogramma_user_location_v1';
 	  const USER_LOCATION_RADIUS_KEY = 'zomerprogramma_user_location_radius_v1';
 	  const DEFAULT_LOCATION = {label:'Nijmegen', lat:51.8240, lon:5.8040, isDefault:true};
-	  const DEFAULT_LOCATION_RADIUS_KM = 10;
+	  const DEFAULT_LOCATION_RADIUS_KM = 50;
 	  const SUPPORTED_REGION_RADIUS_KM = 70;
 	  const KNOWN_PLACE_COORDS = {
 	    nijmegen:[51.8126,5.8372], dukenburg:[51.8130,5.7840], lent:[51.8610,5.8660], wijchen:[51.8090,5.7250],
@@ -1892,7 +1893,7 @@
       ? `<button class="agendaLegendItem themeDefault active" type="button" data-theme-filter="all" aria-pressed="true">Alles</button>`
       : '';
     const locationItem = includeLocation
-      ? `<button class="agendaLegendItem locationLegendItem" id="locationSettingsBtn" type="button" title="Locatie en afstand wijzigen"><span class="locationIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.5-8 11-8 11S4 14.5 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span id="locationSettingsLabel">Nijmegen</span> <span class="locationRadius" id="locationRadiusLabel">10 km</span><svg class="locationChevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></button>`
+      ? `<button class="agendaLegendItem locationLegendItem" data-location-settings-btn type="button" title="Locatie en afstand wijzigen"><span class="locationIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.5-8 11-8 11S4 14.5 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span data-location-settings-label>Nijmegen</span> <span class="locationRadius" data-location-radius-label>10 km</span><svg class="locationChevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></button>`
       : '';
     const items = AGENDA_THEME_LEGEND.map(domain => {
       const label = domainDisplayLabel(domain);
@@ -1906,7 +1907,7 @@
   }
   function renderThemeLegends(){
     const agendaLegend = $('#agendaThemeLegend');
-    if(agendaLegend) agendaLegend.innerHTML = agendaThemeLegend({interactive:true});
+    if(agendaLegend) agendaLegend.innerHTML = agendaThemeLegend({interactive:true, includeLocation:true});
     const inspirationLegend = $('#inspirationThemeLegend');
     if(inspirationLegend) inspirationLegend.innerHTML = agendaThemeLegend({interactive:true, includeLocation:true});
     syncLocationUi();
@@ -1926,20 +1927,12 @@
     return needsAbsentDetails ? `<div class="groupHint"><strong>Let op:</strong> vul hierbij ook aan welke groepen niet aanwezig zijn.</div>` : '';
   }
   function weekStatusText(week){
-    const status = String(week.status || '').trim();
     const note = String(week.note || '').trim();
-    const absent = Array.isArray(week.absentGroups) ? week.absentGroups.map(group => normalize(group)).filter(Boolean) : [];
     const vierdaagseMatch = note.match(/Vierdaagsefeesten[^.]*\./i);
-    let mainNote = vierdaagseMatch ? note.replace(vierdaagseMatch[0], '').trim() : note;
-    if(absent.length && mainNote){
-      mainNote = mainNote.split(/(?<=\.)\s+/)
-        .filter(sentence => !absent.some(group => normalize(sentence).includes(group)))
-        .join(' ')
-        .trim();
-    }
-    const hideMainStatus = absent.length && !mainNote && vierdaagseMatch;
-    const mainText = hideMainStatus ? '' : `${status ? `<strong>${escapeHtml(status)}${mainNote ? ':' : ''}</strong>` : ''}${mainNote ? ` ${escapeHtml(mainNote)}` : ''}`;
-    return `<div class="status">${mainText}${vierdaagseMatch ? ` <span>${escapeHtml(vierdaagseMatch[0])}</span>` : ''}</div>`;
+    return vierdaagseMatch ? `<div class="status"><span>${escapeHtml(vierdaagseMatch[0])}</span></div>` : '';
+  }
+  function publicWeekDates(week){
+    return String(week?.dates || '').replace(/\s+2026\b/g, '').trim();
   }
   function normalizeIdeaType(value=''){
     const v = normalize(value);
@@ -2038,6 +2031,7 @@
   }
   function loadUserLocationRadius(){
     if(typeof localStorage === 'undefined') return DEFAULT_LOCATION_RADIUS_KM;
+    if(userLocation?.isDefault) return DEFAULT_LOCATION_RADIUS_KM;
     const saved = Number(localStorage.getItem(USER_LOCATION_RADIUS_KEY));
     return [3,5,10,25,50].includes(saved) ? saved : DEFAULT_LOCATION_RADIUS_KM;
   }
@@ -2067,26 +2061,30 @@
     return userLocation.place || userLocation.label || cleanPostcode(userLocation.postcode || '') || 'Postcode';
   }
   function syncLocationRadiusUi(){
-    const radiusLabel = $('#locationRadiusLabel');
     const radiusInput = $('#locationRadiusInput');
-    if(radiusLabel) radiusLabel.textContent = `${userLocationRadiusKm} km`;
+    const radiusText = userLocationRadiusKm >= 50 ? '50+ km' : `${userLocationRadiusKm} km`;
+    $$('[data-location-radius-label]').forEach(label => {
+      label.textContent = radiusText;
+    });
     if(radiusInput){
       radiusInput.value = String(userLocationRadiusKm);
       syncCustomSelect(radiusInput);
     }
   }
   function syncLocationUi(){
-    const label = $('#locationSettingsLabel');
-    const button = $('#locationSettingsBtn');
     const input = $('#locationPostcodeInput');
     const status = $('#locationStatus');
-    if(label) label.textContent = locationDisplayText();
+    $$('[data-location-settings-label]').forEach(label => {
+      label.textContent = locationDisplayText();
+    });
     syncLocationRadiusUi();
-    if(button) button.classList.toggle('locationSet', !userLocation?.isDefault);
+    $$('[data-location-settings-btn]').forEach(button => {
+      button.classList.toggle('locationSet', !userLocation?.isDefault);
+    });
     if(input) input.value = userLocation?.isDefault ? '' : cleanPostcode(userLocation.postcode || '');
     if(status){
       status.classList.remove('warn');
-      status.textContent = userLocation?.isDefault ? 'Standaard: Nijmegen binnen 10 km.' : 'Je postcode en afstand zijn lokaal bewaard op dit apparaat.';
+      status.textContent = userLocation?.isDefault ? 'Standaard: Nijmegen binnen 50+ km.' : 'Je postcode en afstand zijn lokaal bewaard op dit apparaat.';
     }
   }
   function openLocationModal(){
@@ -3537,22 +3535,16 @@
       const weekItemCount = visibleWeekItemCount(w.id, concrete);
       visibleCount += weekItemCount;
 	    const agendaHtml = renderAgendaBoard(w.id, concrete);
-      const hasLimitedOccupancy = /aangepast|beperkt|geen/i.test(String(w.status || ''));
-      const statusKind = hasLimitedOccupancy ? 'warn' : 'ok';
-      const needsAbsentDetails = hasLimitedOccupancy && !(Array.isArray(w.absentGroups) && w.absentGroups.length);
-      const groupMetaPill = weekGroupMetaPill(w);
       return `<article class="weekPanel" id="${escapeHtml(w.id)}">
         <div class="weekTop">
           <div class="weekTitle">
             <div class="weekBadge">${escapeHtml(w.week)}</div>
             <div>
-              <h3>Week ${escapeHtml(w.week)} — ${escapeHtml(w.dates)}</h3>
-              <div class="dates">${escapeHtml(w.planning)}</div>
+              <h3>Week ${escapeHtml(w.week)} — ${escapeHtml(publicWeekDates(w))}</h3>
               ${weekStatusText(w)}
-              ${weekGroupHint(w)}
+              <div class="weekMeta">${pill((weekItemCount)+' verschillende activiteiten','soft')}</div>
             </div>
           </div>
-          <div class="weekMeta">${groupMetaPill || pill(w.status, statusKind)}${needsAbsentDetails ? pill('afwezige groepen aanvullen','warn') : ''}${pill((weekItemCount)+' verschillende activiteiten','soft')}</div>
         </div>
         <div class="weekBody">
           <div class="subBlock">
@@ -4042,7 +4034,7 @@
       if(event.target.id === 'locationModal') closeLocationModal();
     });
     document.addEventListener('click', event => {
-      if(event.target.closest('#locationSettingsBtn')) openLocationModal();
+      if(event.target.closest('[data-location-settings-btn]')) openLocationModal();
     });
     $('#locationResetBtn').addEventListener('click', () => {
       saveUserLocationRadius(DEFAULT_LOCATION_RADIUS_KM, {sync:false});
