@@ -3558,7 +3558,7 @@
 	      <td class="ongoingTitleCell"><span class="name">${titleWithIcon(item.title, item.domain, 'nameWithIcon')}</span><div>${agendaReviewPill(item)}</div><div class="small">${escapeHtml(item.date)} • ${escapeHtml(item.time)}</div></td>
       <td class="ongoingWeeksCell">${escapeHtml(compactWeekAvailabilityLabel(item))}</td>
       <td class="ongoingCategoryCell">${categoryPill(item.domain)}</td>
-      <td class="ongoingLocationCell">${mobileLabels}<div class="cardPillGroup">${placePills}</div><span>${escapeHtml(item.where)}</span>${item.distanceKm ? `<div class="small">${escapeHtml(item.distanceKm)}</div>` : ''}</td>
+      <td class="ongoingLocationCell">${mobileLabels}<div class="cardPillGroup">${placePills}</div></td>
       <td class="ongoingCostCell">${costPill(costLabel)}</td>
       <td class="ongoingStimulusCell">${stimulusPill(stimulusLabel)}</td>
       <td class="ongoingFitCell">${metaLine}<div class="small">${escapeHtml(audienceText(item.fit))}</div></td>
