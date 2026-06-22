@@ -1180,15 +1180,19 @@
       .cardFooter{gap:7px}
       .cardFooter .siteButton{min-height:34px;padding:8px 12px;font-size:.85rem}
       .activityStatusIcon{width:27px;height:27px}
+      .ongoingAccordion{border-radius:18px;box-shadow:0 10px 26px rgba(20,38,42,.045)}
+      .ongoingAccordionButton{padding:18px 18px 14px}
+      .ongoingAccordionBody{background:transparent;border-top:1px solid rgba(11,18,32,.05)}
+      .ongoingAccordion .tableWrap{background:transparent}
       .ongoingAccordion .tableWrap{overflow:visible}
       .ongoingAccordion table{display:block;min-width:0;width:100%}
       .ongoingAccordion thead{display:none}
       .ongoingAccordion tbody{display:grid;gap:12px}
       .ongoingAccordion tr{
         display:flex;flex-direction:column;gap:8px;padding:13px 14px;
-        border:1px solid color-mix(in srgb,var(--theme-line) 55%,#EAECEF);border-radius:18px;
-        background:rgba(250,250,248,.92);box-shadow:0 10px 26px rgba(20,38,42,.045)
+        border:0;border-radius:0;background:transparent;box-shadow:none
       }
+      .ongoingAccordion tr + tr{border-top:1px solid rgba(11,18,32,.06)}
       .ongoingAccordion td{display:block;border:0;padding:0;color:rgba(11,18,32,.70);font-size:.9rem;line-height:1.38}
       .ongoingAccordion td::before{display:none}
       .ongoingAccordion td:nth-child(1)::before{content:none}
@@ -1212,7 +1216,7 @@
       .ongoingMobileLabels{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden;margin-bottom:4px}
       .ongoingMetaLine{display:block;width:100%;margin:0;padding:6px 10px;border-radius:10px;background:rgba(232,242,242,.42);border:1px solid rgba(79,142,158,.06);color:rgba(11,18,32,.70);font-size:.8rem;line-height:1.3}
       .ongoingMetaLine strong{color:var(--accent-dark);font-weight:600}
-      .ongoingLocationCell > span,.ongoingLocationCell > .small,.ongoingWeeksCell{display:none}
+      .ongoingLocationCell > .cardPillGroup,.ongoingLocationCell > span,.ongoingLocationCell > .small,.ongoingWeeksCell{display:none}
       .ongoingFitCell .small{font-size:.9rem;line-height:1.38;color:rgba(11,18,32,.66)}
       .ongoingAccordion td.websiteCell{text-align:left;margin-top:2px}
       .ongoingAccordion .siteButton{max-width:100%;min-height:34px;padding:8px 12px;font-size:.84rem}
