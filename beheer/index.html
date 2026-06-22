@@ -255,6 +255,16 @@
     .workspaceHeader h2{font-size:1.55rem}
     .workspaceHeader p{margin:5px 0 0;max-width:760px}
     .adminStack{display:grid;gap:14px}
+    .agendaCheckNotice{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 16px;border:1px solid rgba(79,142,158,.12);border-radius:18px;
+      background:linear-gradient(145deg,rgba(214,236,242,.42),rgba(255,255,255,.82));
+      box-shadow:0 12px 28px rgba(20,38,42,.045);
+    }
+    .agendaCheckNoticeText{display:grid;gap:3px;min-width:0}
+    .agendaCheckEyebrow{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(49,95,107,.60)}
+    .agendaCheckNotice strong{color:var(--accent-dark);font-size:1rem;line-height:1.18}
+    .agendaCheckDetail{color:var(--muted);font-size:.9rem;line-height:1.35}
     .adminTopGrid>.panel:not(#agendaReviewPanel):not(#agendaRulesPanel){
       min-height:286px;
       display:flex;
@@ -791,6 +801,8 @@
       .workspaceHeader{display:block;margin:8px 0 10px;padding:0 2px}
       .workspaceHeader h2{font-size:1.38rem}
       .workspaceHeader p{font-size:.9rem;line-height:1.4}
+      .agendaCheckNotice{align-items:stretch;flex-direction:column;padding:13px 14px}
+      .agendaCheckNotice .button{width:100%;justify-content:center}
       .panel{padding:14px;border-radius:20px;margin-top:10px}
       .panelHead{align-items:flex-start;flex-direction:column;gap:10px}
       .adminIdeaToolbar{margin:10px 0 8px}
@@ -977,6 +989,14 @@
               </div>
             </div>
             <div class="adminStack">
+        <section class="agendaCheckNotice" aria-labelledby="agendaCheckStatusTitle">
+          <div class="agendaCheckNoticeText">
+            <span class="agendaCheckEyebrow">Agenda-check</span>
+            <strong id="agendaCheckStatusTitle">Laatste check laden...</strong>
+            <span class="agendaCheckDetail" id="agendaCheckStatusText">We halen de status uit de beheerdata.</span>
+          </div>
+          <button class="button small primary" id="markAgendaCheckedBtn" type="button">Nu als gecheckt markeren</button>
+        </section>
         <section class="panel tintedPanel toneAgenda agendaRulesPanel" id="agendaRulesPanel">
           <div class="agendaRulesHead">
             <div>
@@ -1347,6 +1367,7 @@
 	  const DELETED_AGENDA_KEY = 'zomerprogramma_deleted_agenda_items_v1';
 	  const VERIFIED_AGENDA_KEY = 'zomerprogramma_verified_agenda_items_v1';
 	  const BLOCKED_AGENDA_RULES_KEY = 'zomerprogramma_blocked_agenda_rules_v1';
+	  const AGENDA_MANUAL_CHECK_KEY = 'zomerprogramma_agenda_manual_checked_at_v1';
 	  const TRASH_KEY = 'zomerprogramma_trash_items_v1';
 	  const ADMIN_SIDEBAR_COLLAPSED_KEY = 'zomerprogramma_admin_sidebar_collapsed_v1';
 	  const REPORTS_KEY = 'zomerprogramma_item_reports_v1';
@@ -1475,6 +1496,7 @@
 	      deletedAgendaItemIds:Array.isArray(value.deletedAgendaItemIds) ? value.deletedAgendaItemIds : [],
 	      verifiedAgendaItemIds:Array.isArray(value.verifiedAgendaItemIds) ? value.verifiedAgendaItemIds : [],
 	      blockedAgendaRules:Array.isArray(value.blockedAgendaRules) ? value.blockedAgendaRules : [],
+	      agendaManualCheckedAt:typeof value.agendaManualCheckedAt === 'string' ? value.agendaManualCheckedAt : '',
 	      trashItems:Array.isArray(value.trashItems) ? value.trashItems : [],
 	      reports:Array.isArray(value.reports) ? value.reports : []
 	    };
@@ -1650,6 +1672,54 @@
       return;
     }
     localStorage.removeItem(key);
+  }
+  function sourceAgendaCheckedAt(){
+    return BASE.sourceCheck?.lastCheckedAt || BASE.sourceReview?.generatedAt || '';
+  }
+  function storedAgendaCheckedAt(){
+    if(centralStorageActive() && typeof centralStorage.agendaManualCheckedAt === 'string') return centralStorage.agendaManualCheckedAt;
+    return localStorage.getItem(AGENDA_MANUAL_CHECK_KEY) || '';
+  }
+  function latestAgendaCheckedAt(){
+    const candidates = [sourceAgendaCheckedAt(), storedAgendaCheckedAt()]
+      .map(value => ({value, time:new Date(value || '').getTime()}))
+      .filter(item => item.value && Number.isFinite(item.time))
+      .sort((a,b) => b.time - a.time);
+    return candidates[0]?.value || '';
+  }
+  function formatAdminDateTime(value){
+    const date = new Date(value || '');
+    if(!Number.isFinite(date.getTime())) return '';
+    return date.toLocaleString('nl-NL', {dateStyle:'medium', timeStyle:'short'});
+  }
+  function renderAgendaCheckStatus(){
+    const title = $('#agendaCheckStatusTitle');
+    const text = $('#agendaCheckStatusText');
+    if(!title || !text) return;
+    const checkedAt = latestAgendaCheckedAt();
+    if(!checkedAt){
+      title.textContent = 'Nog geen agenda-check opgeslagen';
+      text.textContent = 'Gebruik de knop zodra je de UIT-agenda handmatig hebt nagelopen.';
+      return;
+    }
+    const manual = storedAgendaCheckedAt();
+    const manualTime = new Date(manual || '').getTime();
+    const sourceTime = new Date(sourceAgendaCheckedAt() || '').getTime();
+    title.textContent = `Laatst gecheckt: ${formatAdminDateTime(checkedAt)}`;
+    text.textContent = Number.isFinite(manualTime) && manualTime >= (Number.isFinite(sourceTime) ? sourceTime : 0)
+      ? 'Handmatig gemarkeerd in beheer.'
+      : 'Gebaseerd op de laatste broncontrole in de agenda-data.';
+  }
+  async function markAgendaCheckedNow(){
+    const checkedAt = new Date().toISOString();
+    localStorage.setItem(AGENDA_MANUAL_CHECK_KEY, checkedAt);
+    if(centralStorageActive()) centralStorage.agendaManualCheckedAt = checkedAt;
+    if(centralStorageActive() && !(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Agenda-check opslaan lukte niet in de online opslag.', 'warn');
+      return;
+    }
+    renderAgendaCheckStatus();
+    setStatus('#adminStatus', 'Agenda gemarkeerd als zojuist gecheckt.', 'ok');
   }
   function uniqueNormalized(values){
     const seen = new Set();
@@ -3470,6 +3540,7 @@
 	      deletedAgendaItemIds:loadArray(DELETED_AGENDA_KEY),
 	      verifiedAgendaItemIds:loadArray(VERIFIED_AGENDA_KEY),
 	      blockedAgendaRules:loadArray(BLOCKED_AGENDA_RULES_KEY),
+	      agendaManualCheckedAt:storedAgendaCheckedAt(),
 	      customLinks:customLinks(),
 	      pendingLinks:pendingLinks(),
 	      sourceLinkOverrides:sourceLinkOverrides(),
@@ -3534,6 +3605,10 @@
 	      saveArray(DELETED_AGENDA_KEY, [...new Set([...loadArray(DELETED_AGENDA_KEY), ...(parsed.deletedAgendaItemIds || [])])]);
 	      saveArray(VERIFIED_AGENDA_KEY, [...new Set([...loadArray(VERIFIED_AGENDA_KEY), ...(parsed.verifiedAgendaItemIds || [])])]);
 	      saveArray(BLOCKED_AGENDA_RULES_KEY, dedupeAgendaBlockRules([...agendaBlockRules(), ...(parsed.blockedAgendaRules || [])]));
+	      if(typeof parsed.agendaManualCheckedAt === 'string' && parsed.agendaManualCheckedAt){
+	        localStorage.setItem(AGENDA_MANUAL_CHECK_KEY, parsed.agendaManualCheckedAt);
+	        if(centralStorageActive()) centralStorage.agendaManualCheckedAt = parsed.agendaManualCheckedAt;
+	      }
 	      saveArray(ADMIN_LINKS_KEY, mergeLinks(customLinks(), parsed.customLinks || []));
 	      saveArray(PENDING_LINKS_KEY, mergeLinks(pendingLinks(), parsed.pendingLinks || []));
 	      saveArray(SOURCE_LINK_OVERRIDES_KEY, mergeSourceOverrides(sourceLinkOverrides(), parsed.sourceLinkOverrides || []));
@@ -3551,6 +3626,7 @@
 	      renderLinks();
 	      setupAgendaReviewControls();
 	      renderAgendaReview();
+	      renderAgendaCheckStatus();
 	      renderTrash();
       setStatus('#adminStatus', 'Beheerdata geimporteerd. Ververs de gewone pagina om alles te zien.', 'ok');
     }catch(error){
@@ -4011,6 +4087,7 @@
 	    renderReports();
 	    setupAgendaReviewControls();
 	    renderAgendaReview();
+	    renderAgendaCheckStatus();
 	    renderTrash();
 	  }
 	  function logoutAdmin(){
@@ -4136,6 +4213,7 @@
     $('#restoreSourceLinksBtn').addEventListener('click', restoreSourceLinks);
     $('#clearLinksBtn').addEventListener('click', clearCustomLinks);
     $('#approveAllAgendaBtn').addEventListener('click', verifyAllAgendaItems);
+    $('#markAgendaCheckedBtn').addEventListener('click', markAgendaCheckedNow);
     $('#addAgendaBlockRuleBtn').addEventListener('click', () => addAgendaBlockRule('keyword', $('#agendaBlockInput').value, $('#agendaBlockInput').value));
     $('#confirmModal').addEventListener('click', event => {
       if(event.target.id === 'confirmModal') closeConfirmDialog(false);
