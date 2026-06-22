@@ -218,14 +218,15 @@
     .notice + .weekStack{margin-top:16px}
     .weekPanel{overflow:hidden;background:rgba(255,255,255,.84);border-color:rgba(234,236,239,.86);box-shadow:0 18px 48px rgba(20,38,42,.055)}
     .weekTop{display:block;padding:28px 28px 22px;border-bottom:0;background:rgba(255,255,255,.70)}
-    .weekTitle{display:flex;gap:22px;align-items:flex-start}
+    .weekTitle{display:flex;gap:16px;align-items:flex-start}
     .weekTitle > div{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-    .weekBadge{width:66px;height:66px;border-radius:14px;background:linear-gradient(145deg,rgba(168,225,221,.90),rgba(216,242,238,.76));display:grid;place-items:center;color:#07345e;font-weight:600;font-size:1.75rem;flex:0 0 auto}
+    .weekBadge{width:52px;height:52px;margin-top:2px;border-radius:13px;background:linear-gradient(145deg,rgba(168,225,221,.90),rgba(216,242,238,.76));display:flex;align-items:center;justify-content:center;color:#07345e;font-weight:600;font-size:1.42rem;line-height:1;text-align:center;flex:0 0 auto}
+    .weekHeadingRow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     .weekTop h3{margin:0;color:#07345e;font-weight:600;font-size:clamp(1.72rem,2.55vw,2.28rem);line-height:1.1;letter-spacing:-.025em}
     .weekTop .dates{color:#123968;margin-top:9px;font-size:1.04rem}
     .weekTop .status{margin-top:8px;line-height:1.42}
     .weekTop .status span{display:block;margin-top:3px;color:rgba(11,18,32,.68)}
-    .weekMeta{display:flex;align-items:center;justify-content:flex-start;align-self:flex-start;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .weekMeta{display:flex;align-items:center;justify-content:flex-start;align-self:center;gap:8px;flex-wrap:wrap;margin-top:0}
     .pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:6px 9px;font-size:.76rem;font-weight:500;line-height:1;background:rgba(79,142,158,.10);color:#356f7b;white-space:nowrap}
     .pill.ok{background:rgba(221,239,232,.92);color:#426e5d}
     .pill.warn{background:rgba(248,236,194,.78);color:#7a6424}
@@ -241,6 +242,7 @@
       color:rgba(11,18,32,.66);box-shadow:0 3px 10px rgba(20,38,42,.02);
       font-size:.78rem;font-weight:500;line-height:1;backdrop-filter:blur(8px)
     }
+    .weekCountWord{display:inline}
     .weekCountBadge svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.86}
     .weekCountBadge strong{font-weight:650;color:rgba(11,18,32,.72)}
     .weekBody{padding:0 18px 22px;display:grid;gap:0}
@@ -268,8 +270,9 @@
     }
     .agendaBoard.dayFocusActive .agendaDay.dayFocused .agendaHead{border-bottom-color:rgba(79,142,158,.18)}
     .agendaHead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin:0 4px;padding:0;border-radius:0;background:transparent;border-bottom:0}
+    .agendaHead > div{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
     .agendaHead strong{display:block;color:#082b55;font-size:1rem;font-weight:600}
-    .agendaHead span{display:block;margin-top:6px;color:#123968;font-size:.91rem}
+    .agendaHead span{display:inline;margin-top:0;color:#123968;font-size:.91rem}
     .todayLabel{display:inline-flex;align-items:center;border-radius:999px;padding:5px 8px;background:rgba(79,142,158,.14);color:#356f7b;font-size:.68rem;font-weight:600;line-height:1;white-space:nowrap}
     .agendaList{display:grid;gap:12px}
     .agendaGroup{display:grid;gap:14px}
@@ -350,7 +353,7 @@
     }
     .ongoingIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s var(--ease)}
     .ongoingAccordion.open .ongoingIcon svg{transform:rotate(90deg)}
-    .ongoingAccordionText strong{display:block;font-size:1rem;font-weight:600}
+    .ongoingAccordionText strong{display:block;font-size:1.08rem;font-weight:600}
     .ongoingAccordionText span{display:block;margin-top:2px;color:var(--muted);font-size:.84rem}
     .ongoingAccordionBody{border-top:1px solid rgba(11,18,32,.06);background:rgba(253,254,253,.88)}
     .ongoingAccordionBody[hidden]{display:none}
@@ -382,7 +385,7 @@
     }
     .siteButton::after{content:"↗";font-size:.82em;opacity:.85}
     .websiteCell{vertical-align:middle;text-align:center}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:12px}
     .card{min-width:0;padding:18px;min-height:215px;display:flex;flex-direction:column;gap:10px;background:#fff;border-color:#EAECEF;box-shadow:0 10px 26px rgba(20,38,42,.045);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease)}
     .card:hover{transform:translateY(-2px);background:#fff;box-shadow:0 16px 34px rgba(20,38,42,.075);border-color:rgba(79,142,158,.13)}
     .themeCreative{--theme-tint:rgba(229,0,90,.055);--theme-tint-strong:rgba(229,0,90,.13);--theme-line:rgba(229,0,90,.18);--theme-ink:#a00042;--agenda-tint:#fdf0f6;--agenda-line:rgba(229,0,90,.22)}
@@ -415,13 +418,13 @@
     .costPill.costFree,.costPill.costLow{background:rgba(221,239,232,.86);border-color:rgba(72,132,100,.12);color:#426e5d}
     .costPill.costMid{background:rgba(248,236,194,.88);border-color:rgba(186,151,56,.16);color:#80610b}
     .costPill.costHigh{background:rgba(248,225,172,.86);border-color:rgba(199,92,11,.16);color:#9a4f0f}
-    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:82px;min-width:82px;height:24px;min-height:24px;padding:5px 8px;font-size:.74rem;font-weight:500}
+    .stimulusPill{display:inline-flex;align-items:center;justify-content:center;width:30px;min-width:30px;height:24px;min-height:24px;padding:5px 7px;font-size:.74rem;font-weight:500}
     .stimulusPill.low{background:rgba(221,239,232,.86);border-color:rgba(72,132,100,.12);color:#426e5d}
     .stimulusPill.medium{background:rgba(248,236,194,.88);border-color:rgba(186,151,56,.16);color:#80610b}
     .stimulusPill.high{background:rgba(246,223,231,.88);border-color:rgba(132,67,90,.14);color:#84435a}
     .stimulusIcon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;flex:0 0 14px}
     .stimulusIcon svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-    .stimulusPillText{display:block;width:38px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .stimulusPillText{display:none}
     .card h3{margin:0;color:var(--accent-dark);font-size:1.08rem;line-height:1.18;font-weight:500}
     .ideaThemeCard h3{margin-top:6px}
     .ideaThemeCard h3 .ideaTitle{display:flex;align-items:center;gap:10px}
@@ -1110,16 +1113,18 @@
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectLabel{max-width:74px}
       .weekTop{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 14px;padding:16px 14px}
       .weekTitle{display:contents}
-      .weekBadge{grid-column:1;grid-row:1;width:52px;height:52px;font-size:1.32rem;border-radius:13px}
+      .weekBadge{grid-column:1;grid-row:1;justify-self:center;align-self:start;display:flex;align-items:center;justify-content:center;width:50px;height:50px;margin-top:2px;padding:0;font-size:1.24rem;line-height:1;border-radius:13px;text-align:center}
       .weekTitle > div{grid-column:2;grid-row:1;min-width:0}
-      .weekTop h3{font-size:1.42rem}
+      .weekHeadingRow{display:flex;align-items:center;gap:8px;flex-direction:row;flex-wrap:wrap}
+      .weekTop h3{font-size:1.36rem}
       .weekTop .dates{margin-top:6px;font-size:.95rem}
       .weekTop .status{margin-top:5px}
-      .weekMeta{display:flex;align-items:flex-start;margin-top:2px}
+      .weekMeta{display:flex;align-items:flex-start;align-self:flex-start;margin-top:2px}
       .weekNav{grid-column:1;grid-row:1;display:flex;gap:5px;width:auto;margin:0;justify-content:center}
       .weekNavButton{width:24px;height:24px}
       .weekNavButton svg{width:13px;height:13px}
       .weekCountBadge{min-height:28px;padding:5px 8px;font-size:.72rem}
+      .weekCountWord{display:none}
       .agendaBoard{display:grid;grid-template-columns:1fr;gap:0;overflow:hidden;background:rgba(255,255,255,.54);border-radius:18px}
       .agendaDay{
         display:grid;grid-template-columns:58px minmax(0,1fr);align-items:flex-start;gap:10px;
@@ -1130,11 +1135,11 @@
       .agendaDay:nth-child(even){background:rgba(226,245,243,.16)}
       .agendaDay.today{background:rgba(222,244,241,.30)}
       .agendaHead{
-        display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2px;
+        display:flex;flex-direction:row;align-items:baseline;justify-content:center;gap:6px;flex-wrap:wrap;
         margin:0;padding:2px 0 0;text-align:center
       }
       .agendaHead strong{font-size:.8rem;line-height:1.05;font-weight:500;color:rgba(8,43,85,.72)}
-      .agendaHead span{margin-top:0;color:#123968;font-size:1.18rem;font-weight:600;line-height:1.05}
+      .agendaHead span{display:inline;margin-top:0;color:#123968;font-size:.92rem;font-weight:600;line-height:1.05}
       .todayLabel{margin-top:5px;padding:4px 6px;font-size:.58rem}
       .agendaList{min-width:0;gap:8px}
       .agendaGroup{gap:8px}
@@ -1973,7 +1978,7 @@
     return String(week?.dates || '').replace(/\s+2026\b/g, '').trim();
   }
   function weekCountBadge(count){
-    return `<span class="weekCountBadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>${escapeHtml(count)}</strong> verschillende activiteiten</span></span>`;
+    return `<span class="weekCountBadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>${escapeHtml(count)}</strong><span class="weekCountWord"> verschillende</span> activiteiten</span></span>`;
   }
   function normalizeIdeaType(value=''){
     const v = normalize(value);
@@ -3581,8 +3586,10 @@
           <div class="weekTitle">
             <div class="weekBadge">${escapeHtml(w.week)}</div>
             <div>
-              <h3>${escapeHtml(publicWeekDates(w))}</h3>
-              <div class="weekMeta">${weekCountBadge(weekItemCount)}</div>
+              <div class="weekHeadingRow">
+                <h3>${escapeHtml(publicWeekDates(w))}</h3>
+                <div class="weekMeta">${weekCountBadge(weekItemCount)}</div>
+              </div>
               ${weekStatusText(w)}
             </div>
           </div>
