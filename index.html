@@ -1141,12 +1141,12 @@
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton::before{width:15px;height:15px;flex-basis:15px}
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectButton::after{width:11px;height:11px;flex-basis:11px}
       #agendaFilters .customSelect[data-select-id="agendaWeekFilter"] .customSelectLabel{max-width:74px}
-      .weekTop{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 14px;padding:16px 14px}
-      .weekTitle{display:contents}
+      .weekTop{display:block;padding:16px 14px}
+      .weekTitle{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;align-items:start}
       .weekBadge{grid-column:1;grid-row:1;justify-self:center;align-self:start;display:grid;place-items:center;width:50px;height:50px;margin-top:2px;padding:0;font-size:1.24rem;line-height:1;border-radius:13px;text-align:center}
       .weekBadgeNumber{width:100%;height:100%;display:grid;place-items:center;transform:translateY(-1px)}
       .weekTitleContent{display:block;grid-column:2;grid-row:1;min-width:0}
-      .weekHeaderMeta{grid-column:1/-1;grid-row:2;justify-self:start;min-width:0;max-width:calc(100% - 64px);margin:4px 0 0 64px;padding-top:0}
+      .weekHeaderMeta{grid-column:2;grid-row:2;justify-self:start;min-width:0;max-width:100%;margin:0;padding-top:0}
       .weekHeadingRow{display:flex;align-items:center;gap:8px;flex-direction:row;flex-wrap:wrap}
       .weekTop h3{font-size:1.36rem}
       .weekTop .dates{margin-top:6px;font-size:.95rem}
