@@ -223,6 +223,8 @@
     .weekBadge{width:52px;height:52px;margin-top:2px;border-radius:13px;background:linear-gradient(145deg,rgba(168,225,221,.90),rgba(216,242,238,.76));display:grid;place-items:center;color:#07345e;font-weight:600;font-size:1.42rem;line-height:1;text-align:center;flex:0 0 auto}
     .weekBadgeNumber{display:grid;place-items:center;width:100%;height:100%;line-height:1;text-align:center;transform:translateY(-1px)}
     .weekHeadingRow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .weekTitleContent{flex:1 1 auto}
+    .weekHeaderMeta{margin-left:auto;padding-top:6px}
     .weekTop h3{margin:0;color:#07345e;font-weight:600;font-size:clamp(1.72rem,2.55vw,2.28rem);line-height:1.1;letter-spacing:-.025em}
     .weekTop .dates{color:#123968;margin-top:9px;font-size:1.04rem}
     .weekTop .status{margin-top:8px;line-height:1.42}
@@ -1123,6 +1125,8 @@
       .weekBadge{grid-column:1;grid-row:1;justify-self:center;align-self:start;display:grid;place-items:center;width:50px;height:50px;margin-top:2px;padding:0;font-size:1.24rem;line-height:1;border-radius:13px;text-align:center}
       .weekBadgeNumber{width:100%;height:100%;display:grid;place-items:center;transform:translateY(-1px)}
       .weekTitle > div{grid-column:2;grid-row:1;min-width:0}
+      .weekTitleContent{display:block}
+      .weekHeaderMeta{grid-column:2;grid-row:1;margin-left:0;padding-top:42px}
       .weekHeadingRow{display:flex;align-items:center;gap:8px;flex-direction:row;flex-wrap:wrap}
       .weekTop h3{font-size:1.36rem}
       .weekTop .dates{margin-top:6px;font-size:.95rem}
@@ -3569,7 +3573,7 @@
     const count = $('#flexibleOfferCount');
     if(count) count.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>${escapeHtml(items.length)}</strong> optie${items.length === 1 ? '' : 's'}</span>`;
     $('#flexibleOffersWrap').innerHTML = items.length
-      ? `<table><thead><tr><th>Aanbod</th><th>Beschikbaar in</th><th>Categorie</th><th>Locatie en afstand</th><th>Kosten</th><th>Prikkel</th><th>Passendheid / let op</th><th>Website</th></tr></thead><tbody>${items.map(flexibleExternalRow).join('')}</tbody></table>`
+      ? `<table><thead><tr><th>Aanbod</th><th>Beschikbaar</th><th>Categorie</th><th>Locatie en afstand</th><th>Kosten</th><th>Prikkel</th><th>Praktisch</th><th>Website</th></tr></thead><tbody>${items.map(flexibleExternalRow).join('')}</tbody></table>`
       : `<div class="empty">${escapeHtml(hasActiveAgendaFilters(filters) ? agendaEmptyMessage(filters) : 'Er is nog geen tijdelijk aanbod voor deze periode zichtbaar.')}</div>`;
   }
   function weekNavControls(currentId){
@@ -3647,13 +3651,13 @@
         <div class="weekTop">
           <div class="weekTitle">
             <div class="weekBadge"><span class="weekBadgeNumber">${escapeHtml(w.week)}</span></div>
-            <div>
+            <div class="weekTitleContent">
               <div class="weekHeadingRow">
                 <h3>${escapeHtml(publicWeekDates(w))}</h3>
-                <div class="weekMeta">${weekCountBadge(weekItemCount)}</div>
               </div>
               ${weekStatusText(w)}
             </div>
+            <div class="weekHeaderMeta">${weekCountBadge(weekItemCount)}</div>
           </div>
         </div>
         <div class="weekBody">
