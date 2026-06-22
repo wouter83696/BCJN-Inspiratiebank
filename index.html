@@ -331,10 +331,10 @@
     }
     .agendaMore:hover,.agendaMore:focus-visible{background:rgba(79,142,158,.10);outline:0}
     .agendaItemTitle{
-      display:flex;align-items:flex-start;gap:7px;
+      display:grid;grid-template-columns:22px minmax(0,1fr);align-items:flex-start;gap:9px;
       color:var(--accent-dark);font-size:.88rem;font-weight:500;line-height:1.25;text-align:left
     }
-    .agendaItemTitle .domainIcon{margin-top:.05em}
+    .agendaItemTitle .domainIcon{margin-top:.02em}
     .agendaItemTitle .ideaTitleText{display:block;min-width:0;overflow-wrap:anywhere;hyphens:auto}
     .agendaItemMeta{display:block;margin-top:14px;color:#123968;font-size:.79rem;line-height:1.48;overflow-wrap:anywhere;hyphens:auto}
     .agendaEmpty{
@@ -1174,7 +1174,7 @@
       .agendaList{min-width:0;gap:8px}
       .agendaGroup{gap:8px}
       .agendaItem{min-height:0;padding:10px 10px 9px;border-radius:12px}
-      .agendaItemTitle{font-size:.86rem;line-height:1.18;gap:7px}
+      .agendaItemTitle{grid-template-columns:18px minmax(0,1fr);font-size:.86rem;line-height:1.18;gap:7px}
       .agendaItem .domainIcon{width:18px;height:18px}
       .agendaItem .domainIcon svg{width:10px;height:10px}
       .agendaItemMeta{margin-top:8px;font-size:.76rem;line-height:1.34}
