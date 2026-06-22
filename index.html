@@ -481,7 +481,9 @@
       transition:color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease)
     }
     .reportButton:hover{background:#fff;color:rgba(11,18,32,.66);transform:translateY(-1px)}
-    .reportButton svg{width:15px;height:15px;fill:none;stroke:#b85b68;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .reportButton svg{width:15px;height:15px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .reportFlagPole{stroke:rgba(11,18,32,.52)}
+    .reportFlagBanner{stroke:#b85b68;fill:rgba(184,91,104,.10)}
     .agendaItemActions{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin-top:10px}
     .agendaItem .reportMenu{position:relative;right:auto;top:auto;z-index:4;display:flex;justify-content:flex-end}
     .agendaItem .reportButton{width:25px;height:25px;background:rgba(255,255,255,.46)}
@@ -2734,7 +2736,7 @@
   }
   const REPORT_OPTIONS = ['Gegevens kloppen niet','Link werkt niet','Dubbel item','Niet passend','Datum of tijd checken'];
   function reportIcon(){
-    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1.5-1 4-1 4 1 6.5 1 4.5-1 5.5-1V5s-1.5 1-4 1-4-1-6.5-1S5 6 4 6Z"></path><path d="M4 22V6"></path></svg>';
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="reportFlagBanner" d="M4 15s1.5-1 4-1 4 1 6.5 1 4.5-1 5.5-1V5s-1.5 1-4 1-4-1-6.5-1S5 6 4 6Z"></path><path class="reportFlagPole" d="M4 22V6"></path></svg>';
   }
   function reportMenu(kind, key, title){
     const safeKind = escapeHtml(kind);
