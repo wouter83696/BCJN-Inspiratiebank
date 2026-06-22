@@ -249,10 +249,11 @@
     .weekCountBadge svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.86}
     .weekCountBadge strong{font-weight:650;color:rgba(11,18,32,.72)}
     .weekHeaderMeta .weekCountBadge{
-      width:260px;min-height:52px;justify-content:flex-start;padding:12px 18px;border-radius:8px;gap:10px;
-      background:rgba(232,242,242,.34);border-color:rgba(79,142,158,.05);
-      box-shadow:0 10px 28px rgba(20,38,42,.045);font-size:.86rem
+      width:260px;min-height:64px;justify-content:flex-start;padding:14px 18px;border-radius:10px;gap:10px;
+      background:rgba(232,242,242,.42);border-color:rgba(79,142,158,.06);
+      box-shadow:0 14px 34px rgba(20,38,42,.055);font-size:.86rem
     }
+    .weekHeaderMeta .weekCountBadge span{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
     .weekHeaderMeta .weekCountBadge svg{width:18px;height:18px}
     .weekHeaderMeta .weekCountBadge strong{font-size:1rem}
     .weekBody{padding:0 18px 22px;display:grid;gap:0}
@@ -1141,7 +1142,7 @@
       .weekBadge{grid-column:1;grid-row:1;justify-self:center;align-self:start;display:grid;place-items:center;width:50px;height:50px;margin-top:2px;padding:0;font-size:1.24rem;line-height:1;border-radius:13px;text-align:center}
       .weekBadgeNumber{width:100%;height:100%;display:grid;place-items:center;transform:translateY(-1px)}
       .weekTitleContent{display:block;grid-column:2;grid-row:1;min-width:0}
-      .weekHeaderMeta{grid-column:2;grid-row:2;justify-self:start;margin:2px 0 0;padding-top:0}
+      .weekHeaderMeta{grid-column:1/-1;grid-row:2;justify-self:start;min-width:0;max-width:calc(100% - 64px);margin:4px 0 0 64px;padding-top:0}
       .weekHeadingRow{display:flex;align-items:center;gap:8px;flex-direction:row;flex-wrap:wrap}
       .weekTop h3{font-size:1.36rem}
       .weekTop .dates{margin-top:6px;font-size:.95rem}
@@ -1151,7 +1152,7 @@
       .weekNavButton{width:24px;height:24px}
       .weekNavButton svg{width:13px;height:13px}
       .weekCountBadge{min-height:28px;padding:5px 8px;font-size:.72rem}
-      .weekHeaderMeta .weekCountBadge{width:auto;min-height:28px;padding:5px 8px;border-radius:10px;gap:7px;box-shadow:0 3px 10px rgba(20,38,42,.02);font-size:.72rem}
+      .weekHeaderMeta .weekCountBadge{width:auto;max-width:100%;min-height:30px;padding:6px 9px;border-radius:10px;gap:7px;box-shadow:0 3px 10px rgba(20,38,42,.02);font-size:.72rem;white-space:nowrap;overflow:visible}
       .weekHeaderMeta .weekCountBadge svg{width:16px;height:16px}
       .weekHeaderMeta .weekCountBadge strong{font-size:inherit}
       .weekCountWord{display:none}
