@@ -264,10 +264,10 @@
     .adminStack{display:grid;gap:14px}
     .agendaCheckNotice{
       display:flex;align-items:center;justify-content:space-between;gap:16px;
-      padding:14px 16px;border:1px solid rgba(79,142,158,.08);border-radius:18px;
+      padding:14px 16px;border:1px solid color-mix(in srgb,rgba(79,142,158,.08) 45%,#EAECEF);border-radius:18px;
       background:
-        linear-gradient(145deg,rgba(214,236,242,.10),rgba(251,253,252,.62) 44%),
-        rgba(251,253,252,.92);
+        linear-gradient(145deg,rgba(214,236,242,.08) 0%,rgba(251,253,252,.18) 42%),
+        rgba(251,253,252,.90);
       box-shadow:0 18px 42px rgba(20,38,42,.055);
     }
     .agendaCheckNoticeText{display:grid;gap:3px;min-width:0}
@@ -331,7 +331,8 @@
     .button:hover{transform:translateY(-1px);filter:brightness(.98)}
     .button:disabled{cursor:default;opacity:.62;box-shadow:none;transform:none;filter:none}
     .button.primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(79,142,158,.18)}
-    .agendaCheckNotice .button.primary:disabled{opacity:1;background:rgba(214,236,242,.92);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.10)}
+    .agendaCheckNotice .button.primary{background:rgba(255,255,255,.90);color:var(--accent-dark);border:1px solid rgba(79,142,158,.10);box-shadow:0 8px 18px rgba(20,38,42,.04)}
+    .agendaCheckNotice .button.primary:disabled{opacity:1;background:rgba(255,255,255,.86);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.08)}
     .button.white{background:rgba(255,255,255,.86);color:rgba(11,18,32,.68);box-shadow:0 8px 18px rgba(20,38,42,.04);border:1px solid rgba(79,142,158,.08)}
     .button.warn{background:rgba(248,236,194,.78);color:#7a6424}
     .button.hot{background:rgba(246,223,231,.82);color:#84435a}
@@ -394,7 +395,7 @@
     .viewSwitch{display:inline-flex;align-items:center;gap:1px;margin:0;padding:3px;border:1px solid rgba(255,255,255,.76);border-radius:14px;background:rgba(255,255,255,.52);box-shadow:0 5px 14px rgba(20,38,42,.04)}
     .viewBtn{border:0;background:transparent;color:rgba(11,18,32,.52);width:32px;height:29px;border-radius:10px;padding:0;cursor:pointer;transition:.18s cubic-bezier(.22,1,.36,1);display:inline-flex;align-items:center;justify-content:center}
     .viewBtn:hover{background:rgba(168,225,221,.18);color:var(--accent-dark)}
-    .viewBtn.active{background:rgba(168,225,221,.42);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.08)}
+    .viewBtn.active{background:rgba(255,255,255,.88);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.10)}
     .viewIcon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px}
     .viewIcon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .adminIdeaView[hidden]{display:none !important}
@@ -708,13 +709,13 @@
     .ideaActions{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
     .ideaActions .button.iconAction{
       flex:0 0 30px;width:30px;height:30px;padding:0;border-radius:10px;box-shadow:none;
-      border:1px solid rgba(79,142,158,.14);background:rgba(255,255,255,.72);color:var(--accent-dark)
+      border:1px solid rgba(79,142,158,.12);background:rgba(255,255,255,.82);color:var(--accent-dark)
     }
     .ideaActions .button.iconAction svg{width:15px;height:15px}
-    .ideaActions .button.iconAction.editIdeaAction{background:rgba(214,236,242,.82);border-color:rgba(79,142,158,.20);color:#315f6d}
-    .ideaActions .button.iconAction.visibilityIdeaAction{background:rgba(221,239,232,.82);border-color:rgba(72,132,100,.18);color:#4f7663}
-    .ideaActions .button.iconAction.warn{background:rgba(248,236,194,.82);border-color:rgba(186,151,56,.20);color:#7a6424}
-    .ideaActions .button.iconAction.hot{background:rgba(246,223,231,.82);border-color:rgba(198,98,133,.18);color:#8d4a63}
+    .ideaActions .button.iconAction.editIdeaAction{background:rgba(255,255,255,.86);border-color:rgba(79,142,158,.16);color:#315f6d}
+    .ideaActions .button.iconAction.visibilityIdeaAction{background:rgba(255,255,255,.86);border-color:rgba(72,132,100,.14);color:#4f7663}
+    .ideaActions .button.iconAction.warn{background:rgba(255,255,255,.86);border-color:rgba(186,151,56,.16);color:#7a6424}
+    .ideaActions .button.iconAction.hot{background:rgba(255,255,255,.86);border-color:rgba(198,98,133,.16);color:#8d4a63}
     .small{font-size:.84rem;color:var(--muted);line-height:1.36}
     .empty{padding:18px;border:1px dashed rgba(11,18,32,.14);border-radius:18px;background:rgba(255,255,255,.40);color:var(--muted);text-align:center}
     .tableWrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.48)}
