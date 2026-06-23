@@ -258,10 +258,11 @@
     .agendaCheckNotice{
       display:flex;align-items:center;justify-content:space-between;gap:16px;
       padding:14px 16px;border:1px solid rgba(79,142,158,.12);border-radius:18px;
-      background:linear-gradient(145deg,rgba(214,236,242,.42),rgba(255,255,255,.82));
+      background:rgba(232,242,242,.96);
       box-shadow:0 12px 28px rgba(20,38,42,.045);
     }
     .agendaCheckNoticeText{display:grid;gap:3px;min-width:0}
+    .agendaCheckActions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
     .agendaCheckEyebrow{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(49,95,107,.60)}
     .agendaCheckNotice strong{color:var(--accent-dark);font-size:1rem;line-height:1.18}
     .agendaCheckDetail{color:var(--muted);font-size:.9rem;line-height:1.35}
@@ -995,7 +996,10 @@
             <strong id="agendaCheckStatusTitle">Laatste check laden...</strong>
             <span class="agendaCheckDetail" id="agendaCheckStatusText">We halen de status uit de beheerdata.</span>
           </div>
-          <button class="button small primary" id="markAgendaCheckedBtn" type="button">Nu als gecheckt markeren</button>
+          <div class="agendaCheckActions">
+            <a class="button small primary" href="https://github.com/wouter83696/Inspiratiebank/actions/workflows/dagelijkse-broncheck.yml" target="_blank" rel="noopener">Controleer nu</a>
+            <button class="button small" id="markAgendaCheckedBtn" type="button">Als gecheckt markeren</button>
+          </div>
         </section>
         <section class="panel tintedPanel toneAgenda agendaRulesPanel" id="agendaRulesPanel">
           <div class="agendaRulesHead">
