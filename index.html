@@ -392,7 +392,15 @@
     .ongoingAccordion th:nth-child(2),.ongoingWeeksCell{white-space:nowrap}
     .ongoingTitleCell .nameWithIcon{align-items:center}
     .ongoingTitleCell .nameWithIcon .domainIcon{margin-top:0}
-    .ongoingLocationCell .cardPillGroup{margin-bottom:4px}
+    .ongoingAccordion table{min-width:940px;table-layout:fixed}
+    .ongoingAccordion th:nth-child(1),.ongoingAccordion td:nth-child(1){width:25%}
+    .ongoingAccordion th:nth-child(2),.ongoingAccordion td:nth-child(2){width:10%}
+    .ongoingAccordion th:nth-child(3),.ongoingAccordion td:nth-child(3){width:14%}
+    .ongoingAccordion th:nth-child(4),.ongoingAccordion td:nth-child(4){width:6%}
+    .ongoingAccordion th:nth-child(5),.ongoingAccordion td:nth-child(5){width:6%}
+    .ongoingAccordion th:nth-child(6),.ongoingAccordion td:nth-child(6){width:27%}
+    .ongoingAccordion th:nth-child(7),.ongoingAccordion td:nth-child(7){width:12%}
+    .ongoingLocationCell .cardPillGroup{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:0}
     .ongoingMobileLabels{display:none}
     .ongoingMetaLine{display:none}
     table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
@@ -1242,7 +1250,7 @@
       .ongoingAccordion td:nth-child(4)::before,
       .ongoingAccordion td:nth-child(5)::before{content:none}
       .ongoingAccordion td:nth-child(3)::before{content:"Locatie"}
-      .ongoingAccordion td:nth-child(6)::before{content:"Praktisch"}
+      .ongoingAccordion td:nth-child(6)::before{content:"Beschrijving"}
       .ongoingAccordion td:nth-child(7)::before{content:"Website"}
       .ongoingTitleCell{order:2}
       .ongoingTitleCell .name{display:block;font-size:1rem;line-height:1.16}
@@ -3657,7 +3665,7 @@
     const count = $('#flexibleOfferCount');
     if(count) count.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>${escapeHtml(items.length)}</strong> optie${items.length === 1 ? '' : 's'}</span>`;
     $('#flexibleOffersWrap').innerHTML = items.length
-      ? `<table><thead><tr><th>Aanbod</th><th>Beschikbaar</th><th>Locatie en afstand</th><th>Kosten</th><th>Prikkel</th><th>Praktisch</th><th>Website</th></tr></thead><tbody>${items.map(flexibleExternalRow).join('')}</tbody></table>`
+      ? `<table><thead><tr><th>Aanbod</th><th>Beschikbaar</th><th>Locatie en afstand</th><th>Kosten</th><th>Prikkel</th><th>Beschrijving</th><th>Website</th></tr></thead><tbody>${items.map(flexibleExternalRow).join('')}</tbody></table>`
       : `<div class="empty">${escapeHtml(hasActiveAgendaFilters(filters) ? agendaEmptyMessage(filters) : 'Er is nog geen tijdelijk aanbod voor deze periode zichtbaar.')}</div>`;
   }
   function weekNavControls(currentId){
