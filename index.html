@@ -410,6 +410,7 @@
     #ideaList th:nth-child(3),#ideaList td:nth-child(3){width:25%}
     #ideaList th:nth-child(4),#ideaList td:nth-child(4){width:23%}
     #ideaList th:nth-child(5),#ideaList td:nth-child(5){width:15%}
+    #ideaList .ideaListMeta{margin-left:38px}
     th,td{text-align:left;vertical-align:top;border-bottom:1px solid rgba(11,18,32,.07);padding:11px 12px;font-size:.92rem;line-height:1.35}
     th{color:rgba(11,18,32,.56);font-weight:500;background:rgba(255,255,255,.55);position:sticky;top:0}
     tr:last-child td{border-bottom:0}
@@ -3721,7 +3722,7 @@
     const placePills = compactPlacePills(locationLabel, distanceLabel).map(locationPill).join(' ');
     const sourceLink = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Bekijk website')}</a>` : '<span class="small">-</span>';
     return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)}" data-idea-key="${escapeHtml(ideaDomKey(item))}">
-      <td>${titleWithIcon(item.title, item.domain, 'nameWithIcon')}<div class="small">groep ${escapeHtml(item.group || '')} • ${escapeHtml(item.duration || '')}</div></td>
+      <td>${titleWithIcon(item.title, item.domain, 'nameWithIcon')}<div class="small ideaListMeta">${escapeHtml(item.group || '')} • ${escapeHtml(item.duration || '')}</div></td>
       <td>${categoryPill(item.domain)}</td>
       <td><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel)}</div></td>
       <td><div class="small">${escapeHtml(audienceText(item.materials || item.fit || ''))}</div></td>
