@@ -264,8 +264,10 @@
     .adminStack{display:grid;gap:14px}
     .agendaCheckNotice{
       display:flex;align-items:center;justify-content:space-between;gap:16px;
-      padding:14px 16px;border:1px solid var(--line);border-radius:18px;
-      background:#fff;
+      padding:14px 16px;border:1px solid rgba(79,142,158,.08);border-radius:18px;
+      background:
+        linear-gradient(145deg,rgba(214,236,242,.10),rgba(251,253,252,.62) 44%),
+        rgba(251,253,252,.92);
       box-shadow:0 18px 42px rgba(20,38,42,.055);
     }
     .agendaCheckNoticeText{display:grid;gap:3px;min-width:0}
@@ -329,6 +331,7 @@
     .button:hover{transform:translateY(-1px);filter:brightness(.98)}
     .button:disabled{cursor:default;opacity:.62;box-shadow:none;transform:none;filter:none}
     .button.primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(79,142,158,.18)}
+    .agendaCheckNotice .button.primary:disabled{opacity:1;background:rgba(214,236,242,.92);color:var(--accent-dark);box-shadow:inset 0 0 0 1px rgba(79,142,158,.10)}
     .button.white{background:rgba(255,255,255,.86);color:rgba(11,18,32,.68);box-shadow:0 8px 18px rgba(20,38,42,.04);border:1px solid rgba(79,142,158,.08)}
     .button.warn{background:rgba(248,236,194,.78);color:#7a6424}
     .button.hot{background:rgba(246,223,231,.82);color:#84435a}
@@ -1409,6 +1412,7 @@
 	  const CENTRAL_STORAGE_ENDPOINT = CONFIG.storageEndpoint || '';
 	  const SUPABASE_TABLE = CONFIG.supabaseTable || 'bcjn_state';
 	  const SUPABASE_STATE_ID = CONFIG.supabaseStateId || 'bcjn-zomer-2026';
+	  const AGENDA_CHECK_STALE_MINUTES = 75;
   const $ = selector => document.querySelector(selector);
   const $$ = selector => Array.from(document.querySelectorAll(selector));
   let confirmDialogResolve = null;
@@ -1738,7 +1742,11 @@
     const startedTime = new Date(startedAt || '').getTime();
     const completedTime = new Date(completedAt || '').getTime();
     if(Number.isFinite(requestedTime) && requestedTime > (Number.isFinite(completedTime) ? completedTime : 0)){
-      if(Number.isFinite(startedTime) && startedTime >= requestedTime) return {status:'running', requestedAt, startedAt, completedAt};
+      const running = Number.isFinite(startedTime) && startedTime >= requestedTime;
+      const staleBaseTime = running ? startedTime : requestedTime;
+      const staleMinutes = Math.floor((Date.now() - staleBaseTime) / 60000);
+      if(staleMinutes >= AGENDA_CHECK_STALE_MINUTES) return {status:'expired', requestedAt, startedAt, completedAt, previousStatus:running ? 'running' : 'queued'};
+      if(running) return {status:'running', requestedAt, startedAt, completedAt};
       return {status:'queued', requestedAt, startedAt, completedAt};
     }
     return {status:centralStorage.agendaSourceCheckStatus || 'idle', requestedAt, startedAt, completedAt};
@@ -1768,6 +1776,9 @@
       detailText = runningMinutes >= 15
         ? `Gestart om ${formatAdminDateTime(requestState.startedAt)}. Ververs beheer later nog eens of vraag de controle opnieuw aan.`
         : 'De bronnen worden nu nagekeken. Ververs beheer straks om de nieuwste status te zien.';
+    } else if(requestState.status === 'expired'){
+      titleText = 'Controle opnieuw aanvragen';
+      detailText = `De vorige aanvraag van ${formatAdminDateTime(requestState.requestedAt)} bleef te lang openstaan. Je kunt nu opnieuw op Controleer nu klikken.`;
     } else if(requestState.status === 'done' && requestState.completedAt){
       titleText = `Agenda gecontroleerd: ${formatAdminDateTime(requestState.completedAt)}`;
       detailText = sourceAgendaCheckedAt()
@@ -1793,7 +1804,13 @@
     $$('[data-request-agenda-source-check]').forEach(button => {
       const pending = requestState.status === 'queued' || requestState.status === 'running';
       button.disabled = pending;
-      button.textContent = requestState.status === 'running' ? 'Check loopt' : requestState.status === 'queued' ? 'Aangevraagd' : 'Controleer nu';
+      button.textContent = requestState.status === 'running'
+        ? 'Check loopt'
+        : requestState.status === 'queued'
+          ? 'Aangevraagd'
+          : requestState.status === 'expired'
+            ? 'Opnieuw controleren'
+            : 'Controleer nu';
     });
   }
   async function requestAgendaSourceCheck(){
