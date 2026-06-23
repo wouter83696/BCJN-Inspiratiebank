@@ -596,6 +596,7 @@
     #adminIdeaList .adminIdeaTitle .domainIcon{width:20px;height:20px;margin-top:.08em}
     #adminIdeaList .adminIdeaTitle .domainIcon svg{width:12px;height:12px}
     #adminIdeaList .adminIdeaTitleText{line-height:1.24;overflow-wrap:anywhere;hyphens:auto}
+    #adminIdeaList .adminIdeaMetaLine{margin-left:30px}
     .row .domainIcon{display:inline-flex;width:24px;height:24px;background:var(--theme-tint-strong);border-color:var(--theme-line);color:var(--theme-ink)}
     .row .domainIcon svg{width:13px;height:13px}
     .adminIdeaMeta{display:block;color:var(--muted);font-size:.86rem;line-height:1.35}
@@ -2814,9 +2815,10 @@
     const stimulusLabel = normalizeIdeaStimulus(item.stimulus);
     const placePills = compactPlacePills(locationLabel, distanceLabel).map(label => pill(label, 'soft')).join(' ');
     const source = item.source || item.kind;
+    const activityMeta = [item.group || '', item.duration || '', item.hidden ? 'Verborgen' : ''].filter(Boolean).join(' • ');
     const website = item.url ? `<a class="siteButton secondary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.source || 'Open')}</a>` : '<span class="small">-</span>';
     return `<tr class="ideaThemeRow ${domainThemeClass(item.domain)} ${item.hidden ? 'hiddenItem' : ''}" data-idea-key="${escapeHtml(item.key)}">
-      <td data-label="Activiteit">${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}<div class="small">groep ${escapeHtml(item.group || '')} • ${escapeHtml(item.duration || '')}${item.hidden ? ' • Verborgen' : ''}</div><div class="small">${escapeHtml(source)}</div></td>
+      <td data-label="Activiteit">${titleWithIcon(item.title, item.domain, 'adminIdeaTitle')}${activityMeta ? `<div class="small adminIdeaMetaLine">${escapeHtml(activityMeta)}</div>` : ''}${source ? `<div class="small adminIdeaMetaLine">${escapeHtml(source)}</div>` : ''}</td>
       <td data-label="Categorie">${escapeHtml(domainDisplayLabel(item.domain))}</td>
       <td data-label="Foto">${adminIdeaPhotoPreview(item)}</td>
       <td data-label="Badges"><div class="cardPillGroup">${placePills} ${costPill(costLabel)} ${stimulusPill(stimulusLabel || item.stimulus)}</div></td>
