@@ -2982,7 +2982,7 @@
 	    return agendaDateSpanDays(item) > 0 || /dagelijks|wisselende|zelf|start wanneer|diverse tijden|op reservering|check/.test(label);
 	  }
 	  function isAgendaOngoingOffer(item={}){
-	    return item.seasonLimited === true || isAgendaFlexiblePeriod(item);
+	    return item.seasonLimited === true;
 	  }
 	  function showAgendaPeriodInWeek(item={}){
 	    const span = agendaDateSpanDays(item);

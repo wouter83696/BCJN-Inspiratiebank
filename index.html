@@ -1423,7 +1423,7 @@
       <div id="weekPanels" class="weekStack"></div>
       <section id="longerOffers" class="ongoingAccordion open">
         <div class="ongoingAccordionButton">
-          <span class="ongoingAccordionText"><span class="ongoingTitleLine"><strong>Doorlopend aanbod</strong><span id="flexibleOfferCount" class="weekCountBadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>0</strong> opties</span></span></span><span>Activiteiten die de hele periode of meerdere weken beschikbaar zijn.</span></span>
+          <span class="ongoingAccordionText"><span class="ongoingTitleLine"><strong>Doorlopend aanbod</strong><span id="flexibleOfferCount" class="weekCountBadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4"></path><path d="M16 3v4"></path><path d="M4 10h16"></path></svg><span><strong>0</strong> opties</span></span></span><span>Tijdelijk aanbod dat meerdere weken beschikbaar is.</span></span>
         </div>
         <div id="ongoingContent" class="ongoingAccordionBody">
           <div id="flexibleOffersWrap" class="tableWrap"></div>
@@ -3445,7 +3445,7 @@
     return /dagelijks|wisselende voorstellingen|start wanneer je wilt|diverse tijden|di t\/m zo|ma t\/m zo|maandag t\/m zondag/.test(dateTimeLabel);
   }
   function isOngoingOffer(item={}){
-    return item.seasonLimited === true || isFlexiblePeriodOffer(item);
+    return item.seasonLimited === true;
   }
 	function showPeriodInAgenda(item){
 	  const span = eventSpanDays(item);
