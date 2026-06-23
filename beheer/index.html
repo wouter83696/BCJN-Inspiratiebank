@@ -954,7 +954,7 @@
                 <span class="agendaCheckDetail" data-agenda-check-text>We halen de status uit de beheerdata.</span>
               </div>
               <div class="agendaCheckActions">
-                <a class="button small primary" href="https://github.com/wouter83696/Inspiratiebank/actions/workflows/dagelijkse-broncheck.yml" target="_blank" rel="noopener">Controleer nu</a>
+                <button class="button small primary" type="button" data-request-agenda-source-check>Controleer nu</button>
               </div>
             </section>
             <div class="adminTopGrid">
@@ -1008,7 +1008,7 @@
             <span class="agendaCheckDetail" id="agendaCheckStatusText" data-agenda-check-text>We halen de status uit de beheerdata.</span>
           </div>
           <div class="agendaCheckActions">
-            <a class="button small primary" href="https://github.com/wouter83696/Inspiratiebank/actions/workflows/dagelijkse-broncheck.yml" target="_blank" rel="noopener">Controleer nu</a>
+            <button class="button small primary" type="button" data-request-agenda-source-check>Controleer nu</button>
             <button class="button small white" id="markAgendaCheckedBtn" type="button">Als gecheckt markeren</button>
           </div>
         </section>
@@ -1512,6 +1512,11 @@
 	      verifiedAgendaItemIds:Array.isArray(value.verifiedAgendaItemIds) ? value.verifiedAgendaItemIds : [],
 	      blockedAgendaRules:Array.isArray(value.blockedAgendaRules) ? value.blockedAgendaRules : [],
 	      agendaManualCheckedAt:typeof value.agendaManualCheckedAt === 'string' ? value.agendaManualCheckedAt : '',
+	      agendaSourceCheckRequestedAt:typeof value.agendaSourceCheckRequestedAt === 'string' ? value.agendaSourceCheckRequestedAt : '',
+	      agendaSourceCheckStartedAt:typeof value.agendaSourceCheckStartedAt === 'string' ? value.agendaSourceCheckStartedAt : '',
+	      agendaSourceCheckCompletedAt:typeof value.agendaSourceCheckCompletedAt === 'string' ? value.agendaSourceCheckCompletedAt : '',
+	      agendaSourceCheckStatus:typeof value.agendaSourceCheckStatus === 'string' ? value.agendaSourceCheckStatus : '',
+	      agendaSourceCheckMessage:typeof value.agendaSourceCheckMessage === 'string' ? value.agendaSourceCheckMessage : '',
 	      trashItems:Array.isArray(value.trashItems) ? value.trashItems : [],
 	      reports:Array.isArray(value.reports) ? value.reports : []
 	    };
@@ -1707,16 +1712,37 @@
     if(!Number.isFinite(date.getTime())) return '';
     return date.toLocaleString('nl-NL', {dateStyle:'medium', timeStyle:'short'});
   }
+  function agendaSourceCheckRequestState(){
+    if(!centralStorageActive()) return {status:'unavailable'};
+    const requestedAt = centralStorage.agendaSourceCheckRequestedAt || '';
+    const startedAt = centralStorage.agendaSourceCheckStartedAt || '';
+    const completedAt = centralStorage.agendaSourceCheckCompletedAt || '';
+    const requestedTime = new Date(requestedAt || '').getTime();
+    const startedTime = new Date(startedAt || '').getTime();
+    const completedTime = new Date(completedAt || '').getTime();
+    if(Number.isFinite(requestedTime) && requestedTime > (Number.isFinite(completedTime) ? completedTime : 0)){
+      if(Number.isFinite(startedTime) && startedTime >= requestedTime) return {status:'running', requestedAt, startedAt, completedAt};
+      return {status:'queued', requestedAt, startedAt, completedAt};
+    }
+    return {status:centralStorage.agendaSourceCheckStatus || 'idle', requestedAt, startedAt, completedAt};
+  }
   function renderAgendaCheckStatus(){
     const titles = $$('[data-agenda-check-title]');
     const texts = $$('[data-agenda-check-text]');
     if(!titles.length || !texts.length) return;
+    const requestState = agendaSourceCheckRequestState();
     const checkedAt = latestAgendaCheckedAt();
     let titleText = '';
     let detailText = '';
-    if(!checkedAt){
+    if(requestState.status === 'queued'){
+      titleText = 'Broncheck aangevraagd';
+      detailText = 'De site pakt dit automatisch op. Meestal zie je binnen ongeveer 15 minuten nieuwe checkdata.';
+    } else if(requestState.status === 'running'){
+      titleText = 'Broncheck loopt nu';
+      detailText = 'De bronnen worden gecontroleerd. Ververs beheer straks om de nieuwe status te zien.';
+    } else if(!checkedAt){
       titleText = 'Nog geen agenda-check opgeslagen';
-      detailText = 'Gebruik de knop zodra je de UIT-agenda handmatig hebt nagelopen.';
+      detailText = 'Gebruik Controleer nu om de bronnen opnieuw te laten controleren.';
     } else {
       const manual = storedAgendaCheckedAt();
       const manualTime = new Date(manual || '').getTime();
@@ -1728,6 +1754,30 @@
     }
     titles.forEach(title => { title.textContent = titleText; });
     texts.forEach(text => { text.textContent = detailText; });
+    $$('[data-request-agenda-source-check]').forEach(button => {
+      const pending = requestState.status === 'queued' || requestState.status === 'running';
+      button.disabled = pending;
+      button.textContent = requestState.status === 'running' ? 'Check loopt' : requestState.status === 'queued' ? 'Aangevraagd' : 'Controleer nu';
+    });
+  }
+  async function requestAgendaSourceCheck(){
+    if(!centralStorageActive()){
+      setStatus('#adminStatus', 'Online opslag is niet beschikbaar; de broncheck kan nu niet worden aangevraagd.', 'warn');
+      return;
+    }
+    const requestedAt = new Date().toISOString();
+    centralStorage.agendaSourceCheckRequestedAt = requestedAt;
+    centralStorage.agendaSourceCheckStatus = 'queued';
+    centralStorage.agendaSourceCheckMessage = 'Broncheck aangevraagd vanuit beheer.';
+    renderAgendaCheckStatus();
+    if(!(await saveCentralStorage())){
+      setStatus('#adminStatus', 'Broncheck aanvragen lukte niet in de online opslag.', 'warn');
+      await loadCentralStorage();
+      renderAgendaCheckStatus();
+      return;
+    }
+    renderAgendaCheckStatus();
+    setStatus('#adminStatus', 'Broncheck aangevraagd. De site pakt dit automatisch op binnen ongeveer 15 minuten.', 'ok');
   }
   async function markAgendaCheckedNow(){
     const checkedAt = new Date().toISOString();
@@ -4242,6 +4292,9 @@
     $('#restoreSourceLinksBtn').addEventListener('click', restoreSourceLinks);
     $('#clearLinksBtn').addEventListener('click', clearCustomLinks);
     $('#approveAllAgendaBtn').addEventListener('click', verifyAllAgendaItems);
+    document.querySelectorAll('[data-request-agenda-source-check]').forEach(button => {
+      button.addEventListener('click', requestAgendaSourceCheck);
+    });
     $('#markAgendaCheckedBtn').addEventListener('click', markAgendaCheckedNow);
     $('#addAgendaBlockRuleBtn').addEventListener('click', () => addAgendaBlockRule('keyword', $('#agendaBlockInput').value, $('#agendaBlockInput').value));
     $('#confirmModal').addEventListener('click', event => {

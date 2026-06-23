@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "30 6,13 * * 1-5"
+    - cron: "0,15,45 6-16 * * 1-5"
 
 permissions:
   contents: write
@@ -27,10 +28,22 @@ jobs:
         with:
           node-version: 22
 
+      - name: Bepalen of broncheck nodig is
+        id: check_request
+        env:
+          GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_TABLE: bcjn_state
+          SUPABASE_STATE_ID: bcjn-zomer-2026
+        run: node website-bestanden/scripts/source-check-request.js decide
+
       - name: Agenda's controleren
+        if: steps.check_request.outputs.should_run == 'true'
         run: node website-bestanden/scripts/update-offers.js
 
       - name: Broncheckdata bewaren
+        if: steps.check_request.outputs.should_run == 'true'
         run: |
           if git diff --quiet -- website-bestanden/data/offers_pending_review.json website-bestanden/data/zomerprogramma_data.json; then
             echo "Geen broncheckdata gewijzigd."
@@ -44,6 +57,7 @@ jobs:
           git push
 
       - name: Automatische agenda publiceren
+        if: steps.check_request.outputs.should_run == 'true'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -56,3 +70,13 @@ jobs:
           fi
 
           node website-bestanden/scripts/publish-auto-agenda-items.js
+
+      - name: Broncheckverzoek afronden
+        if: always() && steps.check_request.outputs.reason == 'siteverzoek'
+        env:
+          CHECK_STATUS: ${{ job.status }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_TABLE: bcjn_state
+          SUPABASE_STATE_ID: bcjn-zomer-2026
+        run: node website-bestanden/scripts/source-check-request.js finish
