@@ -1752,11 +1752,22 @@
     let titleText = '';
     let detailText = '';
     if(requestState.status === 'queued'){
-      titleText = 'Broncheck aangevraagd';
-      detailText = 'De site pakt dit automatisch op. Meestal zie je binnen ongeveer 15 minuten nieuwe checkdata.';
+      const requestedTime = new Date(requestState.requestedAt || '').getTime();
+      const queuedMinutes = Number.isFinite(requestedTime) ? Math.floor((Date.now() - requestedTime) / 60000) : 0;
+      if(queuedMinutes >= 15){
+        titleText = 'Broncheck wacht nog';
+        detailText = `Aangevraagd om ${formatAdminDateTime(requestState.requestedAt)}. De automatische GitHub-check heeft dit verzoek nog niet opgepakt; hij probeert iedere 10 minuten opnieuw.`;
+      } else {
+        titleText = 'Broncheck aangevraagd';
+        detailText = 'De site pakt dit automatisch op. Meestal zie je binnen 15 tot 20 minuten nieuwe checkdata.';
+      }
     } else if(requestState.status === 'running'){
-      titleText = 'Broncheck loopt nu';
-      detailText = 'De bronnen worden gecontroleerd. Ververs beheer straks om de nieuwe status te zien.';
+      const startedTime = new Date(requestState.startedAt || '').getTime();
+      const runningMinutes = Number.isFinite(startedTime) ? Math.floor((Date.now() - startedTime) / 60000) : 0;
+      titleText = runningMinutes >= 15 ? 'Broncheck loopt langer dan normaal' : 'Broncheck loopt nu';
+      detailText = runningMinutes >= 15
+        ? `Gestart om ${formatAdminDateTime(requestState.startedAt)}. Ververs beheer straks opnieuw; als dit blijft staan is de GitHub-check waarschijnlijk vastgelopen.`
+        : 'De bronnen worden gecontroleerd. Ververs beheer straks om de nieuwe status te zien.';
     } else if(requestState.status === 'done' && requestState.completedAt){
       titleText = `Broncheck klaar: ${formatAdminDateTime(requestState.completedAt)}`;
       detailText = sourceAgendaCheckedAt()
@@ -1802,7 +1813,7 @@
       return;
     }
     renderAgendaCheckStatus();
-    setStatus('#adminStatus', 'Broncheck aangevraagd. De site pakt dit automatisch op binnen ongeveer 15 minuten.', 'ok');
+    setStatus('#adminStatus', 'Broncheck aangevraagd. De automatische check probeert dit iedere 10 minuten op te pakken.', 'ok');
   }
   async function markAgendaCheckedNow(){
     const checkedAt = new Date().toISOString();
