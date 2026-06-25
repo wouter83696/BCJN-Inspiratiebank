@@ -4573,20 +4573,20 @@
       "note": "Lasergamen, Mystic Golf, LaserSquash en StepZone in het centrum van Nijmegen."
     }
   ],
-  "generated": "24 juni 2026",
+  "generated": "25 juni 2026",
   "sourceCheck": {
-    "lastCheckedAt": "2026-06-24T15:42:31.426Z",
+    "lastCheckedAt": "2026-06-25T09:52:22.092Z",
     "reviewFile": "website-bestanden/data/offers_pending_review.json",
     "sourcesChecked": 40,
-    "sourcesWithChanges": 28,
+    "sourcesWithChanges": 31,
     "newCandidateCount": 0
   },
   "teamIdeas": [],
   "sourceReview": {
-    "generatedAt": "2026-06-24T15:42:31.426Z",
+    "generatedAt": "2026-06-25T09:52:22.092Z",
     "pendingCount": 157,
     "newCount": 0,
-    "changedSourceCount": 28,
+    "changedSourceCount": 31,
     "changedSources": [
       {
         "id": "beuningen-samen-jongeren",
@@ -4597,7 +4597,7 @@
         "newItemCount": 0,
         "itemCount": 30,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "debastei-agenda",
@@ -4608,7 +4608,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "de-wijchense-berg",
@@ -4619,7 +4619,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "escape-boot-nijmegen",
@@ -4630,7 +4630,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "focus-arnhem-agenda",
@@ -4641,7 +4641,18 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
+      },
+      {
+        "id": "gamestate-arnhem",
+        "name": "Gamestate Arnhem",
+        "url": "https://www.gamestate.com/nl/arnhem",
+        "region": "In de regio (10-30 km)",
+        "mode": "fingerprint",
+        "newItemCount": 0,
+        "itemCount": 0,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "beuningen-events",
@@ -4652,7 +4663,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "gemeente-nijmegen-events",
@@ -4663,7 +4674,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "grip-boulderhal",
@@ -4674,7 +4685,18 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
+      },
+      {
+        "id": "into-nijmegen-agenda",
+        "name": "Into Nijmegen Uitagenda",
+        "url": "https://www.intonijmegen.com/agenda/agenda-overzicht",
+        "region": "Nijmegen",
+        "mode": "fingerprint",
+        "newItemCount": 0,
+        "itemCount": 0,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "land-van-cuijk-2026-07",
@@ -4685,7 +4707,7 @@
         "newItemCount": 0,
         "itemCount": 79,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "land-van-cuijk-2026-08",
@@ -4696,7 +4718,7 @@
         "newItemCount": 0,
         "itemCount": 42,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "lux-programma",
@@ -4707,7 +4729,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "museumpark-orientalis-agenda",
@@ -4718,7 +4740,18 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
+      },
+      {
+        "id": "musis-stadstheater-agenda",
+        "name": "Musis & Stadstheater agenda",
+        "url": "https://www.musisenstadstheater.nl/nl/agenda",
+        "region": "Arnhem",
+        "mode": "fingerprint",
+        "newItemCount": 0,
+        "itemCount": 0,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "natuurmonumenten-agenda",
@@ -4729,7 +4762,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "nijmegen-outdoor",
@@ -4740,7 +4773,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "nimma-sportzomer",
@@ -4751,7 +4784,18 @@
         "newItemCount": 0,
         "itemCount": 6,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
+      },
+      {
+        "id": "ouwehands-dierenpark",
+        "name": "Ouwehands Dierenpark",
+        "url": "https://www.ouwehand.nl/",
+        "region": "Verder weg (30-50 km)",
+        "mode": "fingerprint",
+        "newItemCount": 0,
+        "itemCount": 0,
+        "pageChanged": true,
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "planet-awesome",
@@ -4762,7 +4806,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "pretpark-tivoli",
@@ -4773,7 +4817,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "rozet-agenda",
@@ -4784,7 +4828,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "staatsbosbeheer-activiteiten",
@@ -4795,7 +4839,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "sup-surf-nijmegen",
@@ -4806,7 +4850,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "visit-arnhem-events",
@@ -4817,7 +4861,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "visit-arnhem-zomertips",
@@ -4828,7 +4872,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "visit-nijmegen-events",
@@ -4839,7 +4883,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "visit-nijmegen-zomertips",
@@ -4850,7 +4894,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "vue-nijmegen",
@@ -4861,18 +4905,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
-      },
-      {
-        "id": "watermuseum-activiteiten",
-        "name": "Watermuseum activiteiten",
-        "url": "https://watermuseum.nl/activiteiten/",
-        "region": "Arnhem",
-        "mode": "fingerprint",
-        "newItemCount": 0,
-        "itemCount": 0,
-        "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "you-jump-nijmegen",
@@ -4883,7 +4916,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "id": "zooparc-overloon",
@@ -4894,7 +4927,7 @@
         "newItemCount": 0,
         "itemCount": 0,
         "pageChanged": true,
-        "lastCheckedAt": "2026-06-24T15:42:31.426Z"
+        "lastCheckedAt": "2026-06-25T09:52:22.092Z"
       }
     ],
     "previewItems": [
@@ -4910,7 +4943,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-24T09:57:46.956Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "LOUIS viert vakantie: creatief zomerprogramma",
@@ -4924,7 +4957,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-24T09:57:46.956Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "LOUIS viert vakantie: creatief zomerprogramma",
@@ -4938,7 +4971,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-24T09:57:46.956Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Beer & Bites Festival",
@@ -4952,7 +4985,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T13:31:54.625Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Clean Pete - Geheimen",
@@ -4966,7 +4999,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T13:31:54.625Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Filmhuis: En Fanfare",
@@ -4980,7 +5013,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T13:31:54.625Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Kasteel Heijen open tijdens eerste Gennepse Fietsdag",
@@ -4994,7 +5027,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T13:31:54.625Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Doop Land van Cuijk Ballon",
@@ -5008,7 +5041,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Excursie De Oude Pottenbakkerij, Milsbeek",
@@ -5022,7 +5055,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Informatiepunt Digitale overheid. IDO",
@@ -5036,7 +5069,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Informatiepunt Digitale overheid. IDO",
@@ -5050,7 +5083,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Jongerenactiviteiten vrijdagavond",
@@ -5064,7 +5097,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Jongerenactiviteiten vrijdagavond",
@@ -5078,7 +5111,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Jongerenactiviteiten woensdagavond",
@@ -5092,7 +5125,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Jongerenactiviteiten woensdagavond",
@@ -5106,7 +5139,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Op weg naar je diner",
@@ -5120,7 +5153,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Pianoconcerten van wereldklasse in protestantse kerk Gennep",
@@ -5134,7 +5167,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       },
       {
         "title": "Pianoconcerten van wereldklasse in protestantse kerk Gennep",
@@ -5148,7 +5181,7 @@
         "status": "known",
         "reviewStatus": "pending",
         "firstSeenAt": "2026-06-23T08:06:48.886Z",
-        "lastSeenAt": "2026-06-24T15:42:31.426Z"
+        "lastSeenAt": "2026-06-25T09:52:22.092Z"
       }
     ]
   }
